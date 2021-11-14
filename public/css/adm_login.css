@@ -1,0 +1,190 @@
+.content {
+    padding: 80px 20px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+h1 .icon {
+    display: inline-block;
+    font-weight: 1.2em;
+    margin-left: 10px;
+}
+
+.form {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.form>* {
+    width: 30%;
+}
+
+/* Message block */
+.message {
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    padding: 25px 20px 35px;
+    display: flex;
+}
+
+.message .icon_info {
+    font-size: 30px;
+    padding-right: 23px;
+}
+
+.message .info {
+    flex-grow: 1;
+    font-size: 14px;
+}
+
+.message p {
+    margin-bottom: 25px;
+}
+
+.message .admin_mail {
+    font-weight: bold;
+    display: block;
+
+}
+
+.message .admin_mail:active .icon {
+    opacity: 0.4;
+    transition: .1s;
+
+}
+
+.message .admin_mail .icon {
+    font-size: 1.2em;
+    margin-left: 10px;
+}
+
+.message .admin_mail:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Form */
+.form form {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    padding: 40px 70px;
+    border-radius: 10px;
+    background-color: #191C21;
+    width: 40%;
+    margin: 0px 30px;
+}
+
+.form .input_text {
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-bottom-color: #fff;
+    text-align: center;
+    padding: 10px 15px;
+    margin: 10px 0px 40px;
+    color: #fff;
+    outline: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.form .button {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: 16px 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.form .button:hover {
+    cursor: pointer;
+    color: #282d36;
+}
+
+/* Remember me */
+.form .remember_me {
+    display: block;
+    padding: 10px 0px;
+}
+
+.form .remember_me:hover {
+    cursor: pointer;
+}
+
+.form .remember_me .icon:before {
+    content: "\f0c8";
+    font-size: 18px;
+}
+
+.form .remember_me input:checked~.icon::before {
+    content: "\f14a";
+}
+
+.form .remember_me .title {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0px 10px;
+    display: inline-block;
+}
+
+
+@media screen and (min-width: 1440px) {}
+
+@media screen and (max-width: 1440px) {}
+
+@media screen and (max-width: 1279px) {
+
+    .form>*,
+    .form form {
+        width: 50%;
+    }
+
+    .form .empty {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 1023px) {}
+
+@media screen and (max-width: 767px) {
+    h1 {
+        margin-bottom: 25px;
+    }
+
+    .form {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .form>*,
+    .form form {
+        width: 100%;
+        margin: 0px 0px 30px;
+    }
+
+    .message p {
+        margin-bottom: 10px;
+    }
+
+}
+
+@media screen and (max-width: 599px) {}
+
+@media screen and (max-width: 479px) {
+    .form form {
+        padding: 15px 30px;
+    }
+}

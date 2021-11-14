@@ -22,17 +22,7 @@ class AccountController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function imdex()
-    {
-        return redirect('/account/profile');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function profile()
+    public function index()
     {
         return view('account.profile', $this->data);
     }

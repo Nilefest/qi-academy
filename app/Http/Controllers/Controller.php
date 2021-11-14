@@ -13,10 +13,7 @@ class Controller extends BaseController
         'title' => 'Official site',
         'description' => '',
         'keywords' => '',
-        'seo' => [
-            'og_title' => '',
-            'og_description' => '',
-        ],
+        'site_name' => 'QiACADEMY.site',
     ];
     
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
