@@ -14,8 +14,7 @@
     <meta name="keywords" content="{{ $keywords }}">
 
     <!-- OG Tags -->
-    <meta property="og:title"
-        content="{{ $title }} | {{ config('app.name') }}">
+    <meta property="og:title" content="{{ $title }} | {{ config('app.name') }}">
     <meta property="og:description" content="{{ $description }}">
     <meta property="og:type" content="website">
     {{-- <!--<meta property="og:image" content="{{ url('') . $header['image_url'] }}">--> --}}
@@ -66,7 +65,7 @@
             </div>
             <div class="message_buttons">
                 <button class="button cookie_success">AKCEPTUJ WSZYSTKIE PLIKI COOKIE</button>
-                <a href="#" class="mess_link">Ustwienia plików cookie</a>
+                <a href="#cookie" class="mess_link">Ustwienia plików cookie</a>
             </div>
         </div>
 
@@ -141,9 +140,9 @@
         <div class="main_nav">
             <nav class="container">
                 <ul class="main_nav_ul">
-                    <li><a href="#nav">Dom</a></li>
-                    <li><a href="#nav">Kursy</a></li>
-                    <li><a href="#nav">Team</a></li>
+                    <li><a href="{{ url('/') }}">Dom</a></li>
+                    <li><a href="{{ url('/about') }}">About</a></li>
+                    <li><a href="{{ url('/team') }}">Team</a></li>
                 </ul>
                 <div class="main_nav_info">
                     <ul class="main_nav_contact">
@@ -176,9 +175,7 @@
             </div>
         </header>
 
-        <div class="content">
-            @yield('content')
-        </div>
+        @yield('content')
 
         <footer>
             <div class="container">
@@ -238,7 +235,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('lib/slick/slick.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('lib/slick/slick-theme.css') }}">
         <script src="{{ asset('lib/slick/slick.min.js') }}"></script>
-        
+
         <!-- JS. Slick. Init all -->
         <script src="{{ asset('js/sliders.js') }}"></script>
 
