@@ -1,0 +1,28 @@
+/* Animation for Slider LEFT-TO-RIGHT-TO-LEFT */
+@-webkit-keyframes left-right {
+	0% {
+		margin-left: -50%;
+	}
+
+	50% {
+		margin-left: 0%;
+	}
+
+	100% {
+		margin-left: -50%;
+	}
+}
+
+@keyframes left-right {
+	0% {
+		margin-left: -50%;
+	}
+
+	50% {
+		margin-left: 0%;
+	}
+
+	100% {
+		margin-left: -50%;
+	}
+}
