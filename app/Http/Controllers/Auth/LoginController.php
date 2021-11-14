@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use App\Library\Services\CommonService;
+
 class LoginController extends Controller
 {
     /*
@@ -33,8 +35,32 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest')->except('logout');
+    }
+    
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return 'login';
+    }
+    
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    public function showLoginForm() 
+    {
+        return view('auth.login', $this->data);
+    }
+
+    protected function redirectTo()
+    {
+        return RouteServiceProvider::HOME;
     }
 }
