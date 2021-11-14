@@ -19,6 +19,8 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 // Main page
 Route::get('/', 'MainController@index')->name('main');
+Route::get('/about', 'InfoController@about')->name('about');
+Route::get('/team', 'InfoController@team')->name('team');
 
 // Only verified email
 // Profile

@@ -68,5 +68,8 @@
 		document.querySelector('.modal_book_offline').classList.add('success_step');
 	});
 
-	document.querySelectorAll('.block_events .row').forEach(element => element.addEventListener('click', event => modalOpen('.modal_book_offline')));
+	document.querySelectorAll('.block_events .row').forEach(element => element.addEventListener('click', () => {
+		document.querySelector('.modal_book_offline').classList.remove('success_step');
+		modalOpen('.modal_book_offline');
+	}));
 })();

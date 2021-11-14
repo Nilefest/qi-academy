@@ -670,6 +670,8 @@
 	letter-spacing: 1px;
 	max-height: 550px;
 	overflow: hidden;
+
+	display: none;
 }
 
 .modal_sign_account .step_block {

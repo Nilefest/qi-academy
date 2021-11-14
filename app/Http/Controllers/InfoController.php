@@ -23,6 +23,7 @@ class InfoController extends Controller
      */
     public function about()
     {
+        $this->data['title'] = 'About us';
         return view('info.about', $this->data);
     }
 
@@ -33,6 +34,7 @@ class InfoController extends Controller
      */
     public function team()
     {
+        $this->data['title'] = 'Our team';
         return view('info.team', $this->data);
     }
 }
