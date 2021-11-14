@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Library\Services\CommonService;
 
-class HomeController extends Controller
+class AccountController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -21,8 +22,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function imdex()
     {
-        return view('home');
+        return redirect('/account/profile');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function profile()
+    {
+        return view('account.profile', $this->data);
     }
 }

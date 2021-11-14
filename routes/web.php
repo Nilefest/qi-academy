@@ -13,10 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Auth
+Auth::routes(['verify' => true]);
+Route::get('/logout', 'Auth\LoginController@logout');
 
-Auth::routes();
+// Main page
+Route::get('/', 'MainController@index')->name('main');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Only verified email
+// Profile
+Route::get('/account', 'AccountController@profile')->middleware('verified')->name('profile');
