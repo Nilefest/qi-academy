@@ -46,6 +46,14 @@ let copyText = (text) => {
 	navigator.clipboard.writeText(input.value);
 };
 
+// Preview input images with sytle background
+// #var #function
+let freader_preview = new FileReader();
+let preview_input_img = (file, preview_func) => {
+	freader_preview.onload = preview_func;
+	freader_preview.readAsDataURL(file);
+};
+
 /* PRIVATE */
 (() => {
 	// Open/Close main-navigation. 
@@ -117,5 +125,4 @@ let copyText = (text) => {
 		document.querySelector('.modal_sign_account').classList.replace('signin_step', 'signup_step');
 		modalOpen('.modal_sign_account');
 	}));
-
 })();

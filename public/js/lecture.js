@@ -40,8 +40,20 @@
 
 	// Open lecures list
 	// #event #function
-	document.querySelector('.lesson_list .icon_open').parentElement.addEventListener('click', () => {
-		document.querySelector('.lesson_list').classList.toggle('open_list');
-	});
+	if (document.querySelector('.lesson_list').classList.contains('mobile_toggle_list')) {
+		document.querySelector('.lesson_list .icon_open').parentElement.addEventListener('click', () => {
+			document.querySelector('.lesson_list').classList.toggle('open_list');
+		});
+	}
 
+	// Click to body
+	// #event #function
+	document.body.addEventListener('click', (event) => {
+
+		// Close lesson`s list_menu for mobile of click overflow list_menu
+		// #event #function
+		if (event.target !== document.getElementById('list_menu_check') && event.target.closest('.list_menu_button') === null) {
+			document.querySelector('.list_menu_check').checked = false;
+		}
+	});
 })();

@@ -128,6 +128,134 @@
 	color: #000;
 }
 
+/* Modal. ADM. Edit Team */
+.modal_win.modal_show.modal_team_adm {
+	display: flex;
+}
+
+.modal_team_adm .modal_header {
+	padding: 30px;
+	display: flex;
+	flex-direction: column;
+}
+
+.modal_team_adm .modal_header .name {
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+	font-weight: 900;
+	font-size: 21px;
+	letter-spacing: 1px;
+	margin-bottom: 15px;
+}
+
+.modal_team_adm .modal_header .team_img {
+	width: 100%;
+	height: 100px;
+	border: 1px solid #000;
+	border-radius: 10px;
+	flex-grow: 1;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 15px;
+}
+
+.modal_team_adm .modal_header .team_img .icon_add {
+	opacity: 0.1;
+	color: #aaa;
+	font-size: 50px;
+}
+
+.modal_team_adm .modal_header .team_img:hover .icon_add {
+	opacity: 0.5;
+}
+
+.modal_team_adm .modal_header .team_img:hover {
+	cursor: pointer;
+}
+
+.modal_team_adm .modal_content {
+	flex-grow: 1;
+	padding: 30px 10px;
+	font-family: 'Lato', sans-serif;
+	margin: 0px 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+.modal_team_adm .modal_content .textarea {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 2em;
+	margin-bottom: 30px;
+	width: 100%;
+	border: 2px dotted #aaa;
+	opacity: 0.8;
+	padding: 5px 15px;
+	flex-grow: 1;
+}
+
+.modal_team_adm .social_field {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.modal_team_adm .social_field .title {
+	padding-right: 10px;
+	font-weight: 300;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-family: 'Montserrat', sans-serif;
+	width: 100px;
+}
+
+.modal_team_adm input.text {
+	border: 1px solid #000;
+	border-radius: 10px;
+	font-size: 12px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+	opacity: 0.9;
+	flex-grow: 1;
+	padding: 10px 15px;
+}
+
+.modal_team_adm .social_field input.text {
+	font-style: italic;
+}
+
+.modal_team_adm .name input.text {
+	color: #F84C34;
+	text-transform: uppercase;
+}
+
+.modal_team_adm .modal_footer {
+	padding: 30px;
+	text-align: center;
+	width: 200px;
+}
+
+.modal_team_adm .modal_button {
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+.modal_team_adm .modal_button.close {
+	background-color: #000;
+	color: #fff;
+}
+
+.modal_team_adm .modal_button.close:hover {
+	background-color: #fff;
+	color: #000;
+}
+
 /* Modal. View video */
 .modal_view_video {
 	max-height: 80vh;
@@ -229,7 +357,7 @@
 	padding: 10px 0px;
 }
 
-/* Modal. Booking to offline course */
+/* Modal. ADM. Booking to offline course */
 .modal_book_offline {
 	display: none;
 	justify-content: space-between;
@@ -373,7 +501,7 @@
 	height: 100%;
 }
 
-/* Modal get sertificate */
+/* Modal. Profile. Get sertificate */
 .modal_get_sertificate {
 	background-color: #fff;
 	padding: 50px 60px;
@@ -408,6 +536,238 @@
 .modal_get_sertificate .button:hover {
 	background-color: #fff;
 	cursor: pointer;
+}
+
+/* Modal. Show result after subscribe */
+.modal_subscribe_result {
+	background-color: #fff;
+	padding: 50px 60px;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+	max-width: 500px;
+	min-height: auto;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal_subscribe_result.modal_show {
+	display: flex;
+}
+
+.modal_subscribe_result .message {
+	font-size: 14px;
+	letter-spacing: 1px;
+}
+
+.modal_subscribe_result .button {
+	text-transform: uppercase;
+	border: 1px solid #FFF9C6;
+	background-color: #FFF9C6;
+	padding: 7px 7px;
+	font-size: 18px;
+	border-radius: 10px;
+	font-weight: bold;
+}
+
+.modal_subscribe_result .button:hover {
+	background-color: #fff;
+	cursor: pointer;
+}
+
+/* Modal. Show info with button OK */
+.modal_simple_info {
+	background-color: #fff;
+	padding: 50px 60px;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+	max-width: 500px;
+	min-height: auto;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal_simple_info.modal_show {
+	display: flex;
+}
+
+.modal_simple_info .message {
+	font-size: 14px;
+	letter-spacing: 1px;
+}
+
+.modal_simple_info .button {
+	text-transform: uppercase;
+	border: 1px solid #FFF9C6;
+	background-color: #FFF9C6;
+	padding: 7px 7px;
+	font-size: 18px;
+	border-radius: 10px;
+	font-weight: bold;
+}
+
+.modal_simple_info .button:hover {
+	background-color: #fff;
+	cursor: pointer;
+}
+
+/* Modal. ADM. Edit lecture */
+.modal_lecture {
+	margin: 0px;
+	padding: 80px 150px 80px 70px;
+	background-color: #000;
+	border-radius: 0px;
+	height: 100vh;
+	color: #fff;
+	font-family: 'Lato', sans-serif;
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	align-items: stretch;
+}
+
+.modal_lecture.modal_show {
+	display: flex;
+}
+
+.modal_lecture .icon_close {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	margin: 50px 50px;
+	padding: 10px;
+	font-size: 1.3em;
+	opacity: 0.8;
+}
+
+.modal_lecture .icon_close:hover {
+	opacity: 1;
+	cursor: pointer;
+}
+
+.modal_lecture .lecture_data {
+	margin-right: 120px;
+	flex-grow: 1;
+}
+
+.modal_lecture .lecture_data .field_block {
+	display: flex;
+	margin-bottom: 25px;
+}
+
+.modal_lecture .lecture_data .title {
+	font-weight: 700;
+	font-size: 14px;
+	max-width: 200px;
+	margin-right: 20px;
+	display: inline-block;
+}
+
+.modal_lecture .lecture_data .field_block .text {
+	border-radius: 10px;
+	border: 1px solid #fff;
+	padding: 10px 15px;
+	background-color: #000;
+	background-color: transparent;
+	color: #fff;
+	flex-grow: 1;
+}
+
+.modal_lecture .lecture_data .field_block textarea.text {
+	min-height: 150px;
+	max-height: 400px;
+}
+
+.modal_lecture .lecture_data .icon_file {
+	border: 1px solid #fff;
+	border-radius: 10px;
+	padding: 7px 10px;
+	font-size: 1.2em;
+	display: inline-block;
+	margin-right: 15px;
+	opacity: 0.8;
+	vertical-align: text-bottom;
+	align-self: flex-start;
+}
+
+.modal_lecture .lecture_data a.icon_file {
+	margin-top: 5px;
+	padding: 8px 13px;
+}
+
+.modal_lecture .lecture_data a.icon_file span {
+	font-style: italic;
+	font-size: 0.9em;
+	padding: 0px 5px 0px 10px;
+	font-family: 'Lato', sans-serif;
+}
+
+.modal_lecture .lecture_data .icon_file:hover {
+	cursor: pointer;
+	opacity: 1;
+}
+
+.modal_lecture .lecture_data input.file:hover~label .icon_file {
+	opacity: 1;
+}
+
+.modal_lecture .homework_block {
+	background-color: #191C21;
+	border-radius: 10px;
+	padding: 20px 40px;
+	font-family: 'Montserrat', sans-serif;
+	align-self: stretch;
+	width: 400px;
+	max-height: 500px;
+}
+
+.modal_lecture .homework_block .title {
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	align-self: flex-start;
+	width: 100%;
+	display: block;
+}
+
+.modal_lecture .homework_block .text {
+	background-color: #191C21;
+	background-color: transparent;
+	border: none;
+	border: 1px solid #555;
+	min-height: 100px;
+	max-height: 400px;
+	width: 100%;
+	color: #fff;
+	opacity: 0.8;
+	margin-bottom: 20px;
+	height: 85%;
+}
+
+.modal_lecture .buttons {
+	width: 100%;
+	padding: 50px 0px 10px;
+	display: flex;
+	justify-content: center;
+}
+
+.modal_lecture .button {
+	background-color: #fff;
+	color: #000;
+	border-radius: 10px;
+	border: 1px solid #fff;
+	padding: 10px 30px;
+	opacity: 1;
+	font-weight: 700;
+	font-size: 14px;
+	align-self: flex-start;
+}
+
+.modal_lecture .button:hover {
+	cursor: pointer;
+	opacity: 0.8;
 }
 
 /* Message about Cookie */
@@ -491,7 +851,7 @@
 	cursor: pointer;
 }
 
-/* Modal for send review */
+/* Modal. Profile. for send review */
 .modal_send_review {
 	max-width: 500px;
 	background-color: #fff;
@@ -670,8 +1030,6 @@
 	letter-spacing: 1px;
 	max-height: 550px;
 	overflow: hidden;
-
-	display: none;
 }
 
 .modal_sign_account .step_block {
@@ -692,7 +1050,7 @@
 	opacity: 0;
 }
 
-.modal_sign_account.signin_step{
+.modal_sign_account.signin_step {
 	margin-top: 200px;
 }
 

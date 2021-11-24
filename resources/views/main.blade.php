@@ -121,8 +121,7 @@
     <div class="content">
         <div class="main_banner container">
             <div class="main_banner_media">
-                <!-- <img src="/temp/img/main_banner.png" alt=" "> -->
-                <video loop>
+                <video autoplay loop>
                     <source src="/temp/video/video_background_1.mp4" type="video/mp4">
                 </video>
             </div>
@@ -130,7 +129,6 @@
                 <span class="title">Online academy</span>
                 <h1>Najbardziej praktyczna <br>baza kursów dla <br>mistrzów urody.</h1>
                 <button class="main_banner_button">Zarejestrować</button>
-                <!--<a href="#banner_link" class="main_banner_button">Zarejestrować</a>-->
             </div>
         </div>
 
