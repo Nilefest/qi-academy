@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "laravel/qi-academy",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Qi ACADEMY Project",
     "keywords": [
         "framework",
         "laravel"
