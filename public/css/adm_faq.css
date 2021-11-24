@@ -1,0 +1,106 @@
+/* Block FAQ */
+.faq_block {
+    width: 800px;
+    margin: 20px auto 100px;
+}
+
+.faq_block .title {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.faq_block .faq_list {
+    width: 100%;
+    margin: 0px;
+}
+
+.faq_block .faq_item {
+    list-style: none;
+    background-color: #191C21;
+    border-radius: 10px;
+    padding: 20px 35px;
+    margin-bottom: 20px;
+    max-height: 70px;
+    overflow: hidden;
+
+}
+
+.faq_block .faq_item.open {
+    max-height: 500px;
+
+}
+
+.faq_block .icon_remove {
+    position: absolute;
+    top: 20px;
+    right: 55px;
+    display: inline-block;
+    padding: 7px 15px;
+    font-size: 18px;
+    opacity: 0.6;
+}
+
+.faq_block .icon_down {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: inline-block;
+    padding: 7px 15px;
+    font-size: 18px;
+    opacity: 0.6;
+}
+
+.faq_block .icon_remove:hover,
+.faq_block .icon_down:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.faq_block .faq_item.open .icon_down {
+    transform: rotate(180deg);
+}
+
+.faq_block .text {
+    width: 80%;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.faq_block textarea.text {
+    min-height: 100px;
+    max-height: 400px;
+    opacity: 0;
+}
+
+.faq_block .faq_item.open textarea.text {
+    opacity: 1;
+}
+
+.faq_block .button {
+    width: 30%;
+    margin: 20px 35%;
+    border: 1px solid #000;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: #000;
+    background-color: transparent;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    font-weight: 700;
+}
+
+
+.faq_block .button:hover {
+    cursor: pointer;
+    border-color: #fff;
+}
+
+.faq_block .button .icon_add {
+    margin-left: 15px;
+    font-size: 1.3em;
+}
