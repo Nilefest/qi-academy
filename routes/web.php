@@ -16,41 +16,33 @@ use Illuminate\Support\Facades\Route;
 // Auth
 // Auth::routes(['verify' => true]);
 // Route::get('/logout', 'Auth\LoginController@logout');
-// Route::get('/', function () {
-//     return view('googleLogin');
-// });
-// Route::get('auth/google', 'Auth\LoginController@redirectToGoogle');
-// Route::get('auth/google/callback', 'Auth\LoginController@handleGoogleCallback');
-
-// Main page
-// Route::get('/', 'MainController@index')->name('main');
-// Route::get('/about', 'InfoController@about')->name('about');
-// Route::get('/team', 'InfoController@team')->name('team');
-
-// Only verified email
-// Profile
-// Route::get('/account', 'AccountController@profile')->middleware('verified')->name('profile');
-
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
-
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
 
 
-
-Route::get('/', function () {
-    return view('main');
-});
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
+// Auth
+Auth::routes(['verify' => true]);
+Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('auth/google', 'Auth\Socialite\GoogleController@redirectToGoogle');
 Route::get('auth/google/callback', 'Auth\Socialite\GoogleController@handleGoogleCallback');
-
 Route::get('auth/facebook', 'Auth\Socialite\FacebookController@redirectToFacebook');
 Route::get('auth/facebook/callback', 'Auth\Socialite\FacebookController@handleFacebookCallback');
+
+// Public
+Route::get('/', 'MainController@index')->name('main');
+Route::get('/about', 'InfoController@about')->name('about');
+Route::get('/team', 'InfoController@team')->name('team');
+Route::get('/course/{course_id}', 'CourseController@view')->name('course.view');
+Route::get('/personal-data-policy', 'InfoController@personal_data_policy')->name('course.view');
+Route::get('/public-offer', 'InfoController@public_offer')->name('course.view');
+Route::get('/payment-with-card', 'InfoController@payment_cart')->name('course.view');
+
+// For Account
+Route::get('/account', 'AccountController@profile')->middleware('verified')->name('acount.profile');
+Route::get('/account/{user_id}/courses', 'CourseController@list_account')->middleware('verified')->name('courses.account');
+Route::get('/account/lecture/{lecture_id}', 'CourseController@lecture')->middleware('verified')->name('courses.lecture');
+
+// For Admin
+Route::get('/admin', 'AdminController@dashboard')->middleware('verified')->name('admin.dashboard');
+Route::get('/admin/team', 'AdminController@team')->middleware('verified')->name('admin.team');
+Route::get('/admin/courses_offline', 'CourseOfflineController@list_admin')->middleware('verified')->name('admin.courses_offline');
+Route::get('/admin/courses', 'CourseController@list_admin')->middleware('verified')->name('admin.courses');
+Route::get('/admin/course/{course_id}', 'CourseController@edit')->middleware('verified')->name('admin.course.edit');

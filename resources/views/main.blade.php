@@ -6,41 +6,22 @@
 @endsection
 
 @section('footer.js')
+    <!-- JS. JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <!-- JS. Slick -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('lib/slick/slick.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('lib/slick/slick-theme.css') }}" />
+    <script src="{{ asset('lib/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('lib/slick-init.js') }}"></script>
+
+    <!-- JS. Custom -->
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/team.js') }}"></script>
 @endsection
 
 @section('modals')
-    <!-- Modal. About teammate -->
-    <div class="modal_win container modal_team">
-        <div class="modal_header">
-            <img src="/temp/img/team/team_1.png" alt=" ">
-            <div class="team_info">
-                <div class="name">Herman Ahafontsev</div>
-                <ul class="social">
-                    <li><a href="#facebook"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                    <li><a href="#instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="modal_content">
-            <p>Brazilian Technique - metoda rozjaśnienia przez tapirowanie wlosów. Będziemy pokazywać jak
-                pracować z
-                tapirem w koloryzacjach włosów. Pokażemy nie tylko jak prawidłowo tapirować włosy, a tak że jak
-                rozczesywać tapir, żeby dla klienta to nie było "przykrym doświadczeniem". </p>
-            <p>Brazilian Technique - metoda rozjaśnienia przez tapirowanie wlosów. Będziemy pokazywać jak
-                pracować z
-                tapirem w koloryzacjach włosów. Pokażemy nie tylko jak prawidłowo tapirować włosy, a tak że jak
-                rozczesywać tapir, żeby dla klienta to nie było "przykrym doświadczeniem". </p>
-            <p>Brazilian Technique - metoda rozjaśnienia przez tapirowanie wlosów. Będziemy pokazywać jak
-                pracować z
-                tapirem w koloryzacjach włosów. Pokażemy nie tylko jak prawidłowo tapirować włosy, a tak że jak
-                rozczesywać tapir, żeby dla klienta to nie było "przykrym doświadczeniem". </p>
-        </div>
-        <div class="modal_footer">
-            <button class="modal_button close">Close</button>
-        </div>
-    </div>
+    @include('layouts.modals.team_view')
 
     <!-- Modal. Booking to offline course -->
     <div class="modal_win modal_book_offline">
@@ -121,7 +102,8 @@
     <div class="content">
         <div class="main_banner container">
             <div class="main_banner_media">
-                <video autoplay loop>
+                <!-- <img src="/temp/img/main_banner.png" alt=" "> -->
+                <video loop>
                     <source src="/temp/video/video_background_1.mp4" type="video/mp4">
                 </video>
             </div>
@@ -129,6 +111,7 @@
                 <span class="title">Online academy</span>
                 <h1>Najbardziej praktyczna <br>baza kursów dla <br>mistrzów urody.</h1>
                 <button class="main_banner_button">Zarejestrować</button>
+                <!--<a href="#banner_link" class="main_banner_button">Zarejestrować</a>-->
             </div>
         </div>
 
@@ -148,7 +131,7 @@
             <h3>Nasze kursy</h3>
             <ul class="slider_courses_ul">
                 <!-- type 1 -->
-                <li class="slider_courses_li" style="background-image: url(/temp/img/slider_courses_1.png)">
+                <li class="slider_courses_li" style="background-image: url(./temp/img/slider_courses_1.png)">
                     <span class="title">colorist pro 1</span>
                     <a href="#curse" class="price">300 Zł</a>
                     <ul class="curs_info">
@@ -157,7 +140,7 @@
                     </ul>
                 </li>
                 <!-- type 2 -->
-                <li class="slider_courses_li" style="background-image: url(/temp/img/slider_courses_2.png)">
+                <li class="slider_courses_li" style="background-image: url(./temp/img/slider_courses_2.png)">
                     <a href="#curse" class="title">colorist pro 2</a>
                     <button class="price">500 Zł</button>
                     <ul class="curs_info">
@@ -265,22 +248,22 @@
             </div>
             <div class="block_team_slider">
                 <ul class="block_team_ul">
-                    <li style="background-image: url(/temp/img/team_1.png);" class="block_team_li">
+                    <li style="background-image: url(./temp/img/team_1.png);" class="block_team_li">
                         <span class="team_open_modal view">View</span>
                     </li>
-                    <li style="background-image: url(/temp/img/team_2.png);" class="block_team_li">
+                    <li style="background-image: url(./temp/img/team_2.png);" class="block_team_li">
                         <span class="team_open_modal view">View</span>
                     </li>
-                    <li style="background-image: url(/temp/img/team_3.png);" class="block_team_li">
+                    <li style="background-image: url(./temp/img/team_3.png);" class="block_team_li">
                         <span class="team_open_modal view">View</span>
                     </li>
-                    <li style="background-image: url(/temp/img/team_1.png);" class="block_team_li">
+                    <li style="background-image: url(./temp/img/team_1.png);" class="block_team_li">
                         <span class="team_open_modal view">View</span>
                     </li>
-                    <li style="background-image: url(/temp/img/team_2.png);" class="block_team_li">
+                    <li style="background-image: url(./temp/img/team_2.png);" class="block_team_li">
                         <span class="team_open_modal view">View</span>
                     </li>
-                    <li style="background-image: url(/temp/img/team_3.png);" class="block_team_li">
+                    <li style="background-image: url(./temp/img/team_3.png);" class="block_team_li">
                         <span class="team_open_modal view">View</span>
                     </li>
                 </ul>
@@ -296,19 +279,19 @@
             </div>
             <div class="block_video_reviews_slider">
                 <ul class="block_video_reviews_ul">
-                    <li style="background-image: url(/temp/img/video_review_1.png);"
+                    <li style="background-image: url(./temp/img/video_review_1.png);"
                         data-videoSrc="/temp/video/video_background_1.mp4" class="video_open_modal block_video_reviews_li">
                         <button class="block_video_reviews_button">&#9654;</button>
                     </li>
-                    <li style="background-image: url(/temp/img/video_review_2.png);"
+                    <li style="background-image: url(./temp/img/video_review_2.png);"
                         data-videoSrc="/temp/video/video_expert.mp4" class="video_open_modal block_video_reviews_li">
                         <button class="block_video_reviews_button">&#9654;</button>
                     </li>
-                    <li style="background-image: url(/temp/img/video_review_1.png);"
+                    <li style="background-image: url(./temp/img/video_review_1.png);"
                         data-videoSrc="/temp/video/video_expert.mp4" class="video_open_modal block_video_reviews_li">
                         <button class="block_video_reviews_button">&#9654;</button>
                     </li>
-                    <li style="background-image: url(/temp/img/video_review_2.png);"
+                    <li style="background-image: url(./temp/img/video_review_2.png);"
                         data-videoSrc="/temp/video/video_expert.mp4" class="video_open_modal block_video_reviews_li">
                         <button class="block_video_reviews_button">&#9654;</button>
                     </li>
@@ -329,7 +312,7 @@
             <ul class="cursers_list_ul">
                 <!-- type 1 -->
                 <li class="cursers_item">
-                    <div class="item_img" style="background-image: url(/temp/img/person_1.png);"></div>
+                    <div class="item_img" style="background-image: url(./temp/img/person_1.png);"></div>
                     <div class="cursers_info">
                         <span class="title">7 złych nawyków </span>
                         <span class="info_tag">wideo</span>
@@ -338,7 +321,7 @@
                 </li>
                 <!-- type 2 -->
                 <li class="cursers_item">
-                    <div class="item_img" style="background-image: url(/temp/img/person_1.png);"></div>
+                    <div class="item_img" style="background-image: url(./temp/img/person_1.png);"></div>
                     <div class="cursers_info">
                         <a href="#curse_link" class="title">kolorystycznych</a>
                         <span class="info_tag">tekst</span>
@@ -348,7 +331,7 @@
                 <!-- type 3 -->
                 <li class="cursers_item">
                     <a href="#curse_link" class="item_img"
-                        style="background-image: url(/temp/img/person_1.png);"></a>
+                        style="background-image: url(./temp/img/person_1.png);"></a>
                     <div class="cursers_info">
                         <span class="title">kolorystycznych</span>
                         <span class="info_tag">tekst</span>
@@ -358,7 +341,7 @@
                 <!-- type 4 -->
                 <li class="cursers_item">
                     <a class="cursers_item_link" href="#curse_link">
-                        <div class="item_img" style="background-image: url(/temp/img/person_1.png);"></div>
+                        <div class="item_img" style="background-image: url(./temp/img/person_1.png);"></div>
                         <div class="cursers_info">
                             <span class="title">kolorystycznych</span>
                             <span class="info_tag">tekst</span>
@@ -376,7 +359,7 @@
                 <h3>Dołącz do profesjonalnej <br>społeczności kosmetycznej</h3>
                 <button class="link_button">
                     <span>Nasza społeczność <br>na WhatsApp</span>
-                    <img src="/img/icons/icons8-whatsapp-black.png" alt="Icon Watsapp">
+                    <img src="./img/icons/icons8-whatsapp-black.png" alt="Icon Watsapp">
                 </button>
             </div>
         </div>
@@ -398,11 +381,11 @@
 
         <div class="block_facebook_posts container">
             <h3>Nasze najnowsze posty na <span>Facebook</span></h3>
-            <div class="facebook_posts" style="background-image: url(/temp/img/facebook_post_1.png);"></div>
+            <div class="facebook_posts" style="background-image: url(./temp/img/facebook_post_1.png);"></div>
         </div>
 
         <div class="block_subscribe">
-            <img src="/img/subscribe_back.png" alt=" " class="background_img">
+            <img src="./img/subscribe_back.png" alt=" " class="background_img">
             <div class="subscribe_field">
                 <label for="subscribe_email">Zapisz się do Newslettera</label>
                 <input autocomplete="off" type="email" id="subscribe_email" class="subscribe_email"

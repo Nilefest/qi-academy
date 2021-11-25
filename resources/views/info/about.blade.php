@@ -4,6 +4,10 @@
     <link href="{{ asset('css/about.css') }}" rel="stylesheet" type="text/css">
 @endsection
 
+@section('modals')
+    @include('layouts.modals.team_view')
+@endsection
+
 @section('content')
     <div class="content about_content">
         <div class="media_head container">
