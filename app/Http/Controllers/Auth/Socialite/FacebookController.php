@@ -52,21 +52,5 @@ class FacebookController extends Controller
         } catch (Exception $e) {
             dd($e->getMessage());
         }
-
-        // try {
-        //     $facebook_user = Socialite::driver('facebook')->user();
-        //     $create['name'] = $facebook_user->getName();
-        //     $create['email'] = $facebook_user->getEmail();
-        //     $create['facebook_id'] = $facebook_user->getId();
-        //     $create['password'] = 'newrandompasword';
-
-        //     $newUser = new User;
-        //     $createdUser = $newUser->addNew($create);
-        //     Auth::loginUsingId($createdUser->id);
-
-        //     return redirect(RouteServiceProvider::HOME);
-        // } catch (Exception $e) {
-        //     dd($e->getMessage());
-        // }
     }
 }

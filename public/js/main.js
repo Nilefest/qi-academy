@@ -79,7 +79,8 @@
 		if (sub_mail) {
 			/* -- POST MAIL TO SERVER -- */
 
-			modalOpen('.modal_subscribe_result');
+			document.querySelector('.modal_simple_info .message').innerHTML = 'Dziękujemy za subskrypcję!';
+			modalOpen('.modal_simple_info');
 			document.getElementById('subscribe_email').value = '';
 		}
 	});

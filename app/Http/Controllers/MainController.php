@@ -24,6 +24,9 @@ class MainController extends Controller
      */
     public function index()
     {
+        $static_data = CommonService::getStaticData(['team']);
+        $this->data = array_merge($this->data, $static_data);
+        
         return view('main', $this->data);
     }
 }

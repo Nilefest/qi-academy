@@ -1,85 +1,41 @@
-@extends('layouts.app')
+@extends('layouts.app_auth')
+
+@section('header.css')
+    <link rel="stylesheet" href="{{ asset('css/adm_login.css') }}">
+@endsection
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Laravel 6 - Login with Google Account Example - ItSolutionStuuf.com</div>
-
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-
-                            <div class="form-group row">
-                                <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                        name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="current-password">
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                            {{ old('remember') ? 'checked' : '' }}>
-
-                                        <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
-                                    </button>
-
-                                    @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
-                                    @endif
-
-                                    | <a href="{{ url('auth/google') }}" style="margin-top: 20px;"
-                                        class="btn btn-lg btn-success btn-block">
-                                        <strong>Login With Google</strong>
-                                    </a>
-                                    | <a href="{{ url('auth/facebook') }}" class="btn btn-lg btn-primary btn-block">
-                                        <strong>Login With Facebook</strong>
-                                    </a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+    <div class="content container">
+        <h1>Qi ADMIN <i class="fal fa-lock-alt icon"></i></h1>
+        <div class="form">
+            <div class="empty"></div>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <input value="{{ old('email') }}" required name="email" autocomplete="email" autofocus type="email" class="input_text @error('email') invalid @enderror" placeholder="your email address">
+                <input name="password" required autocomplete="current-password" type="password" class="input_text @error('email') invalid @enderror" placeholder="******">
+                <input type="submit" class="button" value="Sign In">
+                <label class="remember_me">
+                    <input {{ old('remember') ? 'checked' : '' }} id="remember" name="remember" type="checkbox" class="d-none">
+                    <i class="far icon"></i>
+                    <span class="title">Remember me</span>
+                </label>
+            </form>
+            <div class="message">
+                <i class="fal fa-info-circle icon_info"></i>
+                <div class="info">
+                    @error('email')
+                    <p class="error_message"><i>{{ $message }}</i></p>
+                    @enderror
+                    @error('password')
+                    <p class="error_message"><i>{{ $message }}</i></p>
+                    @enderror
+                    <p>With: <b><a href="{{ url('auth/google') }}">Google</a> | <a href="{{ url('auth/facebook') }}">Facebook</a></b></p>
+                    @if (Route::has('password.request'))
+                    <p><a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a></p>
+                    @endif
+                    <p>If you have problems: </p>
+                    <span href="#mail" class="admin_mail button_copy" data-textCopy="lexa.amb@gmail.com">lexa.amb@gmail.com
+                        <i class="far fa-copy icon"></i></span>
                 </div>
             </div>
         </div>

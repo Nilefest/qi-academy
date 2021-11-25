@@ -8,22 +8,15 @@ use App\Library\Services\CommonService;
 class AccountController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
+     * Profile page for student
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function profile()
     {
+        $this->middleware('auth');
+
+        $this->data['title'] = 'Profile';
         return view('account.profile', $this->data);
     }
 }
