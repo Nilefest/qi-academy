@@ -7,6 +7,6 @@
     <title>Profile</title>
 </head>
 <body>
-    
+    <h1>Hi! {{ Auth::user()->name }}</h1>
 </body>
 </html>

@@ -8,17 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title }} | {{ config('app.name') }}</title>
-
-    <meta name="description" content="{{ $description }}">
-    <meta name="keywords" content="{{ $keywords }}">
-
-    <!-- OG Tags -->
-    <meta property="og:title" content="{{ $title }} | {{ config('app.name') }}">
-    <meta property="og:description" content="{{ $description }}">
-    <meta property="og:type" content="website">
-    {{-- <!--<meta property="og:image" content="{{ url('') . $header['image_url'] }}">--> --}}
-    <!--<meta property="og:site_name" content="{{ $site_name }}">-->
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts. Google: Montserrat, Lato -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,16 +23,15 @@
     <!-- Fonts. Icons -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link href="{{ asset('css/font-awesome-4.7.0.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="./css/font-awesome-4.7.0.css">
 
     <!-- CSS. Bootstrap -->
-    <link href="{{ asset('css/bootstrap-reboot.min.css') }}" type="text/css" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-reboot.min.css') }}">
 
     <!-- CSS. Common -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/modals.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/animations.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/modals.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
 
     <!-- CSS. Custom -->
     @yield('header.css')
@@ -51,88 +40,17 @@
 
 <body>
     <div id="app">
-        <!-- Modal. Cookie`s message -->
-        <div class="cookie_message">
-            <div class="message_info">
-                <h3 class="title">Zanim zaczniesz zakupy</h3>
-                <p class="text_info">Używamy plików cookie do dostosowywania i ulepszania wyświetlanych Ci treści,
-                    zapewniając najlepszą jakość zakupów online. Jeśli klikniesz „Akceptuj wszystkie pliki cookie”,
-                    możemy
-                    nadal wyświetlać spersonalizowane oferty i inspiracje w oparciu o Twoje preferencje. Jeśli chcesz
-                    dowiedzieć się więcej o plikach cookie i dlaczego ich używamy, odwiedź naszą stronę "Zasady
-                    dotyczące
-                    plików cookie".</p>
-            </div>
-            <div class="message_buttons">
-                <button class="button cookie_success">AKCEPTUJ WSZYSTKIE PLIKI COOKIE</button>
-                <a href="#cookie" class="mess_link">Ustwienia plików cookie</a>
-            </div>
-        </div>
+        @extends('layouts.modals.cookie')
 
         <div class="modal">
-            <!-- Modal. For auth -->
-            <div class="modal_win container modal_sign_account signup_step">
-                <div class="step_block signup_block">
-                    <h3>Create Account</h3>
-                    <button class="login_button google">
-                        <i class="fab fa-google icon"></i>
-                        <span class="title">Sign up with Google</span>
-                    </button>
-                    <button class="login_button facebook">
-                        <i class="fab fa-facebook icon"></i>
-                        <span class="title">Sign up with Facebook</span>
-                    </button>
-                    <p class="keep_me">
-                        <i class="far fa-check-square icon"></i>
-                        <span class="title">Keep me up to date on class events and new releases.</span>
-                    </p>
-                    <button class="login_button submit">Create account</button>
-                    <p class="already">Already have an account? <span class="step_toggle to_signin">Sign
-                            In</span>.</p>
-                    <p class="policy">By signing up or creating an account, you agree to our <a
-                            href="#doc">Polityka
-                            przetwarzania danych osobowych</a> and <a href="#doc">Oferta publiczna</a>.</p>
-                </div>
-                <div class="step_block signin_block">
-                    <h3>Sign in</h3>
-                    <button class="login_button google">
-                        <i class="fab fa-google icon"></i>
-                        <span class="title">Sign up with Google</span>
-                    </button>
-                    <button class="login_button facebook">
-                        <i class="fab fa-facebook icon"></i>
-                        <span class="title">Sign up with Facebook</span>
-                    </button>
-                    <p class="already">Need an account? <span class="step_toggle to_signup">Sign Up</span>.</p>
-                    <p class="policy">By signing up or creating an account, you agree to our <a
-                            href="#doc">Polityka
-                            przetwarzania danych osobowych</a> and <a href="#doc">Oferta publiczna</a>.</p>
-                </div>
+            <!-- Modal. For view simple info -->
+            <div class="modal_win modal_simple_info">
+                <p class="message">Success!</p>
+                <button class="button close">OK</button>
             </div>
 
-            <!-- Modal. Show video -->
-            <div class="modal_win container modal_view_video">
-                <div class="modal_header">
-                    <div class="buttons">
-                        <button class="modal_button close">Close</button>
-                    </div>
-                </div>
-                <div class="modal_content">
-                    <video loop controls>
-                        <source src="/temp/video/video_expert.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="modal_footer">
-                    <div class="buttons">
-                        <button class="modal_button video_play">&#9654;</button>
-                        <button class="modal_button video_pause">&#9612; &#9612;</button>
-                    </div>
-                    <div class="line"></div>
-                    <div class="buttons">
-                        <button class="modal_button close">Close</button>
-                    </div>
-                </div>
-            </div>
+            @include('layouts.modals.sign')
+            @include('layouts.modals.video_view')
 
             @yield('modals')
         </div>
@@ -141,7 +59,7 @@
             <nav class="container">
                 <ul class="main_nav_ul">
                     <li><a href="{{ url('/') }}">Dom</a></li>
-                    <li><a href="{{ url('/about') }}">About</a></li>
+                    <li><a href="{{ url('/about') }}">ONas</a></li>
                     <li><a href="{{ url('/team') }}">Team</a></li>
                 </ul>
                 <div class="main_nav_info">
@@ -182,19 +100,19 @@
                 <ul class="contact">
                     <li>
                         <a href="#watsapp">
-                            <img src="./img/icons/icons8-whatsapp.png" alt="Icon Watsapp">
+                            <img src="/img/icons/icons8-whatsapp.png" alt="Icon Watsapp">
                             <span>Watsapp</span>
                         </a>
                     </li>
                     <li>
                         <a href="#facebook_messenger">
-                            <img src="./img/icons/icons8-facebook-messenger.png" alt="Icon Facebook Messenger">
+                            <img src="/img/icons/icons8-facebook-messenger.png" alt="Icon Facebook Messenger">
                             <span>Facebook Messenger</span>
                         </a>
                     </li>
                     <li>
                         <a href="#phone">
-                            <img src="./img/icons/icons8-phone.png" alt="Icon Phone">
+                            <img src="/img/icons/icons8-phone.png" alt="Icon Phone">
                             <span>+48 949 000 555</span>
                         </a>
                     </li>
@@ -221,32 +139,13 @@
         </footer>
 
         <!-- Templates -->
-        @yield('templates')
-
-
-        <!-- JS. Vue: 1) for dev, 2) for release -->
-        <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> -->
-        <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
-
-        <!-- JS. JQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-
-        <!-- JS. Slick -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('lib/slick/slick.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('lib/slick/slick-theme.css') }}">
-        <script src="{{ asset('lib/slick/slick.min.js') }}"></script>
-
-        <!-- JS. Slick. Init all -->
-        <script src="{{ asset('js/sliders.js') }}"></script>
+        @yield('templats')
 
         <!-- JS. Common -->
         <script src="{{ asset('js/script.js') }}"></script>
 
-        <!-- JS. Custom -->
         @yield('footer.js')
     </div>
-
-    @yield('footer.js')
 </body>
 
 </html>

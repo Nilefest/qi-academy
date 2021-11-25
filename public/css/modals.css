@@ -1030,6 +1030,12 @@
 	letter-spacing: 1px;
 	max-height: 550px;
 	overflow: hidden;
+
+	display: none;
+}
+
+.modal_sign_account.modal_show{
+	display: flex;
 }
 
 .modal_sign_account .step_block {
