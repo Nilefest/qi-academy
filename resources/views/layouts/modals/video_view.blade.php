@@ -6,7 +6,7 @@
     </div>
     <div class="modal_content">
         <video loop controls>
-            <source src="./temp/video/video_expert.mp4" type="video/mp4">
+            <source src="/temp/video/video_expert.mp4" type="video/mp4">
         </video>
     </div>
     <div class="modal_footer">

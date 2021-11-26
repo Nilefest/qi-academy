@@ -1,6 +1,11 @@
 .content {
     padding: 80px 20px 50px;
-	font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+button.link.send_for_configm {
+    color: #FFF9C6;
 }
 
 /* Profile */
@@ -38,7 +43,9 @@
     background-color: #fff;
     border-radius: 50%;
     padding: 10px;
-    border: 3px solid #fff;
+    -moz-box-shadow: 0 0 2px #fff;
+    -webkit-box-shadow: 0 0 2px #fff;
+    box-shadow: 0 0 2px #fff;
 }
 
 .profile_head .avatar:hover .avatar_photo {
@@ -81,7 +88,16 @@
     border-radius: 10px;
     padding: 15px 20px;
     font-size: 18px;
-    margin: 0px 60px 30px 0px;
+    margin: 0px 40px 30px 0px;
+
+    max-width: 350px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.profile_label .icon_lock {
+    opacity: 0.8;
 }
 
 .profile_label .title {
@@ -97,6 +113,7 @@
     font-weight: bold;
     color: #fff;
     outline: none;
+    width: 100%;
 }
 
 .profile_label .profile_input:focus {

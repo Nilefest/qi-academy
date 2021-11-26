@@ -8,7 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    @if(isset($title))
+    <title>{{ $title }} | AUTH   {{ config('app.name') }}</title>
+    @else
+    <title>AUTH | {{ config('app.name') }}</title>
+    @endif
 
     <!-- Fonts. Google: Montserrat, Lato -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

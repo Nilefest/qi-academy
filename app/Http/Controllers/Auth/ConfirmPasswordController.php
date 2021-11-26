@@ -37,4 +37,15 @@ class ConfirmPasswordController extends Controller
     {
         $this->middleware('auth');
     }
+
+    /**
+     * Display the password confirmation view.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showConfirmForm()
+    {
+        $this->data['title'] = 'Confirm password';
+        return view('auth.passwords.confirm', $this->data);
+    }
 }

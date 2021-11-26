@@ -54,6 +54,75 @@ let preview_input_img = (file, preview_func) => {
 	freader_preview.readAsDataURL(file);
 };
 
+// Create new Request with crossbrowser
+// #function #ajax
+let createRequest = () => {
+	var Request = false;
+
+	if (window.XMLHttpRequest) {
+		//Gecko-совместимые браузеры, Safari, Konqueror
+		Request = new XMLHttpRequest();
+	} else if (window.ActiveXObject) {
+		//Internet explorer
+		try {
+			Request = new ActiveXObject("Microsoft.XMLHTTP");
+		} catch (CatchException) {
+			Request = new ActiveXObject("Msxml2.XMLHTTP");
+		}
+	}
+	if (!Request) console.log("Can`t create object XMLHttpRequest");
+
+	return Request;
+}
+
+// Make Request to Server
+// #function #ajax
+let makeRequest = (method, url, args_data, handler_success, handler_fail, handler_loading) => {
+
+	let args = "";
+	Object.keys(args_data).forEach(key => args += key + '=' + encodeURIComponent(args_data[key]) + '&');
+
+	let Request = createRequest();
+	if (!Request) return Request;
+
+	// Add event
+	Request.onreadystatechange = () => {
+		if (Request.readyState === 4) {
+			if (typeof handler_success !== 'undefined' && Request.status === 200) handler_success(Request.response, Request);
+			else if (typeof handler_fail !== 'undefined') handler_fail(Request.response, Request);
+		} else {
+			if (typeof handler_loading !== 'undefined') handler_loading();
+		}
+	}
+
+	// Check for Get-request
+	if (method.toLowerCase() === "get" && args.length > 0)
+		url += "?" + args;
+
+	//Init connect
+	Request.open(method, url, true);
+	if (method.toLowerCase() === "post") {
+		if (document.querySelector('meta[name="csrf-token"]') !== null)
+			Request.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+		Request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+		Request.send(args);
+	} else Request.send(null);
+
+	return Request;
+}
+
+// View short info with modal
+// #function
+let view_modal_simple_info = (message) => {
+	document.querySelector('.modal_simple_info .message').innerHTML = message;
+	modalOpen('.modal_simple_info');
+}
+
+// Default function for ansver after AJAX for Success, Fail
+// #function
+let func_default_success = () => view_modal_simple_info('Success!');
+let func_default_fail = () => view_modal_simple_info('Something went wrong...<br>Try again later or contact your administrator ');
+
 /* PRIVATE */
 (() => {
 	// Open/Close main-navigation. 

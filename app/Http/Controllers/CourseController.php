@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CourseOfflineController extends Controller
+class CourseController extends Controller
 {
     /**
      * Public page for view course
@@ -24,12 +24,12 @@ class CourseOfflineController extends Controller
      * @param int
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function list_acount($user_id)
+    public function list_account()
     {
         $this->middleware('auth');
 
         $this->data['title'] = 'Courses by Account';
-        return view('course.list_acount', $this->data);
+        return view('course.list_account', $this->data);
     }
 
     /**

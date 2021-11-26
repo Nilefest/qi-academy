@@ -8,7 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title }} | {{ config('app.name') }}</title>
+    @if(isset($title))
+    <title>{{ $title }} | ADM {{ config('app.name') }}</title>
+    @else
+    <title>ADM | {{ config('app.name') }}</title>
+    @endif
 
     <!-- Fonts. Google: Montserrat, Lato -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +27,7 @@
     <!-- Fonts. Icons -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="{{ asset('css/font-awesome-4.7.0.css') }}">
+    <link rel="stylesheet" href="./css/font-awesome-4.7.0.css">
 
     <!-- CSS. Bootstrap -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap-reboot.min.css') }}">
@@ -34,6 +38,7 @@
     <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
 
     <!-- CSS. Custom -->
+    <link rel="stylesheet" href="{{ asset('css/adm_dashboard.css') }}">
     @yield('header.css')
 
 </head>
@@ -49,47 +54,21 @@
                 <button class="button close">OK</button>
             </div>
 
-            @include('layouts.modals.sign')
-            @include('layouts.modals.video_view')
-
             @yield('modals')
-        </div>
-
-        <div class="main_nav">
-            <nav class="container">
-                <ul class="main_nav_ul">
-                    <li><a href="{{ url('/') }}">Dom</a></li>
-                    <li><a href="{{ url('/about') }}">ONas</a></li>
-                    <li><a href="{{ url('/team') }}">Team</a></li>
-                </ul>
-                <div class="main_nav_info">
-                    <ul class="main_nav_contact">
-                        <li><a href="#tel">+48 989 000 555</a></li>
-                        <li><a href="#tel">+48 989 000 555</a></li>
-                    </ul>
-                    <button class="main_nav_button open_sign_modal">Obszar osobisty</button>
-                    <!-- <a class="main_nav_logout" href="#logout">Log Out</a> -->
-                </div>
-                <ul class="main_nav_links">
-                    <li><a href="#link">Polityka przetwarzania danych osobowych</a></li>
-                    <li><a href="#link">Oferta publiczna</a></li>
-                    <li><a href="#link">Ostrzeżenie o prawach autorskich</a></li>
-                    <li><a href="#link">Płatność kartą kredytową</a></li>
-                </ul>
-            </nav>
         </div>
 
         <header>
             <div class="container">
-                <a href="{{ url('/') }}" class="logo" title="To main page">
-                    <!-- <span class="account_logo">Moje biuro</span> -->
-                    <span class="full_text">Qi ACADEMY</span>
+                <a href="{{ url('/admin') }}" class="logo" title="To Admin panel">
+                    <span class="full_text">Qi ADMIN</span>
                     <span class="short_text">Qi</span>
                 </a>
-
-                <!-- <div class="account"><a href="#account" class="account_button" style="background-image: url('https://robohash.org/qiacademy?set=set4');"></a></div> -->
-
-                <button class="nav_button" title="Open / Hide navigation"></button>
+    
+                <a href="{{ url('/') }}" class="to_site">QILABEL.COM <i class="fas fa-link icon_link"></i></a>
+    
+                {{-- <a href="{{ url('/admin') }}#setting" class="to_setting">Настройки админ панели <i class="fas fa-cog icon_link"></i></a> --}}
+    
+                <a href="/logout" class="logout">Выйти</a>
             </div>
         </header>
 
