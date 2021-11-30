@@ -15,7 +15,7 @@ class CreateCourseOfflineTable extends Migration
     {
         Schema::create('courses_offline', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->default('');
             $table->string('place')->default('');
             $table->dateTime('date_of')->useCurrent();
             $table->string('period')->default('');

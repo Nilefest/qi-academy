@@ -156,29 +156,14 @@
         <div class="block_events">
             <h3>Nadchodzące wydarzenia</h3>
             <div class="table container">
-                <!-- type 1 -->
-                <div class="row">
-                    <span class="place">Warszawa</span>
-                    <span class="date">22/06</span>
-                    <span class="time">1 dzień</span>
-                    <span class="name">Lekcja: Kolorowanie w 5 krokach</span>
+                @foreach($courses_offline_list as $course_one)
+                <div class="row course_item" data-courseId="{{ $course_one->id }}" data-courseVideo="{{ $course_one->video }}">
+                    <span class="place">{{ $course_one->place }}</span>
+                    <span class="date">{{ date('d/m/Y', strtotime($course_one->date_of)) }}</span>
+                    <span class="time">{{ $course_one->period }}</span>
+                    <span class="name">Lekcja: {{ $course_one->name }}</span>
                 </div>
-
-                <!-- type 2 -->
-                <a href="#event" class="row">
-                    <span class="place">Gdańsk</span>
-                    <span class="date">28/06</span>
-                    <span class="time">1 dzień</span>
-                    <span class="name">Lekcja: Kolorowanie w 5 krokach</span>
-                </a>
-
-                <!-- type 3 -->
-                <div class="row">
-                    <a href="#event" class="place">Warszawa</a>
-                    <span class="date">22/06</span>
-                    <span class="time">1 dzień</span>
-                    <a href="#event" class="name">Lekcja: Kolorowanie w 5 krokach</a>
-                </div>
+                @endforeach
             </div>
         </div>
 

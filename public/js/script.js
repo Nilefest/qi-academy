@@ -143,11 +143,11 @@ let requestWithFetch = (method, url, args_data, handler_success, handler_fail) =
 		} else {
 			if (response.status === 500) response.text().then(data => console.log(JSON.parse(data)))
 			if (typeof handler_fail !== 'undefined' && handler_fail !== null) handler_fail(error);
+			return response.json();
 		}
-		return response.json();
 	}).catch(function (error) {
-		if (typeof handler_fail !== 'undefined' && handler_fail !== null) handler_fail(error);
-		// console.log(error);
+		//if (typeof handler_fail !== 'undefined' && handler_fail !== null) handler_fail(error);
+		if (typeof error !== 'undefined' && error !== null) console.log(error);
 	});
 };
 

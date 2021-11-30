@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Library\Services\CommonService;
 use App\Team;
-use File;
 
 class AdminController extends Controller
 {
@@ -34,7 +33,7 @@ class AdminController extends Controller
 
         if($request->isMethod('post')){
             // Save new data about team
-            if($request->input('type') === 'save_team'){ //return ['data' => ['id' => '$team->id'], 'mess' => $_FILES];
+            if($request->input('type') === 'save_team'){
                 $team = new Team;
                 if($request->input('id') !== null && $request->input('id') !== '') $team = Team::findOrFail($request->input('id'));
                 
@@ -62,11 +61,9 @@ class AdminController extends Controller
             return;
         }
 
-
         $team_list = Team::getList();
         foreach($team_list as $key => $team_one) $team_list[$key]['info'] = CommonService::replaceBrToLn($team_one['info']);
         $this->data['team_list'] = $team_list;
-
 
         $this->data['title'] = 'Edit Team';
         return view('admin.team', $this->data);

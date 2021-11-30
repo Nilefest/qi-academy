@@ -12,4 +12,10 @@ class CourseOffline extends Model
      * @var string
      */
     protected $table = 'courses_offline';
+    
+    public static function getList()
+    {
+        $list = self::orderBy('place')->orderBy('date_of')->orderBy('name')->get();
+        return $list;
+    }
 }
