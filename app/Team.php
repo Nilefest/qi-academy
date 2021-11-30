@@ -12,4 +12,10 @@ class Team extends Model
      * @var string
      */
     protected $table = 'team';
+
+    public static function getList()
+    {
+        $list = self::orderBy('name')->get();
+        return $list;
+    }
 }

@@ -17,7 +17,7 @@ class CreateTeamTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('img')->default('');
-            $table->text('info');
+            $table->text('info')->nullabel();
             $table->string('instagram')->default('');
             $table->string('facebook')->default('');
             $table->timestamps();

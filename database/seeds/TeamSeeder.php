@@ -17,11 +17,11 @@ class TeamSeeder extends Seeder
 
         foreach($default_data as $key => $row){
             DB::table('team')->insert([
-                'name' => $row['name'],
-                'img' => $row['img'],
-                'info' => $row['info'],
-                'instagram' => $row['instagram'],
-                'facebook' => $row['facebook'],
+                'name' => $row['name'] . '',
+                'img' => $row['img'] . '',
+                'info' => $row['info'] . '',
+                'instagram' => $row['instagram'] . '',
+                'facebook' => $row['facebook'] . '',
                 'updated_at' => date('Y-m-d H:i:s'),
                 'created_at' => date('Y-m-d H:i:s'),
               ]);

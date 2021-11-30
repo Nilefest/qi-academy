@@ -16,6 +16,7 @@ class MainController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
+        $this->data = array_merge($this->data, CommonService::getDataFromFile());
     }
 
     /**
@@ -25,9 +26,6 @@ class MainController extends Controller
      */
     public function index()
     {
-        $static_data = CommonService::getStaticData(['team']);
-        $this->data = array_merge($this->data, $static_data);
-        
         return view('main', $this->data);
     }
 

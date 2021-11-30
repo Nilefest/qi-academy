@@ -79,8 +79,12 @@ let createRequest = () => {
 // #function #ajax
 let makeRequest = (method, url, args_data, handler_success, handler_fail, handler_loading) => {
 
-	let args = "";
-	Object.keys(args_data).forEach(key => args += key + '=' + encodeURIComponent(args_data[key]) + '&');
+	let body_data = new FormData();
+	let args_str = "";
+	Object.keys(args_data).forEach(key => {
+		body_data.append(key, args_data[key]);
+		args_str += key + '=' + encodeURIComponent(args_data[key]) + '&';
+	});
 
 	let Request = createRequest();
 	if (!Request) return Request;
@@ -91,13 +95,13 @@ let makeRequest = (method, url, args_data, handler_success, handler_fail, handle
 			if (typeof handler_success !== 'undefined' && Request.status === 200) handler_success(Request.response, Request);
 			else if (typeof handler_fail !== 'undefined') handler_fail(Request.response, Request);
 		} else {
-			if (typeof handler_loading !== 'undefined') handler_loading();
+			if (typeof handler_loading !== 'undefined' && handler_loading !== null) handler_loading();
 		}
 	}
 
 	// Check for Get-request
-	if (method.toLowerCase() === "get" && args.length > 0)
-		url += "?" + args;
+	if (method.toLowerCase() === "get" && args_str.length > 0)
+		url += "?" + args_str;
 
 	//Init connect
 	Request.open(method, url, true);
@@ -105,11 +109,47 @@ let makeRequest = (method, url, args_data, handler_success, handler_fail, handle
 		if (document.querySelector('meta[name="csrf-token"]') !== null)
 			Request.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
 		Request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
-		Request.send(args);
+		Request.send(body_data);
 	} else Request.send(null);
 
 	return Request;
 }
+
+
+// Make Request to Server with Fetch
+// #function #fetch
+let requestWithFetch = (method, url, args_data, handler_success, handler_fail) => {
+	let body_data = new FormData();
+	Object.keys(args_data).forEach(key => body_data.append(key, args_data[key]));
+
+	fetch(url, {
+		headers: {
+			// "Content-Type": "application/json",
+			// "Content-Type": "multipart/form-data; boundary=—-WebKitFormBoundaryfgtsKTYLsT7PNUVD",
+			"Accept": "application/json, text-plain, */*",
+			"X-Requested-With": "XMLHttpRequest",
+			"X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+		},
+		method: method,
+		credentials: "same-origin",
+		body: body_data
+	}).then((response) => {
+		if (response.ok) {
+			response.text().then((data) => {
+				// console.log(data);
+				try { data = JSON.parse(data); } catch (e) { }
+				if (typeof handler_success !== 'undefined' && handler_success !== null) handler_success(data);
+			});
+		} else {
+			if (response.status === 500) response.text().then(data => console.log(JSON.parse(data)))
+			if (typeof handler_fail !== 'undefined' && handler_fail !== null) handler_fail(error);
+		}
+		return response.json();
+	}).catch(function (error) {
+		if (typeof handler_fail !== 'undefined' && handler_fail !== null) handler_fail(error);
+		// console.log(error);
+	});
+};
 
 // View short info with modal
 // #function
@@ -120,7 +160,7 @@ let view_modal_simple_info = (message) => {
 
 // Default function for ansver after AJAX for Success, Fail
 // #function
-let func_default_success = () => view_modal_simple_info('Success!');
+let func_default_success = (data) => { view_modal_simple_info('Success!'); console.log(data); };
 let func_default_fail = () => view_modal_simple_info('Something went wrong...<br>Try again later or contact your administrator ');
 
 /* PRIVATE */

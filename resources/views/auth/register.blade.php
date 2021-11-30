@@ -6,6 +6,7 @@
 
 @section('content')
     <div class="content container">
+        <p><a href="{{ url('/') }}"><i class="fas fa-arrow-left icon_back"></i> Back</a></p>
         <h1>Qi ADMIN <i class="fal fa-lock-alt icon"></i></h1>
         <div class="form">
             <div class="empty"></div>
@@ -17,8 +18,8 @@
                     class="input_text @error('email') invalid @enderror" placeholder="Your email address">
                 <input autocomplete="new-password" name="password" required type="text"
                     class="input_text @error('email') invalid @enderror" placeholder="Password">
-                <input autocomplete="new-password" name="password_confirmation" required autocomplete="current-password" type="text"
-                    class="input_text @error('email') invalid @enderror" placeholder="Confirm password">
+                <input autocomplete="new-password" name="password_confirmation" required autocomplete="current-password"
+                    type="text" class="input_text @error('email') invalid @enderror" placeholder="Confirm password">
                 <input type="submit" class="button" value="Sign Up">
             </form>
             <div class="message">
@@ -33,8 +34,9 @@
                     @error('password')
                         <p class="error_message"><i>{{ $message }}</i></p>
                     @enderror
-                    <p>With: <b><a href="{{ url('auth/google') }}">Google</a> | <a
-                                href="{{ url('auth/facebook') }}">Facebook</a></b></p>
+                    <p><b><a class="link" href="{{ url('/login') }}">Sign in</a> | <a
+                                href="{{ url('auth/google') }}">With Google</a> | <a
+                                href="{{ url('auth/facebook') }}">With Facebook</a></b></p>
                     <p>If you have problems: </p>
                     <span href="#mail" class="admin_mail button_copy" data-textCopy="lexa.amb@gmail.com">lexa.amb@gmail.com
                         <i class="far fa-copy icon"></i></span>

@@ -17,7 +17,7 @@ class Controller extends BaseController
     ];
     
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    
+
     protected function print_pre($data){
         echo '<pre>';
         print_r($data);

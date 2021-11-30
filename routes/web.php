@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 // Auth::routes(['verify' => true]);
 // Route::get('/logout', 'Auth\LoginController@logout');
 
-
 // Auth
 Auth::routes(['verify' => true]);
 Route::get('/logout', 'Auth\LoginController@logout');
@@ -45,6 +44,7 @@ Route::get('/account/lecture/{lecture_id}', 'CourseController@lecture')->middlew
 // For Admin
 Route::get('/admin', 'AdminController@dashboard')->middleware('verified')->name('admin.dashboard');
 Route::get('/admin/team', 'AdminController@team')->middleware('verified')->name('admin.team');
+Route::post('/admin/team', 'AdminController@team')->middleware('verified')->name('admin.team.post');
 Route::get('/admin/courses_offline', 'CourseOfflineController@list_admin')->middleware('verified')->name('admin.courses_offline');
 Route::get('/admin/courses', 'CourseController@list_admin')->middleware('verified')->name('admin.courses');
 Route::get('/admin/course/{course_id}', 'CourseController@edit')->middleware('verified')->name('admin.course.edit');

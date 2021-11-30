@@ -14,7 +14,7 @@
             <i class="far fa-check-square icon"></i>
             <span class="title">Keep me up to date on class events and new releases.</span>
         </p>
-        <button class="login_button submit">Create account</button>
+        <a href="{{ url('/register') }}" class="login_button submit">Create account</a>
         <p class="already">Already have an account? <span class="step_toggle to_signin">Sign In</span>.</p>
         <p class="policy">By signing up or creating an account, you agree to our <a href="#doc">Polityka
                 przetwarzania danych osobowych</a> and <a href="#doc">Oferta publiczna</a>.</p>

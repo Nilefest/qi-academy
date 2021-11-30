@@ -102,9 +102,8 @@
     <div class="content">
         <div class="main_banner container">
             <div class="main_banner_media">
-                <!-- <img src="/temp/img/main_banner.png" alt=" "> -->
                 <video loop>
-                    <source src="/temp/video/video_background_1.mp4" type="video/mp4">
+                    <source src="{{ $media['main_header_banner'] }}" type="video/mp4">
                 </video>
             </div>
             <div class="main_banner_info">
@@ -117,12 +116,9 @@
 
         <div class="slider_blog_youtube">
             <ul>
-                <li><a href="#youtube_blog">BLOG YOUTUBE</a></li>
-                <li><a href="#youtube_blog">BLOG YOUTUBE</a></li>
-                <li><a href="#youtube_blog">BLOG YOUTUBE</a></li>
-                <li><a href="#youtube_blog">BLOG YOUTUBE</a></li>
-                <li><a href="#youtube_blog">BLOG YOUTUBE</a></li>
-                <li><a href="#youtube_blog">BLOG YOUTUBE</a></li>
+                @for ($i = 0; $i < 5; $i++)
+                    <li><a target="_blank" href="{{ $social['academy']['youtube'] }}">BLOG YOUTUBE</a></li>
+                @endfor
                 <div class="clear"></div>
             </ul>
         </div>
@@ -130,23 +126,27 @@
         <div class="slider_courses container">
             <h3>Nasze kursy</h3>
             <ul class="slider_courses_ul">
-                <!-- type 1 -->
-                <li class="slider_courses_li" style="background-image: url(./temp/img/slider_courses_1.png)">
-                    <span class="title">colorist pro 1</span>
-                    <a href="#curse" class="price">300 Zł</a>
-                    <ul class="curs_info">
-                        <li>12 Lekcje</li>
-                        <li>18 godziny</li>
-                    </ul>
+                <li class="slider_courses_li">
+                    <a class="courses_link" style="background-image: url(./temp/img/slider_courses_1.png)"
+                        href="#courses_link">
+                        <span class="title">colorist pro 2</span>
+                        <span class="price">200 Zł</span>
+                        <ul class="curs_info">
+                            <li>8 Lekcje</li>
+                            <li>10 godziny</li>
+                        </ul>
+                    </a>
                 </li>
-                <!-- type 2 -->
-                <li class="slider_courses_li" style="background-image: url(./temp/img/slider_courses_2.png)">
-                    <a href="#curse" class="title">colorist pro 2</a>
-                    <button class="price">500 Zł</button>
-                    <ul class="curs_info">
-                        <li>5 Lekcje</li>
-                        <li>99 godziny</li>
-                    </ul>
+                <li class="slider_courses_li">
+                    <a class="courses_link" href="#courses_link"
+                        style="background-image: url(./temp/img/slider_courses_2.png)">
+                        <span class="title">colorist pro 1</span>
+                        <span class="price">300 Zł</span>
+                        <ul class="curs_info">
+                            <li>12 Lekcje</li>
+                            <li>18 godziny</li>
+                        </ul>
+                    </a>
                 </li>
             </ul>
             <button class="d-none slider_courses_arrow prev">&#8592;</button>
@@ -232,7 +232,7 @@
             <div class="block_full_video_media">
                 <!--<img src="/temp/img/full_video_back.png" alt=" ">-->
                 <video loop>
-                    <source src="/temp/video/video_expert.mp4" type="video/mp4">
+                    <source src="{{ $media['main_page_banner'] }}" type="video/mp4">
                 </video>
             </div>
             <div class="block_full_video_info">
@@ -246,6 +246,7 @@
                 <h3><b>Twórcy</b> <i>kursów</i></h3>
                 <a href="{{ url('/team') }}" class="title">Team &#x2197;</a>
             </div>
+
             <div class="block_team_slider">
                 <ul class="block_team_ul">
                     <li style="background-image: url(./temp/img/team_1.png);" class="block_team_li">
@@ -301,81 +302,80 @@
             </div>
         </div>
 
-        <div class="block_blog_info">
-            <div class="container">
-                <h3>Blog Qi academy</h3>
-                <span class="text_info">Nigdy nie dowiesz się wszystkiego. <br>Ale dowiesz się więcej.</span>
+        @if ($blog['watsapp_link'])
+            <div class="block_blog_info">
+                <div class="container">
+                    <h3>Blog Qi academy</h3>
+                    <span class="text_info">Nigdy nie dowiesz się wszystkiego. <br>Ale dowiesz się więcej.</span>
+                </div>
             </div>
-        </div>
 
-        <div class="block_cursers_list container">
-            <ul class="cursers_list_ul">
-                <!-- type 1 -->
-                <li class="cursers_item">
-                    <div class="item_img" style="background-image: url(./temp/img/person_1.png);"></div>
-                    <div class="cursers_info">
-                        <span class="title">7 złych nawyków </span>
-                        <span class="info_tag">wideo</span>
-                        <span class="info_tag">15 minut</span>
-                    </div>
-                </li>
-                <!-- type 2 -->
-                <li class="cursers_item">
-                    <div class="item_img" style="background-image: url(./temp/img/person_1.png);"></div>
-                    <div class="cursers_info">
-                        <a href="#curse_link" class="title">kolorystycznych</a>
-                        <span class="info_tag">tekst</span>
-                        <span class="info_tag">3 minut</span>
-                    </div>
-                </li>
-                <!-- type 3 -->
-                <li class="cursers_item">
-                    <a href="#curse_link" class="item_img"
-                        style="background-image: url(./temp/img/person_1.png);"></a>
-                    <div class="cursers_info">
-                        <span class="title">kolorystycznych</span>
-                        <span class="info_tag">tekst</span>
-                        <span class="info_tag">3 minut</span>
-                    </div>
-                </li>
-                <!-- type 4 -->
-                <li class="cursers_item">
-                    <a class="cursers_item_link" href="#curse_link">
+            <div class="block_cursers_list container">
+                <ul class="cursers_list_ul">
+                    <!-- type 1 -->
+                    <li class="cursers_item">
                         <div class="item_img" style="background-image: url(./temp/img/person_1.png);"></div>
+                        <div class="cursers_info">
+                            <span class="title">7 złych nawyków </span>
+                            <span class="info_tag">wideo</span>
+                            <span class="info_tag">15 minut</span>
+                        </div>
+                    </li>
+                    <!-- type 2 -->
+                    <li class="cursers_item">
+                        <div class="item_img" style="background-image: url(./temp/img/person_1.png);"></div>
+                        <div class="cursers_info">
+                            <a href="#curse_link" class="title">kolorystycznych</a>
+                            <span class="info_tag">tekst</span>
+                            <span class="info_tag">3 minut</span>
+                        </div>
+                    </li>
+                    <!-- type 3 -->
+                    <li class="cursers_item">
+                        <a href="#curse_link" class="item_img"
+                            style="background-image: url(./temp/img/person_1.png);"></a>
                         <div class="cursers_info">
                             <span class="title">kolorystycznych</span>
                             <span class="info_tag">tekst</span>
                             <span class="info_tag">3 minut</span>
                         </div>
-                    </a>
-                </li>
-            </ul>
+                    </li>
+                    <!-- type 4 -->
+                    <li class="cursers_item">
+                        <a class="cursers_item_link" href="#curse_link">
+                            <div class="item_img" style="background-image: url(./temp/img/person_1.png);"></div>
+                            <div class="cursers_info">
+                                <span class="title">kolorystycznych</span>
+                                <span class="info_tag">tekst</span>
+                                <span class="info_tag">3 minut</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
 
-            <button class="cursers_more">Zobacz więcej</button>
-        </div>
-
-        <div class="block_link_info">
-            <div class="container">
-                <h3>Dołącz do profesjonalnej <br>społeczności kosmetycznej</h3>
-                <button class="link_button">
-                    <span>Nasza społeczność <br>na WhatsApp</span>
-                    <img src="./img/icons/icons8-whatsapp-black.png" alt="Icon Watsapp">
-                </button>
+                <button class="cursers_more">Zobacz więcej</button>
             </div>
-        </div>
+
+            <div class="block_link_info">
+                <div class="container">
+                    <h3>Dołącz do profesjonalnej <br>społeczności kosmetycznej</h3>
+                    <a href="{{ $blog['watsapp_link'] }}" class="link_button">
+                        <span>Nasza społeczność <br>na WhatsApp</span>
+                        <img src="/img/icons/icons8-whatsapp-black.png" alt="Icon Watsapp">
+                    </a>
+                </div>
+            </div>
+        @endif
 
         <div class="block_shop">
             <div class="block_shop_img">
-                <img src="/temp/img/shop_block_img.png" alt=" ">
+                <img src="{{ $social['shop_tool']['img'] }}" alt=" ">
             </div>
             <div class="block_shop_info">
-                <h3>QI SHOP KOSMETYKI
-                    I AKCESORIA FRYZJERSKA.</h3>
-                <p>Naucz się terminowo wdrażać zmiany w biznesie,
-                    podejmować decyzje na podstawie danych, formułować
-                    globalne cele biznesowe i mapę drogową: jak do nich
-                    konkretnie dojść.</p>
-                <a href="#shop_info" class="block_shop_button">Qi-shop.pl</a>
+                <h3>{{ $social['shop_tool']['header'] }}</h3>
+                <p>{{ $social['shop_tool']['info'] }}</p>
+                <a href="{{ $social['shop_tool']['link'] }}"
+                    class="block_shop_button">{{ $social['shop_tool']['name'] }}</a>
             </div>
         </div>
 
