@@ -1,7 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.' . (Auth::user()->access === '-1' ? 'app_admin' : 'app'))
 
 @section('header.css')
     <link href="{{ asset('css/profile.css') }}" rel="stylesheet" type="text/css">
+    @if (Auth::user()->access === '-1')
+        <style>
+            body {
+                overflow-x: hidden !important;
+            }
+
+        </style>
+    @endif
 @endsection
 
 @section('footer.js')
@@ -13,7 +21,8 @@
         <div class="profile_head">
             <label class="avatar">
                 <span class="title">My profile: </span>
-                <div class="avatar_photo" style="background-image: url('https://robohash.org/qiacademy?set=set4');">
+                <div class="avatar_photo"
+                    style="background-image: url('{{ $user->avatar ? $user->avatar : 'https://robohash.org/qiacademy?set=set4' }}');">
                 </div>
                 <input type="file" class="profile_avatar d-none" accept="image/png, image/gif, image/jpeg">
             </label>
@@ -33,14 +42,15 @@
             </label>
             <label for="profile_email" class="profile_label @if (!$user->hasVerifiedEmail()) invalid @endif">
                 <span class="title">
-                    e-mail 
+                    e-mail
                     @if ($user->hasVerifiedEmail())
                     <i class="fas fa-lock icon_lock"></i>@else
-                    <button data-action="{{ route('verification.resend') }}" class="link send_for_configm">Send for confirm</button>
+                        <button data-action="{{ route('verification.resend') }}" class="link send_for_configm">Send for
+                            confirm</button>
                     @endif
                 </span>
-                <input id="profile_email" @if ($user->hasVerifiedEmail()) disabled @endif autocomplete="off" type="email" class="profile_input profile_email"
-                    placeholder="Your Email" value="{{ $user->email }}">
+                <input id="profile_email" @if ($user->hasVerifiedEmail()) disabled @endif autocomplete="off" type="email"
+                    class="profile_input profile_email" placeholder="Your Email" value="{{ $user->email }}">
             </label>
 
             <button class="profile_button save mobile">Zapisz zmiany</button>

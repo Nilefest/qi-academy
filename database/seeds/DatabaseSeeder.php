@@ -14,7 +14,13 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         
         $this->call(TeamSeeder::class);
-        $this->call(CourseSeeder::class);
+        
         $this->call(CourseOfflineSeeder::class);
+        
+        $this->call(CourseSeeder::class);
+        $this->call(CourseExpSeeder::class);
+        $this->call(LectureSeeder::class);
+
+        $this->call(FaqSeeder::class);
     }
 }

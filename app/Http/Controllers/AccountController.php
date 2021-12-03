@@ -10,6 +10,17 @@ use App\User;
 class AccountController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //$this->middleware('auth');
+        $this->data = array_merge($this->data, CommonService::getDataFromFile());
+    }
+    
+    /**
      * Profile page for student
      *
      * @return \Illuminate\Contracts\Support\Renderable
@@ -23,10 +34,7 @@ class AccountController extends Controller
         if($request->isMethod('post')){
             // Save new data about user
             if($request->input('type') === 'save_profile'){
-                if($request->input('name') !== null) $user->name = $request->input('name');
-                if($request->input('phone') !== null) $user->phone = $request->input('phone');
-                if($request->input('email') !== null && !$user->hasVerifiedEmail()) $user->email = $request->input('email');
-                $user->save();
+                $user = User::saveUser($user, $request);
             }
             return;
         }

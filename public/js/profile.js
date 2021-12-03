@@ -9,8 +9,11 @@
         data['name'] = document.querySelector('.profile_name').value;
         data['phone'] = document.querySelector('.profile_phone').value;
         data['email'] = document.querySelector('.profile_email').value;
+        if (document.querySelector('.profile_avatar').files[0] !== null) {
+            data['avatar'] = document.querySelector('.profile_avatar').files[0];
+        }
 
-        makeRequest('POST', url, data, func_default_success, func_default_fail);
+        requestWithFetch('post', url, data, func_default_success, func_default_fail);
     }
 
     // Save profile data

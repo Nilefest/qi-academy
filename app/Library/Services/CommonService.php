@@ -37,16 +37,18 @@ class CommonService {
         return $new_arr;
     }
 
-    public static function uploadFile($path, $file, $old_filepath){
+    public static function uploadFile($path, $file, $old_filepath = '', $file_index = -1, $file_type = ''){
         $filepath = public_path('uploads/' . $path);
 
         if($old_filepath) File::delete(public_path($old_filepath));
         
-        $filename = CommonService::translit_file(time() . '_' . $file['name']);
-        // print_r($filepath);
-        // print_r($filename);
-        move_uploaded_file($file['tmp_name'], $filepath . '/' . $filename);
-        // $file->move($filepath, $filename);
+        if($file_index > -1){
+            $filename = CommonService::translit_file(time() . '_' . $file['name'][$file_index][$file_type]);
+            move_uploaded_file($file['tmp_name'][$file_index][$file_type], $filepath . '/' . $filename);
+        } else {
+            $filename = CommonService::translit_file(time() . '_' . $file['name']);
+            move_uploaded_file($file['tmp_name'], $filepath . '/' . $filename);
+        }
         
         return '/uploads/' . $path . '/' . $filename;
     }

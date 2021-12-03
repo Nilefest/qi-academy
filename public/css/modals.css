@@ -694,6 +694,8 @@
 .modal_lecture .lecture_data a.icon_file {
 	margin-top: 5px;
 	padding: 8px 13px;
+	max-width: 300px;
+	overflow:hidden;
 }
 
 .modal_lecture .lecture_data a.icon_file span {

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCourseOfflineTable extends Migration
+class CreateFaqTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateCourseOfflineTable extends Migration
      */
     public function up()
     {
-        Schema::create('courses_offline', function (Blueprint $table) {
+        Schema::create('faq', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->default('');
-            $table->string('place')->default('');
-            $table->dateTime('date_of')->useCurrent();
-            $table->string('period')->default('');
-            $table->string('video')->default('');
+            $table->integer('course_id')->nullabel();
+            $table->string('title')->default('');
+            $table->string('info')->default('');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateCourseOfflineTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courses_offline');
+        Schema::dropIfExists('faq');
     }
 }

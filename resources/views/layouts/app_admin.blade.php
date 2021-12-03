@@ -8,10 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    @if(isset($title))
-    <title>{{ $title }} | ADM {{ config('app.name') }}</title>
+    @if (isset($title))
+        <title>{{ $title }} | ADM {{ config('app.name') }}</title>
     @else
-    <title>ADM | {{ config('app.name') }}</title>
+        <title>ADM | {{ config('app.name') }}</title>
     @endif
 
     <!-- Fonts. Google: Montserrat, Lato -->
@@ -63,11 +63,13 @@
                     <span class="full_text">Qi ADMIN</span>
                     <span class="short_text">Qi</span>
                 </a>
-    
-                <a href="{{ url('/') }}" class="to_site">QILABEL.COM <i class="fas fa-link icon_link"></i></a>
-    
-                {{-- <a href="{{ url('/admin') }}#setting" class="to_setting">Настройки админ панели <i class="fas fa-cog icon_link"></i></a> --}}
-    
+
+                <a href="{{ url('/') }}" class="to_site">QILABEL.COM <i
+                        class="fas fa-link icon_link"></i></a>
+
+                <a href="{{ route('account.profile') }}" class="to_setting">Настройки пользователя <i
+                        class="fas fa-cog icon_link"></i></a>
+
                 <a href="/logout" class="logout">Выйти</a>
             </div>
         </header>

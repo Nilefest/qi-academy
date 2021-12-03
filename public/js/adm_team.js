@@ -24,7 +24,7 @@
         modal.querySelector('textarea.team_info').value = team_data['info'];
         modal.querySelector('.soc_instagram').value = team_data['instagram']
         modal.querySelector('.soc_facebook').value = team_data['facebook'];
-
+        modal.querySelector('.delete').classList.remove('d-none');
         modalOpen('.modal_team_adm');
     };
 
@@ -44,7 +44,7 @@
         modal.querySelector('textarea.team_info').value = '';
         modal.querySelector('.soc_instagram').value = ''
         modal.querySelector('.soc_facebook').value = '';
-
+        modal.querySelector('.delete').classList.add('d-none');
         modalOpen('.modal_team_adm');
     }));
 
@@ -114,7 +114,7 @@
         team_data['type'] = 'delete_team';
         let func_success = (data) => {
             if (!data['data']['id']) return view_modal_simple_info(data['message']);
-            
+
             // Remove old data
             let team_one = document.querySelector('.team_one[data-teamId="' + team_data['id'] + '"]');
             team_one.remove();

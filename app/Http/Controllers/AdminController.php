@@ -34,29 +34,15 @@ class AdminController extends Controller
         if($request->isMethod('post')){
             // Save new data about team
             if($request->input('type') === 'save_team'){
-                $team = new Team;
-                if($request->input('id') !== null && $request->input('id') !== '') $team = Team::findOrFail($request->input('id'));
-                
                 if($request->input('name') === null) return ['data' => ['id' => 0], 'message' => 'Invalid temmate`s name'];
-                $team->name = $request->input('name') . '';
-                $team->info = $request->input('info') . '';
-                $team->instagram = $request->input('instagram') . '';
-                $team->facebook = $request->input('facebook') . '';
-                if(isset($_FILES['img_file'])){
-                    $team->img = CommonService::uploadFile('team', $_FILES['img_file'], $team->img);
-                }
-
-                $team->save();
-                return ['data' => ['id' => $team->id], 'mess' => ''];
+                $team_id = Team::saveOrCreate($request);
+                return ['data' => ['id' => $team_id], 'mess' => ''];
             }
             // Save new data about team
             if($request->input('type') === 'delete_team'){
-                if($request->input('id') === null && $request->input('id') === '') return ['data' => ['id' => 0], 'message' => 'Invalid temmate`s name'];
-                
-                $team = Team::findOrFail($request->input('id'));
-                $team->delete();
-                
-                return ['data' => ['id' => $team->id], 'mess' => ''];
+                if($request->input('id') === null) return ['data' => ['id' => 0], 'message' => 'Nofound ID'];
+                $team_id = Team::deleteById($request->input('id'));
+                return ['data' => ['id' => $team_id], 'mess' => ''];
             }
             return;
         }
