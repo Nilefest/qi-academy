@@ -236,24 +236,19 @@
 
             <div class="block_team_slider">
                 <ul class="block_team_ul">
-                    <li style="background-image: url(./temp/img/team_1.png);" class="block_team_li">
-                        <span class="team_open_modal view">View</span>
-                    </li>
-                    <li style="background-image: url(./temp/img/team_2.png);" class="block_team_li">
-                        <span class="team_open_modal view">View</span>
-                    </li>
-                    <li style="background-image: url(./temp/img/team_3.png);" class="block_team_li">
-                        <span class="team_open_modal view">View</span>
-                    </li>
-                    <li style="background-image: url(./temp/img/team_1.png);" class="block_team_li">
-                        <span class="team_open_modal view">View</span>
-                    </li>
-                    <li style="background-image: url(./temp/img/team_2.png);" class="block_team_li">
-                        <span class="team_open_modal view">View</span>
-                    </li>
-                    <li style="background-image: url(./temp/img/team_3.png);" class="block_team_li">
-                        <span class="team_open_modal view">View</span>
-                    </li>
+                    @foreach ($team_list as $team_one)
+                        <li class="block_team_li team_list_media team_one" data-teamInfo="{{ $team_one->info }}"
+                            data-teamImg="{{ $team_one->img }}" style="background-image: url({{ $team_one->img }});">
+                            <span class="name d-none">{{ $team_one->name }}</span>
+                            @if ($team_one->facebook)
+                                <a class="facebook_link d-none" href="{{ $team_one->facebook }}"></a>
+                            @endif
+                            @if ($team_one->instagram)
+                                <a class="instagram_link d-none" href="{{ $team_one->instagram }}"></a>
+                            @endif
+                            <span class="team_open_modal view">View</span>
+                        </li>
+                    @endforeach
                 </ul>
 
                 <button class="d-none block_team_arrow prev">&#8592;</button>

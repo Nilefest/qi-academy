@@ -28,13 +28,9 @@ class MainController extends Controller
      */
     public function index()
     {
-        $courses_offline_list = CourseOffline::getList();
-        // foreach($courses_offline_list as $key => $course_one) $courses_offline_list[$key]['date_of'] = substr($courses_offline_list[$key]['date_of'], 0, 10);
-        $this->data['courses_offline_list'] = $courses_offline_list;
+        $this->data['courses_offline_list'] = CourseOffline::getList();
 
-        $team_list = Team::getList();
-        foreach($team_list as $key => $team_one) $team_list[$key]['info'] = CommonService::replaceBrToLn($team_one['info']);
-        $this->data['team_list'] = $team_list;
+        $this->data['team_list'] = Team::getList(true);
 
         return view('main', $this->data);
     }

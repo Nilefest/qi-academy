@@ -17,15 +17,16 @@
             <p>Brazilian Technique - metoda rozjaśnienia przez tapirowanie wlosów. Będziemy pokazywać jak
                 pracować z
                 tapirem w koloryzacjach włosów. Pokażemy nie tylko jak prawidłowo tapirować włosy, a tak że jak
-                rozczesywać tapir, żeby dla klienta to nie było "przykrym doświadczeniem". </p>
-            <p>Brazilian Technique - metoda rozjaśnienia przez tapirowanie wlosów. Będziemy pokazywać jak
+                rozczesywać tapir, żeby dla klienta to nie było "przykrym doświadczeniem".
+                <br><br> Brazilian Technique - metoda rozjaśnienia przez tapirowanie wlosów. Będziemy pokazywać jak
                 pracować z
                 tapirem w koloryzacjach włosów. Pokażemy nie tylko jak prawidłowo tapirować włosy, a tak że jak
-                rozczesywać tapir, żeby dla klienta to nie było "przykrym doświadczeniem". </p>
-            <p>Brazilian Technique - metoda rozjaśnienia przez tapirowanie wlosów. Będziemy pokazywać jak
+                rozczesywać tapir, żeby dla klienta to nie było "przykrym doświadczeniem".
+                <br><br>Brazilian Technique - metoda rozjaśnienia przez tapirowanie wlosów. Będziemy pokazywać jak
                 pracować z
                 tapirem w koloryzacjach włosów. Pokażemy nie tylko jak prawidłowo tapirować włosy, a tak że jak
-                rozczesywać tapir, żeby dla klienta to nie było "przykrym doświadczeniem". </p>
+                rozczesywać tapir, żeby dla klienta to nie było "przykrym doświadczeniem".
+            </p>
         </div>
     </div>
     <div class="modal_footer">

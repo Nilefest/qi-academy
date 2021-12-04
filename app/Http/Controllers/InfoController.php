@@ -38,9 +38,7 @@ class InfoController extends Controller
      */
     public function team()
     {
-        $team_list = Team::getList();
-        // foreach($team_list as $key => $team_one) $team_list[$key]['info'] = CommonService::replaceBrToLn($team_one['info']);
-        $this->data['team_list'] = $team_list;
+        $this->data['team_list'] = Team::getList(true);
 
         $this->data['title'] = 'Our team';
         return view('info.team', $this->data);

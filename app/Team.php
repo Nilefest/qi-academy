@@ -15,9 +15,12 @@ class Team extends Model
      */
     protected $table = 'team';
 
-    public static function getList()
+    public static function getList($replace_nl_to_br = false, $limit = -1)
     {
-        $list = self::orderBy('name')->get();
+        $list = self::orderBy('name')->limit($limit)->get();
+        if($replace_nl_to_br){
+            foreach($list as $key => $row) $list[$key]->info = CommonService::replaceNlToBr($row->info);
+        }
         return $list;
     }
     
@@ -30,6 +33,7 @@ class Team extends Model
 
         $team->name = $request->input('name') . '';
         $team->info = $request->input('info') . '';
+        $team->info = CommonService::replaceNlToBr($team->info);
         $team->instagram = $request->input('instagram') . '';
         $team->facebook = $request->input('facebook') . '';
         if(isset($_FILES['img_file'])){
