@@ -28,9 +28,8 @@
         <!-- without_media , success_step -->
         <i class="fal fa-times icon_close close"></i>
         <div class="media_info">
-            <video controls>
-                <source src="/temp/video/video_background_1.mp4" type="video/mp4">
-            </video>
+            <div class="video_from_vimeo"></div>
+            {{-- <video controls><source src="/temp/video/video_background_1.mp4" type="video/mp4"></video> --}}
         </div>
         <div class="personal_data">
             <p class="text_info">Wypełnij formularz, aby zarezerwować udział w kursie mistrzowskim</p>
@@ -109,8 +108,9 @@
             <div class="main_banner_info">
                 <span class="title">Online academy</span>
                 <h1>Najbardziej praktyczna <br>baza kursów dla <br>mistrzów urody.</h1>
-                <button class="main_banner_button">Zarejestrować</button>
-                <!--<a href="#banner_link" class="main_banner_button">Zarejestrować</a>-->
+                @guest
+                    <button class="main_banner_button open_sign_modal">Zarejestrować</button>
+                @endguest
             </div>
         </div>
 
@@ -153,19 +153,22 @@
             <button class="slider_courses_arrow next">&#8594;</button>
         </div>
 
-        <div class="block_events">
-            <h3>Nadchodzące wydarzenia</h3>
-            <div class="table container">
-                @foreach($courses_offline_list as $course_one)
-                <div class="row course_item" data-courseId="{{ $course_one->id }}" data-courseVideo="{{ $course_one->video }}">
-                    <span class="place">{{ $course_one->place }}</span>
-                    <span class="date">{{ date('d/m/Y', strtotime($course_one->date_of)) }}</span>
-                    <span class="time">{{ $course_one->period }}</span>
-                    <span class="name">Lekcja: {{ $course_one->name }}</span>
+        @if ($courses_offline_list->count())
+            <div class="block_events">
+                <h3>Nadchodzące wydarzenia</h3>
+                <div class="table container">
+                    @foreach ($courses_offline_list as $course_one)
+                        <div class="row course_item" data-courseId="{{ $course_one->id }}"
+                            data-courseVideo="{{ $course_one->video }}">
+                            <span class="place">{{ $course_one->place }}</span>
+                            <span class="date">{{ date('d/m/Y', strtotime($course_one->date_of)) }}</span>
+                            <span class="time">{{ $course_one->period }}</span>
+                            <span class="name">Lekcja: {{ $course_one->name }}</span>
+                        </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
-        </div>
+        @endif
 
         <div class="block_educations container">
             <h3>System edukacji</h3>
@@ -209,7 +212,6 @@
                 <h3>Spójrz w wygodnym <br>formacie.</h3>
                 <span class="info">Na komputerze, smartfonie <br>lub tablecie.</span>
                 <button class="block_register_button">Zarejestrować</button>
-                <!--<a href="#block_register_link" class="block_register_button">Zarejestrować</a>-->
             </div>
         </div>
 

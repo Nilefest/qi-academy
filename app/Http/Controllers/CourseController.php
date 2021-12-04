@@ -14,6 +14,16 @@ use App\Faq;
 class CourseController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->data = array_merge($this->data, CommonService::getDataFromFile());
+    }
+    
+    /**
      * Public page for view course
      *
      * @param int

@@ -70,7 +70,24 @@
 
 	// Offline courses
 	// #event #function
-	document.querySelectorAll('.block_events .row').forEach(element => element.addEventListener('click', event => modalOpen('.modal_book_offline')));
+	document.querySelectorAll('.block_events .row').forEach(element => element.addEventListener('click', event => {
+		let modal = document.querySelector('.modal_book_offline');
+		let course_one = event.target.closest('.course_item');
+
+		let place = course_one.querySelector('.place').innerHTML;
+		let date = course_one.querySelector('.date').innerHTML;
+		let video_code = course_one.getAttribute('data-courseVideo');
+
+		modal.setAttribute('data-courseId', course_one.getAttribute('data-courseId'));
+		modal.querySelector('.course_info').innerHTML = place + ' ' + date;
+		if (video_code === '') modal.classList.add('without_media');
+		else {
+			modal.classList.remove('without_media');
+			modal.querySelector('.video_from_vimeo').innerHTML = video_code;
+		}
+		modal.classList.remove('success_step');
+		modalOpen('.modal_book_offline');
+	}));
 
 	// Subscribe
 	// #event #function #server

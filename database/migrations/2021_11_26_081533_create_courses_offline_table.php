@@ -19,7 +19,7 @@ class CreateCoursesOfflineTable extends Migration
             $table->string('place')->default('');
             $table->dateTime('date_of')->useCurrent();
             $table->string('period')->default('');
-            $table->string('video')->default('');
+            $table->text('video')->nullable();
             $table->timestamps();
         });
     }

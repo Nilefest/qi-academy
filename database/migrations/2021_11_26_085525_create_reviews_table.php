@@ -18,7 +18,7 @@ class CreateReviewsTable extends Migration
             $table->integer('user_id')->default(0);
             $table->dateTime('date_of')->useCurrent();
             $table->string('text')->default('');
-            $table->string('video')->default('');
+            $table->text('video')->nullable();
             $table->boolean('public')->default(0);
             $table->timestamps();
         });

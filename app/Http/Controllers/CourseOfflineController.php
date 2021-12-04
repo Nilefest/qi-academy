@@ -10,6 +10,16 @@ use App\CourseOffline;
 class CourseOfflineController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->data = array_merge($this->data, CommonService::getDataFromFile());
+    }
+
+    /**
      * Show offline course list for Admin Panel
      *
      * @return \Illuminate\Contracts\Support\Renderable

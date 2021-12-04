@@ -408,34 +408,50 @@
     display: flex;
     justify-content: space-between;
     padding: 25px 0px;
+    flex-wrap: wrap;
 }
 
 .block_events .table .row:last-child {
     border-bottom: 1px solid #fff;
 }
 
-.block_events .row:hover,
-.block_events .row:hover * {
+.block_events .table .row:hover,
+.block_events .table .row:hover * {
     border-color: #F84C34;
     color: #F84C34;
     text-decoration: none;
+    cursor: pointer;
+}
+
+.block_events .row:hover+.row {
+    border-top-color: #F84C34;
 }
 
 .block_events .row span {
     display: inline-block;
+    text-align: center;
 }
 
-.block_events .place {
+.block_events .row .place {
     min-width: 100px;
-    width: 10%;
+    width: 15%;
+    flex-shrink: 0;
+    text-align: left;
 }
 
-.block_events .date {
-    width: 70px;
+.block_events .row .date {
+    width: 150px;
+    flex-shrink: 0;
 }
 
-.block_events .time {
-    width: 75px;
+.block_events .row .time {
+    width: 100px;
+    flex-shrink: 0;
+}
+
+.block_events .row .name {
+    text-align: right;
+    width: 40%;
 }
 
 /* Block Educations */
@@ -539,6 +555,14 @@
 .block_register_media img,
 .block_register_media video {
     width: 100%;
+}
+
+.video_from_vimeo {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    overflow: hidden
 }
 
 .block_register_info {
@@ -1122,9 +1146,9 @@
         flex-wrap: wrap;
     }
 
-    .block_events .name {
-        margin-top: 15px;
+    .block_events .row .name {
         width: 100%;
+        margin-top: 20px;
     }
 
     .block_blog_info h3 {
@@ -1390,8 +1414,15 @@
         margin-left: 40px;
     }
 
+    .block_events .row .date {
+        text-align: left;
+    }
 
-    .block_events .place {
+    .block_events .row .time {
+        text-align: right;
+    }
+
+    .block_events .row .place {
         margin-bottom: 15px;
         width: 100%;
     }

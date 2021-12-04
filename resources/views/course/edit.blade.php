@@ -136,6 +136,11 @@
                         <input min="0" type="number" class="text course_cost_text" value="{{ $course->cost }}">
                         <span class="title">Zł</span>
                     </label>
+                    <label>
+                        <input min="1" type="number" class="text course_total_lectures"
+                            value="{{ $course->total_lectures }}">
+                        <span class="title">lekcje</span>
+                    </label>
                 </div>
                 <label class="video_link">
                     <span class="title">Вставьте ссылку видео-превью </span>

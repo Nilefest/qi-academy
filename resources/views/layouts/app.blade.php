@@ -73,6 +73,7 @@
                     @endguest
                     @auth
                         <a class="main_nav_button" href="{{ url('/home') }}">Obszar osobisty</a>
+                        <a class="main_nav_button" href="{{ url('/logout') }}">Logout</a>
                     @endauth
                 </div>
                 <ul class="main_nav_links">

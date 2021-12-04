@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Library\Services\CommonService;
+use Illuminate\Support\Facades\Auth;
+use App\Team;
 
 class InfoController extends Controller
 {
@@ -14,6 +17,7 @@ class InfoController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
+        $this->data = array_merge($this->data, CommonService::getDataFromFile());
     }
 
     /**
@@ -34,6 +38,10 @@ class InfoController extends Controller
      */
     public function team()
     {
+        $team_list = Team::getList();
+        // foreach($team_list as $key => $team_one) $team_list[$key]['info'] = CommonService::replaceBrToLn($team_one['info']);
+        $this->data['team_list'] = $team_list;
+
         $this->data['title'] = 'Our team';
         return view('info.team', $this->data);
     }

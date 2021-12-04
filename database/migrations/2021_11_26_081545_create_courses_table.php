@@ -23,7 +23,7 @@ class CreateCoursesTable extends Migration
             $table->integer('total_lectures')->default(1);
             $table->integer('total_hours')->default(1);
             $table->double('cost')->default(0);
-            $table->string('video_preview')->default('');
+            $table->text('video_preview')->nullable();
             $table->text('description')->nullabel();
             $table->string('description_for_1')->default('');
             $table->string('description_for_2')->default('');

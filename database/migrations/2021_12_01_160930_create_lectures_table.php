@@ -19,7 +19,7 @@ class CreateLecturesTable extends Migration
             $table->string('name')->default('');
             $table->string('info_short')->default('');
             $table->string('info_full')->default('');
-            $table->string('video')->default('');
+            $table->text('video')->nullable();
             $table->string('file')->default('');
             $table->string('homework')->default('');
             $table->timestamps();
