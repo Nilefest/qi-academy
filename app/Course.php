@@ -16,6 +16,7 @@ class Course extends Model
 
     public static function saveOrCreateCourse($course, Request $request)
     {
+        $course->main_course = $request->input('main_course') . '';
         $course->free = $request->input('free') . '';
         $course->free_for_client = $request->input('free_for_client') . '';
         $course->only_paid = $request->input('only_paid') . '';
@@ -32,6 +33,9 @@ class Course extends Model
         if(isset($_FILES['gallery_img_1'])) $course->gallery_img_1 = CommonService::uploadFile('courses', $_FILES['gallery_img_1'], $course->img);
         if(isset($_FILES['gallery_img_2'])) $course->gallery_img_2 = CommonService::uploadFile('courses', $_FILES['gallery_img_2'], $course->img);
         if(isset($_FILES['gallery_img_3'])) $course->gallery_img_3 = CommonService::uploadFile('courses', $_FILES['gallery_img_3'], $course->img);
+
+        if($course->main_course) self::where('main_course', 1)->update(['main_course' => 0]);
+
         $course->save();
 
         return $course;
@@ -43,5 +47,16 @@ class Course extends Model
         $team->delete();
 
         return $team->id;
+    }
+
+    public static function getMainCourse(){
+        $course = self::where('main_course', 1)->first();
+        if($course === null) return false;
+        return $course;
+    }
+
+    public static function getPaidCourse($limit = -1){
+        $course = self::where('only_paid', 1)->limit($limit)->get();
+        return $course;
     }
 }

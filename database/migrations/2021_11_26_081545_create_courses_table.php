@@ -15,6 +15,7 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
+            $table->boolean('main_course')->default(0);
             $table->boolean('free')->default(0);
             $table->boolean('free_for_client')->default(0);
             $table->boolean('only_paid')->default(0);

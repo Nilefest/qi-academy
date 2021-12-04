@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Library\Services\CommonService;
 use Illuminate\Support\Facades\Auth;
 use App\Team;
+use App\Course;
 use App\CourseOffline;
 
 class MainController extends Controller
@@ -28,12 +29,13 @@ class MainController extends Controller
      */
     public function index()
     {
+        $this->data['main_course'] = Course::getMainCourse();
+        $this->data['paid_courses'] = Course::getPaidCourse();
         $this->data['courses_offline_list'] = CourseOffline::getList();
-        
+        $this->data['main_educations'] = CommonService::getDataFromFile('default_main_educations.json');
         $this->data['video_reviews'] = CommonService::getDataFromFile('default_review.json');
-        
         $this->data['team_list'] = Team::getList(true);
-
+        
         return view('main', $this->data);
     }
 

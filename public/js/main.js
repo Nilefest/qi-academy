@@ -4,13 +4,14 @@
 	// #event #function
 	document.querySelector('.main_banner_media video').addEventListener('click', event => {
 		let video_element = event.target;
-		if (video_element.paused)
+		if (video_element.paused){
 			return video_element.play();
+		}
 		video_element.pause();
 	});
 
 	// Full-video. Play
-	// #event #function #jquery
+	// #event #function
 	document.querySelectorAll('.block_full_video_button').forEach(element => element.addEventListener('click', event => {
 		let video_container = event.target.closest('.block_full_video');
 		let video_element = video_container.querySelector('video');
@@ -111,4 +112,5 @@
 		modal_video.querySelector('iframe.youtube_video').setAttribute('src', video_src);
 		setTimeout(() => modalOpen('.modal_view_youtube'), 500);
 	}));
+	
 })();

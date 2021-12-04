@@ -102,6 +102,10 @@
                     <input @if ($course->free) checked @endif id="is_free" class="is_free d-none course_free" type="checkbox">
                     <label for="is_free">Беслатно</label>
                 </div>
+                <div class="field_check">
+                    <input @if ($course->main_course) checked @endif id="is_main_course" class="is_free d-none course_main_course" type="checkbox">
+                    <label for="is_main_course">Специальный кур на главной странице</label>
+                </div>
             </div>
 
             <label class="block_banner">

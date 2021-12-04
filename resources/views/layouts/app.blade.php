@@ -59,7 +59,7 @@
             <nav class="container">
                 <ul class="main_nav_ul">
                     <li><a href="{{ url('/') }}">Dom</a></li>
-                    <li><a href="{{ url('/about') }}">ONas</a></li>
+                    <li><a href="{{ url('/about') }}">O Nas</a></li>
                     <li><a href="{{ url('/team') }}">Team</a></li>
                 </ul>
                 <div class="main_nav_info">
@@ -73,7 +73,7 @@
                     @endguest
                     @auth
                         <a class="main_nav_button" href="{{ url('/home') }}">Obszar osobisty</a>
-                        <a class="main_nav_button" href="{{ url('/logout') }}">Logout</a>
+                        <a class="main_nav_logout" href="{{ url('/logout') }}">Logout</a>
                     @endauth
                 </div>
                 <ul class="main_nav_links">
@@ -87,12 +87,17 @@
         <header>
             <div class="container">
                 <a href="{{ url('/') }}" class="logo" title="To main page">
-                    <!-- <span class="account_logo">Moje biuro</span> -->
+                    @auth
+                        <span class="account_logo">Moje biuro</span>
+                    @endauth
                     <span class="full_text">Qi ACADEMY</span>
                     <span class="short_text">Qi</span>
                 </a>
 
-                <!-- <div class="account"><a href="#account" class="account_button" style="background-image: url('https://robohash.org/qiacademy?set=set4');"></a></div> -->
+                @auth
+                    <div class="account"><a href="{{ route('home') }}" class="account_button"
+                            style="background-image: url('{{ Auth::user()->avatar ? Auth::user()->avatar : "https://robohash.org/qiacademy?set=set4" }}');"></a></div>
+                @endauth
 
                 <button class="nav_button" title="Open / Hide navigation"></button>
             </div>
@@ -132,11 +137,13 @@
                     </ul>
 
                     <ul class="social">
-                        <li><a target="_blank" href="{{ $social['academy']['facebook'] }}"><i class="fa fa-facebook-official"
-                                    aria-hidden="true"></i></a></li>
-                        <li><a target="_blank" href="{{ $social['academy']['instagram'] }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <li><a target="_blank" href="{{ $social['academy']['facebook'] }}"><i
+                                    class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                        <li><a target="_blank" href="{{ $social['academy']['instagram'] }}"><i
+                                    class="fa fa-instagram" aria-hidden="true"></i></a>
                         </li>
-                        <li><a target="_blank" href="{{ $social['academy']['youtube'] }}"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                        <li><a target="_blank" href="{{ $social['academy']['youtube'] }}"><i
+                                    class="fa fa-youtube-play" aria-hidden="true"></i></a>
                         </li>
                     </ul>
 

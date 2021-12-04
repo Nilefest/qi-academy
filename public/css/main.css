@@ -174,11 +174,6 @@
     opacity: 1;
 }
 
-.slider_courses .courses_link:hover .title {
-    text-decoration: underline;
-    display: block;
-}
-
 .slider_courses .title {
     text-transform: uppercase;
     font-weight: 900;
@@ -631,6 +626,7 @@
 
 .block_full_video.video_play .block_full_video_info {
     opacity: 0;
+    /* display: none; */
 }
 
 .block_full_video h3 {
@@ -654,7 +650,7 @@
     border-radius: 50%;
     margin: 0px auto;
     border: none;
-    top: 50%;
+    top: 40%;
     text-align: center;
 }
 

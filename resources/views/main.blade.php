@@ -101,8 +101,8 @@
     <div class="content">
         <div class="main_banner container">
             <div class="main_banner_media">
-                <video loop>
-                    <source src="{{ $media['main_header_banner'] }}" type="video/mp4">
+                <video loop autoplay muted>
+                    <source src="{{ url($media['main_header_banner']) }}" type="video/mp4">
                 </video>
             </div>
             <div class="main_banner_info">
@@ -114,44 +114,39 @@
             </div>
         </div>
 
-        <div class="slider_blog_youtube">
-            <ul>
-                @for ($i = 0; $i < 5; $i++)
-                    <li><a target="_blank" href="{{ $social['academy']['youtube'] }}">BLOG YOUTUBE</a></li>
-                @endfor
-                <div class="clear"></div>
-            </ul>
-        </div>
+        @if ($social['academy']['youtube'])
+            <div class="slider_blog_youtube">
+                <ul>
+                    @for ($i = 0; $i < 5; $i++)
+                        <li><a target="_blank" href="{{ $social['academy']['youtube'] }}">BLOG YOUTUBE</a></li>
+                    @endfor
+                    <div class="clear"></div>
+                </ul>
+            </div>
+        @endif
 
-        <div class="slider_courses container">
-            <h3>Nasze kursy</h3>
-            <ul class="slider_courses_ul">
-                <li class="slider_courses_li">
-                    <a class="courses_link" style="background-image: url(./temp/img/slider_courses_1.png)"
-                        href="#courses_link">
-                        <span class="title">colorist pro 2</span>
-                        <span class="price">200 Zł</span>
-                        <ul class="curs_info">
-                            <li>8 Lekcje</li>
-                            <li>10 godziny</li>
-                        </ul>
-                    </a>
-                </li>
-                <li class="slider_courses_li">
-                    <a class="courses_link" href="#courses_link"
-                        style="background-image: url(./temp/img/slider_courses_2.png)">
-                        <span class="title">colorist pro 1</span>
-                        <span class="price">300 Zł</span>
-                        <ul class="curs_info">
-                            <li>12 Lekcje</li>
-                            <li>18 godziny</li>
-                        </ul>
-                    </a>
-                </li>
-            </ul>
-            <button class="d-none slider_courses_arrow prev">&#8592;</button>
-            <button class="slider_courses_arrow next">&#8594;</button>
-        </div>
+        @if ($paid_courses->count())
+            <div class="slider_courses container">
+                <h3>Nasze kursy</h3>
+                <ul class="slider_courses_ul">
+                    @foreach ($paid_courses as $course)
+                        <li class="slider_courses_li">
+                            <a class="courses_link" style="background-image: url('{{ $course->banner_img }}')"
+                                href="#courses_link">
+                                <span class="title">{{ $course->name }}</span>
+                                <span class="price">{{ $course->cost }} Zł</span>
+                                <ul class="curs_info">
+                                    <li>{{ $course->total_lectures }} Lekcje</li>
+                                    <li>{{ $course->total_hours }} godziny</li>
+                                </ul>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+                <button class="d-none slider_courses_arrow prev">&#8592;</button>
+                <button class="slider_courses_arrow next">&#8594;</button>
+            </div>
+        @endif
 
         @if ($courses_offline_list->count())
             <div class="block_events">
@@ -170,56 +165,35 @@
             </div>
         @endif
 
-        <div class="block_educations container">
-            <h3>System edukacji</h3>
-            <ul class="block_educations_ul">
-                <li class="block_educations_li">
-                    <span class="title">Jedność z klientem</span>
-                    <span class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut,
-                        excepturi.</span>
-                </li>
-                <li class="block_educations_li">
-                    <span class="title">Technika wykonania</span>
-                    <span class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut,
-                        excepturi.</span>
-                </li>
-                <li class="block_educations_li">
-                    <span class="title">Oswajanie stylizacji</span>
-                    <span class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut,
-                        excepturi.</span>
-                </li>
-                <li class="block_educations_li">
-                    <span class="title">Jedność z klientem</span>
-                    <span class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut,
-                        excepturi.</span>
-                </li>
-                <li class="block_educations_li">
-                    <span class="title">Technika wykonania</span>
-                    <span class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut,
-                        excepturi.</span>
-                </li>
-                <li class="block_educations_li">
-                    <span class="title">Oswajanie stylizacji</span>
-                    <span class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut,
-                        excepturi.</span>
-                </li>
-            </ul>
-        </div>
-
-        <div class="block_register container">
-            <div class="block_register_media"></div>
-            <div class="block_register_info">
-                <h3>Spójrz w wygodnym <br>formacie.</h3>
-                <span class="info">Na komputerze, smartfonie <br>lub tablecie.</span>
-                <button class="block_register_button">Zarejestrować</button>
+        @if (!empty($main_educations))
+            <div class="block_educations container">
+                <h3>System edukacji</h3>
+                <ul class="block_educations_ul">
+                    @foreach ($main_educations as $education)
+                        <li class="block_educations_li">
+                            <span class="title">{{ $education['title'] }}</span>
+                            <span class="info">{{ $education['info'] }}</span>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
-        </div>
+        @endif
+
+        @if ($main_course)
+            <div class="block_register container">
+                <div class="block_register_media"></div>
+                <div class="block_register_info">
+                    <h3>{{ $main_course->name }}</h3>
+                    <span class="info">{{ $main_course->description }}</span>
+                    <a href="#main_course" class="block_register_button">Wyglądać</a>
+                </div>
+            </div>
+        @endif
 
         <div class="block_full_video">
             <div class="block_full_video_media">
-                <!--<img src="/temp/img/full_video_back.png" alt=" ">-->
                 <video loop>
-                    <source src="{{ $media['main_page_banner'] }}" type="video/mp4">
+                    <source src="{{ url($media['main_page_banner']) }}" type="video/mp4">
                 </video>
             </div>
             <div class="block_full_video_info">
@@ -263,10 +237,10 @@
             <div class="block_video_reviews_slider">
                 <ul class="block_video_reviews_ul">
                     @foreach ($video_reviews as $review)
-                    <li style="background-image: url('https://img.youtube.com/vi/{{ $review['code'] }}/mqdefault.jpg');"
-                        data-videoCode="{{ $review['code'] }}" class="youtube_open_modal block_video_reviews_li">
-                        <button class="block_video_reviews_button">&#9654;</button>
-                    </li>
+                        <li style="background-image: url('https://img.youtube.com/vi/{{ $review['code'] }}/mqdefault.jpg');"
+                            data-videoCode="{{ $review['code'] }}" class="youtube_open_modal block_video_reviews_li">
+                            <button class="block_video_reviews_button">&#9654;</button>
+                        </li>
                     @endforeach
                 </ul>
                 <button class="block_video_reviews_arrow prev">&#8592;</button>
@@ -348,18 +322,18 @@
                     <h3>{{ $social['shop_tool']['header'] }}</h3>
                     <p>{{ $social['shop_tool']['info'] }}</p>
                     @if ($social['shop_tool']['link'])
-                        <a href="{{ $social['shop_tool']['link'] }}"
+                        <a target="_blank" href="{{ $social['shop_tool']['link'] }}"
                             class="block_shop_button">{{ $social['shop_tool']['name'] }}</a>
                     @endif
                 </div>
             </div>
         @endif
 
-        @if(false)
-        <div class="block_facebook_posts container">
-            <h3>Nasze najnowsze posty na <span>Facebook</span></h3>
-            <div class="facebook_posts" style="background-image: url(./temp/img/facebook_post_1.png);"></div>
-        </div>
+        @if (false)
+            <div class="block_facebook_posts container">
+                <h3>Nasze najnowsze posty na <span>Facebook</span></h3>
+                <div class="facebook_posts" style="background-image: url(./temp/img/facebook_post_1.png);"></div>
+            </div>
         @endif
 
         <div class="block_subscribe">

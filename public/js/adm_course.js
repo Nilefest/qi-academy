@@ -109,12 +109,12 @@
     document.querySelector('.lecture_save').addEventListener('click', () => {
         let modal = document.querySelector('.modal_lecture');
         let lecture_item = document.querySelectorAll('.lecture_item')[modal.getAttribute('data-lectureIndexNodes')];
-        
+
         let lecture_file = modal.querySelector('.file').cloneNode(true);
-        if(lecture_file.files[0] !== null){
+        if (lecture_file.files[0] !== null) {
             lecture_file.setAttribute('id', '');
             lecture_file.setAttribute('class', 'd-none lecture_file');
-            
+
             lecture_item.setAttribute('data-lectureFile', '');
             lecture_item.querySelector('.lecture_file').parentNode.replaceChild(lecture_file, lecture_item.querySelector('.lecture_file'));
         }
@@ -131,6 +131,7 @@
     document.querySelector('.course_save').addEventListener('click', () => {
         let course_one = document.querySelector('.course_form');
         let course_data = {
+            main_course: course_one.querySelector('.course_main_course').checked * 1,
             free: course_one.querySelector('.course_free').checked * 1,
             free_for_client: course_one.querySelector('.course_free_for_client').checked * 1,
             only_paid: course_one.querySelector('.course_only_paid').checked * 1,
