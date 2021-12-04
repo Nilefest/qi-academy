@@ -262,22 +262,12 @@
             </div>
             <div class="block_video_reviews_slider">
                 <ul class="block_video_reviews_ul">
-                    <li style="background-image: url(./temp/img/video_review_1.png);"
-                        data-videoSrc="/temp/video/video_background_1.mp4" class="video_open_modal block_video_reviews_li">
+                    @foreach ($video_reviews as $review)
+                    <li style="background-image: url('https://img.youtube.com/vi/{{ $review['code'] }}/mqdefault.jpg');"
+                        data-videoCode="{{ $review['code'] }}" class="youtube_open_modal block_video_reviews_li">
                         <button class="block_video_reviews_button">&#9654;</button>
                     </li>
-                    <li style="background-image: url(./temp/img/video_review_2.png);"
-                        data-videoSrc="/temp/video/video_expert.mp4" class="video_open_modal block_video_reviews_li">
-                        <button class="block_video_reviews_button">&#9654;</button>
-                    </li>
-                    <li style="background-image: url(./temp/img/video_review_1.png);"
-                        data-videoSrc="/temp/video/video_expert.mp4" class="video_open_modal block_video_reviews_li">
-                        <button class="block_video_reviews_button">&#9654;</button>
-                    </li>
-                    <li style="background-image: url(./temp/img/video_review_2.png);"
-                        data-videoSrc="/temp/video/video_expert.mp4" class="video_open_modal block_video_reviews_li">
-                        <button class="block_video_reviews_button">&#9654;</button>
-                    </li>
+                    @endforeach
                 </ul>
                 <button class="block_video_reviews_arrow prev">&#8592;</button>
                 <button class="block_video_reviews_arrow next">&#8594;</button>
@@ -349,22 +339,28 @@
             </div>
         @endif
 
-        <div class="block_shop">
-            <div class="block_shop_img">
-                <img src="{{ $social['shop_tool']['img'] }}" alt=" ">
+        @if ($social['shop_tool']['header'])
+            <div class="block_shop">
+                <div class="block_shop_img">
+                    <img src="{{ $social['shop_tool']['img'] }}" alt=" ">
+                </div>
+                <div class="block_shop_info">
+                    <h3>{{ $social['shop_tool']['header'] }}</h3>
+                    <p>{{ $social['shop_tool']['info'] }}</p>
+                    @if ($social['shop_tool']['link'])
+                        <a href="{{ $social['shop_tool']['link'] }}"
+                            class="block_shop_button">{{ $social['shop_tool']['name'] }}</a>
+                    @endif
+                </div>
             </div>
-            <div class="block_shop_info">
-                <h3>{{ $social['shop_tool']['header'] }}</h3>
-                <p>{{ $social['shop_tool']['info'] }}</p>
-                <a href="{{ $social['shop_tool']['link'] }}"
-                    class="block_shop_button">{{ $social['shop_tool']['name'] }}</a>
-            </div>
-        </div>
+        @endif
 
+        @if(false)
         <div class="block_facebook_posts container">
             <h3>Nasze najnowsze posty na <span>Facebook</span></h3>
             <div class="facebook_posts" style="background-image: url(./temp/img/facebook_post_1.png);"></div>
         </div>
+        @endif
 
         <div class="block_subscribe">
             <img src="./img/subscribe_back.png" alt=" " class="background_img">

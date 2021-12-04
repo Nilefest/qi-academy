@@ -5,7 +5,12 @@
 let modalClose = () => {
 	document.querySelectorAll('.modal, .modal_win').forEach(element => element.classList.remove('modal_show'));
 	document.body.classList.remove('stop_scrolling');
+
+	// Stop all videos
 	document.querySelectorAll('video').forEach(element => element.pause());
+	document.querySelectorAll('iframe.youtube_video').forEach(element => {
+		element.setAttribute('src', '#youtube');
+	});
 }
 
 // Open modal 

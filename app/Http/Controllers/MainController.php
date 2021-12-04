@@ -29,7 +29,9 @@ class MainController extends Controller
     public function index()
     {
         $this->data['courses_offline_list'] = CourseOffline::getList();
-
+        
+        $this->data['video_reviews'] = CommonService::getDataFromFile('default_review.json');
+        
         $this->data['team_list'] = Team::getList(true);
 
         return view('main', $this->data);

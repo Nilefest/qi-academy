@@ -101,4 +101,14 @@
 			document.getElementById('subscribe_email').value = '';
 		}
 	});
+
+	// Show video with Reviews from Youtube. 
+	// #event #function
+	document.querySelectorAll('.youtube_open_modal').forEach(element => element.addEventListener('click', event => {
+		let modal_video = document.querySelector('.modal_view_youtube');
+		let video_code = event.target.closest('.youtube_open_modal').getAttribute('data-videoCode');
+		let video_src = "https://www.youtube-nocookie.com/embed/" + video_code;
+		modal_video.querySelector('iframe.youtube_video').setAttribute('src', video_src);
+		setTimeout(() => modalOpen('.modal_view_youtube'), 500);
+	}));
 })();
