@@ -17,8 +17,8 @@ class CommonService {
      * @param array    - type of data
      * @return array 
      */
-    public static function getDataFromFile($file_name = 'static_data.json'){
-        $data = Storage::disk('local')->get($file_name);
+    public static function getDataFromFile($file_name = 'common.default.json'){
+        $data = Storage::disk('local')->get('default/' . $file_name);
         $data = json_decode($data, true);
 
         return $data;
@@ -40,7 +40,7 @@ class CommonService {
     public static function uploadFile($path, $file, $old_filepath = '', $file_index = -1, $file_type = ''){
         $filepath = public_path('uploads/' . $path);
 
-        if($old_filepath) if(!mb_strpos($old_filepath, 'default')) File::delete(public_path($old_filepath));
+        if($old_filepath) if(!mb_strpos($old_filepath, '.default.')) File::delete(public_path($old_filepath));
         
         if($file_index > -1){
             $filename = CommonService::translit_file(time() . '_' . $file['name'][$file_index][$file_type]);

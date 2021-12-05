@@ -68,7 +68,7 @@
             @foreach ($team_list as $team_one)
                 <li class="team_list_li team_one" data-teamId="{{ $team_one->id }}"
                     data-teamInfo="{{ $team_one->info }}">
-                    <div class="team_list_media team_img" style="background-image: url({{ $team_one->img }});">
+                    <div class="team_list_media team_img" style="background-image: url(/{{ $team_one->img }});">
                         <span class="team_adm_modal view">Редактировать</span>
                     </div>
                     <span class="name">{{ $team_one->name }}</span>

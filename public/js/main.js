@@ -5,6 +5,8 @@
 	document.querySelector('.main_banner_media video').addEventListener('click', event => {
 		let video_element = event.target;
 		if (video_element.paused){
+			// video_element.muted = false;
+			// video_element.removeAttribute('muted');
 			return video_element.play();
 		}
 		video_element.pause();

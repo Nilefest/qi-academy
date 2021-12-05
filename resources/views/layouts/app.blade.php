@@ -65,7 +65,7 @@
                 <div class="main_nav_info">
                     <ul class="main_nav_contact">
                         <li><a
-                                href="tel:{{ preg_replace('/[+ ]/m', '', $contacts['phones']) }}">{{ $contacts['phones'] }}</a>
+                                href="tel:{{ preg_replace('/[+ ]/m', '', $contacts['phone']) }}">{{ $contacts['phone'] }}</a>
                         </li>
                     </ul>
                     @guest
@@ -116,15 +116,15 @@
                         </a>
                     </li>
                     <li>
-                        <a target="_blank" href="https://msng.link/o/?48796816953=fm">
+                        <a target="_blank" href="https://msng.link/o/?{{ preg_replace('/[+ ]/m', '', $contacts['facebook_messenger']) }}=fm">
                             <img src="/img/icons/icons8-facebook-messenger.png" alt="Icon Facebook Messenger">
                             <span>Facebook Messenger</span>
                         </a>
                     </li>
                     <li>
-                        <a href="tel:{{ preg_replace('/[+ ]/m', '', $contacts['phones']) }}"">
+                        <a href="tel:{{ preg_replace('/[+ ]/m', '', $contacts['phone']) }}"">
                             <img src=" /img/icons/icons8-phone.png" alt="Icon Phone">
-                            <span>{{ $contacts['phones'] }}</span>
+                            <span>{{ $contacts['phone'] }}</span>
                         </a>
                     </li>
                 </ul>

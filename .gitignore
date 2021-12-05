@@ -1,7 +1,14 @@
-/node_modules
 /public/hot
 /public/storage
+/public/uploads/courses/*
+/public/uploads/lectures/*
+/public/uploads/main/*
+/public/uploads/profile/*
+/public/uploads/team/*
+
 /storage/*.key
+
+/node_modules
 /vendor
 .env
 .env.backup

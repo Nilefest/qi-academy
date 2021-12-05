@@ -132,7 +132,7 @@
                     @foreach ($paid_courses as $course)
                         <li class="slider_courses_li">
                             <a class="courses_link" style="background-image: url('{{ $course->banner_img }}')"
-                                href="#courses_link">
+                                href="{{ route('course.view', $course->id) }}">
                                 <span class="title">{{ $course->name }}</span>
                                 <span class="price">{{ $course->cost }} Zł</span>
                                 <ul class="curs_info">
@@ -192,7 +192,7 @@
 
         <div class="block_full_video">
             <div class="block_full_video_media">
-                <video loop>
+                <video loop autoplay muted="muted">
                     <source src="{{ url($media['main_page_banner']) }}" type="video/mp4">
                 </video>
             </div>
@@ -230,23 +230,7 @@
             </div>
         </div>
 
-        <div class="block_video_reviews container">
-            <div class="block_video_reviews_info">
-                <h3>Informacje <br>zwrotne <br>od <br>uczniów</h3>
-            </div>
-            <div class="block_video_reviews_slider">
-                <ul class="block_video_reviews_ul">
-                    @foreach ($video_reviews as $review)
-                        <li style="background-image: url('https://img.youtube.com/vi/{{ $review['code'] }}/mqdefault.jpg');"
-                            data-videoCode="{{ $review['code'] }}" class="youtube_open_modal block_video_reviews_li">
-                            <button class="block_video_reviews_button">&#9654;</button>
-                        </li>
-                    @endforeach
-                </ul>
-                <button class="block_video_reviews_arrow prev">&#8592;</button>
-                <button class="block_video_reviews_arrow next">&#8594;</button>
-            </div>
-        </div>
+        @include('layouts.blocks.video_reviews')
 
         @if ($blog['watsapp_link'])
             <div class="block_blog_info">

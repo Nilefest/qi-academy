@@ -15,6 +15,17 @@ class Team extends Model
      */
     protected $table = 'team';
 
+    public static function getById($team_id, $replace_nl_to_br = false)
+    {
+        $team_one = self::find($team_id);
+        if($team_one === null) return [];
+
+        if($replace_nl_to_br){
+            $team_one->info = CommonService::replaceNlToBr($team_one->info);
+        }
+        return $team_one;
+    }
+
     public static function getList($replace_nl_to_br = false, $limit = -1)
     {
         $list = self::orderBy('name')->limit($limit)->get();

@@ -10,7 +10,7 @@ class Lecture extends Model
     public static function getListByCourse($course_id = false)
     {
         if(!$course_id) return [];
-        $list = self::where('course_id', $course_id)->orderBy('name')->get();
+        $list = self::where('course_id', $course_id)->get();
         return $list;
     }
     

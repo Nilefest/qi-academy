@@ -31,7 +31,17 @@ class CourseController extends Controller
      */
     public function view($course_id)
     {
-        $this->data['title'] = 'View course by ID';
+        $course = Course::findOrFail($course_id);
+
+        $this->data['video_reviews'] = [];
+        $this->data['team_one'] = Team::getById($course->team_id, true);
+        $this->data['lecture_list'] = Lecture::getListByCourse($course_id);
+        $this->data['course_exp_list'] = CourseExp::getListByCourse($course_id);
+        $this->data['faq_list'] = Faq::getListByCourse($course_id);
+
+        $this->data['course'] = $course;
+
+        $this->data['title'] = $course->name;
         return view('course.view', $this->data);
     }
 

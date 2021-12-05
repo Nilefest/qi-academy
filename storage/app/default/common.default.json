@@ -1,0 +1,39 @@
+{
+    "contacts":{
+        "phone":"+48 796 816 953",
+        "whatsapp":"+48 796 816 953",
+        "facebook_messenger":"+48 796 816 953"
+    },
+    "social": {
+        "shop_tool": {
+            "name": "QI-SHOP.PL",
+            "header": "QI SHOP KOSMETYKI I AKCESORIA FRYZJERSKA.",
+            "info": "Naucz się terminowo wdrażać zmiany w biznesie, podejmować decyzje na podstawie danych, formułować globalne cele biznesowe i mapę drogową: jak do nich konkretnie dojść.",
+            "img": "/uploads/main/shop_block_img.png",
+            "instagram": "https://instagram.com/qi_shop_tools/",
+            "link": "https://qi-shop.pl"
+        },
+        "academy": {
+            "instagram": "https://instagram.com/qi_academy/",
+            "facebook": "https://www.facebook.com/qiacademywarsaw",
+            "youtube": ""
+        }
+    },
+    "media": {
+        "main_header_banner": "uploads/main/main_header_banner.mp4",
+        "main_page_banner": "uploads/main/main_page_banner.mp4"
+    },
+    "main_links":[
+        {
+            "name": "Polityka prywatności serwisu internetowego",
+            "url":"Polityka prywatności serwisu internetowego.pdf"
+        },
+        {
+            "name": "Regulamin serwisu internetowego",
+            "url":"Regulamin serwisu internetowego.pdf"
+        }
+    ],
+    "blog":{
+        "watsapp_link":""
+    }
+}

@@ -11,7 +11,7 @@ class CourseOfflineSeeder extends Seeder
      */
     public function run()
     {
-        $default_data = Storage::disk('local')->get('default_course_offline.json');
+        $default_data = Storage::disk('local')->get('default/course_offline.default.json');
         $default_data = json_decode($default_data, true);
 
         foreach($default_data as $key => $row){

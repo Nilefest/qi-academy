@@ -20,6 +20,7 @@ class CreateTeamTable extends Migration
             $table->text('info')->nullabel();
             $table->string('instagram')->default('');
             $table->string('facebook')->default('');
+            $table->boolean('for_main_page')->default(0);
             $table->timestamps();
         });
     }

@@ -15,8 +15,8 @@
         <i class="fas fa-times close icon_close"></i>
         <div class="lecture_data">
             <label class="field_block">
-                <span class="title">Вставьте ссылку на видео курса</span>
-                <input type="text" placeholder="https://..." class="text video">
+                <span class="title">Вставьте код для интеграции видео лекции</span>
+                <input type="text" placeholder='<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/...' class="text video">
             </label>
             <div class="field_block lecture_file_block">
                 <input id="bonus_file" type="file" class="file d-none">
@@ -103,7 +103,8 @@
                     <label for="is_free">Беслатно</label>
                 </div>
                 <div class="field_check">
-                    <input @if ($course->main_course) checked @endif id="is_main_course" class="is_free d-none course_main_course" type="checkbox">
+                    <input @if ($course->main_course) checked @endif id="is_main_course" class="is_free d-none course_main_course"
+                        type="checkbox">
                     <label for="is_main_course">Специальный кур на главной странице</label>
                 </div>
             </div>
@@ -147,9 +148,9 @@
                     </label>
                 </div>
                 <label class="video_link">
-                    <span class="title">Вставьте ссылку видео-превью </span>
+                    <span class="title">Вставьте код для интеграции видео-превью </span>
                     <textarea class="text course_video_preview"
-                        placeholder="https://...">{{ $course->video_preview }}</textarea>
+                        placeholder='<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/...'>{{ $course->video_preview }}</textarea>
                 </label>
             </div>
 
@@ -171,12 +172,12 @@
                 <div class="title">Чему научаться на курсе <button class="button exp_add">Добавить <i
                             class="fas fa-plus icon_add"></i></button></div>
                 <ul class="exp_list">
-                    @foreach($course_exp_list as $course_exp_item)
-                    <li class="exp_item">
-                        <i class="far fa-check-circle icon_tool"></i>
-                        <i class="fas fa-trash-alt icon_tool icon_remove"></i>
-                        <input type="text" class="text course_exp_info" value="{{ $course_exp_item['info'] }}">
-                    </li>
+                    @foreach ($course_exp_list as $course_exp_item)
+                        <li class="exp_item">
+                            <i class="far fa-check-circle icon_tool"></i>
+                            <i class="fas fa-trash-alt icon_tool icon_remove"></i>
+                            <input type="text" class="text course_exp_info" value="{{ $course_exp_item['info'] }}">
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -194,22 +195,27 @@
                 <div class="lectures_block">
                     <h3 class="title">Program</h3>
                     <ul class="lectures_list">
-                        @foreach($lecture_list as $key => $lecture_item)
-                        <li class="lecture_item" data-lectureInfoFull="{{ $lecture_item['info_full'] }}" data-lectureVideo="{{ $lecture_item['video'] }}" data-lectureFile="{{ $lecture_item['file'] }}"
-                            data-lectureHomework="{{ $lecture_item['homework'] }}">
-                            <div class="tools">
-                                <span class="title"><span class="num">{{ $key + 1 }}</span> lekcje</span>
-                                <i class="fas fa-trash-alt icon_tool icon_remove"></i>
-                            </div>
-                            <div class="fields">
-                                <input type="text" class="text lecture_name" placeholder="Название" value="{{ $lecture_item['name'] }}">
-                                <textarea class="text lecture_info_short" placeholder="Короткое описание">{{ $lecture_item['info_short'] }}</textarea>
-                                <button class="button edit_lecture">Редактировать курс <i
-                                        class="far fa-chevron-double-right icon_right"></i></button>
-                            </div>
-                            <i class="fas fa-chevron-down icon_down"></i>
-                            <input type="file" class="d-none lecture_file">
-                        </li>
+                        @foreach ($lecture_list as $key => $lecture_item)
+                            <li class="lecture_item" data-lectureInfoFull="{{ $lecture_item['info_full'] }}"
+                                data-lectureVideo="{{ $lecture_item['video'] }}"
+                                data-lectureFile="{{ $lecture_item['file'] }}"
+                                data-lectureHomework="{{ $lecture_item['homework'] }}">
+                                <div class="tools">
+                                    <span class="title"><span class="num">{{ $key + 1 }}</span>
+                                        lekcje</span>
+                                    <i class="fas fa-trash-alt icon_tool icon_remove"></i>
+                                </div>
+                                <div class="fields">
+                                    <input type="text" class="text lecture_name" placeholder="Название"
+                                        value="{{ $lecture_item['name'] }}">
+                                    <textarea class="text lecture_info_short"
+                                        placeholder="Короткое описание">{{ $lecture_item['info_short'] }}</textarea>
+                                    <button class="button edit_lecture">Редактировать курс <i
+                                            class="far fa-chevron-double-right icon_right"></i></button>
+                                </div>
+                                <i class="fas fa-chevron-down icon_down"></i>
+                                <input type="file" class="d-none lecture_file">
+                            </li>
                         @endforeach
                     </ul>
                     <button class="button add_lecture">Добавить <i class="fas fa-plus icon_add"></i></button>
@@ -244,13 +250,13 @@
             <div class="faq_block">
                 <div class="title">Часто задваемые вопросы</div>
                 <ul class="faq_list">
-                    @foreach($faq_list as $faq_item)
-                    <li class="faq_item">
-                        <i class="fas fa-trash-alt icon_remove"></i>
-                        <i class="fas fa-chevron-down icon_down"></i>
-                        <input type="text" class="text faq_title" value="{{ $faq_item['title'] }}">
-                        <textarea class="text faq_info">{{ $faq_item['info'] }}</textarea>
-                    </li>
+                    @foreach ($faq_list as $faq_item)
+                        <li class="faq_item">
+                            <i class="fas fa-trash-alt icon_remove"></i>
+                            <i class="fas fa-chevron-down icon_down"></i>
+                            <input type="text" class="text faq_title" value="{{ $faq_item['title'] }}">
+                            <textarea class="text faq_info">{{ $faq_item['info'] }}</textarea>
+                        </li>
                     @endforeach
                 </ul>
                 <button class="button faq_add">Добавить <i class="fas fa-plus icon_add"></i></button>

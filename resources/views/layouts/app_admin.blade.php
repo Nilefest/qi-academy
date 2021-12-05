@@ -80,40 +80,51 @@
             <div class="container">
                 <ul class="contact">
                     <li>
-                        <a href="#watsapp">
+                        <a target="_blank"
+                            href="https://api.whatsapp.com/send/?phone={{ preg_replace('/[+ ]/m', '', $contacts['whatsapp']) }}&text=Hi!">
                             <img src="/img/icons/icons8-whatsapp.png" alt="Icon Watsapp">
                             <span>Watsapp</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#facebook_messenger">
+                        <a target="_blank" href="https://msng.link/o/?{{ preg_replace('/[+ ]/m', '', $contacts['facebook_messenger']) }}=fm">
                             <img src="/img/icons/icons8-facebook-messenger.png" alt="Icon Facebook Messenger">
                             <span>Facebook Messenger</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#phone">
-                            <img src="/img/icons/icons8-phone.png" alt="Icon Phone">
-                            <span>+48 949 000 555</span>
+                        <a href="tel:{{ preg_replace('/[+ ]/m', '', $contacts['phone']) }}"">
+                            <img src=" /img/icons/icons8-phone.png" alt="Icon Phone">
+                            <span>{{ $contacts['phone'] }}</span>
                         </a>
                     </li>
                 </ul>
 
                 <div class="footer_info">
                     <ul class="links">
-                        <li><a href="#footer_link">Polityka przetwarzania danych osobowych</a></li>
-                        <li><a href="#footer_link">Oferta publiczna</a></li>
-                        <li><a href="#footer_link">Płatność kartą kredytową</a></li>
+                        @foreach ($main_links as $link)
+                            <li><a href="{{ $link['url'] }}">{{ $link['name'] }}</a></li>
+                        @endforeach
                     </ul>
 
                     <ul class="social">
-                        <li><a href="#facebook"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                        <li><a href="#instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        <li><a href="#youtube"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                        <li><a target="_blank" href="{{ $social['academy']['facebook'] }}"><i
+                                    class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                        <li><a target="_blank" href="{{ $social['academy']['instagram'] }}"><i
+                                    class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a target="_blank" href="{{ $social['academy']['youtube'] }}"><i
+                                    class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                        </li>
                     </ul>
 
                     <div class="footer_buttons">
-                        <button class="footer_button">Obszar osobisty</button>
+                        @guest
+                            <button class="footer_button open_sign_modal">Obszar osobisty</button>
+                        @endguest
+                        @auth
+                            <a class="footer_button" href="{{ url('/home') }}">Obszar osobisty</a>
+                        @endauth
                     </div>
                 </div>
             </div>

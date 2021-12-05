@@ -12,7 +12,7 @@ class TeamSeeder extends Seeder
      */
     public function run()
     {
-        $default_data = Storage::disk('local')->get('default_team.json');
+        $default_data = Storage::disk('local')->get('default/team.default.json');
         $default_data = json_decode($default_data, true);
 
         foreach($default_data as $key => $row){
@@ -22,6 +22,7 @@ class TeamSeeder extends Seeder
                 'info' => $row['info'] . '',
                 'instagram' => $row['instagram'] . '',
                 'facebook' => $row['facebook'] . '',
+                'for_main_page' => $row['for_main_page'] * 1,
                 'updated_at' => date('Y-m-d H:i:s'),
                 'created_at' => date('Y-m-d H:i:s'),
               ]);
