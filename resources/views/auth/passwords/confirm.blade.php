@@ -1,7 +1,7 @@
 @extends('layouts.app_auth')
 
 @section('header.css')
-    <link rel="stylesheet" href="{{ asset('css/adm_login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/adm_login.css') }}?v={{ env('APP_VERSION') }}">
 @endsection
 
 @section('content')

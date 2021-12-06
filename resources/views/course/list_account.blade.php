@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('header.css')
-    <link href="{{ asset('css/profile_courses.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/profile_courses.css') }}?v={{ env('APP_VERSION') }}" rel="stylesheet" type="text/css">
 @endsection
 
 @section('footer.js')
@@ -12,9 +12,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('lib/slick/slick.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('lib/slick/slick-theme.css') }}" />
     <script src="{{ asset('lib/slick/slick.min.js') }}"></script>
-    <script src="{{ asset('lib/slick-init.js') }}"></script>
+    <script src="{{ asset('lib/slick-init.js') }}?v={{ env('APP_VERSION') }}"></script>
 
-    <script src="{{ asset('js/profile.js') }}"></script>
+    <script src="{{ asset('js/profile.js') }}?v={{ env('APP_VERSION') }}"></script>
 @endsection
 
 @section('content')

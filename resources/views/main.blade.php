@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('header.css')
-    <link href="{{ asset('css/team.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/team.css') }}?v={{ env('APP_VERSION') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/main.css') }}?v={{ env('APP_VERSION') }}" rel="stylesheet" type="text/css">
 @endsection
 
 @section('footer.js')
@@ -13,11 +13,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('lib/slick/slick.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('lib/slick/slick-theme.css') }}" />
     <script src="{{ asset('lib/slick/slick.min.js') }}"></script>
-    <script src="{{ asset('lib/slick-init.js') }}"></script>
+    <script src="{{ asset('lib/slick-init.js') }}?v={{ env('APP_VERSION') }}"></script>
 
     <!-- JS. Custom -->
-    <script src="{{ asset('js/main.js') }}"></script>
-    <script src="{{ asset('js/team.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}?v={{ env('APP_VERSION') }}"></script>
+    <script src="{{ asset('js/team.js') }}?v={{ env('APP_VERSION') }}"></script>
 @endsection
 
 @section('modals')
@@ -171,7 +171,7 @@
                 <ul class="block_educations_ul">
                     @foreach ($main_educations as $education)
                         <li class="block_educations_li">
-                            <span class="title">{{ $education['title'] }}</span>
+                            <span class="title"><span>{{ $education['title'] }}</span></span>
                             <span class="info">{{ $education['info'] }}</span>
                         </li>
                     @endforeach

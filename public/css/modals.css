@@ -380,6 +380,27 @@
     border-radius: 10px;
 }
 
+/* Modal. View full image */
+.modal_view_fullimg {
+    background-color: #000;
+    background-color: transparent;
+    color: #fff;
+    min-height: 80%;
+    display: flex;
+
+    display: none;
+}
+
+.modal_view_fullimg.modal_show {
+    display: flex;
+}
+
+.modal_view_fullimg .modal_content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 /* Modal. ADM. Booking to offline course */
 .modal_book_offline {
     display: none;

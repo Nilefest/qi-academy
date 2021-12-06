@@ -29,9 +29,9 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-reboot.min.css') }}">
 
     <!-- CSS. Common -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/modals.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ env('APP_VERSION') }}">
+    <link rel="stylesheet" href="{{ asset('css/modals.css') }}?v={{ env('APP_VERSION') }}">
+    <link rel="stylesheet" href="{{ asset('css/animations.css') }}?v={{ env('APP_VERSION') }}">
 
     <!-- CSS. Custom -->
     @yield('header.css')
@@ -51,6 +51,7 @@
 
             @include('layouts.modals.sign')
             @include('layouts.modals.video_view')
+            @include('layouts.modals.full_image')
 
             @yield('modals')
         </div>
@@ -96,7 +97,8 @@
 
                 @auth
                     <div class="account"><a href="{{ route('home') }}" class="account_button"
-                            style="background-image: url('{{ Auth::user()->avatar ? Auth::user()->avatar : "https://robohash.org/qiacademy?set=set4" }}');"></a></div>
+                            style="background-image: url('{{ Auth::user()->avatar ? Auth::user()->avatar : 'https://robohash.org/qiacademy?set=set4' }}');"></a>
+                    </div>
                 @endauth
 
                 <button class="nav_button" title="Open / Hide navigation"></button>
@@ -116,7 +118,8 @@
                         </a>
                     </li>
                     <li>
-                        <a target="_blank" href="https://msng.link/o/?{{ preg_replace('/[+ ]/m', '', $contacts['facebook_messenger']) }}=fm">
+                        <a target="_blank"
+                            href="https://msng.link/o/?{{ preg_replace('/[+ ]/m', '', $contacts['facebook_messenger']) }}=fm">
                             <img src="/img/icons/icons8-facebook-messenger.png" alt="Icon Facebook Messenger">
                             <span>Facebook Messenger</span>
                         </a>
@@ -163,7 +166,7 @@
         @yield('templats')
 
         <!-- JS. Common -->
-        <script src="{{ asset('js/script.js') }}"></script>
+        <script src="{{ asset('js/script.js') }}?v={{ env('APP_VERSION') }}"></script>
 
         @yield('footer.js')
     </div>

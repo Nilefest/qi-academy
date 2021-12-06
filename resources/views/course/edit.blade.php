@@ -1,13 +1,13 @@
 @extends('layouts.app_admin')
 
 @section('header.css')
-    <link rel="stylesheet" href="{{ asset('css/adm_course.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/adm_faq.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/adm_course.css') }}?v={{ env('APP_VERSION') }}">
+    <link rel="stylesheet" href="{{ asset('css/adm_faq.css') }}?v={{ env('APP_VERSION') }}">
 @endsection
 
 @section('footer.js')
-    <script src="{{ asset('js/adm_course.js') }}"></script>
-    <script src="{{ asset('js/adm_faq.js') }}"></script>
+    <script src="{{ asset('js/adm_course.js') }}?v={{ env('APP_VERSION') }}"></script>
+    <script src="{{ asset('js/adm_faq.js') }}?v={{ env('APP_VERSION') }}"></script>
 @endsection
 
 @section('modals')
@@ -16,7 +16,9 @@
         <div class="lecture_data">
             <label class="field_block">
                 <span class="title">Вставьте код для интеграции видео лекции</span>
-                <input type="text" placeholder='<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/...' class="text video">
+                <input type="text"
+                    placeholder='<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/...'
+                    class="text video">
             </label>
             <div class="field_block lecture_file_block">
                 <input id="bonus_file" type="file" class="file d-none">

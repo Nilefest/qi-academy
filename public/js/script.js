@@ -18,7 +18,6 @@ let modalClose = () => {
 let modalOpen = (modal_selector) => {
 	document.querySelectorAll('.modal, ' + modal_selector).forEach(element => element.classList.add('modal_show'));
 	document.body.classList.add('stop_scrolling');
-
 }
 
 // Set Cookie by name and live-days 
@@ -239,4 +238,16 @@ let func_default_fail = () => view_modal_simple_info('Something went wrong...<br
 		document.querySelector('.modal_sign_account').classList.replace('signin_step', 'signup_step');
 		modalOpen('.modal_sign_account');
 	}));
+
+	// View image fullscreen
+	// #function
+	let openFullImage = (event) => {
+		let img_url = event.target.getAttribute('data-fullImg');
+		document.querySelector('.modal_view_fullimg .full_image').setAttribute('src', img_url);
+		modalOpen('.modal_view_fullimg');
+	}
+
+	// View image fullscreen
+	// #event
+	document.querySelectorAll('.view_full_img').forEach(element => element.addEventListener('click', openFullImage));
 })();

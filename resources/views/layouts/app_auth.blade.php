@@ -33,9 +33,9 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-reboot.min.css') }}">
 
     <!-- CSS. Common -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/modals.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ env('APP_VERSION') }}">
+    <link rel="stylesheet" href="{{ asset('css/modals.css') }}?v={{ env('APP_VERSION') }}">
+    <link rel="stylesheet" href="{{ asset('css/animations.css') }}?v={{ env('APP_VERSION') }}">
 
     <!-- CSS. Custom -->
     @yield('header.css')
@@ -66,7 +66,7 @@
         @yield('templats')
 
         <!-- JS. Common -->
-        <script src="{{ asset('js/script.js') }}"></script>
+        <script src="{{ asset('js/script.js') }}?v={{ env('APP_VERSION') }}"></script>
 
         @yield('footer.js')
     </div>

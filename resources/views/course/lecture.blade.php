@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('header.css')
-    <link href="{{ asset('css/lecture.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/team.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/lecture.css') }}?v={{ env('APP_VERSION') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/team.css') }}?v={{ env('APP_VERSION') }}" rel="stylesheet" type="text/css">
 @endsection
 
 @section('footer.js')
-    <script src="{{ asset('js/team.js') }}"></script>
-    <script src="{{ asset('js/lecture.js') }}"></script>
+    <script src="{{ asset('js/team.js') }}?v={{ env('APP_VERSION') }}"></script>
+    <script src="{{ asset('js/lecture.js') }}?v={{ env('APP_VERSION') }}"></script>
 @endsection
 
 @section('modals')

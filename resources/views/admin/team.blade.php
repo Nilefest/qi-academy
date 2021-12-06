@@ -1,12 +1,12 @@
 @extends('layouts.app_admin')
 
 @section('header.css')
-    <link rel="stylesheet" href="{{ asset('css/team.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/team.css') }}?v={{ env('APP_VERSION') }}">
 @endsection
 
 @section('footer.js')
-    <script src="{{ asset('js/team.js') }}"></script>
-    <script src="{{ asset('js/adm_team.js') }}"></script>
+    <script src="{{ asset('js/team.js') }}?v={{ env('APP_VERSION') }}"></script>
+    <script src="{{ asset('js/adm_team.js') }}?v={{ env('APP_VERSION') }}"></script>
 @endsection
 
 @section('modals')

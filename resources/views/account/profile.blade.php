@@ -1,7 +1,7 @@
 @extends('layouts.' . (Auth::user()->access === '-1' ? 'app_admin' : 'app'))
 
 @section('header.css')
-    <link href="{{ asset('css/profile.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/profile.css') }}?v={{ env('APP_VERSION') }}" rel="stylesheet" type="text/css">
     @if (Auth::user()->access === '-1')
         <style>
             body {
@@ -13,7 +13,7 @@
 @endsection
 
 @section('footer.js')
-    <script src="{{ asset('js/profile.js') }}"></script>
+    <script src="{{ asset('js/profile.js') }}?v={{ env('APP_VERSION') }}"></script>
 @endsection
 
 @section('content')

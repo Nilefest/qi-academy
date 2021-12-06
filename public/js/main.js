@@ -4,9 +4,9 @@
 	// #event #function
 	document.querySelector('.main_banner_media video').addEventListener('click', event => {
 		let video_element = event.target;
-		if (video_element.paused){
-			// video_element.muted = false;
-			// video_element.removeAttribute('muted');
+		if (video_element.paused) {
+			video_element.muted = false;
+			video_element.currentTime = 0;
 			return video_element.play();
 		}
 		video_element.pause();
@@ -19,7 +19,9 @@
 		let video_element = video_container.querySelector('video');
 
 		setTimeout(function () {
-			if (video_element.paused) {
+			if (video_element.paused || video_element.muted) {
+				video_element.muted = false;
+				video_element.currentTime = 0;
 				video_element.play();
 				video_container.classList.add('video_play');
 				video_container.addEventListener('click', event => full_video_play_toggle(event));
@@ -53,8 +55,6 @@
 	// #event #function  #server
 	document.querySelectorAll('.cursers_more').forEach(element => element.addEventListener('click', event => {
 		let cursers_list = document.querySelector('.cursers_list_ul');
-
-		/* -- GET DATA FROM SERVER -- */
 
 		// Append demo items
 		for (let n_type = 1; n_type <= 4; n_type++) {
@@ -114,5 +114,5 @@
 		modal_video.querySelector('iframe.youtube_video').setAttribute('src', video_src);
 		setTimeout(() => modalOpen('.modal_view_youtube'), 500);
 	}));
-	
+
 })();

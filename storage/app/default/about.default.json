@@ -1,0 +1,20 @@
+{
+    "header_img": [
+        "/img/about/team_2.png",
+        "/img/about/team_3.png",
+        "/img/about/team_1.png"
+    ],
+    "img_about": "/img/about/about.png",
+    "block_1": "Qi Academy, oficjalnie pojawiła się w marcu 2020 roku, ale praca nad jej stworzeniem  zaczęła się jeszcze w 2015 i od tego czasu intensywność pracy zespołu tylko wzrasta. Trzech młodych fryzjerów z ambicjami zaczęło dzieło swojego życia i czerpiąc inspiracji od  ludzi i natury, zaczęli przekazywać wiedze i doświadczenie innym. Qi (w wymowie japońskiej „ki”) - energia życiowa w filozofii chińskiej i japońskiej, która jest mocno związana z siłami życiowymi natury i człowieka. Qi przenika cały Wszechświat, stanowiąc podstawę, z której tworzy się materia. <br><br> Wierząc w materialne właściwości energii, skupiamy się na pozytywnym nastawieniem do  życia i pracy. Każde zdarzenie może być interpretowane na wiele sposobów, ale  najważniejsze jest to, jak na nie reagujesz.",
+    "block_2": [
+        "Trzymamy się przekonania, że możesz poczuć szczęście dopiero wtedy, gdy ludzie wokół ciebie również je poczują. Służenie innym może ci pomóc w osiągnięciu własnego szczęścia. Zbieramy wokół siebie utalentowanych i ambitnych ludzi, którzy tworzą niesamowity Qi team, aby razem osiągnąć więcej. W każdej współpracy stawiamy na długotrwałą relację, a pracując z najlepszymi sam stajesz się najlepszym. ",
+        "Przygotowując się do każdego szkolenia stawiamy sobie najważniejszy cel – udoskonalenie każdej poszczególnej osoby, zarówno jak i nas samych. Od samego początku zrozumieliśmy, że fryzjerstwo – to jest praca, w której nigdy nie możesz powiedzieć sobie - teraz to wiem wszystko. Zauważyliśmy jedną formule jak w biznesie tak i w życiu – kiedy robisz dobro dla innych – robisz dobro dla siebie – tak żyjemy, pracujemy i propagujemy daną teorie. "
+    ],
+    "block_3": "Na ten moment regularnie prowadzimy nasze szkolenia po całej Polsce i Europie. Przeprowadziliśmy setki szkoleń, z czego jesteśmy dumni, że to doświadczenie, które przekazujemy, jest aktualne i użyteczne w codziennej pracy fryzjera.<br><br>Szkolenia są logicznym skutkiem naszej codziennej pracy behind-the-chair i ciągłym profesjonalnym i osobistym rozwojem.",
+    "certificates" : [
+        "/uploads/certificates/cert_0.png",
+        "/uploads/certificates/cert_1.png",
+        "/uploads/certificates/cert_2.png",
+        "/uploads/certificates/cert_3.png"
+    ]
+}

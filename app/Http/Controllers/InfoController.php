@@ -27,7 +27,9 @@ class InfoController extends Controller
      */
     public function about()
     {
-        $this->data['title'] = 'ONas';
+        $this->data['about_data'] = CommonService::getDataFromFile('about.default.json');
+
+        $this->data['title'] = 'O Nas';
         return view('info.about', $this->data);
     }
 
