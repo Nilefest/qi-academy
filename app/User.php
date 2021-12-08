@@ -8,6 +8,9 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
 use App\Library\Services\CommonService;
 
+use App\UserCourse;
+use App\UserLecture;
+
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
@@ -48,5 +51,19 @@ class User extends Authenticatable implements MustVerifyEmail
         }
         $user->save();
         return $user;
+    }
+
+    public static function getListClients($order_by = false){
+        if($order_by) $list = self::where('access', 1)->orderBy($order_by)->get();
+        else $list = self::where('access', 1)->get();
+        // $list = self::all();
+
+        $list->toArray();
+
+        foreach($list as $key => $item){
+            $list[$key]['total_courses'] = UserCourse::where('user_id', $item->id)->count();
+        }
+
+        return $list;
     }
 }

@@ -16,7 +16,6 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->data = array_merge($this->data, CommonService::getDataFromFile());
     }
 
     /**

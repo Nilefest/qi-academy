@@ -11,16 +11,14 @@ class ReviewSeeder extends Seeder
      */
     public function run()
     {
-        $default_data = Storage::disk('local')->get('default_review.json');
+        $default_data = Storage::disk('local')->get('default/video_review.default.json');
         $default_data = json_decode($default_data, true);
 
         foreach($default_data as $key => $row){
             DB::table('reviews')->insert([
-                'user_id' => $row['user_id'],
-                'date_of' => $row['date_of'],
-                'text' => $row['text'],
-                'video' => $row['video'],
-                'public' => $row['public'],
+                'text' => '',
+                'video' => $row['link'] . '',
+                'youtube_code' => $row['code'] . '',
                 'updated_at' => date('Y-m-d H:i:s'),
                 'created_at' => date('Y-m-d H:i:s'),
               ]);

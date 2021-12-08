@@ -81,21 +81,21 @@
                 <ul class="contact">
                     <li>
                         <a target="_blank"
-                            href="https://api.whatsapp.com/send/?phone={{ preg_replace('/[+ ]/m', '', $contacts['whatsapp']) }}&text=Hi!">
+                            href="https://api.whatsapp.com/send/?phone={{ preg_replace('/[+ ]/m', '', $contacts['whatsapp']['link']) }}&text=Hi!">
                             <img src="/img/icons/icons8-whatsapp.png" alt="Icon Watsapp">
                             <span>Watsapp</span>
                         </a>
                     </li>
                     <li>
-                        <a target="_blank" href="https://msng.link/o/?{{ preg_replace('/[+ ]/m', '', $contacts['facebook_messenger']) }}=fm">
+                        <a target="_blank" href="https://msng.link/o/?{{ preg_replace('/[+ ]/m', '', $contacts['facebook_messenger']['link']) }}=fm">
                             <img src="/img/icons/icons8-facebook-messenger.png" alt="Icon Facebook Messenger">
                             <span>Facebook Messenger</span>
                         </a>
                     </li>
                     <li>
-                        <a href="tel:{{ preg_replace('/[+ ]/m', '', $contacts['phone']) }}"">
+                        <a href="tel:{{ preg_replace('/[+ ]/m', '', $contacts['phone']['link']) }}"">
                             <img src=" /img/icons/icons8-phone.png" alt="Icon Phone">
-                            <span>{{ $contacts['phone'] }}</span>
+                            <span>{{ $contacts['phone']['link'] }}</span>
                         </a>
                     </li>
                 </ul>
@@ -103,17 +103,17 @@
                 <div class="footer_info">
                     <ul class="links">
                         @foreach ($main_links as $link)
-                            <li><a href="{{ $link['url'] }}">{{ $link['name'] }}</a></li>
+                            <li><a target="_blank" href="{{ $link['url'] }}">{{ $link['name'] }}</a></li>
                         @endforeach
                     </ul>
 
                     <ul class="social">
-                        <li><a target="_blank" href="{{ $social['academy']['facebook'] }}"><i
+                        <li><a target="_blank" href="{{ $social['facebook']['link'] }}"><i
                                     class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                        <li><a target="_blank" href="{{ $social['academy']['instagram'] }}"><i
+                        <li><a target="_blank" href="{{ $social['instagram']['link'] }}"><i
                                     class="fa fa-instagram" aria-hidden="true"></i></a>
                         </li>
-                        <li><a target="_blank" href="{{ $social['academy']['youtube'] }}"><i
+                        <li><a target="_blank" href="{{ $social['youtube']['link'] }}"><i
                                     class="fa fa-youtube-play" aria-hidden="true"></i></a>
                         </li>
                     </ul>

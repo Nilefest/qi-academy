@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Library\Services\CommonService;
 
-class Lecture extends Model
+class CourseLecture extends Model
 {
     public static function getListByCourse($course_id = false)
     {

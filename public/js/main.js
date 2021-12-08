@@ -20,8 +20,10 @@
 
 		setTimeout(function () {
 			if (video_element.paused || video_element.muted) {
-				video_element.muted = false;
-				video_element.currentTime = 0;
+				if (video_element.muted) {
+					video_element.muted = false;
+					video_element.currentTime = 0;
+				}
 				video_element.play();
 				video_container.classList.add('video_play');
 				video_container.addEventListener('click', event => full_video_play_toggle(event));

@@ -114,11 +114,11 @@
             </div>
         </div>
 
-        @if ($social['academy']['youtube'])
+        @if ($social['youtube']['link'])
             <div class="slider_blog_youtube">
                 <ul>
                     @for ($i = 0; $i < 5; $i++)
-                        <li><a target="_blank" href="{{ $social['academy']['youtube'] }}">BLOG YOUTUBE</a></li>
+                        <li><a target="_blank" href="{{ $social['youtube']['link'] }}">BLOG YOUTUBE</a></li>
                     @endfor
                     <div class="clear"></div>
                 </ul>
@@ -297,17 +297,17 @@
             </div>
         @endif
 
-        @if ($social['shop_tool']['header'])
+        @if ($shop_tool['header'])
             <div class="block_shop">
                 <div class="block_shop_img">
-                    <img src="{{ $social['shop_tool']['img'] }}" alt=" ">
+                    <img src="{{ $shop_tool['img'] }}" alt=" ">
                 </div>
                 <div class="block_shop_info">
-                    <h3>{{ $social['shop_tool']['header'] }}</h3>
-                    <p>{{ $social['shop_tool']['info'] }}</p>
-                    @if ($social['shop_tool']['link'])
-                        <a target="_blank" href="{{ $social['shop_tool']['link'] }}"
-                            class="block_shop_button">{{ $social['shop_tool']['name'] }}</a>
+                    <h3>{{ $shop_tool['header'] }}</h3>
+                    <p>{{ $shop_tool['info'] }}</p>
+                    @if ($shop_tool['link'])
+                        <a target="_blank" href="{{ $shop_tool['link'] }}"
+                            class="block_shop_button">{{ $shop_tool['name'] }}</a>
                     @endif
                 </div>
             </div>

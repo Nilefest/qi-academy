@@ -45,6 +45,12 @@ Route::get('/account/lecture/{lecture_id}', 'CourseController@lecture')->middlew
 Route::get('/admin', 'AdminController@dashboard')->middleware('verified')->name('admin.dashboard');
 Route::get('/admin/team', 'AdminController@team')->middleware('verified')->name('admin.team');
 Route::post('/admin/team', 'AdminController@team')->middleware('verified')->name('admin.team.post');
+Route::get('/admin/clients', 'AdminController@clients')->middleware('verified')->name('admin.clients');
+Route::post('/admin/clients', 'AdminController@clients')->middleware('verified')->name('admin.clients.post');
+Route::get('/admin/reviews', 'AdminController@reviews')->middleware('verified')->name('admin.reviews');
+Route::post('/admin/reviews', 'AdminController@reviews')->middleware('verified')->name('admin.reviews.post');
+Route::get('/admin/contacts', 'AdminController@contacts')->middleware('verified')->name('admin.contacts');
+Route::post('/admin/contacts', 'AdminController@contacts')->middleware('verified')->name('admin.contacts.post');
 Route::get('/admin/courses_offline', 'CourseOfflineController@list_admin')->middleware('verified')->name('admin.courses_offline');
 Route::post('/admin/courses_offline', 'CourseOfflineController@list_admin')->middleware('verified')->name('admin.courses_offline.post');
 Route::get('/admin/courses', 'CourseController@list_admin')->middleware('verified')->name('admin.courses');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Library\Services\CommonService;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Contact;
 
 class AccountController extends Controller
 {
@@ -18,6 +19,8 @@ class AccountController extends Controller
     {
         //$this->middleware('auth');
         $this->data = array_merge($this->data, CommonService::getDataFromFile());
+        $this->data['contacts'] = Contact::getByType('contacts');
+        $this->data['social'] = Contact::getByType('social');
     }
     
     /**

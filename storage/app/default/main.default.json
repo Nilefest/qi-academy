@@ -1,0 +1,17 @@
+{
+    "shop_tool": {
+        "name": "QI-SHOP.PL",
+        "header": "QI SHOP KOSMETYKI I AKCESORIA FRYZJERSKA.",
+        "info": "Naucz się terminowo wdrażać zmiany w biznesie, podejmować decyzje na podstawie danych, formułować globalne cele biznesowe i mapę drogową: jak do nich konkretnie dojść.",
+        "img": "/uploads/main/shop_block_img.png",
+        "instagram": "https://instagram.com/qi_shop_tools/",
+        "link": "https://qi-shop.pl"
+    },
+    "media": {
+        "main_header_banner": "uploads/main/main_header_banner.mp4",
+        "main_page_banner": "uploads/main/main_page_banner.mp4"
+    },
+    "blog": {
+        "watsapp_link": ""
+    }
+}

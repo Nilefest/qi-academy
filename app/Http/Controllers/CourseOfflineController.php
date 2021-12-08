@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Library\Services\CommonService;
 use App\CourseOffline;
+use App\Contact;
 
 class CourseOfflineController extends Controller
 {
@@ -17,6 +18,8 @@ class CourseOfflineController extends Controller
     public function __construct()
     {
         $this->data = array_merge($this->data, CommonService::getDataFromFile());
+        $this->data['contacts'] = Contact::getByType('contacts');
+        $this->data['social'] = Contact::getByType('social');
     }
 
     /**

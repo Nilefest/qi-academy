@@ -8,8 +8,9 @@ use App\Library\Services\CommonService;
 use App\Team;
 use App\Course;
 use App\CourseExp;
-use App\Lecture;
+use App\CourseLecture;
 use App\Faq;
+use App\Contact;
 
 class CourseController extends Controller
 {
@@ -21,6 +22,8 @@ class CourseController extends Controller
     public function __construct()
     {
         $this->data = array_merge($this->data, CommonService::getDataFromFile());
+        $this->data['contacts'] = Contact::getByType('contacts');
+        $this->data['social'] = Contact::getByType('social');
     }
     
     /**
