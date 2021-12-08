@@ -10,13 +10,38 @@
         <h1 class="title">Редактор офлайн курса</h1>
         <div class="clients_form" data-formAction="{{ route('admin.clients.post') }}">
             <table>
+                <style>
+                    .sort_button:hover {
+                        cursor: pointer;
+                    }
+
+                    .icon_sort {
+                        opacity: 0.5;
+                        font-size: 1.3em;
+                        padding: 0px 15px;
+                    }
+                    .sort_button:hover .icon_sort {
+                        opacity: 0.8;
+                    }
+
+                    .icon_sort.usort {
+                        transform: scale(1, -1);
+                    }
+
+                    .icon_sort.active {
+                        opacity: 1;
+                    }
+
+                </style>
                 <thead>
                     <tr>
                         <th></th>
-                        <th class="sort_by_name">Имя</th>
+                        <th class="sort_by_name sort_button">Имя <i class="fas fa-sort-amount-down icon_sort active"></i></th>
                         <th>Номер</th>
-                        <th>email <a class="download" href="#download">скачать <i class="fas fa-download icon"></i></a></th>
-                        <th class="sort_by_pay">Купленных курсов</th>
+                        <th>email <a class="download" href="#download">скачать <i class="fas fa-download icon"></i></a>
+                        </th>
+                        <th class="sort_by_pay sort_button">Купленных курсов <i class="fas fa-sort-amount-down icon_sort"></i>
+                        </th>
                         <th></th>
                     </tr>
                 </thead>
@@ -28,7 +53,8 @@
                             <td>{{ $client['phone'] }}</td>
                             <td>{{ $client['email'] }}</td>
                             <td>{{ $client['total_courses'] }}</td>
-                            <td><a href="{{ route('account.profile', $client['id']) }}" class="button">Внести изменения</a></td>
+                            <td><a href="{{ route('account.profile', $client['id']) }}" class="button">Внести
+                                    изменения</a></td>
                         </tr>
                     @endforeach
                 </tbody>

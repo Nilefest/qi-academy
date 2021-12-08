@@ -66,7 +66,7 @@
                 <div class="main_nav_info">
                     <ul class="main_nav_contact">
                         <li><a
-                                href="tel:{{ preg_replace('/[+ ]/m', '', $contacts['phone']) }}">{{ $contacts['phone'] }}</a>
+                                href="tel:{{ preg_replace('/[+ ]/m', '', $contacts['phone']['link']) }}">{{ $contacts['phone']['link'] }}</a>
                         </li>
                     </ul>
                     @guest

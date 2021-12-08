@@ -54,8 +54,8 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public static function getListClients($order_by = false){
-        if($order_by) $list = self::where('access', 1)->orderBy($order_by)->get();
-        else $list = self::where('access', 1)->get();
+        if($order_by) $list = self::where('access', 0)->orderBy($order_by)->get();
+        else $list = self::where('access', 0)->get();
         // $list = self::all();
 
         $list->toArray();
