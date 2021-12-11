@@ -26,7 +26,7 @@
             <label class="avatar">
                 <span class="title">My profile: </span>
                 <div class="avatar_photo"
-                    style="background-image: url('{{ $user->avatar ? $user->avatar : 'https://robohash.org/qiacademy?set=set4' }}');">
+                    style="background-image: url('{{ $user->avatar ? $user->avatar : asset('uploads/profile/default/9.jpeg') }}');">
                 </div>
                 <input type="file" class="profile_avatar d-none" accept="image/png, image/gif, image/jpeg">
             </label>

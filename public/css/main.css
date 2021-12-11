@@ -973,14 +973,14 @@
 }
 
 .subscribe_field .subscribe_email {
-    padding: 18px 15px 24px 38px;
+    padding: 19px 15px 18px 38px;
     border-radius: 45px 0px 0px 45px;
     border-right: none;
     color: #fff;
 }
 
 .subscribe_field .subscribe_button {
-    padding: 18px 38px 24px 15px;
+    padding: 19px 38px 18px 15px;
     margin-left: -10px;
     border-radius: 0px 45px 45px 0px;
     border-left: none;

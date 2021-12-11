@@ -155,6 +155,7 @@
             course_data['course_faq[' + index + '][info]'] = element.querySelector('.faq_info').value;
         });
         document.querySelectorAll('.lecture_item').forEach((element, index) => {
+            course_data['course_lecture[' + index + '][id]'] = element.getAttribute('data-lectureId');
             course_data['course_lecture[' + index + '][name]'] = element.querySelector('.lecture_name').value;
             course_data['course_lecture[' + index + '][info_short]'] = element.querySelector('.lecture_info_short').value;
             course_data['course_lecture[' + index + '][info_full]'] = element.getAttribute('data-lectureInfoFull');

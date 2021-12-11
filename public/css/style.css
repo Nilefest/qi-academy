@@ -37,6 +37,13 @@ a:hover {
     color: #fff;
 }
 
+button:active, button:focus {
+    outline: none;
+}
+
+button::-moz-focus-inner {
+    border: 0;
+}
 
 .invalid {
     border-color: #800;
@@ -152,7 +159,7 @@ header .logo .short_text {
     height: 40px;
     background-color: #fff;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     border-radius: 50%;
     position: relative;

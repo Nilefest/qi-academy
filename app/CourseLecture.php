@@ -32,10 +32,16 @@ class CourseLecture extends Model
     
     public static function refreshForCourse($course_id, $lecture_list = [])
     {
-        self::where('course_id', $course_id)->delete();
+        $old = self::where('course_id', $course_id)->get()->keyBy('id');
+
         foreach($lecture_list as $key => $lecture_item){
-            $new_item = new self;
-            $new_item->course_id = $course_id;
+            if(isset($old[$lecture_item['id']])){
+                $new_item = $old[$lecture_item['id']];
+                unset($old[$lecture_item['id']]);
+            } else {
+                $new_item = new self;
+                $new_item->course_id = $course_id;
+            }
             $new_item->name = $lecture_item['name'] . '';
             $new_item->info_short = $lecture_item['info_short'] . '';
             $new_item->info_full = $lecture_item['info_full'] . '';
@@ -47,6 +53,8 @@ class CourseLecture extends Model
             $new_item->save();
             $lecture_list[$key] = $new_item;
         }
+        foreach($old as $key => $old_one) $old_one->delete();
+        
         return $lecture_list;
     }
 }

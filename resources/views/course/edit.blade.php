@@ -11,7 +11,7 @@
 @endsection
 
 @section('modals')
-    <div class="modal_win modal_lecture" data-lectureIndexNodes="">
+    <div class="modal_win modal_lecture" data-lectureId="" data-lectureIndexNodes="">
         <i class="fas fa-times close icon_close"></i>
         <div class="lecture_data">
             <label class="field_block">
@@ -63,7 +63,7 @@
     </template>
 
     <template id="tpl_lecture_item">
-        <li class="lecture_item" data-lectureInfoFull="" data-lectureVideo="" data-lectureFile="" data-lectureHomework="">
+        <li class="lecture_item" data-lectureId="" data-lectureInfoFull="" data-lectureVideo="" data-lectureFile="" data-lectureHomework="">
             <div class="tools">
                 <span class="title"><span class="num">1</span> lekcje</span>
                 <i class="fas fa-trash-alt icon_tool icon_remove"></i>
@@ -192,7 +192,7 @@
                     <h3 class="title">Program</h3>
                     <ul class="lectures_list">
                         @foreach ($lecture_list as $key => $lecture_item)
-                            <li class="lecture_item" data-lectureInfoFull="{{ $lecture_item['info_full'] }}"
+                            <li class="lecture_item" data-lectureId="{{ $lecture_item['id'] }}" data-lectureInfoFull="{{ $lecture_item['info_full'] }}"
                                 data-lectureVideo="{{ $lecture_item['video'] }}"
                                 data-lectureFile="{{ $lecture_item['file'] }}"
                                 data-lectureHomework="{{ $lecture_item['homework'] }}">
