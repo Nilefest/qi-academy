@@ -221,18 +221,20 @@ let func_default_fail = () => view_modal_simple_info('Something went wrong...<br
 	// Check Cookie and Show/Hide message
 	// #code
 	if (getCookie("cookie_mess") != "no") {
+		console.log('441');
 		let cookiewin = document.querySelector('.cookie_message');
-		if (cookiewin === null) return false;
-		cookiewin.classList.add('mess_show');
+		if (cookiewin !== null) {
+			cookiewin.classList.add('mess_show');
 
-		// Close message about Cookie
-		// #event #function
-		document.querySelector(".cookie_success").addEventListener("click", () => {
-			cookiewin.classList.remove('mess_show');
-			setCookie('cookie_mess', 30);
-		});
+			// Close message about Cookie
+			// #event #function
+			document.querySelector(".cookie_success").addEventListener("click", () => {
+				cookiewin.classList.remove('mess_show');
+				setCookie('cookie_mess', 30);
+			});
+		}
 	}
-
+	
 	// Copy text
 	// #event
 	document.querySelectorAll('.button_copy').forEach(element => element.closest('.button_copy').addEventListener('click', () => copyText(element.getAttribute('data-textCopy'))));
@@ -243,7 +245,7 @@ let func_default_fail = () => view_modal_simple_info('Something went wrong...<br
 		document.querySelector('.modal_sign_account').classList.toggle('signin_step');
 		document.querySelector('.modal_sign_account').classList.toggle('signup_step');
 	}));
-
+	
 	// Open modal SignIn-SignUp
 	// #event #function
 	document.querySelectorAll('.open_sign_modal').forEach(element => element.addEventListener('click', () => {
@@ -258,7 +260,7 @@ let func_default_fail = () => view_modal_simple_info('Something went wrong...<br
 		document.querySelector('.modal_view_fullimg .full_image').setAttribute('src', img_url);
 		modalOpen('.modal_view_fullimg');
 	}
-
+	
 	// View image fullscreen
 	// #event
 	document.querySelectorAll('.view_full_img').forEach(element => element.addEventListener('click', openFullImage));

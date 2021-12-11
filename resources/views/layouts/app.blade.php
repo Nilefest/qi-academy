@@ -40,7 +40,7 @@
 
 <body>
     <div id="app">
-        @extends('layouts.modals.cookie')
+        @include('layouts.modals.cookie')
 
         <div class="modal">
             <!-- Modal. For view simple info -->
