@@ -21,7 +21,7 @@ class CreateCoursesTable extends Migration
             $table->boolean('only_paid')->default(0);
             $table->string('name')->default('');
             $table->string('banner_img')->default('');
-            $table->integer('total_lectures')->default(1);
+            $table->integer('total_days')->default(1);
             $table->integer('total_hours')->default(1);
             $table->double('cost')->default(0);
             $table->text('video_preview')->nullable();

@@ -91,17 +91,17 @@
             <div class="block_access">
                 <div class="title">Доступ к курсу</div>
                 <div class="field_check">
-                    <input @if ($course->only_paid) checked @endif id="is_paid" class="is_paid d-none course_only_paid" type="checkbox">
+                    <input @if ($course->only_paid) checked @endif id="is_paid" class="is_paid d-none course_only_paid" type="radio" name="course_paid_type">
                     <label for="is_paid">Платно</label>
                 </div>
                 <div class="field_check">
                     <input @if ($course->free_for_client) checked @endif id="access_premium" class="access_premium course_free_for_client d-none"
-                        type="checkbox">
+                        type="radio" name="course_paid_type">
                     <label for="access_premium">Бесплатно. Доступно для клентов, которые уже купили какой-то курс.
                     </label>
                 </div>
                 <div class="field_check">
-                    <input @if ($course->free) checked @endif id="is_free" class="is_free d-none course_free" type="checkbox">
+                    <input @if ($course->free) checked @endif id="is_free" class="is_free d-none course_free" type="radio" name="course_paid_type">
                     <label for="is_free">Беслатно</label>
                 </div>
                 <div class="field_check">
@@ -131,11 +131,6 @@
                             placeholder="Course`s name">{{ $course->name }}</textarea>
                     </label>
                     <label>
-                        <input min="1" type="number" class="text course_total_lectures"
-                            value="{{ $course->total_lectures }}">
-                        <span class="title">lekcje</span>
-                    </label>
-                    <label>
                         <input min="1" type="number" class="text course_total_hours" value="{{ $course->total_hours }}">
                         <span class="title">godziny</span>
                     </label>
@@ -144,9 +139,8 @@
                         <span class="title">Zł</span>
                     </label>
                     <label>
-                        <input min="1" type="number" class="text course_total_lectures"
-                            value="{{ $course->total_lectures }}">
-                        <span class="title">lekcje</span>
+                        <span class="title">Czas do końca dostępu do kursu:</span>
+                        <input min="1" type="number" class="text course_total_days" value="{{ $course->total_days }}">
                     </label>
                 </div>
                 <label class="video_link">

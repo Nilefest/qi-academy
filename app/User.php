@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
 use App\Library\Services\CommonService;
-
+use Auth;
 use App\UserCourse;
 use App\UserLecture;
 
@@ -42,6 +42,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    public static $list_roles = [
+        'root' => -1,
+        'admin' => 0,
+        'client' => 1,
+    ];
+
     public static function saveUser($user, Request $request){
         if($request->input('name') !== null) $user->name = $request->input('name');
         if($request->input('phone') !== null) $user->phone = $request->input('phone');
@@ -65,5 +71,20 @@ class User extends Authenticatable implements MustVerifyEmail
         }
 
         return $list;
+    }
+    
+    public static function checkRole($role_type = 'client'){
+        if(Auth::check() && Auth::user()->access === self::$list_roles[$role_type]) return true;
+        return false;
+    }
+
+    public function courses()
+    {
+        return $this->belongsToMany('App\Course', 'user_courses');
+    }
+
+    public function lectures()
+    {
+        return $this->belongsToMany('App\CourseLecture', 'user_lectures')->withPivot('date_of_completed');
     }
 }

@@ -18,6 +18,7 @@
     </div>
 
     @include('layouts.modals.send_review')
+    @include('layouts.modals.team_view')
 @endsection
 
 @section('content')
@@ -30,64 +31,36 @@
                 <label for="list_menu_check" class="button list_menu_button"><span>lista wideo</span> <i
                         class="fas fa-ellipsis-v icon_menu"></i></label>
                 <ul class="list_menu_ul">
-                    <li><a class="finished" href="#lecture">1. <span>Użycie narzędzi narzędzi narzędzi
-                                narzędzi</span></a></li>
-                    <li><a class="finished" href="#lecture">2. <span>Pierwsza duża praktyka</span></a></li>
-                    <li><a class="active" href="#lecture">3. <span>Wnioski. druga duża praktyka</span></a></li>
-                    <li><a href="#lecture">4. <span>Użycie narzędzi</span></a></li>
-                    <li><a href="#lecture">5. <span>Pierwsza duża praktyka</span></a></li>
-                    <li><a href="#lecture">6. <span>Wnioski. druga duża praktyka</span></a></li>
+                    @foreach ($lectures as $key => $lecture)
+                        <li><a class="@if ($lecture['date_of_completed'] !== '') finished @endif @if ($lecture['id'] === $lecture_this->id) active @endif"
+                                href="{{ route('courses.lecture', $lecture['course_id'], $lecture['id'], $user_id) }}">{{ $key + 1 }}.
+                                <span>{{ $lecture['name'] }}</span></a></li>
+                    @endforeach
                 </ul>
             </div>
 
             <h3><span>Lekcje</span> <i class="far fa-chevron-down icon_open"></i></h3>
 
             <ul class="lesson_list_ul">
-                <li class="lesson_list_li">
-                    <a href="#lessonopen" class="lesson_name">
-                        <span class="num">1.</span>
-                        <span class="title">Użycie narzędzi</span>
-                        <i class="far fa-check-circle icon"></i>
-                    </a>
-                </li>
-                <li class="lesson_list_li">
-                    <a class="lesson_name" href="#lessonopen">
-                        <span class="num">2.</span>
-                        <span class="title">Pierwsza duża praktyka</span>
-                        <i class="far fa-check-circle icon"></i>
-                    </a>
-                </li>
-                <li class="lesson_list_li active">
-                    <span class="lesson_name" href="#lessonopen">
-                        <span class="num">3.</span>
-                        <span class="title">Wnioski. druga duża praktyka</span>
-                        <i class="far fa-circle icon"></i>
-                    </span>
-                </li>
-                <li class="lesson_list_li">
-                    <a class="lesson_name" href="#lessonopen">
-                        <span class="num">4.</span>
-                        <span class="title">Użycie narzędzi</span>
-                        <i class="icon"></i>
-                    </a>
-                </li>
-                <li class="lesson_list_li">
-                    <a class="lesson_name" href="#lessonopen">
-                        <span class="num">5.</span>
-                        <span class="title">Pierwsza duża praktyka</span>
-                    </a>
-                </li>
-                <li class="lesson_list_li">
-                    <a class="lesson_name" href="#lessonopen">
-                        <span class="num">6.</span>
-                        <span class="title">Wnioski. druga duża praktyka</span>
-                    </a>
-                </li>
+                @foreach ($lectures as $key => $lecture)
+                    <li class="lesson_list_li @if ($lecture['id'] === $lecture_this->id) active @endif">
+                        <a href="{{ route('courses.lecture', [$lecture['course_id'], $lecture['id'], $user_id]) }}"
+                            class="lesson_name">
+                            <span class="num">{{ $key + 1 }}.</span>
+                            <span class="title">{{ $lecture['name'] }}</span>
+                            @if ($lecture['date_of_completed'] !== '')
+                                <i class="far fa-check-circle icon"></i>
+                            @else
+                                <i class="far fa-circle icon"></i>
+                            @endif
+                        </a>
+                    </li>
+                @endforeach
             </ul>
 
             <div class="finished_lesson_block unfinished">
                 <h3 class="title">Obejrzałem wideo <span class="range"><span
-                            class="current">3</span> / 4</span></h3>
+                            class="current">{{ $lectures_completed->count() }}</span> / {{ count($lectures) }}</span></h3>
                 <p class="nofinished_info">Ukończ wszystkie wykłady i otrzymaj certyfikat</p>
                 <button class="button finish_lesson"><span>Słuchałem</span> <i
                         class="far fa-check-circle icon"></i></button>
@@ -103,49 +76,41 @@
                 </video>
             </div>
             <div class="lesson_tools">
-                <div class="instructor team_open_modal view">
-                    <div class="avatar" style="background-image: url(/temp/img/team_1.png);"></div>
-                    <span class="name">Instruktor <br>Herman <br>Ahafontsev</span>
+                <div class="instructor team_one team_open_modal view" data-teamInfo="{{ $team_one->info }}"
+                    data-teamImg="{{ asset($team_one->img) }}">
+                    <div class="avatar" style="background-image: url('{{ asset($team_one->img) }}');"></div>
+                    <span class="name">{{ $team_one->name }}</span>
                 </div>
                 <div class="course_buttons">
-                    <button class="course_button download"><span>Pobierz materiały do nauki</span> <i
-                            class="fal fa-download icon"></i></button>
-                    <!--<a href="#course_download" download class="course_button download"><span>Pobierz materiały do nauki</span> <i class="fal fa-download icon"></i></a>-->
+                    {{-- <button class="course_button download"><span>Pobierz materiały do nauki</span> <i
+                            class="fal fa-download icon"></i></button> --}}
+                    @if ($lecture_this->file)
+                        <a href="{{ asset($lecture_this->file) }}" download class="course_button download"><span>Pobierz
+                                materiały do nauki</span> <i class="fal fa-download icon"></i></a>
+                    @endif
                 </div>
             </div>
             <div class="lesson_info">
                 <div class="lesson_description">
-                    <p>Brazilian Technique - metoda rozjaśnienia przez tapirowanie wlosów. Będziemy pokazywać jak
-                        pracować z tapirem w koloryzacjach włosów. Pokażemy nie tylko jak prawidłowo tapirować włosy, a
-                        tak że jak rozczesywać tapir, żeby dla klienta to nie było "przykrym doświadczeniem". Brazilian
-                        Technique - metoda rozjaśnienia przez tapirowanie wlosów. Będziemy pokazywać jak pracować z
-                        tapirem w koloryzacjach włosów. Pokażemy nie tylko jak prawidłowo tapirować włosy, a tak że jak
-                        rozczesywać tapir, żeby dla klienta to nie było "przykrym doświadczeniem". </p>
-                    <ul>
-                        <li>Pokażemy nie tylko jak prawidłowo tapirować</li>
-                        <li>Pokażemy nie tylko jak prawidłowo tapirować</li>
-                        <li>Pokażemy nie tylko jak prawidłowo tapirować</li>
-                    </ul>
+                    <p>{{ $lecture_this->info_full }} </p>
                 </div>
-                <div class="homework">
-                    <h4 class="title">Zadanie domowe</h4>
-                    <p class="homework_description">Brazilian Technique - metoda rozjaśnienia przez tapirowanie wlosów.
-                        Będziemy pokazywać jak pracować z tapirem w koloryzacjach włosów. Pokażemy nie tylko jak
-                        prawidłowo tapirować włosy, a tak że jak rozczesywać tapir, żeby dla klienta to nie było
-                        "przykrym doświadczeniem".
-                    </p>
-                    <p class="homework_description info">Wyślij swoją pracę domową na ten mail, a na pewno odpowiemy.
-                    </p>
+                @if ($lecture_this->homework)
+                    <div class="homework">
+                        <h4 class="title">Zadanie domowe</h4>
+                        <p class="homework_description">{{ $lecture_this->homework }}</p>
+                        <p class="homework_description info">Wyślij swoją pracę domową na ten mail, a na pewno odpowiemy.
+                        </p>
 
-                    <button class="homework_button send_homework button_copy"
-                        data-textCopy="hair@qi.com"><span>hair@qi.com</span> <i class="fas fa-copy icon"></i></button>
-                </div>
+                        <button class="homework_button send_homework button_copy"
+                            data-textCopy="hair@qi.com"><span>hair@qi.com</span> <i class="fas fa-copy icon"></i></button>
+                    </div>
+                @endif
             </div>
         </div>
 
         <div class="finished_lesson_block unfinished mobile">
-            <h3 class="title">Obejrzałem wideo <span class="range"><span class="current">3</span> /
-                    4</span></h3>
+            <h3 class="title">Obejrzałem wideo <span class="range"><span class="current">{{ $lectures_completed->count() }}</span> /
+                    {{ count($lectures) }}</span></h3>
             <p class="nofinished_info">Ukończ wszystkie wykłady i otrzymaj certyfikat</p>
             <button class="button finish_lesson"><span>Słuchałem</span> <i class="far fa-check-circle icon"></i></button>
             <button class="button get_sertificate">Uzyskać certyfikat</button>

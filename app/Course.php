@@ -5,23 +5,43 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Library\Services\CommonService;
+use Auth;
+use App\UserCourse;
+use App\UserLecture;
 
 class Course extends Model
 {
-    public static function getList()
+    public static function getList($limit = -1)
     {
-        $list = self::orderBy('name')->get();
+        $list = self::orderBy('name')->limit($limit)->get();
+        return $list;
+    }
+
+    public static function getFreeCourses($limit = -1)
+    {
+        $list = self::where('free', 1)->orderBy('name')->limit($limit)->get();
+        return $list;
+    }
+
+    public static function getBonuseCourses($limit = -1)
+    {
+        $list = self::where('free_for_client', 1)->orderBy('name')->limit($limit)->get();
+        return $list;
+    }
+
+    public static function getListByAccount($user)
+    {
+        $list = $user->courses;
         return $list;
     }
 
     public static function saveOrCreateCourse($course, Request $request)
     {
-        $course->main_course = $request->input('main_course') . '';
         $course->free = $request->input('free') . '';
         $course->free_for_client = $request->input('free_for_client') . '';
         $course->only_paid = $request->input('only_paid') . '';
         $course->name = $request->input('name') . '';
-        $course->total_lectures = $request->input('total_lectures') . '';
+        $course->total_days = $request->input('total_days') * 1;
         $course->total_hours = $request->input('total_hours') . '';
         $course->cost = $request->input('cost') . '';
         $course->video_preview = $request->input('video_preview') . '';
@@ -34,8 +54,10 @@ class Course extends Model
         if(isset($_FILES['gallery_img_2'])) $course->gallery_img_2 = CommonService::uploadFile('courses', $_FILES['gallery_img_2'], $course->img);
         if(isset($_FILES['gallery_img_3'])) $course->gallery_img_3 = CommonService::uploadFile('courses', $_FILES['gallery_img_3'], $course->img);
 
-        if($course->main_course) self::where('main_course', 1)->update(['main_course' => 0]);
-
+        $course->main_course = $request->input('main_course') * 1;
+        if($course->main_course){
+            $old_main = self::where('main_course', 1)->where('id', '!=', $course->id)->update(['main_course' => 0]);
+        }
         $course->save();
 
         return $course;

@@ -185,7 +185,7 @@
                 <div class="block_register_info">
                     <h3>{{ $main_course->name }}</h3>
                     <span class="info">{{ $main_course->description }}</span>
-                    <a href="#main_course" class="block_register_button">Wyglądać</a>
+                    <a href="{{ route('course.view', $main_course->id) }}" class="block_register_button">Wyglądać</a>
                 </div>
             </div>
         @endif
@@ -212,7 +212,7 @@
                 <ul class="block_team_ul">
                     @foreach ($team_list as $team_one)
                         <li class="block_team_li team_list_media team_one" data-teamInfo="{{ $team_one->info }}"
-                            data-teamImg="{{ $team_one->img }}" style="background-image: url({{ $team_one->img }});">
+                            data-teamImg="{{ asset($team_one->img) }}" style="background-image: url({{ asset($team_one->img) }});">
                             <span class="name d-none">{{ $team_one->name }}</span>
                             @if ($team_one->facebook)
                                 <a class="facebook_link d-none" href="{{ $team_one->facebook }}"></a>

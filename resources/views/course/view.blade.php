@@ -80,7 +80,7 @@
             <div class="course_instructor container">
                 <div class="instructor_media">
                     <span class="name">{{ $team_one->name }}</span>
-                    <img class="photo" src="{{ $team_one->img }}" alt="{{ $team_one->name }}">
+                    <img class="photo" src="{{ asset($team_one->img) }}" alt="{{ $team_one->name }}">
                 </div>
                 <div class="instructor_info">
                     <h3>Instruktor</h3>

@@ -16,7 +16,7 @@ class CreateUserLecturesTable extends Migration
         Schema::create('user_lectures', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->integer('course_id');
+            $table->integer('course_lecture_id');
             $table->dateTime('date_of_completed')->nullable();
             $table->timestamps();
         });

@@ -21,6 +21,8 @@ class AdminController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('auth.admin');
+
         $this->data = array_merge($this->data, CommonService::getDataFromFile());
         $this->data['contacts'] = Contact::getByType('contacts');
         $this->data['social'] = Contact::getByType('social');
@@ -33,8 +35,6 @@ class AdminController extends Controller
      */
     public function dashboard()
     {
-        $this->middleware('auth');
-
         $this->data['title'] = 'Dashboar for Admin';
         return view('admin.dashboard', $this->data);
     }
@@ -46,8 +46,6 @@ class AdminController extends Controller
      */
     public function team(Request $request)
     {
-        $this->middleware('auth');
-
         if($request->isMethod('post')){
             // Save new data about team
             if($request->input('type') === 'save_team'){
@@ -79,8 +77,6 @@ class AdminController extends Controller
      */
     public function clients(Request $request)
     {
-        $this->middleware('auth');
-
         $this->data['clients'] = User::getListClients();
 
         $this->data['title'] = 'Clients';
@@ -94,8 +90,6 @@ class AdminController extends Controller
      */
     public function contacts(Request $request)
     {
-        $this->middleware('auth');
-
         if($request->isMethod('post')){
             if($request->input('save_contacts') !== null){
                 $contacts = $request->input('contacts');
@@ -121,8 +115,6 @@ class AdminController extends Controller
      */
     public function reviews(Request $request)
     {
-        $this->middleware('auth');
-
         if($request->isMethod('post')){
             // Save new / update review
             if($request->input('type') === 'save_video_reviews'){

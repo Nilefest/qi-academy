@@ -60,8 +60,11 @@
             <nav class="container">
                 <ul class="main_nav_ul">
                     <li><a href="{{ url('/') }}">Dom</a></li>
-                    <li><a href="{{ url('/about') }}">O Nas</a></li>
-                    <li><a href="{{ url('/team') }}">Team</a></li>
+                    <li><a href="{{ route('about') }}">O Nas</a></li>
+                    <li><a href="{{ route('team') }}">Team</a></li>
+                    @auth
+                    <li><a href="{{ route('account.courses') }}">Kursy</a></li>
+                    @endauth
                 </ul>
                 <div class="main_nav_info">
                     <ul class="main_nav_contact">
@@ -73,7 +76,7 @@
                         <button class="main_nav_button open_sign_modal">Obszar osobisty</button>
                     @endguest
                     @auth
-                        <a class="main_nav_button" href="{{ url('/home') }}">Obszar osobisty</a>
+                        <a class="main_nav_button" href="{{ route('home') }}">Obszar osobisty</a>
                         <a class="main_nav_logout" href="{{ url('/logout') }}">Logout</a>
                     @endauth
                 </div>
@@ -155,7 +158,7 @@
                             <button class="footer_button open_sign_modal">Obszar osobisty</button>
                         @endguest
                         @auth
-                            <a class="footer_button" href="{{ url('/home') }}">Obszar osobisty</a>
+                            <a class="footer_button" href="{{ route('home') }}">Obszar osobisty</a>
                         @endauth
                     </div>
                 </div>

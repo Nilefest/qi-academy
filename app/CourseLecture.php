@@ -13,6 +13,22 @@ class CourseLecture extends Model
         $list = self::where('course_id', $course_id)->get();
         return $list;
     }
+
+    public static function getByCourseOrId($course, $lecture_id = false){
+        if($lecture_id) return self::findOrFail($lecture_id);
+        return self::where('course_id', $course->id)->first();
+    }
+
+    public static function getListByCourseUser($course, $user)
+    {
+        $list = self::where('course_id', $course->id)->get()->toArray();
+        $completed = $user->lectures()->where('course_id', $course->id)->get()->keyBy('course_id');
+        foreach($list as $key => $row){
+            $list[$key]['date_of_completed'] = '';
+            if(isset($completed[$row['id']])) $list[$key]['date_of_completed'] = $completed[$row['id']]['date_of_completed'];
+        }
+        return $list;
+    }
     
     public static function refreshForCourse($course_id, $lecture_list = [])
     {

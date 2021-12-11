@@ -250,4 +250,16 @@ let func_default_fail = () => view_modal_simple_info('Something went wrong...<br
 	// View image fullscreen
 	// #event
 	document.querySelectorAll('.view_full_img').forEach(element => element.addEventListener('click', openFullImage));
+
+	// Disable select text/..., context menu
+	// #function #EVIL
+	function noselect() {
+		if (window.getSelection) window.getSelection().removeAllRanges();
+		else document.selection.empty();
+		return false;
+	}
+	// #event #EVIL
+	document.ondragstart = noselect;
+	document.onselectstart = noselect;
+	document.oncontextmenu = noselect;
 })();

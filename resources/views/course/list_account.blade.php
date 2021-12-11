@@ -13,92 +13,74 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('lib/slick/slick-theme.css') }}" />
     <script src="{{ asset('lib/slick/slick.min.js') }}"></script>
     <script src="{{ asset('lib/slick-init.js') }}?v={{ env('APP_VERSION') }}"></script>
-
-    <script src="{{ asset('js/profile.js') }}?v={{ env('APP_VERSION') }}"></script>
 @endsection
 
 @section('content')
     <div class="content container course_container">
-        <div class="course_list">
-            <h3>Moje kursy</h3>
-            <ul class="course_list_ul">
-                <!-- type 1 -->
-                <li class="course_list_li check">
-                    <div style="background-image: url(/temp/img/slider_courses_1.png);" class="image"></div>
-                    <a href="#course_one" class="name">Colorist pro</a>
-                    <span class="time_info">Czas do końca dostępu <br>do kursu: <b>25 dni</b></span>
-                </li>
-                <!-- type 2 -->
-                <li class="course_list_li">
-                    <a href="#course_one">
-                        <div style="background-image: url(/temp/img/slider_courses_2.png);" class="image"></div>
-                        <span class="name">Colorist pro</span>
-                        <span class="time_info">Czas do końca dostępu <br>do kursu: <b>25 dni</b></span>
-                    </a>
-                </li>
-                <!-- type 3 -->
-                <li class="course_list_li">
-                    <a href="#course_one" style="background-image: url(/temp/img/slider_courses_1.png);"
-                        class="image"></a>
-                    <span class="name">Colorist pro</span>
-                    <span class="time_info">Czas do końca dostępu <br>do kursu: <b>25 dni</b></span>
-                </li>
+        @if ($courses_account->count())
+            <div class="course_list">
+                <h3>Moje kursy</h3>
+                <ul class="course_list_ul">
+                    @foreach ($courses_account as $course)
+                        <li class="course_list_li @if (isset($courses_completed[$course['id']])) check @endif">
+                            <a href="{{ route('courses.lecture', $course['id'], false, $user_id) }}">
+                                <div style="background-image: url({{ $course['banner_img'] }});" class="image">
+                                </div>
+                                <span class="name">{{ $course['name'] }}</span>
+                                <span class="time_info"> Czas do końca dostępu <br>do kursu:
+                                    <b>{{ $course['total_days'] }}
+                                        dni</b></span>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+                <button class="course_list_arrow prev">&#8592;</button>
+                <button class="course_list_arrow next">&#8594;</button>
+            </div>
+        @endif
 
-                <!-- other -->
-                <li class="course_list_li">
-                    <div style="background-image: url(/temp/img/slider_courses_2.png);" class="image"></div>
-                    <span class="name">Colorist pro</span>
-                    <span class="time_info">Czas do końca dostępu <br>do kursu: <b>25 dni</b></span>
-                </li>
-                <li class="course_list_li">
-                    <div style="background-image: url(/temp/img/slider_courses_1.png);" class="image"></div>
-                    <span class="name">Colorist pro</span>
-                    <span class="time_info">Czas do końca dostępu <br>do kursu: <b>25 dni</b></span>
-                </li>
-                <li class="course_list_li">
-                    <div style="background-image: url(/temp/img/slider_courses_2.png);" class="image"></div>
-                    <span class="name">Colorist pro</span>
-                    <span class="time_info">Czas do końca dostępu <br>do kursu: <b>25 dni</b></span>
-                </li>
-            </ul>
-            <button class="course_list_arrow prev">&#8592;</button>
-            <button class="course_list_arrow next">&#8594;</button>
-        </div>
+        @if ($courses_bonuse->count())
+            <div class="course_list">
+                <h3>Moje premie</h3>
+                <ul class="course_list_ul">
+                    @foreach ($courses_bonuse as $course)
+                        <li class="course_list_li @if (isset($courses_completed[$course['id']])) check @endif">
+                            <a href="{{ route('courses.lecture', $course['id'], false, $user_id) }}">
+                                <div style="background-image: url({{ $course['banner_img'] }});" class="image">
+                                </div>
+                                <span class="name">{{ $course['name'] }}</span>
+                                <span class="time_info">Czas do końca dostępu <br>do kursu:
+                                    <b>{{ $course['total_days'] }}
+                                        dni</b></span>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+                <button class="course_list_arrow prev">&#8592;</button>
+                <button class="course_list_arrow next">&#8594;</button>
+            </div>
+        @endif
 
-        <div class="course_list">
-            <h3>Moje premie</h3>
-            <ul class="course_list_ul">
-                <li class="course_list_li">
-                    <div style="background-image: url(/temp/img/slider_courses_2.png);" class="image"></div>
-                    <span class="name">Colorist pro</span>
-                    <span class="time_info">Czas do końca dostępu <br>do kursu: <b>25 dni</b></span>
-                </li>
-            </ul>
-            <button class="course_list_arrow prev">&#8592;</button>
-            <button class="course_list_arrow next">&#8594;</button>
-        </div>
-
-        <div class="course_list">
-            <h3>Wszystkie kursy</h3>
-            <ul class="course_list_ul">
-                <li class="course_list_li check">
-                    <div style="background-image: url(/temp/img/slider_courses_1.png);" class="image"></div>
-                    <span class="name">Colorist pro</span>
-                    <span class="time_info">Czas do końca dostępu <br>do kursu: <b>25 dni</b></span>
-                </li>
-                <li class="course_list_li check">
-                    <div style="background-image: url(/temp/img/slider_courses_2.png);" class="image"></div>
-                    <span class="name">Colorist pro</span>
-                    <span class="time_info">Czas do końca dostępu <br>do kursu: <b>25 dni</b></span>
-                </li>
-                <li class="course_list_li">
-                    <div style="background-image: url(/temp/img/slider_courses_2.png);" class="image"></div>
-                    <span class="name">Colorist pro</span>
-                    <span class="time_info">Czas do końca dostępu <br>do kursu: <b>25 dni</b></span>
-                </li>
-            </ul>
-            <button class="course_list_arrow prev">&#8592;</button>
-            <button class="course_list_arrow next">&#8594;</button>
-        </div>
+        @if ($courses_all->count())
+            <div class="course_list">
+                <h3>Wszystkie kursy</h3>
+                <ul class="course_list_ul">
+                    @foreach ($courses_all as $course)
+                        <li class="course_list_li @if (isset($courses_completed[$course['id']])) check @endif">
+                            <a target="_blank" href="{{ route('course.view', $course['id']) }}">
+                                <div style="background-image: url({{ $course['banner_img'] }});" class="image">
+                                </div>
+                                <span class="name">{{ $course['name'] }}</span>
+                                <span class="time_info">Czas do końca dostępu <br>do kursu:
+                                    <b>{{ $course['total_days'] }}
+                                        dni</b></span>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+                <button class="course_list_arrow prev">&#8592;</button>
+                <button class="course_list_arrow next">&#8594;</button>
+            </div>
+        @endif
     </div>
 @endsection

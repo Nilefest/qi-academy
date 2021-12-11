@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Library\Services\CommonService;
+use App\User;
 use App\Team;
 use App\Course;
 use App\CourseExp;
@@ -38,7 +39,7 @@ class CourseController extends Controller
 
         $this->data['video_reviews'] = [];
         $this->data['team_one'] = Team::getById($course->team_id, true);
-        $this->data['lecture_list'] = Lecture::getListByCourse($course_id);
+        $this->data['lecture_list'] = CourseLecture::getListByCourse($course_id);
         $this->data['course_exp_list'] = CourseExp::getListByCourse($course_id);
         $this->data['faq_list'] = Faq::getListByCourse($course_id);
 
@@ -54,14 +55,19 @@ class CourseController extends Controller
      * @param int
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function list_account()
+    public function list_account($user_id = false)
     {
-        $this->middleware('auth');
+        if(!$user_id) $user = Auth::user();
+        else $user = User::findOrFail($user_id);
 
-        $courses_list = Course::getList();
+        $this->data['courses_all'] = Course::getList();
+        $this->data['courses_bonuse'] = Course::getBonuseCourses();
+        $this->data['courses_account'] = Course::getListByAccount($user);
+        
+        $this->data['courses_completed'] = $user->courses()->get()->keyBy('id');
 
-        $this->data['courses_list'] = $courses_list;
-        $this->data['title'] = 'Courses by Account';
+        $this->data['user_id'] = $user_id;
+        $this->data['title'] = 'Your Courses';
         return view('course.list_account', $this->data);
     }
 
@@ -71,10 +77,20 @@ class CourseController extends Controller
      * @param int
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function lecture($lecure_id)
+    public function lecture($course_id, $lecure_id = false, $user_id = false)
     {
-        $this->middleware('auth');
+        if(!$user_id) $user_id = Auth::user()->id;
+        $user = User::findOrFail($user_id);
+        $course = Course::findOrFail($course_id);
 
+        $this->data['lectures'] = CourseLecture::getListByCourseUser($course, $user);
+        $lecture_this = CourseLecture::getByCourseOrId($course, $lecure_id);
+        $this->data['team_one'] = Team::find($course->team_id);
+
+        $this->data['lectures_completed'] = $user->lectures()->where('course_id', $course->id)->count();
+        $this->data['lecture_this'] = $lecture_this;
+
+        $this->data['user_id'] = $user_id;
         $this->data['title'] = 'Lecture by ID';
         return view('course.lecture', $this->data);
     }
@@ -86,8 +102,6 @@ class CourseController extends Controller
      */
     public function list_admin()
     {
-        $this->middleware('auth');
-
         $courses_list = Course::getList();
 
         $this->data['courses_list'] = $courses_list;
@@ -103,7 +117,6 @@ class CourseController extends Controller
      */
     public function edit($course_id = false, Request $request)
     {
-        $this->middleware('auth');
         if(!$course_id) $course = new Course;
         else $course = Course::findOrFail($course_id);
 
@@ -113,7 +126,7 @@ class CourseController extends Controller
                 $course = Course::saveOrCreateCourse($course, $request);
                 if($request->input('course_faq') !== null) $course_faq = Faq::refreshForCourse($course->id, $request->input('course_faq'));
                 if($request->input('course_exp') !== null) $course_exp = CourseExp::refreshForCourse($course->id, $request->input('course_exp'));
-                if($request->input('course_lecture') !== null) $course_lecture = Lecture::refreshForCourse($course->id, $request->input('course_lecture'));
+                if($request->input('course_lecture') !== null) $course_lecture = CourseLecture::refreshForCourse($course->id, $request->input('course_lecture'));
                 return ['data' => ['id' => $course->id], 'mess' => ''];
             }
             // Save new data about team
@@ -126,7 +139,7 @@ class CourseController extends Controller
         }
 
         $this->data['team_list'] = Team::getList();
-        $this->data['lecture_list'] = Lecture::getListByCourse($course_id);
+        $this->data['lecture_list'] = CourseLecture::getListByCourse($course_id);
         $this->data['course_exp_list'] = CourseExp::getListByCourse($course_id);
         $this->data['faq_list'] = Faq::getListByCourse($course_id);
 

@@ -137,7 +137,7 @@
             only_paid: course_one.querySelector('.course_only_paid').checked * 1,
             name: course_one.querySelector('.course_name .text').value,
             banner_img: course_one.querySelector('.course_banner_img').files[0] || null,
-            total_lectures: course_one.querySelector('.course_total_lectures').value * 1,
+            total_days: course_one.querySelector('.course_total_days').value * 1,
             total_hours: course_one.querySelector('.course_total_hours').value * 1,
             cost: course_one.querySelector('.course_cost .text').value * 1,
             video_preview: course_one.querySelector('.course_video_preview').value,
