@@ -36,11 +36,11 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th class="sort_by_name sort_button">Имя <i class="fas fa-sort-amount-down icon_sort active"></i></th>
+                        <th class="sort_by_name sort_button">Имя <i style="opacity: 0;" class="fas fa-sort-amount-down icon_sort active"></i></th>
                         <th>Номер</th>
-                        <th>email <a class="download" href="#download">скачать <i class="fas fa-download icon"></i></a>
+                        <th>email <a style="opacity: 0;" class="download" href="#download">скачать <i class="fas fa-download icon"></i></a>
                         </th>
-                        <th class="sort_by_pay sort_button">Купленных курсов <i class="fas fa-sort-amount-down icon_sort"></i>
+                        <th class="sort_by_pay sort_button">Купленных курсов <i style="opacity: 0;" class="fas fa-sort-amount-down icon_sort"></i>
                         </th>
                         <th></th>
                     </tr>

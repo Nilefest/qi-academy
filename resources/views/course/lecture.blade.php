@@ -22,7 +22,10 @@
 @endsection
 
 @section('content')
-    <div class="content course_content container">
+    <div class="content course_content container lecture_one"
+        data-formAction="{{ route('courses.lecture.post', [$lecture_this['course_id'], $lecture_this['id'], $user_id]) }}"
+        data-lectureId="{{ $lecture_this['id'] }}" data-userId="{{ $user_id }}"
+        data-courseId="{{ $lecture_this['course_id'] }}">
         <div class="lesson_list ">
             <!-- add class "mobile_toggle_list" for activate alternative toggle-list (for mobile) -->
 
@@ -58,22 +61,23 @@
                 @endforeach
             </ul>
 
-            <div class="finished_lesson_block unfinished">
+            <div class="finished_lesson_block @if ($lectures_completed->count() === count($lectures)) finished @else unfinished @endif">
                 <h3 class="title">Obejrzałem wideo <span class="range"><span
-                            class="current">{{ $lectures_completed->count() }}</span> / {{ count($lectures) }}</span></h3>
+                            class="current">{{ $lectures_completed->count() }}</span> /
+                        {{ count($lectures) }}</span></h3>
                 <p class="nofinished_info">Ukończ wszystkie wykłady i otrzymaj certyfikat</p>
-                <button class="button finish_lesson"><span>Słuchałem</span> <i
-                        class="far fa-check-circle icon"></i></button>
-                <button class="button get_sertificate">Uzyskać certyfikat</button>
-                <button class="send_review"><span>Wystawić opinię</span> <i
-                        class="fas fa-hand-point-up icon"></i></button>
+                @if (!isset($lectures_completed[$lecture_this['id']]))
+                    <button class="button finish_lesson"><span>Słuchałem</span> <i
+                            class="far fa-check-circle icon"></i></button>
+                    <button class="button get_sertificate">Uzyskać certyfikat</button>
+                    <button class="send_review"><span>Wystawić opinię</span> <i
+                            class="fas fa-hand-point-up icon"></i></button>
+                @endif
             </div>
         </div>
         <div class="lesson_block">
             <div class="lesson_media">
-                <video loop controls>
-                    <source src="/temp/video/video_expert.mp4" type="video/mp4">
-                </video>
+                {!! $lecture_this['video'] !!}
             </div>
             <div class="lesson_tools">
                 <div class="instructor team_one team_open_modal view" data-teamInfo="{{ $team_one->info }}"
@@ -82,8 +86,6 @@
                     <span class="name">{{ $team_one->name }}</span>
                 </div>
                 <div class="course_buttons">
-                    {{-- <button class="course_button download"><span>Pobierz materiały do nauki</span> <i
-                            class="fal fa-download icon"></i></button> --}}
                     @if ($lecture_this->file)
                         <a href="{{ asset($lecture_this->file) }}" download class="course_button download"><span>Pobierz
                                 materiały do nauki</span> <i class="fal fa-download icon"></i></a>
@@ -109,12 +111,17 @@
         </div>
 
         <div class="finished_lesson_block unfinished mobile">
-            <h3 class="title">Obejrzałem wideo <span class="range"><span class="current">{{ $lectures_completed->count() }}</span> /
+            <h3 class="title">Obejrzałem wideo <span class="range"><span
+                        class="current">{{ $lectures_completed->count() }}</span> /
                     {{ count($lectures) }}</span></h3>
             <p class="nofinished_info">Ukończ wszystkie wykłady i otrzymaj certyfikat</p>
-            <button class="button finish_lesson"><span>Słuchałem</span> <i class="far fa-check-circle icon"></i></button>
-            <button class="button get_sertificate">Uzyskać certyfikat</button>
-            <button class="send_review"><span>Wystawić opinię</span> <i class="fas fa-hand-point-up icon"></i></button>
+            @if (!isset($lectures_completed[$lecture_this['id']]))
+                <button class="button finish_lesson"><span>Słuchałem</span> <i
+                        class="far fa-check-circle icon"></i></button>
+                <button class="button get_sertificate">Uzyskać certyfikat</button>
+                <button class="send_review"><span>Wystawić opinię</span> <i
+                        class="fas fa-hand-point-up icon"></i></button>
+            @endif
         </div>
     </div>
 @endsection

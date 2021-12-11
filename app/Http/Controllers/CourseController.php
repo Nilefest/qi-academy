@@ -77,21 +77,39 @@ class CourseController extends Controller
      * @param int
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function lecture($course_id, $lecure_id = false, $user_id = false)
+    public function lecture($course_id, $lecure_id = false, $user_id = false, Request $request)
     {
-        if(!$user_id) $user_id = Auth::user()->id;
-        $user = User::findOrFail($user_id);
+        if(!$user_id) $user = Auth::user();
+        else $user = User::findOrFail($user_id);
+
         $course = Course::findOrFail($course_id);
-
         $this->data['lectures'] = CourseLecture::getListByCourseUser($course, $user);
-        $lecture_this = CourseLecture::getByCourseOrId($course, $lecure_id);
+
+        if($request->isMethod('post')){
+            // Save new data about team
+            if($request->input('type') === 'lecture_finish'){
+                $user_id = $user->id;
+                if($request->input('lecture_id') === null) return ['data' => $request->all(), 'mess' => 'Unfound Lecture`s ID'];
+                if($request->input('user_id') !== null) $user_id = $request->input('user_id');
+                
+                CourseLecture::completed($request->input('lecture_id'), $user_id);
+
+                $completed = $user->lectures()->where('course_id', $course->id)->get()->count();
+                $last = CourseLecture::where('course_id', $course_id)->count() - $completed;
+                
+                return ['data' => ['current_completed' => $completed, 'last' => $last], 'mess' => $request->all()];
+            }
+            return;
+        }
+
         $this->data['team_one'] = Team::find($course->team_id);
+        
+        $this->data['lectures_completed'] = $user->lectures()->where('course_id', $course->id)->get()->keyBy('id');
+        $this->data['lecture_this'] = CourseLecture::getByCourseUserOrId($course, $user, $lecure_id);
 
-        $this->data['lectures_completed'] = $user->lectures()->where('course_id', $course->id)->count();
-        $this->data['lecture_this'] = $lecture_this;
-
+        $this->data['user'] = $user;
         $this->data['user_id'] = $user_id;
-        $this->data['title'] = 'Lecture by ID';
+        $this->data['title'] = $this->data['lecture_this']->name;
         return view('course.lecture', $this->data);
     }
 
@@ -122,7 +140,7 @@ class CourseController extends Controller
 
         if($request->isMethod('post')){
             // Save new data about team
-            if($request->input('type') === 'save_course'){ //return ['data' => ['id' =>  $course_id], 'mess' => $_FILES['course_lecture']['name']];
+            if($request->input('type') === 'save_course'){
                 $course = Course::saveOrCreateCourse($course, $request);
                 if($request->input('course_faq') !== null) $course_faq = Faq::refreshForCourse($course->id, $request->input('course_faq'));
                 if($request->input('course_exp') !== null) $course_exp = CourseExp::refreshForCourse($course->id, $request->input('course_exp'));

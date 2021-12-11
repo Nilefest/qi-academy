@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Library\Services\CommonService;
+use App\UserLecture;
 
 class CourseLecture extends Model
 {
@@ -14,19 +15,27 @@ class CourseLecture extends Model
         return $list;
     }
 
-    public static function getByCourseOrId($course, $lecture_id = false){
+    public static function getByCourseUserOrId($course, $user, $lecture_id = false){
         if($lecture_id) return self::findOrFail($lecture_id);
-        return self::where('course_id', $course->id)->first();
+        $completed = $user->lectures()->where('course_id', $course->id)->get()->keyBy('id')->toArray();
+        $list = self::where('course_id', $course->id)->get();
+        
+        $current = $list->first(function($value) use ($completed) {
+            return !isset($completed[$value['id']]);
+        });
+        
+        return $current;
     }
 
     public static function getListByCourseUser($course, $user)
     {
         $list = self::where('course_id', $course->id)->get()->toArray();
-        $completed = $user->lectures()->where('course_id', $course->id)->get()->keyBy('course_id');
+        $completed = $user->lectures()->where('course_id', $course->id)->get()->keyBy('id');
         foreach($list as $key => $row){
             $list[$key]['date_of_completed'] = '';
-            if(isset($completed[$row['id']])) $list[$key]['date_of_completed'] = $completed[$row['id']]['date_of_completed'];
+            if(isset($completed[$row['id']])) $list[$key]['date_of_completed'] = $completed[$row['id']]['pivot']['date_of_completed'];
         }
+        
         return $list;
     }
     
@@ -56,5 +65,16 @@ class CourseLecture extends Model
         foreach($old as $key => $old_one) $old_one->delete();
         
         return $lecture_list;
+    }
+    
+    public static function completed($lecture_id, $user_id)
+    {
+        $user_lecture = new UserLecture;
+        $user_lecture->course_lecture_id = $lecture_id;
+        $user_lecture->user_id = $user_id;
+        $user_lecture->date_of_completed = date('Y-m-d H:i:s');
+        $user_lecture->save();
+
+        return $user_lecture->id;
     }
 }
