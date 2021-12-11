@@ -359,6 +359,43 @@ footer ul.contact span {
     cursor: pointer;
 }
 
+/* Button Back */
+.button.back {
+    color: #fff;
+    display: inline-block;
+    background-color: #000;
+    background-color: transparent;
+    font-size: 14px;
+    padding: 5px 15px;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    margin: 5px 10px 25px 10px;
+    font-family: 'Lato', sans-serif;
+}
+
+.button.back:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button.back:before {
+    content: "\f053";
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 0.8em;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 0px 7px 0px 3px;
+    opacity: 0.8;
+}
+
+.button.back:hover:before {
+    padding: 0px 10px 0px 0px;
+    opacity: 0.9;
+}
+
 /* Main navigation */
 .main_nav {
     background-color: #000;

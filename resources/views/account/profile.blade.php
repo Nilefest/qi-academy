@@ -18,6 +18,10 @@
 
 @section('content')
     <div class="content container">
+        @if(Auth::user()->access < 1)
+        <a href="{{ route('admin.clients') }}" class="button back">back</a>
+        @endif
+        
         <div class="profile_head">
             <label class="avatar">
                 <span class="title">My profile: </span>
@@ -29,7 +33,7 @@
 
             <button class="profile_button profile_save desktop">Zapisz zmiany</button>
         </div>
-        <div class="form" data-formAction="/profile">
+        <div class="form" data-formAction="{{ route('account.profile.post', $user->id) }}">
             <label class="profile_label">
                 <span class="title">Name</span>
                 <input autocomplete="off" type="text" class="profile_input profile_name" placeholder="Name and Last name"

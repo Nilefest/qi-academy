@@ -17,7 +17,6 @@ class AccountController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
         $this->data = array_merge($this->data, CommonService::getDataFromFile());
         $this->data['contacts'] = Contact::getByType('contacts');
         $this->data['social'] = Contact::getByType('social');
@@ -30,11 +29,10 @@ class AccountController extends Controller
      */
     public function profile(Request $request, $user_id = false)
     {
-        $this->middleware('auth');
         if($user_id) $user = User::findOrFail($user_id);
         else $user = Auth::user();
 
-        if($request->isMethod('post')){
+        if($request->isMethod('post')) {
             // Save new data about user
             if($request->input('type') === 'save_profile'){
                 $user = User::saveUser($user, $request);

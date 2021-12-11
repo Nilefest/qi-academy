@@ -77,7 +77,7 @@ class AdminController extends Controller
      */
     public function clients(Request $request)
     {
-        $this->data['clients'] = User::getListClients();
+        $this->data['clients'] = User::getListByType('client');
 
         $this->data['title'] = 'Clients';
         return view('admin.clients', $this->data);

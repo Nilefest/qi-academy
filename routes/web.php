@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Auth
-// Auth::routes(['verify' => true]);
-// Route::get('/logout', 'Auth\LoginController@logout');
-
-// Auth
 Auth::routes(['verify' => true]);
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('auth/google', 'Auth\Socialite\GoogleController@redirectToGoogle');

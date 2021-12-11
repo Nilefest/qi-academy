@@ -26,8 +26,8 @@ class Faq extends Model
         foreach($faq_list as $key => $faq_item){
             $new_item = new self;
             $new_item->course_id = $course_id;
-            $new_item->title = $faq_item['title'];
-            $new_item->info = $faq_item['info'];
+            $new_item->title = $faq_item['title'] . '';
+            $new_item->info = $faq_item['info'] . '';
             $new_item->save();
             $faq_list[$key] = $new_item;
         }
