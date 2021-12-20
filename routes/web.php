@@ -55,6 +55,7 @@ Route::group(['middleware' => 'auth.admin'], function () {
 
     Route::get('/admin/clients', 'AdminController@clients')->middleware('verified')->name('admin.clients');
     Route::post('/admin/clients', 'AdminController@clients')->middleware('verified')->name('admin.clients.post');
+    Route::get('/admin/clients/download', 'AdminController@clients_download')->middleware('verified')->name('admin.clients.download');
 
     Route::get('/admin/reviews', 'AdminController@reviews')->middleware('verified')->name('admin.reviews');
     Route::post('/admin/reviews', 'AdminController@reviews')->middleware('verified')->name('admin.reviews.post');

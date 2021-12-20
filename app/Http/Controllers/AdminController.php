@@ -107,6 +107,40 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function clients_download(Request $request)
+    {
+        // Sort data
+        $sort_by_column = 'name';
+        if($request->input('sort_by') !== null){
+            $sort_by_column = $request->input('sort_by');
+            if(!in_array($sort_by_column, ['name', 'phone', 'email', 'total_courses'])) $sort_by_column = 'name';
+        }
+        // Search data
+        $search_by = '';
+        if($request->input('search_by') !== null){
+            $search_by = $request->input('search_by');
+        }
+
+        $clients = User::getListByType('client', $sort_by_column, $search_by); // client
+        $this->data['clients'] = $clients;
+
+        $headers = [
+            'Content-type' => 'text/plain', 
+            'Content-Disposition' => sprintf('attachment; filename="clients_list-' . time() . '.txt"')
+        ];
+        
+        // $content = "";
+        // foreach($clients as $client) $content .= $client['email'] . ";\n";
+        // return response($content)->withHeaders($headers);
+
+        return response()->view('admin.clients_txt', $this->data, 200)->withHeaders($headers);
+    }
+
+    /**
+     * Show offline course list for Admin Panel
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function contacts(Request $request)
     {
         if($request->isMethod('post')){

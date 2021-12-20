@@ -54,7 +54,7 @@
                                 class="fas fa-sort-amount-down icon_sort"></i>
                         </th>
                         <th>Номер</th>
-                        <th>email <a class="download" href="#download">скачать <i
+                        <th>email <a download="" class="download" href="{{ route('admin.clients.download') }}" data-href="{{ route('admin.clients.download') }}">скачать <i
                                     class="fas fa-download icon"></i></a>
                         </th>
                         <th data-sortBy="total_courses" class="sort_button">Купленных курсов <i

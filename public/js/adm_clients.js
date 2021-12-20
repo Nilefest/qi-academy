@@ -6,6 +6,10 @@
         console.log(sort_by);
         console.log(search_by);
 
+        let download_href = document.querySelector('.clients_table .download').getAttribute('data-href');
+        download_href += `?sort_by=${sort_by}&search_by=${search_by}`;
+        document.querySelector('.clients_table .download').setAttribute('href', download_href);
+
         let data = {
             sort_by: sort_by,
             search_by: search_by
