@@ -3,9 +3,6 @@
     // Sort and search clients
     // #function
     let sort_search_cliets = (sort_by, search_by) => {
-        console.log(sort_by);
-        console.log(search_by);
-
         let download_href = document.querySelector('.clients_table .download').getAttribute('data-href');
         download_href += `?sort_by=${sort_by}&search_by=${search_by}`;
         document.querySelector('.clients_table .download').setAttribute('href', download_href);
@@ -25,7 +22,7 @@
 
                 // Add new data
                 let client_item = document.getElementById('tpl_client_item').content.cloneNode(true);
-                client_item.querySelector('.tools').innerHTML = key;
+                client_item.querySelector('.tools').innerHTML = key + 1;
                 client_item.querySelector('.name').innerHTML = element['name'];
                 client_item.querySelector('.phone').innerHTML = element['phone'];
                 client_item.querySelector('.email').innerHTML = element['email'];
