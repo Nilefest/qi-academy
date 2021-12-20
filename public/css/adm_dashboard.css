@@ -1,8 +1,3 @@
-body {
-    min-width: 1025px;
-    overflow-x: auto;
-}
-
 .container {
     min-width: 1000px;
 }
@@ -531,11 +526,13 @@ header .logout:hover {
     font-weight: 700;
     padding: 15px 5px 20px 5px;
 }
+
 .clients_form th a {
     font-weight: bold;
     display: inline-block;
     padding: 1px 20px;
 }
+
 .clients_form th .icon {
     padding: 0px 5px;
 }
@@ -543,6 +540,7 @@ header .logout:hover {
 .clients_form td {
     padding: 25px 5px 25px;
 }
+
 .clients_form tr th:nth-last-child(1),
 .clients_form tr td:nth-last-child(1) {
     width: auto;
@@ -647,4 +645,11 @@ header .logout:hover {
     background-color: #F84C34;
     color: #fff;
     cursor: pointer;
+}
+
+@media screen and (max-width: 1023px) {
+    body {
+        min-width: 1025px;
+        overflow-x: auto;
+    }
 }

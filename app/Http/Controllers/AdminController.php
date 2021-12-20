@@ -11,6 +11,7 @@ use App\CourseOffline;
 use App\Contact;
 use App\Review;
 use App\User;
+use App\UserCourse;
 
 class AdminController extends Controller
 {
@@ -77,7 +78,25 @@ class AdminController extends Controller
      */
     public function clients(Request $request)
     {
-        $this->data['clients'] = User::getListByType('client');
+        // Sort data
+        $sort_by_column = 'name';
+        if($request->input('sort_by') !== null){
+            $sort_by_column = $request->input('sort_by');
+            if(!in_array($sort_by_column, ['name', 'phone', 'email', 'total_courses'])) $sort_by_column = 'name';
+        }
+        // Search data
+        $search_by = '';
+        if($request->input('search_by') !== null){
+            $search_by = $request->input('search_by');
+        }
+
+        $clients = User::getListByType('client', $sort_by_column, $search_by); // client
+
+        // If POST
+        if($request->isMethod('post')) return ['data' => ['clients' => $clients], 'mess' => ''];
+
+        $this->data['total_with_courses'] = User::getTotalWithCourses();
+        $this->data['clients'] = $clients;
 
         $this->data['title'] = 'Clients';
         return view('admin.clients', $this->data);

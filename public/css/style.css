@@ -37,10 +37,12 @@ a:hover {
     color: #fff;
 }
 
+input:active, input:focus,
 button:active, button:focus {
     outline: none;
 }
 
+input::-moz-focus-inner,
 button::-moz-focus-inner {
     border: 0;
 }

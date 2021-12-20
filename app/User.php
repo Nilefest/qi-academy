@@ -59,24 +59,41 @@ class User extends Authenticatable implements MustVerifyEmail
         return $user;
     }
 
-    public static function getListByType($type = false, $order_by = 'name'){
+    public static function getListByType($type = false, $order_by = false, $search_by = false){
         if(!$order_by) $order_by = 'name';
+        
+        if(isset(self::$list_roles[$type])) $result = self::where('access', self::$list_roles[$type]);
+        else $result = self::where('access', 'like', '%');
 
-        if($type) $list = self::where('access', self::$list_roles[$type])->orderBy($order_by)->get();
-        else $list = self::orderBy($order_by)->get();
-
-        $list->toArray();
-
-        foreach($list as $key => $item){
-            $list[$key]['total_courses'] = UserCourse::where('user_id', $item->id)->count();
+        if($search_by){
+            $result = $result->where(function($query) use ($search_by) {
+                $query->where('name', 'like', "%$search_by%")->orWhere('phone', 'like', "%$search_by%")->orWhere('email', 'like', "%$search_by%");
+            });
         }
 
-        return $list;
+        if(in_array($order_by, ['name', 'phone', 'email'])) $list = $result->orderBy($order_by)->get();
+        else $list = $result->get();
+        
+        // Get total courses for clients
+        foreach($list as $key => $item){
+            $list[$key]['total_courses'] = UserCourse::where('user_id', $item['id'])->count();
+        }
+
+        // Special sort
+        if($order_by === 'total_courses') $list = $list->sortByDesc('total_courses')->values();
+
+        // print_r($list->toArray()); exit();
+        return $list->toArray();
     }
     
     public static function checkRole($role_type = 'client'){
         if(Auth::check() && Auth::user()->access === self::$list_roles[$role_type]) return true;
         return false;
+    }
+    
+    public static function getTotalWithCourses() {
+        $total = UserCourse::all()->groupBy('user_id')->count();
+        return $total;
     }
 
     public function courses()
