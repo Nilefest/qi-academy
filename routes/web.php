@@ -29,6 +29,15 @@ Route::get('/about', 'InfoController@about')->name('about');
 Route::get('/team', 'InfoController@team')->name('team');
 Route::get('/course/{course_id}', 'CourseController@view')->name('course.view');
 
+// Payment
+Route::get('/payment/{course_id}/{user_id?}/', 'PaymentController@pay')->name('payment.pay');
+Route::get('/payment/result/success/{course_id?}/{user_id?}', 'PaymentController@success')->name('payment.success');
+Route::post('/payment/result/success/', 'PaymentController@success')->name('payment.success.post');
+Route::get('/payment/result/return/', 'PaymentController@return')->name('payment.return');
+Route::post('/payment/result/return/', 'PaymentController@return')->name('payment.return.post');
+Route::get('/payment/result/fail/', 'PaymentController@fail')->name('payment.fail');
+Route::post('/payment/result/fail/', 'PaymentController@fail')->name('payment.fail.post');
+
 // Private
 Route::group(['middleware' => 'auth.basic'], function () {
     Route::get('/home', 'MainController@home')->name('home');

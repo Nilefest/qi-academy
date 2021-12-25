@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserCoursesTable extends Migration
+class CreatePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateUserCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_courses', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
             $table->integer('course_id');
-            $table->dateTime('date_of_begin')->nullable();
-            $table->dateTime('date_of_completed')->nullable();
+            $table->dateTime('date');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateUserCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_courses');
+        Schema::dropIfExists('payments');
     }
 }

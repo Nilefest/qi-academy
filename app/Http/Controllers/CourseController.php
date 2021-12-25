@@ -10,6 +10,8 @@ use App\Team;
 use App\Course;
 use App\CourseExp;
 use App\CourseLecture;
+use App\UserCourse;
+use App\UserLecture;
 use App\Faq;
 use App\Contact;
 
@@ -84,6 +86,21 @@ class CourseController extends Controller
 
         $course = Course::findOrFail($course_id);
         $this->data['lectures'] = CourseLecture::getListByCourseUser($course, $user);
+        
+        $course_user = UserCourse::where('user_id', $user->id)->where('course_id', $course_id)->first();
+        if(!$course_user) {
+            if($course->free || $course->free_for_client) {
+                $course_user = new UserCourse;
+                $course_user->user_id = $user->id;
+                $course_user->course_id = $course_id;
+                $course_user->date_of_begin = date('Y-m-d H:i:s');
+                $course_user->save();
+            } else {
+                return redirect()->route('payment.pay', [$course_id, $user->id]);
+            }
+        }
+
+        $this->data['lecture_this'] = CourseLecture::getByCourseUserOrId($course, $user, $lecure_id);
 
         if($request->isMethod('post')){
             // Save new data about team
@@ -105,11 +122,11 @@ class CourseController extends Controller
         $this->data['team_one'] = Team::find($course->team_id);
         
         $this->data['lectures_completed'] = $user->lectures()->where('course_id', $course->id)->get()->keyBy('id');
-        $this->data['lecture_this'] = CourseLecture::getByCourseUserOrId($course, $user, $lecure_id);
 
         $this->data['user'] = $user;
+        $this->data['course_id'] = $course_id;
         $this->data['user_id'] = $user_id;
-        $this->data['title'] = $this->data['lecture_this']->name;
+        $this->data['title'] = ($this->data['lecture_this'] ? $this->data['lecture_this']->name . '' : 'No lecture');
         return view('course.lecture', $this->data);
     }
 

@@ -10,6 +10,7 @@ class TestController extends Controller
     public function get(){
         return 'Test GET';
     }
+    
     public function post(){
         return 'Test POST';
     }

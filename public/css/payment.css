@@ -1,0 +1,256 @@
+.header h1 {
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin: 35px 15px 50px;
+}
+
+.content form {
+    font-family: 'Lato', sans-serif;
+    margin: 0px auto;
+    padding: 0px 15px;
+    width: 85%;
+    color: #fff;
+}
+
+.form_pay {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form_pay .form_column {
+    width: 33%;
+    margin: 0px 10px;
+}
+
+/* Personal data */
+.form_pay .personal_data {
+    font-size: 14px;
+}
+
+.form_pay .personal_data h2 {
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+    min-height: 40px;
+}
+
+.form_pay .personal_data .text {
+    color: #fff;
+    background-color: #282d36;
+    border: 1px solid #282d36;
+    border-radius: 10px;
+    padding: 15px 20px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Course data */
+.form_pay .course_data {
+    margin-top: 60px;
+}
+
+.form_pay .course_data .course_main_info {
+    background-color: #282d36;
+    border: 1px solid #282d36;
+    border-radius: 10px;
+    padding: 35px 20px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.form_pay .course_data .banner_img {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-shrink: 0;
+    background-color: #fff;
+}
+
+.form_pay .course_data .main_info {
+    padding-left: 10px;
+    text-transform: uppercase;
+    flex-grow: 1;
+}
+
+.form_pay .course_data .title {
+    margin: -5px 0px 10px;
+}
+
+.form_pay .course_data .course_name {
+    font-size: 1.2em;
+    line-height: 1em;
+}
+
+/* Payment data */
+.form_pay .payment_data {
+    margin-top: 60px;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    padding: 20px 40px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.form_pay .payment_data .cost_info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.form_pay .payment_data .title {
+    text-transform: uppercase;
+    padding-right: 20px;
+    font-size: 0.9em;
+}
+
+.form_pay .payment_data .value {
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.form_pay .payment_data .button {
+    border: 1px solid #F84C34;
+    background-color: #F84C34;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 900;
+    text-transform: uppercase;
+    width: 100%;
+    text-align: center;
+    padding: 10px 25px;
+    margin: 20px 0px 10px;
+}
+
+.form_pay .payment_data .button:hover {
+    cursor: pointer;
+    background-color: #fff;
+    color: #F84C34;
+}
+
+/* Button Back */
+.button.back {
+    color: #fff;
+    display: inline-block;
+    background-color: #000;
+    background-color: transparent;
+    font-size: 14px;
+    padding: 5px 15px;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    margin: 5px 10px 25px 10px;
+    font-family: 'Lato', sans-serif;
+
+    position: absolute;
+    top: 30px;
+    left: 60px;
+}
+
+.button.back:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button.back:before {
+    content: "\f053";
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 0.8em;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 0px 7px 0px 3px;
+    opacity: 0.8;
+}
+
+.button.back:hover:before {
+    padding: 0px 10px 0px 0px;
+    opacity: 0.9;
+}
+
+@media screen and (max-width: 1023px) {
+    .form_pay {
+        flex-wrap: wrap;
+        align-items: stretch;
+    }
+
+    .form_column {
+        min-width: 46%;
+    }
+
+    .form_pay .payment_data {
+        justify-content: space-around;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .form_pay .payment_data .cost_info {
+        margin: 0px;
+        padding-right: 20px;
+    }
+
+    .form_pay .payment_data .button {
+        width: auto;
+        margin: 0px;
+    }
+
+    .button.back {
+        top: 40px;
+        left: 20px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .form_pay .course_data .banner_img {
+        width: 100px;
+        height: 100px;
+    }
+
+    form.form_pay {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .form_column {
+        min-width: 100%;
+    }
+
+    .form_pay .payment_data {
+        flex-direction: column;
+    }
+
+    .form_pay .payment_data .cost_info {
+        margin-bottom: 35px;
+    }
+
+    .form_pay .payment_data .button {
+        width: auto;
+        margin: 0px;
+    }
+}
+
+@media screen and (max-width: 599px) {}
+
+@media screen and (max-width: 479px) {
+
+    .form_pay .course_main_info {
+        flex-direction: column;
+    }
+
+    .form_pay .course_data .main_info {
+        margin-top: 20px;
+    }
+}

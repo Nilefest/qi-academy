@@ -23,7 +23,7 @@
             <div class="head_info">
                 <h1>{{ $course->name }}</h1>
                 <ul class="curs_info">
-                    <li>{{ $course->total_lectures }} Lekcje</li>
+                    <li>{{ count($lecture_list) }} Lekcje</li>
                     <li>{{ $course->total_hours }} godziny</li>
                 </ul>
                 <div class="head_register">
