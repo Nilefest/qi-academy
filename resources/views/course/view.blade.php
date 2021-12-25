@@ -29,8 +29,7 @@
                 <div class="head_register">
                     <span class="cost">{{ $course->cost }} Zł</span>
                     <div class="head_buttons">
-                        <button class="head_button curs_register">Zapisać się na kurs</button>
-                        <!--<a href="#register_link" class="head_button curs_register">Zapisać się na kurs</a>-->
+                        <a href="{{ route('courses.lecture', $course->id) }}" class="head_button curs_register">Zapisać się na kurs</a>
                     </div>
                 </div>
             </div>

@@ -31,7 +31,7 @@ class CourseSeeder extends Seeder
                     'id' => $course_id,
                     'main_course' => ($course_id === 1 && $course_type === 'paid') * 1,
                     'free' => ($course_type === 'free') * 1,
-                    'free_for_client' => ($course_type === 'bonuse') * 1,
+                    'free_for_client' => ($course_type === 'free_for_client') * 1,
                     'only_paid' => ($course_type === 'paid') * 1,
                     'name' => $faker->sentence(rand(3, 5)),
                     'banner_img' => '',

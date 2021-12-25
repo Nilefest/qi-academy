@@ -20,6 +20,8 @@ Route::get('auth/google', 'Auth\Socialite\GoogleController@redirectToGoogle');
 Route::get('auth/google/callback', 'Auth\Socialite\GoogleController@handleGoogleCallback');
 Route::get('auth/facebook', 'Auth\Socialite\FacebookController@redirectToFacebook');
 Route::get('auth/facebook/callback', 'Auth\Socialite\FacebookController@handleFacebookCallback');
+// Route::get('/auth/check', function () { return Auth::check() * 1; })->name('auth.check');
+// Route::post('/auth/check', function () { return Auth::check() * 1; })->name('auth.check.post');
 
 // Public
 Route::get('/', 'MainController@index')->name('main');
@@ -27,6 +29,7 @@ Route::get('/about', 'InfoController@about')->name('about');
 Route::get('/team', 'InfoController@team')->name('team');
 Route::get('/course/{course_id}', 'CourseController@view')->name('course.view');
 
+// Private
 Route::group(['middleware' => 'auth.basic'], function () {
     Route::get('/home', 'MainController@home')->name('home');
 });
@@ -44,9 +47,9 @@ Route::group(['middleware' => 'auth.admin'], function () {
     Route::get('/account/profile/{user_id?}', 'AccountController@profile')->name('account.profile');
     Route::post('/account/profile/{user_id?}', 'AccountController@profile')->name('account.profile.post');
 
-    Route::get('/account/courses/{user_id?}', 'CourseController@list_account')->middleware('verified')->name('account.courses');
-    Route::get('/account/course/{course_id}/lecture/{lecture_id?}/{user_id?}', 'CourseController@lecture')->middleware('verified')->name('courses.lecture');
-    Route::post('/account/course/{course_id}/lecture/{lecture_id?}/{user_id?}', 'CourseController@lecture')->middleware('verified')->name('courses.lecture.post');
+    // Route::get('/account/courses/{user_id?}', 'CourseController@list_account')->middleware('verified')->name('account.courses');
+    // Route::get('/account/course/{course_id}/lecture/{lecture_id?}/{user_id?}', 'CourseController@lecture')->middleware('verified')->name('courses.lecture');
+    // Route::post('/account/course/{course_id}/lecture/{lecture_id?}/{user_id?}', 'CourseController@lecture')->middleware('verified')->name('courses.lecture.post');
     
     Route::get('/admin', 'AdminController@dashboard')->middleware('verified')->name('admin.dashboard');
 

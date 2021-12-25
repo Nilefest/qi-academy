@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Providers\RouteServiceProvider;
 use Closure;
 use Auth;
 
@@ -19,8 +20,8 @@ class AuthenticateClient
         if (Auth::check())
         {
             if(Auth::user()->checkRole('client')) return $next($request);
-            else redirect()->route('home');
+            return redirect()->intended(RouteServiceProvider::HOME);
         }
-        return redirect()->route('login');
+        return redirect()->guest(route('login'));
     }
 }

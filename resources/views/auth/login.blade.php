@@ -7,11 +7,10 @@
 @section('content')
     <div class="content container">
         <p><a href="{{ url('/') }}"><i class="fas fa-arrow-left icon_back"></i> Back</a></p>
-        <h1>ADMIN <i class="fal fa-lock-alt icon"></i></h1>
+        <h1>Qi SIGN IN <i class="fal fa-lock-alt icon"></i></h1>
         <div class="form">
             <div class="empty"></div>
             <form method="POST" action="{{ route('login') }}">
-                
                 @csrf
                 <input value="{{ old('email') }}" required name="email" autocomplete="email" autofocus type="email"
                     class="input_text @error('email') invalid @enderror" placeholder="your email address">

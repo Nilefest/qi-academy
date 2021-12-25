@@ -7,7 +7,7 @@
 @section('content')
     <div class="content container">
         <p><a href="{{ url('/') }}"><i class="fas fa-arrow-left icon_back"></i> Back</a></p>
-        <h1>Qi ADMIN <i class="fal fa-lock-alt icon"></i></h1>
+        <h1>Qi SIGN UP <i class="fal fa-lock-alt icon"></i></h1>
         <div class="form">
             <div class="empty"></div>
             <form method="POST" action="{{ route('register') }}">

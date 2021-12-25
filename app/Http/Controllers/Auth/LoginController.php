@@ -45,7 +45,17 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
+        // echo redirect()->back()->getTargetUrl(); exit();
+        // if(!session()->has('from')){
+        //     session()->put('from', url()->previous());
+        // }
+
         $this->date['title'] = 'Sign in';
         return view('auth.login', $this->date);
+    }
+
+    public function authenticated($request, $user)
+    {
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 }

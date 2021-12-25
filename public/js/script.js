@@ -1,3 +1,6 @@
+/* DEMO code */
+// requestWithFetch('post', '/auth/check', [], (data) => console.log(data)); // Ayth check
+
 /* PUBLIC */
 
 // Close all modals. 
