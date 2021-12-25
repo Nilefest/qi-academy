@@ -2,6 +2,10 @@
 
 use Illuminate\Database\Seeder;
 
+use Faker\Generator;
+use Illuminate\Container\Container;
+use Illuminate\Support\Str;
+
 class UserSeeder extends Seeder
 {
     /**
@@ -11,6 +15,8 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Container::getInstance()->make(Generator::class);
+
         DB::table('users')->insert([
           'name' => 'Admin',
           'password' => bcrypt('admin'),
@@ -22,7 +28,7 @@ class UserSeeder extends Seeder
         ]);
         for($i = 0; $i < 10; $i++){
           DB::table('users')->insert([
-            'name' => "User$i",
+            'name' => $faker->name(),
             'password' => bcrypt("user$i"),
             'email' => "user$i@mail.com",
             'email_verified_at' => date('Y-m-d H:i:s'),

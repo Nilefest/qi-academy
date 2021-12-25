@@ -2,6 +2,10 @@
 
 use Illuminate\Database\Seeder;
 
+use Faker\Generator;
+use Illuminate\Container\Container;
+use Illuminate\Support\Str;
+
 class CourseOfflineSeeder extends Seeder
 {
     /**
@@ -11,16 +15,18 @@ class CourseOfflineSeeder extends Seeder
      */
     public function run()
     {
-        $default_data = Storage::disk('local')->get('default/course_offline.default.json');
-        $default_data = json_decode($default_data, true);
+        $faker = Container::getInstance()->make(Generator::class);
+        
+        $total_courses = rand(2, 7);
 
-        foreach($default_data as $key => $row){
+        for($course_id = 1; $course_id <= $total_courses; $course_id++){
             DB::table('courses_offline')->insert([
-                'name' => $row['name'],
-                'place' => $row['place'],
-                'date_of' => $row['date_of'],
-                'period' => $row['period'],
-                'video' => $row['video'],
+                'id' => $course_id,
+                'name' => $faker->sentence(rand(3, 7)),
+                'place' => $faker->city,
+                'date_of' => date('Y-m-d H:i:s', time() + rand(10000, 9999999)),
+                'period' => rand(2, 7) . ' days',
+                'video' => '',
                 'updated_at' => date('Y-m-d H:i:s'),
                 'created_at' => date('Y-m-d H:i:s'),
               ]);

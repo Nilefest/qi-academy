@@ -17,6 +17,7 @@ class TeamSeeder extends Seeder
 
         foreach($default_data as $key => $row){
             DB::table('team')->insert([
+                'id' => $row['id'] . '',
                 'name' => $row['name'] . '',
                 'img' => $row['img'] . '',
                 'info' => $row['info'] . '',

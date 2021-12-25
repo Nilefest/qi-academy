@@ -17,11 +17,11 @@ class CreateCourseLecturesTable extends Migration
             $table->id();
             $table->integer('course_id');
             $table->string('name')->default('');
-            $table->string('info_short')->default('');
-            $table->string('info_full')->default('');
+            $table->text('info_short')->nullable();
+            $table->text('info_full')->nullable();
             $table->text('video')->nullable();
             $table->string('file')->default('');
-            $table->string('homework')->default('');
+            $table->text('homework')->nullabel();
             $table->timestamps();
         });
     }

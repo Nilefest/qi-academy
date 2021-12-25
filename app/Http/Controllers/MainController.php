@@ -41,7 +41,7 @@ class MainController extends Controller
 
         $this->data['main_educations'] = CommonService::getDataFromFile('main_educations.default.json');
         $this->data['video_reviews'] = Review::all();
-        $this->data['team_list'] = Team::getList(true);
+        $this->data['team_list'] = Team::getList(true, 3);
         
         return view('main', $this->data);
     }

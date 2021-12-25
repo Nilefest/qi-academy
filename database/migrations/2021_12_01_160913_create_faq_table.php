@@ -17,7 +17,7 @@ class CreateFaqTable extends Migration
             $table->id();
             $table->integer('course_id')->nullabel();
             $table->string('title')->default('');
-            $table->string('info')->default('');
+            $table->text('info')->nullabel();
             $table->timestamps();
         });
     }

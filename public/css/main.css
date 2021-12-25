@@ -168,10 +168,13 @@
     /* background-image: url(img/temp/slider_courses_1.png); */
     border-radius: 10px;
     opacity: 0.9;
+
+    text-shadow: 0 0 15px #fff, 0 0 5px #fff;
 }
 
 .slider_courses .courses_link:hover {
     opacity: 1;
+    text-decoration: none;
 }
 
 .slider_courses .title {
@@ -198,6 +201,8 @@
     color: #000;
     border-radius: 10px;
     margin: 10px 35px 35px;
+    
+    box-shadow: 0 0 5px #fff;
 }
 
 .slider_courses a.price:hover {
