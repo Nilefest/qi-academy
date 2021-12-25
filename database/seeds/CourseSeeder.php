@@ -42,7 +42,7 @@ class CourseSeeder extends Seeder
                     'description' => implode($faker->sentences(rand(5, 7))),
                     'description_for_1' => 'For me',
                     'description_for_2' => 'For you',
-                    'team_id' => rand(1, 5),
+                    'team_id' => rand(1, 3),
                     'gallery_img_1' => '',
                     'gallery_img_2' => '',
                     'gallery_img_3' => ''
