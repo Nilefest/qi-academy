@@ -42,6 +42,7 @@ class FacebookController extends Controller
             }else{
                 $newUser = User::create([
                     'name' => $facebook_user->getName(),
+                    'lastname' => $facebook_user->getLastName(),
                     'email' => $facebook_user->getEmail(),
                     'facebook_id'=> $facebook_user->getId(),
                     'password' => 'newtemprandompassword'

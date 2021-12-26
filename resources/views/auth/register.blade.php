@@ -13,7 +13,9 @@
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <input value="{{ old('name') }}" required name="name" autocomplete="name" autofocus type="text"
-                    class="input_text @error('name') invalid @enderror" placeholder="Full name">
+                    class="input_text @error('name') invalid @enderror" placeholder="Your name">
+                <input value="{{ old('lastname') }}" required name="lastname" autocomplete="lastname" autofocus type="text"
+                    class="input_text @error('lastname') invalid @enderror" placeholder="Lastname">
                 <input value="{{ old('email') }}" required name="email" autocomplete="email" type="email"
                     class="input_text @error('email') invalid @enderror" placeholder="Your email address">
                 <input autocomplete="new-password" name="password" required type="text"

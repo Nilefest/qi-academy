@@ -94,19 +94,6 @@
 		modalOpen('.modal_book_offline');
 	}));
 
-	// Subscribe
-	// #event #function #server
-	document.querySelector('.subscribe_button').addEventListener('click', () => {
-		let sub_mail = document.getElementById('subscribe_email').value;
-		if (sub_mail) {
-			/* -- POST MAIL TO SERVER -- */
-
-			document.querySelector('.modal_simple_info .message').innerHTML = 'Dziękujemy za subskrypcję!';
-			modalOpen('.modal_simple_info');
-			document.getElementById('subscribe_email').value = '';
-		}
-	});
-
 	// Show video with Reviews from Youtube. 
 	// #event #function
 	document.querySelectorAll('.youtube_open_modal').forEach(element => element.addEventListener('click', event => {

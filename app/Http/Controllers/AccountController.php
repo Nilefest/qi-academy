@@ -31,7 +31,7 @@ class AccountController extends Controller
     {
         if($user_id) $user = User::findOrFail($user_id);
         else $user = Auth::user();
-
+        
         if($request->isMethod('post')) {
             // Save new data about user
             if($request->input('type') === 'save_profile'){
@@ -41,6 +41,7 @@ class AccountController extends Controller
         }
 
         $this->data['user'] = $user;
+        $this->data['user_id'] = $user_id;
         $this->data['title'] = 'Profile';
         return view('account.profile', $this->data);
     }

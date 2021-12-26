@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
 
         DB::table('users')->insert([
           'name' => 'Admin',
+          'lastname' => 'Super',
           'password' => bcrypt('admin'),
           'email' => 'admin@mail.com',
           'email_verified_at' => date('Y-m-d H:i:s'),
@@ -28,7 +29,8 @@ class UserSeeder extends Seeder
         ]);
         for($i = 0; $i < 10; $i++){
           DB::table('users')->insert([
-            'name' => $faker->name(),
+            'name' => $faker->firstName(),
+            'lastname' => $faker->lastName,
             'password' => bcrypt("user$i"),
             'email' => "user$i@mail.com",
             'email_verified_at' => date('Y-m-d H:i:s'),

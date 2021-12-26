@@ -33,11 +33,16 @@
 
             <button class="profile_button profile_save desktop">Zapisz zmiany</button>
         </div>
-        <div class="form" data-formAction="{{ route('account.profile.post', $user->id) }}">
+        <div class="form" data-formAction="{{ route('account.profile.post', $user_id) }}">
             <label class="profile_label">
                 <span class="title">Name</span>
-                <input autocomplete="off" type="text" class="profile_input profile_name" placeholder="Name and Last name"
+                <input autocomplete="off" type="text" class="profile_input profile_name" placeholder="Name"
                     value="{{ $user->name }}">
+            </label>
+            <label class="profile_label">
+                <span class="title">Lastname</span>
+                <input autocomplete="off" type="text" class="profile_input profile_lastname" placeholder="Lastname"
+                    value="{{ $user->lastname }}">
             </label>
             <label class="profile_label">
                 <span class="title">Phone</span>

@@ -43,6 +43,7 @@ class GoogleController extends Controller
             }else{
                 $newUser = User::create([
                     'name' => $google_user->name,
+                    'lastname' => $google_user->lastname,
                     'email' => $google_user->email,
                     'google_id'=> $google_user->id,
                     'password' => 'newtemprandompassword'

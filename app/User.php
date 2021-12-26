@@ -21,7 +21,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'google_id', 'facebook_id'
+        'name', 'lastname', 'access', 'email', 'password', 'google_id', 'facebook_id'
     ];
 
     /**
@@ -46,15 +46,18 @@ class User extends Authenticatable implements MustVerifyEmail
         'root' => -1,
         'admin' => 0,
         'client' => 1,
+        'subscribe' => 2,
     ];
 
     public static function saveUser($user, Request $request){
         if($request->input('name') !== null) $user->name = $request->input('name');
+        if($request->input('lastname') !== null) $user->lastname = $request->input('lastname');
         if($request->input('phone') !== null) $user->phone = $request->input('phone');
         if($request->input('email') !== null && !$user->hasVerifiedEmail()) $user->email = $request->input('email');
         if(isset($_FILES['avatar'])){
             $user->avatar = CommonService::uploadFile('profile', $_FILES['avatar'], $user->avatar);
         }
+        if($user->access === 2) $user->access = 1;
         $user->save();
         return $user;
     }
@@ -67,11 +70,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
         if($search_by){
             $result = $result->where(function($query) use ($search_by) {
-                $query->where('name', 'like', "%$search_by%")->orWhere('phone', 'like', "%$search_by%")->orWhere('email', 'like', "%$search_by%");
+                $query->where('name', 'like', "%$search_by%")->orWhere('lastname', 'like', "%$search_by%")->orWhere('phone', 'like', "%$search_by%")->orWhere('email', 'like', "%$search_by%");
             });
         }
 
-        if(in_array($order_by, ['name', 'phone', 'email'])) $list = $result->orderBy($order_by)->get();
+        if(in_array($order_by, ['name', 'lastname', 'phone', 'email'])) $list = $result->orderBy($order_by)->get();
         else $list = $result->get();
         
         // Get total courses for clients
@@ -87,7 +90,14 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     
     public static function checkRole($role_type = 'client'){
-        if(Auth::check() && Auth::user()->access === self::$list_roles[$role_type]) return true;
+        if(Auth::check() && isset(self::$list_roles[$role_type])){
+            $user_access = Auth::user()->access;
+            $role_access = self::$list_roles[$role_type];
+            
+            if($user_access === $role_access) return true;
+            if($user_access < 0 && $role_access === 0) return true; // For root
+            if($user_access === 2 && $role_access === 1) return true; // For subscribe as client
+        }
         return false;
     }
     

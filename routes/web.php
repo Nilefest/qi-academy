@@ -38,6 +38,11 @@ Route::post('/payment/result/return/', 'PaymentController@return')->name('paymen
 Route::get('/payment/result/fail/', 'PaymentController@fail')->name('payment.fail');
 Route::post('/payment/result/fail/', 'PaymentController@fail')->name('payment.fail.post');
 
+// Subscribe
+Route::post('/subscribe', 'SubscribeController@add')->name('subscribe.add.post');
+Route::get('/unsubscribe/{email?}', 'SubscribeController@delete')->name('subscribe.delete');
+Route::post('/unsubscribe/{email?}', 'SubscribeController@delete')->name('subscribe.add.post');
+
 // Private
 Route::group(['middleware' => 'auth.basic'], function () {
     Route::get('/home', 'MainController@home')->name('home');

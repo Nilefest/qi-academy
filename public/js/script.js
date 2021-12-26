@@ -3,6 +3,13 @@
 
 /* PUBLIC */
 
+// Validate Email
+// #function
+let validateEmail = (email) => {
+	const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(String(email).toLowerCase());
+}
+
 // Close all modals. 
 // #function
 let modalClose = () => {
@@ -237,7 +244,7 @@ let func_default_fail = () => view_modal_simple_info('Something went wrong...<br
 			});
 		}
 	}
-	
+
 	// Copy text
 	// #event
 	document.querySelectorAll('.button_copy').forEach(element => element.closest('.button_copy').addEventListener('click', () => copyText(element.getAttribute('data-textCopy'))));
@@ -248,7 +255,7 @@ let func_default_fail = () => view_modal_simple_info('Something went wrong...<br
 		document.querySelector('.modal_sign_account').classList.toggle('signin_step');
 		document.querySelector('.modal_sign_account').classList.toggle('signup_step');
 	}));
-	
+
 	// Open modal SignIn-SignUp
 	// #event #function
 	document.querySelectorAll('.open_sign_modal').forEach(element => element.addEventListener('click', () => {
@@ -263,8 +270,29 @@ let func_default_fail = () => view_modal_simple_info('Something went wrong...<br
 		document.querySelector('.modal_view_fullimg .full_image').setAttribute('src', img_url);
 		modalOpen('.modal_view_fullimg');
 	}
-	
+
 	// View image fullscreen
 	// #event
 	document.querySelectorAll('.view_full_img').forEach(element => element.addEventListener('click', openFullImage));
+
+	// Subscribe
+	// #function #server
+	let subscribe_new = (event) => {
+		let sub_mail = event.target.closest('.subscribe_field').querySelector('.subscribe_email').value;
+		if (validateEmail(sub_mail)) {
+			requestWithFetch('post', '/subscribe/add', { email: sub_mail }, (data) => console.log(data));
+
+			document.querySelector('.modal_simple_info .message').innerHTML = 'Dziękujemy za subskrypcję!';
+			modalOpen('.modal_simple_info');
+			document.getElementById('subscribe_email').value = '';
+		} else {
+			document.querySelector('.modal_simple_info .message').innerHTML = 'Nieprawidłowy format wiadomości e-mail!';
+			modalOpen('.modal_simple_info');
+		}
+	}
+
+	// Subscribe
+	// #event
+	document.querySelectorAll('.subscribe_button').forEach(element => element.addEventListener('click', subscribe_new));
+
 })();

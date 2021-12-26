@@ -56,6 +56,10 @@ class LoginController extends Controller
 
     public function authenticated($request, $user)
     {
+        if($user->access === 2){
+            $user->access = 1;
+            $user->save();
+        }
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 }
