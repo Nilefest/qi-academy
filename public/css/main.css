@@ -20,6 +20,7 @@
 .main_banner_media img,
 .main_banner_media video {
     height: 100%;
+    border-radius: 10px;
 }
 
 .main_banner_info {

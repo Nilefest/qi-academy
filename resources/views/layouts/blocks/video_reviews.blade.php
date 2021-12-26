@@ -1,7 +1,7 @@
 @if (!empty($video_reviews))
     <div class="block_video_reviews container">
-        <div class="block_video_reviews_info">
-            <h3>Informacje <br>zwrotne <br>od <br>uczniów</h3>
+        <div class="block_video_reviews_info" style="min-height: 150px">
+            <h3>FEEDBACK</h3>
         </div>
         <div class="block_video_reviews_slider">
             <ul class="block_video_reviews_ul">

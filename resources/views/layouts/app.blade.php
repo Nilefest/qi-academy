@@ -73,10 +73,10 @@
                         </li>
                     </ul>
                     @guest
-                        <button class="main_nav_button open_sign_modal">Obszar osobisty</button>
+                        <button class="main_nav_button open_sign_modal">MOJE KONTO</button>
                     @endguest
                     @auth
-                        <a class="main_nav_button" href="{{ route('home') }}">Obszar osobisty</a>
+                        <a class="main_nav_button" href="{{ route('home') }}">MOJE KONTO</a>
                         <a class="main_nav_logout" href="{{ url('/logout') }}">Logout</a>
                     @endauth
                 </div>
@@ -155,10 +155,10 @@
 
                     <div class="footer_buttons">
                         @guest
-                            <button class="footer_button open_sign_modal">Obszar osobisty</button>
+                            <button class="footer_button open_sign_modal">MOJE KONTO</button>
                         @endguest
                         @auth
-                            <a class="footer_button" href="{{ route('home') }}">Obszar osobisty</a>
+                            <a class="footer_button" href="{{ route('home') }}">MOJE KONTO</a>
                         @endauth
                     </div>
                 </div>

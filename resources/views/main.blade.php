@@ -107,9 +107,9 @@
             </div>
             <div class="main_banner_info">
                 <span class="title">Online academy</span>
-                <h1>Najbardziej praktyczna <br>baza kursów dla <br>mistrzów urody.</h1>
+                <h1>POZNAJ NASZĄ FOLOZOFJE KOLORYZACJI WLOSOW</h1>
                 @guest
-                    <button class="main_banner_button open_sign_modal">Zarejestrować</button>
+                    <button class="main_banner_button open_sign_modal">ZAREJESTRUJ SIE</button>
                 @endguest
             </div>
         </div>
@@ -127,7 +127,7 @@
 
         @if ($paid_courses->count())
             <div class="slider_courses container">
-                <h3>Nasze kursy</h3>
+                <h3>POZNAJ PROGRAMY SZKOLENIOWE</h3>
                 <ul class="slider_courses_ul">
                     @foreach ($paid_courses as $course)
                         <li class="slider_courses_li">
@@ -150,7 +150,7 @@
 
         @if ($courses_offline_list->count())
             <div class="block_events">
-                <h3>Nadchodzące wydarzenia</h3>
+                <h3>HARMONOGRAM SZKOLEŃ OFFLINE</h3>
                 <div class="table container">
                     @foreach ($courses_offline_list as $course_one)
                         <div class="row course_item" data-courseId="{{ $course_one->id }}"
@@ -197,15 +197,15 @@
                 </video>
             </div>
             <div class="block_full_video_info">
-                <h3>Dowiedz się, <br>jak idzie szkolenie</h3>
+                <h3>JAK ODBYWAJĄ SIĘ NASZE <br>SZKOLENIA OFFLINE</h3>
                 <button class="block_full_video_button">&#9654;</button>
             </div>
         </div>
 
         <div class="block_team container">
             <div class="block_team_info">
-                <h3><b>Twórcy</b> <i>kursów</i></h3>
-                <a href="{{ url('/team') }}" class="title">Team &#x2197;</a>
+                <h3><b>CREATORS</b></h3>
+                <a href="{{ url('/team') }}" class="title">Team</a>
             </div>
 
             <div class="block_team_slider">
@@ -315,7 +315,7 @@
 
         @if (false)
             <div class="block_facebook_posts container">
-                <h3>Nasze najnowsze posty na <span>Facebook</span></h3>
+                <h3>NASZ <span>Facebook</span></h3>
                 <div class="facebook_posts" style="background-image: url(./temp/img/facebook_post_1.png);"></div>
             </div>
         @endif
@@ -323,7 +323,7 @@
         <div class="block_subscribe">
             <img src="./img/subscribe_back.png" alt=" " class="background_img">
             <div class="subscribe_field">
-                <label for="subscribe_email">Zapisz się do Newslettera</label>
+                <label for="subscribe_email">Zapisz się do newslettera</label>
                 <input autocomplete="off" type="email" id="subscribe_email" class="subscribe_email"
                     placeholder="haircaut@gmail.com">
                 <button class="subscribe_button">Go</button>
