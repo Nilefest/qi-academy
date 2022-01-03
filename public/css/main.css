@@ -166,11 +166,8 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    /* background-image: url(img/temp/slider_courses_1.png); */
     border-radius: 10px;
     opacity: 0.9;
-
-    text-shadow: 0 0 15px #fff, 0 0 5px #fff;
 }
 
 .slider_courses .courses_link:hover {
@@ -202,8 +199,6 @@
     color: #000;
     border-radius: 10px;
     margin: 10px 35px 35px;
-    
-    box-shadow: 0 0 5px #fff;
 }
 
 .slider_courses a.price:hover {
@@ -277,6 +272,7 @@
     height: auto;
     margin-bottom: 50px;
     border-radius: 10px;
+    text-align: center;
 }
 
 .block_team h3 b {
@@ -600,6 +596,8 @@
     font-weight: 500;
     font-size: 18px;
     margin-bottom: 40px;
+    text-transform: none;
+    line-height: 1.6em;
 }
 
 .block_register .block_register_button {

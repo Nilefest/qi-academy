@@ -133,6 +133,10 @@ header .logo span {
     font-size: 18px;
 }
 
+header .logo span img {
+    height: 22px;
+}
+
 header .account_logo {
     text-transform: uppercase;
     border-right: 1px solid #fff;
@@ -561,6 +565,9 @@ a.main_nav_button {
 
 .block_video_reviews_info {
     margin-right: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .block_video_reviews h3 {
@@ -571,6 +578,7 @@ a.main_nav_button {
     letter-spacing: 1px;
     line-height: 1.3em;
     width: 30%;
+    letter-spacing: 1px;
 }
 
 .block_video_reviews_slider {

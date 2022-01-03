@@ -44,7 +44,7 @@
             <div class="course_description container">
                 @if ($course->description)
                     <div class="course_description_text">
-                        <p>{{ $course->description }}</p>
+                        <p>{!! $course['description'] !!}</p>
                     </div>
                 @endif
 
@@ -53,10 +53,10 @@
                         <h3>Dla <br>kogo?</h3>
                         <ul class="course_for_ul">
                             @if ($course->description_for_1)
-                                <li>{{ $course->description_for_1 }}</li>
+                                <li>{!! $course['description_for_1'] !!}</li>
                             @endif
                             @if ($course->description_for_2)
-                                <li>{{ $course->description_for_2 }}</li>
+                                <li>{!!  $course['description_for_2'] !!}</li>
                             @endif
                         </ul>
                     </div>
@@ -102,7 +102,7 @@
                         <li class="program_list_li">
                             <span class="lessons">{{ $key + 1 }} lekcje</span>
                             <span class="title">{{ $lecture_one->name }}</span>
-                            <span class="info">{{ $lecture_one->info_short }}</span>
+                            <span class="info">{!! $lecture_one['info_short'] !!}</span>
                         </li>
                     @endforeach
                 </ul>

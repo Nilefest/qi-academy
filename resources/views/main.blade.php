@@ -107,9 +107,9 @@
             </div>
             <div class="main_banner_info">
                 <span class="title">Online academy</span>
-                <h1>POZNAJ NASZĄ FOLOZOFJE KOLORYZACJI WLOSOW</h1>
+                <h1>POZNAJ NASZĄ FILOZOFJĘ <br>KOLORYZACJI WŁOSÓW</h1>
                 @guest
-                    <button class="main_banner_button open_sign_modal">ZAREJESTRUJ SIE</button>
+                    <button class="main_banner_button open_sign_modal">ZAREJESTRUJ SIĘ</button>
                 @endguest
             </div>
         </div>
@@ -125,19 +125,19 @@
             </div>
         @endif
 
-        @if ($paid_courses->count())
+        @if (count($paid_courses))
             <div class="slider_courses container">
                 <h3>POZNAJ PROGRAMY SZKOLENIOWE</h3>
                 <ul class="slider_courses_ul">
                     @foreach ($paid_courses as $course)
                         <li class="slider_courses_li">
-                            <a class="courses_link" style="background-image: url('{{ $course->banner_img }}')"
-                                href="{{ route('course.view', $course->id) }}">
-                                <span class="title">{{ $course->name }}</span>
-                                <span class="price">{{ $course->cost }} Zł</span>
+                            <a class="courses_link" style="background-image: url('{{ $course['banner_img'] }}')"
+                                href="{{ route('course.view', $course['id']) }}">
+                                <span class="title">{{ $course['name'] }}</span>
+                                <span class="price">{{ $course['cost'] }} Zł</span>
                                 <ul class="curs_info">
-                                    <li>{{ $course->total_lectures }} Lekcje</li>
-                                    <li>{{ $course->total_hours }} godziny</li>
+                                    <li>{{ $course['total_lectures'] }} Lekcje</li>
+                                    <li>{{ $course['total_hours'] }} godziny</li>
                                 </ul>
                             </a>
                         </li>
@@ -183,9 +183,9 @@
             <div class="block_register container">
                 <div class="block_register_media"></div>
                 <div class="block_register_info">
-                    <h3>{{ $main_course->name }}</h3>
-                    <span class="info">{{ $main_course->description }}</span>
-                    <a href="{{ route('course.view', $main_course->id) }}" class="block_register_button">Wyglądać</a>
+                    <h3>ROZWIJAJ SIĘ W WYGODNY <br>DLA CIEBIE SPOSÓB. </h3>
+                    <span class="info">Na komputerze, smartfonie <br>lub tablecie.</span>
+                    <a href="{{ route('course.view', $main_course->id) }}" class="block_register_button">ZACZNIJ</a>
                 </div>
             </div>
         @endif

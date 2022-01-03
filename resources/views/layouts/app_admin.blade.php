@@ -82,8 +82,8 @@
                     <li>
                         <a target="_blank"
                             href="https://api.whatsapp.com/send/?phone={{ preg_replace('/[+ ]/m', '', $contacts['whatsapp']['link']) }}&text=Hi!">
-                            <img src="/img/icons/icons8-whatsapp.png" alt="Icon Watsapp">
-                            <span>Watsapp</span>
+                            <img src="/img/icons/icons8-whatsapp.png" alt="Icon WhatsApp">
+                            <span>WhatsApp</span>
                         </a>
                     </li>
                     <li>

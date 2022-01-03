@@ -67,7 +67,7 @@
                     @foreach ($clients as $key => $client)
                         <tr class="client_item info" data-clientId="{{ $client['id'] }}">
                             <td class="tools">{{ $key + 1 }}</td>
-                            <td class="name">{{ $client['name'] }}</td>
+                            <td class="name">{{ $client['name'] . ' ' . $client['lastname'] }}</td>
                             <td class="phone">{{ $client['phone'] }}</td>
                             <td class="email">{{ $client['email'] }}</td>
                             <td class="total_courses">{{ $client['total_courses'] }}</td>

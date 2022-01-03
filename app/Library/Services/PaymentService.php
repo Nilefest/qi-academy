@@ -43,11 +43,10 @@ class PaymentService {
             "orderId" => $user->id . $course->id . time() . rand(100, 999),
         ];
 
-        $user_name = explode(' ', $user->name);
         $client_data = [
             "simp" => $user->id,
-            "customerFirstName" => htmlentities($user_name[0]),
-            "customerLastName" => (isset($user_name[1]) ? htmlentities($user_name[1]) : '') . ' ',
+            "customerFirstName" => htmlentities($user->name),
+            "customerLastName" => htmlentities($user->lastname),
             "customerEmail" => $user->email . '',
             "customerPhone" => $user->phone . ''
         ];

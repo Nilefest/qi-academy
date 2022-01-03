@@ -23,7 +23,7 @@
                 // Add new data
                 let client_item = document.getElementById('tpl_client_item').content.cloneNode(true);
                 client_item.querySelector('.tools').innerHTML = key + 1;
-                client_item.querySelector('.name').innerHTML = element['name'];
+                client_item.querySelector('.name').innerHTML = element['name'] + ' ' + element['lastname'];
                 client_item.querySelector('.phone').innerHTML = element['phone'];
                 client_item.querySelector('.email').innerHTML = element['email'];
                 client_item.querySelector('.total_courses').innerHTML = element['total_courses'];

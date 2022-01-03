@@ -59,7 +59,7 @@
         <div class="main_nav">
             <nav class="container">
                 <ul class="main_nav_ul">
-                    <li><a href="{{ url('/') }}">Dom</a></li>
+                    <li><a href="{{ url('/') }}">GŁÓWNA</a></li>
                     <li><a href="{{ route('about') }}">O Nas</a></li>
                     <li><a href="{{ route('team') }}">Team</a></li>
                     @auth
@@ -91,16 +91,13 @@
         <header>
             <div class="container">
                 <a href="{{ url('/') }}" class="logo" title="To main page">
-                    @auth
-                        <span class="account_logo">Moje biuro</span>
-                    @endauth
-                    <span class="full_text">Qi ACADEMY</span>
-                    <span class="short_text">Qi</span>
+                    <span class="full_text"><img src="{{ asset('img/logo-short.png') }}" alt=""></span>
+                    <span class="short_text"><img src="{{ asset('img/logo-short.png') }}"></span>
                 </a>
 
                 @auth
                     <div class="account"><a href="{{ route('home') }}" class="account_button"
-                            style="background-image: url('{{ Auth::user()->avatar ? Auth::user()->avatar : 'https://robohash.org/qiacademy?set=set4' }}');"></a>
+                            style="background-image: url('{{ Auth::user()->avatar ? Auth::user()->avatar : asset('uploads/profile/default/9.jpeg') }}');"></a>
                     </div>
                 @endauth
 
@@ -116,8 +113,8 @@
                     <li>
                         <a target="_blank"
                             href="https://api.whatsapp.com/send/?phone={{ preg_replace('/[+ ]/m', '', $contacts['whatsapp']) }}&text=Hi!">
-                            <img src="/img/icons/icons8-whatsapp.png" alt="Icon Watsapp">
-                            <span>Watsapp</span>
+                            <img src="/img/icons/icons8-whatsapp.png" alt="Icon WhatsApp">
+                            <span>WhatsApp</span>
                         </a>
                     </li>
                     <li>

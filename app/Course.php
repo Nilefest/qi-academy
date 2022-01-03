@@ -8,6 +8,8 @@ use App\Library\Services\CommonService;
 use Auth;
 use App\UserCourse;
 use App\UserLecture;
+use App\CourseLecture;
+use DB;
 
 class Course extends Model
 {
@@ -78,7 +80,13 @@ class Course extends Model
     }
 
     public static function getPaidCourse($limit = -1){
-        $course = self::where('only_paid', 1)->limit($limit)->get();
-        return $course;
+        $courses = self::where('only_paid', 1)->limit($limit)->get()->toArray();
+        $lectures_total = CourseLecture::select('course_id', DB::raw('count(*) as total'))->groupBy('course_id')->get()->keyBy('course_id');
+        foreach($courses as $key => $course){
+            if(isset($lectures_total[$course['id']])) $courses[$key]['total_lectures'] = $lectures_total[$course['id']]['total'];
+            else $courses[$key]['total_lectures'] = 0;
+        }
+        
+        return $courses;
     }
 }

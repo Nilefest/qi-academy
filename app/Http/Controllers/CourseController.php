@@ -38,14 +38,21 @@ class CourseController extends Controller
     public function view($course_id)
     {
         $course = Course::findOrFail($course_id);
+        $course['description'] = CommonService::replaceNlToBr($course['description']);
+        $course['description_for_1'] = CommonService::replaceNlToBr($course['description_for_1']);
+        $course['description_for_2'] = CommonService::replaceNlToBr($course['description_for_2']);
 
         $this->data['video_reviews'] = [];
         $this->data['team_one'] = Team::getById($course->team_id, true);
-        $this->data['lecture_list'] = CourseLecture::getListByCourse($course_id);
+        $lecture_list = CourseLecture::getListByCourse($course_id);
+        foreach($lecture_list as $key => $row){
+            $lecture_list[$key]['info_short'] = CommonService::replaceNlToBr($row['info_short']);
+        }
         $this->data['course_exp_list'] = CourseExp::getListByCourse($course_id);
         $this->data['faq_list'] = Faq::getListByCourse($course_id);
 
         $this->data['course'] = $course;
+        $this->data['lecture_list'] = $lecture_list;
 
         $this->data['title'] = $course->name;
         return view('course.view', $this->data);

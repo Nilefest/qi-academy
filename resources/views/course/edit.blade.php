@@ -261,6 +261,7 @@
             <div class="buttons_block">
                 <input type="button" class="button course_save" value="Сохранить  данные">
                 @if ($course->id !== null)
+                    <input type="button" class="button course_archive" value="Отправить в архив">
                     <input type="button" class="button course_delete" value="Удалить курс">
                 @endif
             </div>

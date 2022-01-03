@@ -23,6 +23,7 @@ class CourseLecture extends Model
         $current = $list->first(function($value) use ($completed) {
             return !isset($completed[$value['id']]);
         });
+        if(!$current) $current = $list[0];
         
         return $current;
     }
