@@ -21,7 +21,7 @@
         </nav>
 
         <div class="form setting_form" data-formAction="{{ route('admin.setting') }}">
-            <h2>Setting</h2>
+            <h2>Дополнительные настройки</h2>
             
             <div class="field">
                 <label for="payment_mode" class="title">Режим работы Imoje</label>
