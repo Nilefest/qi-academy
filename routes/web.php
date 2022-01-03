@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 // Auth
 Auth::routes(['verify' => true]);
-Route::get('/logout', 'Auth\LoginController@logout');
-Route::get('auth/google', 'Auth\Socialite\GoogleController@redirectToGoogle');
-Route::get('auth/google/callback', 'Auth\Socialite\GoogleController@handleGoogleCallback');
-Route::get('auth/facebook', 'Auth\Socialite\FacebookController@redirectToFacebook');
-Route::get('auth/facebook/callback', 'Auth\Socialite\FacebookController@handleFacebookCallback');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('auth/google', 'Auth\Socialite\GoogleController@redirectToGoogle')->name('auth.google');
+Route::get('auth/google/callback', 'Auth\Socialite\GoogleController@handleGoogleCallback')->name('auth.google.callback');
+Route::get('auth/facebook', 'Auth\Socialite\FacebookController@redirectToFacebook')->name('auth.facebook');
+Route::get('auth/facebook/callback', 'Auth\Socialite\FacebookController@handleFacebookCallback')->name('auth.facebook.callback');
 // Route::get('/auth/check', function () { return Auth::check() * 1; })->name('auth.check');
 // Route::post('/auth/check', function () { return Auth::check() * 1; })->name('auth.check.post');
 

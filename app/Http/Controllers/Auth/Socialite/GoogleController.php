@@ -8,17 +8,21 @@ use Socialite;
 use Auth;
 use Exception;
 use App\User;
+use Illuminate\Http\Request;
   
 class GoogleController extends Controller
 {
-        /**
+    /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function redirectToGoogle()
+    public function redirectToGoogle(\Illuminate\Http\Request $request)
     {
-            return Socialite::driver('google')->redirect();
+        if($request->input('target_url') !== null) session()->flash('url.intended.custom', $request->input('target_url'));
+        else session()->flash('url.intended.custom', redirect()->intended(RouteServiceProvider::HOME)->getTargetUrl());
+        
+        return Socialite::driver('google')->redirect();
     }
       
     /**
@@ -30,7 +34,6 @@ class GoogleController extends Controller
     {
         try {
             $google_user = Socialite::driver('google')->user();
-            // print_r($google_user); exit('*');
             $user = User::where('email', $google_user->email)->first();
      
             if($user){
@@ -38,11 +41,9 @@ class GoogleController extends Controller
                     $user->google_id = $google_user->id;
                     $user->save();
                 }
-                Auth::login($user);
-                return redirect(RouteServiceProvider::HOME);
      
             }else{
-                $newUser = User::create([
+                $user = User::create([
                     'name' => $google_user->user['given_name'],
                     'lastname' => $google_user->user['family_name'],
                     'email' => $google_user->email,
@@ -51,9 +52,11 @@ class GoogleController extends Controller
                     'email_verified_at'=> ($google_user->user['email_verified'] ? date('Y-m-d H:i:s') : null),
                     'password' => time() . rand(100, 999)
                 ]);
-                Auth::login($newUser);
-                return redirect(RouteServiceProvider::HOME);
             }
+
+            Auth::login($user);
+            return redirect(session('url.intended.custom'));
+
         } catch (Exception $e) {
             dd($e->getMessage());
         }

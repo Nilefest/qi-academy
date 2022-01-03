@@ -258,7 +258,15 @@ let func_default_fail = () => view_modal_simple_info('Something went wrong...<br
 
 	// Open modal SignIn-SignUp
 	// #event #function
-	document.querySelectorAll('.open_sign_modal').forEach(element => element.addEventListener('click', () => {
+	document.querySelectorAll('.open_sign_modal').forEach(element => element.addEventListener('click', event => {
+		let button = event.target;
+		document.querySelectorAll('.modal_sign_account .login_button.social').forEach(element => {
+			let href = element.getAttribute('data-href');
+			if (button.classList.contains('redirect_auth')) {
+				href += '?target_url=' + button.getAttribute('data-href');
+			}
+			element.setAttribute('href', href);
+		});
 		document.querySelector('.modal_sign_account').classList.replace('signin_step', 'signup_step');
 		modalOpen('.modal_sign_account');
 	}));

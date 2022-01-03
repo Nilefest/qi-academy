@@ -29,7 +29,13 @@
                 <div class="head_register">
                     <span class="cost">{{ $course->cost }} Zł</span>
                     <div class="head_buttons">
-                        <a href="{{ route('courses.lecture', $course->id) }}" class="head_button curs_register">Zapisać się na kurs</a>
+                        @guest
+                            <button class="head_button curs_register open_sign_modal redirect_auth" data-href="{{ route('courses.lecture', $course->id) }}">Zapisać się na kurs</button>
+                        @endguest
+                        @auth
+                            <a href="{{ route('courses.lecture', $course->id) }}" class="head_button curs_register">Zapisać
+                                się na kurs</a>
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -56,7 +62,7 @@
                                 <li>{!! $course['description_for_1'] !!}</li>
                             @endif
                             @if ($course->description_for_2)
-                                <li>{!!  $course['description_for_2'] !!}</li>
+                                <li>{!! $course['description_for_2'] !!}</li>
                             @endif
                         </ul>
                     </div>

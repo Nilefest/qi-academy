@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Auth\Socialite;
 
-use App\User;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Socialite;
-use Exception;
 use Auth;
+use Exception;
+use App\User;
+use Illuminate\Http\Request;
 
 class FacebookController extends Controller
 {
@@ -16,8 +17,11 @@ class FacebookController extends Controller
      *
      * @return void
      */
-    public function redirectToFacebook()
+    public function redirectToFacebook(\Illuminate\Http\Request $request)
     {
+        if($request->input('target_url') !== null) session()->flash('url.intended.custom', $request->input('target_url'));
+        else session()->flash('url.intended.custom', redirect()->intended(RouteServiceProvider::HOME)->getTargetUrl());
+        
         return Socialite::driver('facebook')->redirect();
     }
     /**
@@ -36,20 +40,19 @@ class FacebookController extends Controller
                     $user->facebook_id = $facebook_user->getId();
                     $user->save();
                 }
-                Auth::login($user);
-                return redirect(RouteServiceProvider::HOME);
      
             }else{
-                $newUser = User::create([
+                $user = User::create([
                     'name' => $facebook_user->getName(),
                     'lastname' => $facebook_user->getLastName(),
                     'email' => $facebook_user->getEmail(),
                     'facebook_id'=> $facebook_user->getId(),
-                    'password' => 'newtemprandompassword'
+                    'password' => time() . rand(100, 999)
                 ]);
-                Auth::login($newUser);
-                return redirect(RouteServiceProvider::HOME);
             }
+            
+            Auth::login($user);
+            return redirect(session('url.intended.custom'));
         } catch (Exception $e) {
             dd($e->getMessage());
         }
