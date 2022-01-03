@@ -59,16 +59,16 @@ class PaymentService {
             'currency' =>  $market_data['currency'],    // *
 
             'amount' => $payment_data['amount'],        // *
-            'orderDescription' =>  $payment_data['orderDescription'],    
+            'orderDescription' =>  self::translit_text($payment_data['orderDescription']),    
             'orderId' => $payment_data['orderId'],      // *
 
             'validTo' => strtotime(date('Y-m-d') . ' + 1 days'),
 
             'simp' => $client_data['simp'],
-            'customerFirstName' => $client_data['customerFirstName'],// *
-            'customerLastName' => $client_data['customerLastName'],  // *
-            'customerEmail' => $client_data['customerEmail'],        // *
-            'customerPhone' => $client_data['customerPhone'],
+            'customerFirstName' => self::translit_text($client_data['customerFirstName']),// *
+            'customerLastName' => self::translit_text($client_data['customerLastName']),  // *
+            'customerEmail' => self::translit_text($client_data['customerEmail']),        // *
+            'customerPhone' => self::translit_text($client_data['customerPhone']),
         ];
 
         /* --- SIGNATURE generator --- */
@@ -78,7 +78,6 @@ class PaymentService {
         $fields['url_form'] = $market_data['url_form'];
         $fields['signature_str'] = $signature_str;
 
-// print_r($fields); exit();
         return $fields;
     }
 
@@ -98,5 +97,32 @@ class PaymentService {
         else $hashData[] = $key . '=' . $value;
         }
         return implode('&', $hashData);
+    }
+
+    private static function translit_text($text) {
+        $converter = array(
+            'а' => 'a',    'б' => 'b',    'в' => 'v',    'г' => 'g',    'д' => 'd',
+            'е' => 'e',    'ё' => 'e',    'ж' => 'zh',   'з' => 'z',    'и' => 'i',
+            'й' => 'y',    'к' => 'k',    'л' => 'l',    'м' => 'm',    'н' => 'n',
+            'о' => 'o',    'п' => 'p',    'р' => 'r',    'с' => 's',    'т' => 't',
+            'у' => 'u',    'ф' => 'f',    'х' => 'h',    'ц' => 'c',    'ч' => 'ch',
+            'ш' => 'sh',   'щ' => 'sch',  'ь' => '',     'ы' => 'y',    'ъ' => '',
+            'э' => 'e',    'ю' => 'yu',   'я' => 'ya',
+
+            'А' => 'A',    'Б' => 'B',    'В' => 'V',    'Г' => 'G',    'Д' => 'D',
+            'Е' => 'E',    'Ё' => 'E',    'Ж' => 'Zh',   'З' => 'Z',    'И' => 'I',
+            'Й' => 'Y',    'К' => 'K',    'Л' => 'L',    'М' => 'M',    'Н' => 'N',
+            'О' => 'O',    'П' => 'P',    'Р' => 'R',    'С' => 'S',    'Т' => 'T',
+            'У' => 'U',    'Ф' => 'F',    'Х' => 'H',    'Ц' => 'C',    'Ч' => 'Ch',
+            'Ш' => 'Sh',   'Щ' => 'Sch',  'Ь' => '',     'Ы' => 'Y',    'Ъ' => '',
+            'Э' => 'E',    'Ю' => 'Yu',   'Я' => 'Ya',
+        );
+        
+        $text = str_replace(array(' ', ','), '-', $text);
+        $text = strtr($text, $converter);
+        $text = mb_ereg_replace('[-]+', '-', $text);
+        $text = trim($text, '-');
+
+        return $text;
     }
 }

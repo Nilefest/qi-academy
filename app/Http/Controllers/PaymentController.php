@@ -46,8 +46,12 @@ class PaymentController extends Controller
         
         if($request->isMethod('post') && $request->input('update_signature') !== null){
             $data = [
-                'signature_str' => $fields['signature_str'], 
-                'orderDescription' => $fields['orderDescription']
+                'customerFirstName' => $fields['customerFirstName'], 
+                'customerLastName' => $fields['customerLastName'], 
+                'customerEmail' => $fields['customerEmail'], 
+                'customerPhone' => $fields['customerPhone'], 
+                'orderDescription' => $fields['orderDescription'],
+                'signature_str' => $fields['signature_str']
             ];
             return ['status' => 'success', 'data' => $data, 'mess' => 'Success!'];
         }

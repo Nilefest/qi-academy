@@ -18,6 +18,10 @@
                 return false;
             }
 
+            form.querySelector('input[name="customerFirstName"]').value = data['data']['customerFirstName'];
+            form.querySelector('input[name="customerLastName"]').value = data['data']['customerLastName'];
+            form.querySelector('input[name="customerEmail"]').value = data['data']['customerEmail'];
+            form.querySelector('input[name="customerPhone"]').value = data['data']['customerPhone'];
             form.querySelector('input[name="orderDescription"]').value = data['data']['orderDescription'];
             form.querySelector('input[name="signature"]').value = data['data']['signature_str'];
 
