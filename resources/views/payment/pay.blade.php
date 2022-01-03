@@ -4,6 +4,10 @@
     <link rel="stylesheet" href="{{ asset('css/payment.css') }}?v={{ env('APP_VERSION') }}">
 @endsection
 
+@section('footer.js')
+    <script src="{{ asset('js/payment.js') }}?v={{ env('APP_VERSION') }}"></script>
+@endsection
+
 @section('header')
     <div class="header">
         <h1>Qi PAY</h1>
@@ -17,13 +21,13 @@
             <div class="personal_data form_column">
                 <h2 class="title">Dane kupującego</h2>
                 <input require readonly type="hidden" class="text" name="simp" value="{{ $fields['simp'] }}">
-                <input require readonly type="text" class="text" name="customerFirstName"
+                <input require type="text" class="text field_editable" name="customerFirstName"
                     value="{{ $fields['customerFirstName'] }}" placeholder="First name*">
-                <input require readonly type="text" class="text" name="customerLastName"
+                <input require type="text" class="text field_editable" name="customerLastName"
                     value="{{ $fields['customerLastName'] }}" placeholder="Last name*">
-                <input require readonly type="email" class="text" name="customerEmail"
+                <input require type="email" class="text field_editable" name="customerEmail"
                     value="{{ $fields['customerEmail'] }}" placeholder="Email*">
-                <input require readonly type="hidden" class="text" name="customerPhone"
+                <input require type="text" class="text field_editable" name="customerPhone"
                     value="{{ $fields['customerPhone'] }}" placeholder="Phone">
             </div>
 
@@ -40,7 +44,7 @@
             <div class="payment_data form_column">
                 <div class="cost_info">
                     <span class="title">cena</span>
-                    <b class="value">700 Zl</b>
+                    <b class="value">{{ $course['cost'] }} Zl</b>
                 </div>
 
                 <input require readonly type="hidden" class="text" name="urlSuccess"
@@ -61,12 +65,14 @@
                     value="{{ $fields['currency'] }}">
                 <input require readonly type="hidden" class="text" name="orderDescription"
                     value="{{ $fields['orderDescription'] }}">
-                <input require readonly type="hidden" class="text" name="orderId"
+                <input require readonly type="hidden" class="text orderId" name="orderId"
                     value="{{ $fields['orderId'] }}">
                 <input require readonly type="hidden" class="text" name="visibleMethod"
                     value="{{ $fields['visibleMethod'] }}">
+                <input require readonly type="hidden" class="text" name="validTo"
+                    value="{{ $fields['validTo'] }}">
 
-                <input require readonly type="hidden" class="text" name="signature"
+                <input require readonly type="hidden" class="text signature_str" name="signature"
                     value="{{ $fields['signature_str'] }}">
                 <input require readonly type="submit" class="button" value="zapłacić za kurs">
                 <a href="{{ route('payment.success', [$course->id, $user->id]) }}">Set as paid</a>

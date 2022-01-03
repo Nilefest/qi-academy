@@ -6,49 +6,44 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\User;
+use App\Setting;
 
 class PaymentService {
-    private static $market_data = [
-        'hashMethod' => 'sha256',
-
-        'merchantId' => "",
-        'serviceId' => "a2630657-3888-4438-9a1c-07a67ca6584d",
-        'serviceKey' => "",
-
-        'url_form' => 'https://paywall.imoje.pl/payment',
-
-        'visibleMethod' => 'card,pbl',
-        'currency' => 'PLN',
-    ];
-    
-    private static $market_data_test = [
-        'merchantId' => "u0lie3x11cj38br2key9",                  // "Identyfikator klienta" = "merchantId" 
-        'serviceId' => "c46c3fc8-f1a4-40dd-ac4e-f8dd07673a6a",   // "Identyfikator sklepu" = "serviceId"
-        'serviceKey' => "0khmqR87uT92turIuDPR3lvGGZNkfUpZPdvs",  // "Klucz sklepu" = "serviceKey"
-
-        'url_form' => 'https://sandbox.paywall.imoje.pl/payment',
-    ];
 
     public static function getFields($user, $course) {
-        $market_links = [
+        $setting = Setting::getByType('imoje');
+        if($setting['test_mode']['value'] === '1') $test_mode = '_TEST';
+        else $test_mode = '';
+
+        $market_data = [
+            'hashMethod' => 'sha256',
+
+            'merchantId' => env('IMOJE_MERCHANT_ID' . $test_mode),
+            'serviceId' => env('IMOJE_SERVICE_ID' . $test_mode),
+            'serviceKey' => env('IMOJE_SERVICE_KEY' . $test_mode),
+
+            'url_form' => env('IMOJE_ACTION' . $test_mode),
+
+            'visibleMethod' => 'card,pbl',
+            'currency' => 'PLN',
+            
             'urlSuccess' => route('payment.success'),
             'urlFailure' => route('payment.fail'),
             'urlReturn' => route('payment.return'),
         ];
-        $market_data = array_merge($market_links, self::$market_data, self::$market_data_test);
 
         $payment_data = [
-            "amount" => $course->cost * 1,
-            "orderDescription" => htmlentities('Course ' . $course->name . '. For ' . $user->name . '. ' . date('Y-m-y H-i-s')),
-            "orderId" => $user->id . $course->id . time() . rand(100, 999),
+            "amount" => $course->cost * 100,
+            "orderDescription" => htmlentities('Course ' . $course->name . '. For ' . $user['name'] . '. ' . date('Y-m-y')),
+            "orderId" => $user['id'] . $course->id . strtotime(date('Y-m-d')),
         ];
 
         $client_data = [
-            "simp" => $user->id,
-            "customerFirstName" => htmlentities($user->name),
-            "customerLastName" => htmlentities($user->lastname),
-            "customerEmail" => $user->email . '',
-            "customerPhone" => $user->phone . ''
+            "simp" => $user['id'],
+            "customerFirstName" => htmlentities($user['name']),
+            "customerLastName" => htmlentities($user['lastname']),
+            "customerEmail" => $user['email'] . '',
+            "customerPhone" => $user['phone'] . ''
         ];
 
         /* --- FORM data --- */
@@ -67,6 +62,8 @@ class PaymentService {
             'orderDescription' =>  $payment_data['orderDescription'],    
             'orderId' => $payment_data['orderId'],      // *
 
+            'validTo' => strtotime(date('Y-m-d') . ' + 1 days'),
+
             'simp' => $client_data['simp'],
             'customerFirstName' => $client_data['customerFirstName'],// *
             'customerLastName' => $client_data['customerLastName'],  // *
@@ -81,6 +78,7 @@ class PaymentService {
         $fields['url_form'] = $market_data['url_form'];
         $fields['signature_str'] = $signature_str;
 
+// print_r($fields); exit();
         return $fields;
     }
 

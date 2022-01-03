@@ -31,6 +31,7 @@ Route::get('/course/{course_id}', 'CourseController@view')->name('course.view');
 
 // Payment
 Route::get('/payment/{course_id}/{user_id?}/', 'PaymentController@pay')->name('payment.pay');
+Route::post('/payment/{course_id}/{user_id?}/', 'PaymentController@pay')->name('payment.pay.post');
 Route::get('/payment/result/success/{course_id?}/{user_id?}', 'PaymentController@success')->name('payment.success');
 Route::post('/payment/result/success/', 'PaymentController@success')->name('payment.success.post');
 Route::get('/payment/result/return/', 'PaymentController@return')->name('payment.return');
@@ -66,6 +67,8 @@ Route::group(['middleware' => 'auth.admin'], function () {
     // Route::post('/account/course/{course_id}/lecture/{lecture_id?}/{user_id?}', 'CourseController@lecture')->middleware('verified')->name('courses.lecture.post');
     
     Route::get('/admin', 'AdminController@dashboard')->middleware('verified')->name('admin.dashboard');
+
+    Route::post('/admin/setting', 'AdminController@setting')->middleware('verified')->name('admin.setting');
 
     Route::get('/admin/team', 'AdminController@team')->middleware('verified')->name('admin.team');
     Route::post('/admin/team', 'AdminController@team')->middleware('verified')->name('admin.team.post');

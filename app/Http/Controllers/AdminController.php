@@ -8,6 +8,7 @@ use App\Library\Services\CommonService;
 use App\Team;
 
 use App\CourseOffline;
+use App\Setting;
 use App\Contact;
 use App\Review;
 use App\User;
@@ -36,6 +37,8 @@ class AdminController extends Controller
      */
     public function dashboard()
     {
+        $this->data['setting_fields'] = Setting::getFields();
+
         $this->data['title'] = 'Dashboar for Admin';
         return view('admin.dashboard', $this->data);
     }
@@ -159,6 +162,26 @@ class AdminController extends Controller
 
         $this->data['title'] = 'Edit contacts';
         return view('admin.contacts', $this->data);
+    }
+
+    /**
+     * Setting data
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function setting(Request $request)
+    {
+        if($request->isMethod('post')){
+            if($request->input('save_setting') !== null){
+                $fields = $request->input('fields');
+                foreach($fields as $field){
+                    Setting::saveField($field['type'], $field['name'], $field['value']);
+                }
+                print_r($request->all());
+                return ['status' => 'success', 'mess' => 'Success!'];
+            }
+        }
+        return;
     }
 
     /**

@@ -19,7 +19,7 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function pay($course_id, $user_id = false)
+    public function pay($course_id, $user_id = false, Request $request)
     {
         if($user_id) $user = User::findOrFail($user_id);
         elseif(Auth::check()) $user = Auth::user();
@@ -32,9 +32,25 @@ class PaymentController extends Controller
         if($course_user) {
             return redirect()->route('courses.lecture', $course_id);
         }
+
+        if($request->input('update_signature') !== null){
+            $user = $user->toArray();
+            if($request->input('customerFirstName') !== null) $user['name'] = $request->input('customerFirstName'); 
+            if($request->input('customerLastName') !== null) $user['lastname'] = $request->input('customerLastName'); 
+            if($request->input('customerEmail') !== null) $user['email'] = $request->input('customerEmail'); 
+            if($request->input('customerPhone') !== null) $user['phone'] = $request->input('customerPhone');
+        }
         
         $fields = PaymentService::getFields($user, $course);
         $this->data['fields'] = $fields;
+        
+        if($request->isMethod('post') && $request->input('update_signature') !== null){
+            $data = [
+                'signature_str' => $fields['signature_str'], 
+                'orderDescription' => $fields['orderDescription']
+            ];
+            return ['status' => 'success', 'data' => $data, 'mess' => 'Success!'];
+        }
         
         $this->data['course'] = $course;
         $this->data['user'] = $user;
