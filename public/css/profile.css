@@ -1,6 +1,15 @@
 .content {
     padding: 80px 20px 50px;
+<<<<<<< HEAD
 	font-family: 'Montserrat', sans-serif;
+=======
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+button.link.send_for_configm {
+    color: #FFF9C6;
+>>>>>>> dev
 }
 
 /* Profile */
@@ -38,7 +47,13 @@
     background-color: #fff;
     border-radius: 50%;
     padding: 10px;
+<<<<<<< HEAD
     border: 3px solid #fff;
+=======
+    -moz-box-shadow: 0 0 2px #fff;
+    -webkit-box-shadow: 0 0 2px #fff;
+    box-shadow: 0 0 2px #fff;
+>>>>>>> dev
 }
 
 .profile_head .avatar:hover .avatar_photo {
@@ -57,6 +72,21 @@
     font-weight: bold;
     text-transform: uppercase;
     border-radius: 10px;
+<<<<<<< HEAD
+=======
+    margin-right: 50px;
+}
+
+.profile_button.white {
+    padding: 10px 15px;
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
+}
+
+.profile_button.white .icon {
+    margin: 0px 10px 0px 5px;
+>>>>>>> dev
 }
 
 .profile_button:hover {
@@ -65,6 +95,14 @@
     cursor: pointer;
 }
 
+<<<<<<< HEAD
+=======
+.profile_button.white:hover {
+    background-color: #000;
+    border-color: #fff;
+}
+
+>>>>>>> dev
 .profile_button.mobile {
     display: none;
 }
@@ -81,7 +119,20 @@
     border-radius: 10px;
     padding: 15px 20px;
     font-size: 18px;
+<<<<<<< HEAD
     margin: 0px 60px 30px 0px;
+=======
+    margin: 0px 40px 30px 0px;
+
+    max-width: 350px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.profile_label .icon_lock {
+    opacity: 0.8;
+>>>>>>> dev
 }
 
 .profile_label .title {
@@ -97,12 +148,117 @@
     font-weight: bold;
     color: #fff;
     outline: none;
+<<<<<<< HEAD
+=======
+    width: 100%;
+>>>>>>> dev
 }
 
 .profile_label .profile_input:focus {
     border-bottom: 1px solid #fff;
 }
 
+<<<<<<< HEAD
+=======
+/* For ADM */
+/* User`s courses and course-add form */
+.profile_courses_table {
+    margin-bottom: 50px;
+}
+
+.profile_courses_table th {
+    text-transform: lowercase;
+    font-size: 18px;
+    font-weight: 200;
+    text-align: center;
+    padding: 5px 20px 15px;
+    opacity: 0.8;
+}
+
+.profile_courses_table .cell_text {
+    background-color: #191C21;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    padding: 13px 15px;
+    display: block;
+    margin: 0px 10px 20px 0px;
+    min-width: 150px;
+}
+
+.profile_courses_table th,
+.profile_courses_table td {
+    margin-right: 10px;
+}
+
+.profile_courses_table th.tool,
+.profile_courses_table td.tool {
+    width: 40px;
+    padding: 15px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile_courses_table .icon:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.profile_courses_add_form {
+    margin: 20px 50px 50px;
+    background-color: #191C21;
+    border-radius: 10px;
+    padding: 20px 30px 40px;
+    display: inline-block;
+}
+
+.profile_courses_add_form .title {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.profile_courses_add_form .add_form {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.profile_courses_add_form .text {
+    border: 1px solid #fff;
+    border-radius: 10px;
+    background-color: #000;
+    background-color: transparent;
+    color: #fff;
+    padding: 5px 15px;
+    margin-right: 25px;
+    max-width: 500px;
+}
+
+.profile_courses_add_form .text option {
+    background-color: #000;
+}
+
+
+.profile_courses_add_form .button {
+    background-color: transparent;
+    border: 1px solid #F84C34;
+    color: #F84C34;
+    padding: 10px 30px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 10px;
+}
+
+.profile_courses_add_form .button:hover {
+    background-color: #F84C34;
+    color: #fff;
+    cursor: pointer;
+}
+
+>>>>>>> dev
 @media screen and (min-width: 1440px) {}
 
 @media screen and (max-width: 1440px) {}
@@ -143,4 +299,8 @@
     }
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 479px) {}
+=======
+@media screen and (max-width: 479px) {}
+>>>>>>> dev

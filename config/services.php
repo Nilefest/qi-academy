@@ -33,12 +33,20 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_SECRET_KEY'),
+<<<<<<< HEAD
         'redirect' => env('GOOGLE_REDIRECT'),
+=======
+        'redirect' => env('APP_URL') . env('GOOGLE_REDIRECT'),
+>>>>>>> dev
     ],
     
     'facebook' => [
         'client_id' => env('FACEBOOK_CLIENT_ID'),
         'client_secret' => env('FACEBOOK_SECRET_KEY'),
+<<<<<<< HEAD
         'redirect' => env('FACEBOOK_REDIRECT'),
+=======
+        'redirect' => env('APP_URL') . env('FACEBOOK_REDIRECT'),
+>>>>>>> dev
     ],
 ];

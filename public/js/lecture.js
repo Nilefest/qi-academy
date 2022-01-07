@@ -8,11 +8,37 @@
 			element.classList.replace('fa-circle', 'fa-check-circle')
 		});
 
+<<<<<<< HEAD
 		/* -- POST DATA TO SERVER --  */
 
 		// Finish full course
 		document.querySelectorAll('.finished_lesson_block').forEach(element => element.classList.add('finished'));
 		document.querySelectorAll('.finished_lesson_block').forEach(element => element.classList.remove('unfinished'));
+=======
+		let lecture_one = document.querySelector('.lecture_one');
+
+		/* -- POST DATA TO SERVER --  */
+		let url = lecture_one.getAttribute('data-formAction');
+		let lecture_data = {
+			type: 'lecture_finish',
+			lecture_id: lecture_one.getAttribute('data-lectureId'),
+			user_id: lecture_one.getAttribute('data-userId')
+		};
+		let func_success = (data) => {
+			let last = data['data']['last'];
+			let current_completed = data['data']['current_completed'];
+
+			console.log(data);
+
+			// Finish full course
+			document.querySelectorAll('.finished_lesson_block .current').forEach(element => element.innerHTML = current_completed);
+			document.querySelectorAll('.finished_lesson_block').forEach(element => element.classList.add('finished'));
+			if (last * 1 === 0) {
+				document.querySelectorAll('.finished_lesson_block').forEach(element => element.classList.remove('unfinished'));
+			}
+		};
+		requestWithFetch('post', url, lecture_data, func_success, func_default_fail);
+>>>>>>> dev
 	};
 
 	// Finish lecture

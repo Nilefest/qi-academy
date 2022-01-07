@@ -1,7 +1,21 @@
+<<<<<<< HEAD
 /node_modules
 /public/hot
 /public/storage
 /storage/*.key
+=======
+/public/hot
+/public/storage
+/public/uploads/courses/*
+/public/uploads/lectures/*
+/public/uploads/main/*
+/public/uploads/profile/*
+/public/uploads/team/*
+
+/storage/*.key
+
+/node_modules
+>>>>>>> dev
 /vendor
 .env
 .env.backup

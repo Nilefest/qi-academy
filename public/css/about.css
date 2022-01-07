@@ -63,7 +63,11 @@
 }
 
 .media_content .column {
+<<<<<<< HEAD
 	width: 45%;
+=======
+	width: 47%;
+>>>>>>> dev
 	font-size: 15px;
 	font-weight: 400;
 	letter-spacing: 1px;
@@ -118,12 +122,20 @@
 	letter-spacing: 1px;
 	font-family: 'Lato', sans-serif;
 	width: 200px;
+<<<<<<< HEAD
 	margin-right: 100px;
+=======
+	margin-right: 70px;
+>>>>>>> dev
 }
 
 .media_footer img {
 	height: 250px;
 	margin-right: 25px;
+<<<<<<< HEAD
+=======
+	margin-bottom: 20px;
+>>>>>>> dev
 }
 
 /* Slider. Partners */

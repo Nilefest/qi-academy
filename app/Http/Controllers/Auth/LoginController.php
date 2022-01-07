@@ -37,4 +37,32 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        // echo redirect()->back()->getTargetUrl(); exit();
+        // if(!session()->has('from')){
+        //     session()->put('from', url()->previous());
+        // }
+
+        $this->date['title'] = 'Sign in';
+        return view('auth.login', $this->date);
+    }
+
+    public function authenticated($request, $user)
+    {
+        if($user->access === 2){
+            $user->access = 1;
+            $user->save();
+        }
+        return redirect()->intended(RouteServiceProvider::HOME);
+    }
+>>>>>>> dev
 }

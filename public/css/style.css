@@ -3,6 +3,7 @@
 *,
 *::before,
 *::after {
+<<<<<<< HEAD
 	position: relative;
 	transition: all .2s;
 }
@@ -30,10 +31,40 @@ body {
 
 .clear {
 	clear: both;
+=======
+    position: relative;
+    transition: all .2s;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #000;
+    color: #fff;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.stop_scrolling {
+    height: 100% !important;
+    overflow: hidden !important;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.d-block {
+    display: block !important;
+}
+
+.clear {
+    clear: both;
+>>>>>>> dev
 }
 
 a,
 a:hover {
+<<<<<<< HEAD
 	color: #fff;
 }
 
@@ -43,10 +74,56 @@ a:hover {
 
 template {
 	display: none !important;
+=======
+    color: #fff;
+}
+
+input:active, input:focus,
+button:active, button:focus {
+    outline: none;
+}
+
+input::-moz-focus-inner,
+button::-moz-focus-inner {
+    border: 0;
+}
+
+.invalid {
+    border-color: #800;
+}
+
+button.link {
+    border: none;
+    display: inline-block;
+    background: none;
+    color: inherit;
+    opacity: 0.8;
+    font-size: 0.8em;
+    font-style: italic;
+    padding: 2px 5px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin: 0px 10px;
+}
+
+button.link:hover {
+    cursor: pointer;
+    opacity: 1;
+    border-color: #fff;
+}
+
+.container {
+    margin: 0px auto;
+}
+
+template {
+    display: none !important;
+>>>>>>> dev
 }
 
 /* Header */
 header {
+<<<<<<< HEAD
 	position: fixed;
 	top: 0px;
 	left: 0px;
@@ -73,10 +150,39 @@ header.scroll_down {
 header .container {
 	display: flex;
 	justify-content: space-between;
+=======
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    padding: 17px 0px;
+    z-index: 2;
+    background-color: #000;
+}
+
+header.scroll_down {
+    opacity: 0.5;
+    padding: 8px 0px 5px;
+}
+
+.nav_button_active header {
+    opacity: 1;
+    padding: 17px 0px;
+}
+
+.nav_button_active header .container {
+    height: 50px;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+>>>>>>> dev
 }
 
 /* Header. Logo */
 header .logo {
+<<<<<<< HEAD
 	flex-grow: 1;
 	font-weight: 700;
 	padding: 5px 0px;
@@ -110,10 +216,50 @@ header .account_logo {
 
 header .logo .short_text {
 	display: none;
+=======
+    flex-grow: 1;
+    font-weight: 700;
+    padding: 5px 0px;
+
+    transition: all .5s;
+}
+
+.nav_button_active header .logo {
+    transition: all 0.5s;
+    flex-grow: 0;
+    opacity: 0;
+    width: 0px;
+}
+
+header a:hover {
+    text-decoration: none;
+}
+
+header .logo span {
+    font-size: 18px;
+}
+
+header .logo span img {
+    height: 22px;
+}
+
+header .account_logo {
+    text-transform: uppercase;
+    border-right: 1px solid #fff;
+    letter-spacing: 1px;
+    padding-right: 20px;
+    margin-right: 20px;
+    font-weight: 300;
+}
+
+header .logo .short_text {
+    display: none;
+>>>>>>> dev
 }
 
 /* Header. Account */
 .account {
+<<<<<<< HEAD
 	height: inherit;
 }
 
@@ -136,10 +282,35 @@ header .logo .short_text {
 
 .account_button:hover {
 	text-decoration: none;
+=======
+    height: inherit;
+}
+
+.nav_button_active header .account {
+    flex-grow: 1;
+}
+
+.account_button {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    position: relative;
+    padding: 10px;
+}
+
+.account_button:hover {
+    text-decoration: none;
+>>>>>>> dev
 }
 
 /* Header. Nav-button */
 .nav_button {
+<<<<<<< HEAD
 	display: inline-block;
 	width: 50px;
 	background-color: #000;
@@ -153,10 +324,26 @@ header .logo .short_text {
 .nav_button:hover {
 	text-decoration: none;
 	cursor: pointer;
+=======
+    display: inline-block;
+    width: 50px;
+    background-color: #000;
+    background-color: transparent;
+    border: none;
+    margin-left: 50px;
+    position: relative;
+    padding: 1px;
+}
+
+.nav_button:hover {
+    text-decoration: none;
+    cursor: pointer;
+>>>>>>> dev
 }
 
 .nav_button::before,
 .nav_button::after {
+<<<<<<< HEAD
 	content: '';
 	display: block;
 	position: absolute;
@@ -174,10 +361,30 @@ header .nav_button::before {
 
 header .nav_button::after {
 	margin-top: 50%;
+=======
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    left: 0px;
+    transition: all .2s;
+    top: 0px;
+}
+
+header .nav_button::before {
+    margin-top: 20%;
+}
+
+header .nav_button::after {
+    margin-top: 50%;
+>>>>>>> dev
 }
 
 .nav_button:hover::before,
 .nav_button:hover::after {
+<<<<<<< HEAD
 	transition: all .2s;
 }
 
@@ -187,12 +394,24 @@ header .nav_button::after {
 
 .nav_button:hover::after {
 	margin-top: 55%;
+=======
+    transition: all .2s;
+}
+
+.nav_button:hover::before {
+    margin-top: 15%;
+}
+
+.nav_button:hover::after {
+    margin-top: 55%;
+>>>>>>> dev
 }
 
 .nav_button_active .nav_button::before,
 .nav_button_active .nav_button::after,
 .nav_button_active .nav_button:hover::before,
 .nav_button_active .nav_button:hover::after {
+<<<<<<< HEAD
 	margin-top: 40%;
 }
 
@@ -202,27 +421,54 @@ header .nav_button::after {
 
 .nav_button_active .nav_button::after {
 	transform: rotate(-45deg);
+=======
+    margin-top: 40%;
+}
+
+.nav_button_active .nav_button::before {
+    transform: rotate(45deg);
+}
+
+.nav_button_active .nav_button::after {
+    transform: rotate(-45deg);
+>>>>>>> dev
 }
 
 /* Content */
 .content {
+<<<<<<< HEAD
 	padding-top: 50px;
 	width: 100vw;
 	min-height: 70vh;
+=======
+    padding-top: 50px;
+    width: 100vw;
+    min-height: 70vh;
+>>>>>>> dev
 }
 
 /* Footer */
 footer {
+<<<<<<< HEAD
 	width: 100vw;
 	font-family: 'Montserrat', sans-serif;
 }
 
 footer .container {
 	padding: 0px 70px;
+=======
+    width: 100vw;
+    font-family: 'Montserrat', sans-serif;
+}
+
+footer .container {
+    padding: 0px 70px;
+>>>>>>> dev
 }
 
 /* Footer. Contact */
 footer ul.contact {
+<<<<<<< HEAD
 	margin: 0px;
 	display: flex;
 	justify-content: space-between;
@@ -252,10 +498,42 @@ footer ul.contact img {
 
 footer ul.contact span {
 	padding-left: 20px;
+=======
+    margin: 0px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    padding: 40px 6%;
+}
+
+footer ul.contact li {
+    list-style: none;
+}
+
+footer ul.contact a {
+    color: #fff;
+    display: block;
+}
+
+footer ul.contact a:hover {
+    color: #ddd;
+    text-decoration: none;
+}
+
+footer ul.contact img {
+    height: 32px;
+}
+
+footer ul.contact span {
+    padding-left: 20px;
+>>>>>>> dev
 }
 
 /* Footer. Info */
 .footer_info {
+<<<<<<< HEAD
 	display: flex;
 	justify-content: space-between;
 	padding: 80px 0px 100px;
@@ -277,10 +555,34 @@ footer ul.contact span {
 	padding: 3px 0px;
 	opacity: 0.3;
 	letter-spacing: 1px;
+=======
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 0px 100px;
+}
+
+.footer_info ul.links {
+    padding: 0px;
+    margin: 0px;
+    font-size: 12px;
+}
+
+.footer_info ul.links li {
+    list-style: none;
+}
+
+.footer_info ul.links a {
+    display: inline-block;
+    font-weight: 700;
+    padding: 3px 0px;
+    opacity: 0.3;
+    letter-spacing: 1px;
+>>>>>>> dev
 }
 
 /* Footer. Social */
 .footer_info ul.social {
+<<<<<<< HEAD
 	padding: 0px;
 	margin: 0px;
 	display: flex;
@@ -299,10 +601,31 @@ footer ul.contact span {
 
 .footer_info ul.social a:hover {
 	color: #ddd;
+=======
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+}
+
+.footer_info ul.social li {
+    list-style: none;
+    display: flex;
+    padding: 0px 15px;
+}
+
+.footer_info ul.social a {
+    display: inline-block;
+    font-size: 32px;
+}
+
+.footer_info ul.social a:hover {
+    color: #ddd;
+>>>>>>> dev
 }
 
 /* Footer. Social */
 .footer_info .footer_buttons {
+<<<<<<< HEAD
 	text-align: center;
 }
 
@@ -332,10 +655,79 @@ footer ul.contact span {
 	color: #fff;
 	text-decoration: none;
 	cursor: pointer;
+=======
+    text-align: center;
+}
+
+.footer_info .footer_button {
+    background-color: #000;
+    background-color: transparent;
+    font-size: 18px;
+    font-weight: 700;
+    color: #F84C34;
+    border: 2px solid #F84C34;
+    border-radius: 40px;
+    height: 60px;
+    padding: 0px 40px;
+    display: block;
+    margin: 0px auto;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.1em;
+}
+
+.footer_info a.footer_button {
+    padding-top: 16px;
+}
+
+.footer_button:hover {
+    background-color: #F84C34;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Button Back */
+.button.back {
+    color: #fff;
+    display: inline-block;
+    background-color: #000;
+    background-color: transparent;
+    font-size: 14px;
+    padding: 5px 15px;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    margin: 5px 10px 25px 10px;
+    font-family: 'Lato', sans-serif;
+}
+
+.button.back:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button.back:before {
+    content: "\f053";
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 0.8em;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 0px 7px 0px 3px;
+    opacity: 0.8;
+}
+
+.button.back:hover:before {
+    padding: 0px 10px 0px 0px;
+    opacity: 0.9;
+>>>>>>> dev
 }
 
 /* Main navigation */
 .main_nav {
+<<<<<<< HEAD
 	background-color: #000;
 	position: fixed;
 	top: 0px;
@@ -377,10 +769,54 @@ footer ul.contact span {
 .main_nav a {
 	display: block;
 	text-decoration: none;
+=======
+    background-color: #000;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    font-family: 'Montserrat', sans-serif;
+    padding: 120px 5px 80px;
+
+    transition: all .5s;
+    opacity: 0;
+    margin-top: -100vh;
+}
+
+.nav_button_active .main_nav {
+    transition: all .5s;
+    opacity: 1;
+    margin-top: 0px;
+}
+
+.main_nav .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.main_nav ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.main_nav li {
+    list-style: none;
+    margin-bottom: 3px;
+}
+
+.main_nav a {
+    display: block;
+    text-decoration: none;
+>>>>>>> dev
 }
 
 /* Main navigation. Menu */
 ul.main_nav_ul {
+<<<<<<< HEAD
 	width: 50%;
 	padding-left: 20%;
 }
@@ -394,10 +830,26 @@ ul.main_nav_ul {
 
 .main_nav_ul a:hover {
 	text-decoration: underline;
+=======
+    width: 50%;
+    padding-left: 20%;
+}
+
+.main_nav_ul a {
+    font-size: 36px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 5px;
+}
+
+.main_nav_ul a:hover {
+    text-decoration: underline;
+>>>>>>> dev
 }
 
 /* Main navigation. Contact, buttons */
 .main_nav_info {
+<<<<<<< HEAD
 	width: 50%;
 	padding-right: 15%;
 }
@@ -457,10 +909,72 @@ a.main_nav_button {
 	color: #fff;
 	text-decoration: none;
 	cursor: pointer;
+=======
+    width: 50%;
+    padding-right: 15%;
+}
+
+.main_nav_contact {
+    margin-bottom: 30px;
+}
+
+.main_nav_contact a {
+    font-size: 24px;
+    text-align: right;
+    opacity: 0.9;
+    letter-spacing: 2px;
+}
+
+.main_nav_contact a:hover {
+    opacity: 1;
+}
+
+.main_nav_button {
+    text-transform: uppercase;
+    background-color: #000;
+    background-color: transparent;
+    font-size: 36px;
+    font-weight: 700;
+    color: #F84C34;
+    border: 2px solid #F84C34;
+    border-radius: 40px;
+    padding: 20px 20px;
+    display: block;
+    margin: 0px auto;
+    margin-top: 50px;
+    text-align: center;
+    line-height: 1.1em;
+    width: 100%;
+}
+
+a.main_nav_button {
+    padding-top: 14px;
+}
+
+.main_nav_logout {
+    display: block;
+    text-align: right;
+    font-size: 24px;
+    margin-top: 90px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.main_nav_logout:hover {
+    text-decoration: underline;
+}
+
+.main_nav_button:hover {
+    background-color: #F84C34;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+>>>>>>> dev
 }
 
 /* Main navigation. Links */
 .main_nav_links {
+<<<<<<< HEAD
 	display: flex;
 	justify-content: center;
 	width: 100%;
@@ -477,10 +991,29 @@ a.main_nav_button {
 
 .main_nav_links a:hover {
 	opacity: 0.9;
+=======
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-self: flex-end;
+}
+
+.main_nav_links a {
+    text-align: center;
+    font-size: 17px;
+    margin: 2px 3px;
+    padding: 3px 10px;
+    opacity: 0.5;
+}
+
+.main_nav_links a:hover {
+    opacity: 0.9;
+>>>>>>> dev
 }
 
 /* Block Video-reviews */
 .block_video_reviews {
+<<<<<<< HEAD
 	background-color: #191C21;
 	border-radius: 10px;
 	padding: 55px 75px;
@@ -511,10 +1044,47 @@ a.main_nav_button {
 	padding: 0px;
 	margin: 0px;
 	height: 100%;
+=======
+    background-color: #191C21;
+    border-radius: 10px;
+    padding: 55px 75px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.block_video_reviews_info {
+    margin-right: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.block_video_reviews h3 {
+    color: #F84C34;
+    font-weight: 900;
+    font-size: 36px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.3em;
+    width: 30%;
+    letter-spacing: 1px;
+}
+
+.block_video_reviews_slider {
+    flex-grow: 1;
+    width: 60%;
+}
+
+.block_video_reviews_ul {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+>>>>>>> dev
 }
 
 .block_video_reviews_ul .slick-list,
 .block_video_reviews_ul .slick-track {
+<<<<<<< HEAD
 	height: 100%;
 }
 
@@ -544,10 +1114,42 @@ a.main_nav_button {
 	border-radius: 99999px;
 	padding: 0px 10px;
 	border: none;
+=======
+    height: 100%;
+}
+
+.block_video_reviews_li {
+    list-style: none;
+    border-radius: 5px;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 20px;
+}
+
+.block_video_reviews_li:hover {
+    cursor: pointer;
+}
+
+.block_video_reviews_button {
+    color: #F84C34;
+    font-size: 40px;
+    text-align: center;
+    margin: 0px auto;
+    display: block;
+    top: 35%;
+    background-color: #000;
+    background-color: transparent;
+    border-radius: 99999px;
+    padding: 0px 10px;
+    border: none;
+>>>>>>> dev
 }
 
 .block_video_reviews_button:hover,
 .block_video_reviews_li:hover .block_video_reviews_button {
+<<<<<<< HEAD
 	color: #fc6651;
 }
 
@@ -577,10 +1179,42 @@ a.main_nav_button {
 
 .block_video_reviews_arrow.next {
 	right: -50px;
+=======
+    color: #fc6651;
+}
+
+.block_video_reviews_arrow {
+    position: absolute;
+    top: 35%;
+    z-index: 1;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 25px;
+    background-color: #000;
+    background-color: transparent;
+    padding-bottom: 8px;
+}
+
+.block_video_reviews_arrow:hover {
+    cursor: pointer;
+}
+
+.block_video_reviews_arrow.prev {
+    left: -50px;
+}
+
+.block_video_reviews_arrow.next {
+    right: -50px;
+>>>>>>> dev
 }
 
 /* FAQ */
 .faq {
+<<<<<<< HEAD
 	font-family: 'Montserrat', sans-serif;
 	margin: 150px auto;
 }
@@ -650,10 +1284,82 @@ a.main_nav_button {
 .faq_li.active .answer {
 	display: block;
 	padding: 0px 40px 20px;
+=======
+    font-family: 'Montserrat', sans-serif;
+    margin: 150px auto;
+}
+
+.faq h3 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+}
+
+.faq_ul {
+    margin: 0px auto;
+    padding: 0px;
+    width: 50%;
+}
+
+.faq_li {
+    background-color: #191C21;
+    border-radius: 10px;
+    font-size: 14px;
+    list-style: none;
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.faq_li:hover {
+    background-color: #282d36;
+    cursor: pointer;
+}
+
+.faq_li::after {
+    top: 0px;
+    right: 25px;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 24px;
+    margin-top: 1.3em;
+    position: absolute;
+    content: "\f107";
+}
+
+.faq_li.active::after {
+    transform: rotate(180deg);
+}
+
+.faq_li .quest {
+    font-weight: 900;
+    padding: 30px 40px;
+    display: block;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+.faq_li .answer {
+    font-weight: 300;
+    display: none;
+}
+
+.faq_li.active .answer {
+    display: block;
+    padding: 0px 40px 20px;
+>>>>>>> dev
 }
 
 /* Icon with info in hover-title */
 .icon_info {
+<<<<<<< HEAD
 	font-size: 1.3em;
 	opacity: 0.7;
 	margin: 0px 5px;
@@ -663,10 +1369,22 @@ a.main_nav_button {
 .icon_info:hover {
 	cursor: pointer;
 	opacity: 1;
+=======
+    font-size: 1.3em;
+    opacity: 0.7;
+    margin: 0px 5px;
+    padding: 1px 2px;
+}
+
+.icon_info:hover {
+    cursor: pointer;
+    opacity: 1;
+>>>>>>> dev
 }
 
 /* MEDIA */
 @media screen and (min-width: 1919px) {
+<<<<<<< HEAD
 	.container {
 		width: 1920px;
 	}
@@ -870,3 +1588,208 @@ a.main_nav_button {
 		width: 100%;
 	}
 }
+=======
+    .container {
+        width: 1920px;
+    }
+}
+
+@media screen and (min-width: 1441px) {
+    .container {
+        width: 1440px;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .container {
+        width: 1240px;
+    }
+}
+
+@media screen and (max-width: 1279px) {
+    .container {
+        width: 984px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .container {
+        width: 738px;
+    }
+
+    footer ul.contact {
+        padding: 40px 0px;
+    }
+
+    footer ul.contact span {
+        padding-left: 10px;
+    }
+
+    ul.main_nav_ul {
+        padding-left: 10%;
+    }
+
+    .main_nav_info {
+        padding-right: 0px;
+    }
+
+    .block_video_reviews {
+        padding: 35px 50px;
+    }
+
+    .block_video_reviews_info {
+        margin-right: 50px;
+    }
+
+    .block_video_reviews h3 {
+        color: #F84C34;
+        font-size: 28px;
+        line-height: 1.3em;
+        width: 25%;
+    }
+
+    .faq {
+        margin: 100px auto;
+    }
+
+    .faq_ul {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container {
+        width: 580px;
+    }
+
+    footer .container {
+        padding: 0px 20px;
+    }
+
+    footer ul.contact {
+        flex-direction: column;
+        padding: 25px 6% 0px;
+    }
+
+    footer ul.contact li {
+        margin-bottom: 25px;
+    }
+
+    .footer_info {
+        flex-direction: column-reverse;
+    }
+
+    .footer_info ul.social {
+        padding: 35px 0px 70px;
+        justify-content: center;
+    }
+
+    ul.main_nav_ul {
+        padding-left: 0px;
+    }
+
+    .main_nav_ul a {
+        font-size: 24px;
+    }
+
+    .main_nav_contact a {
+        font-size: 14px;
+    }
+
+    .main_nav_button {
+        font-size: 18px;
+        padding: 15px 25px;
+    }
+
+    .main_nav_logout {
+        font-size: 18px;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+
+    .main_nav_links {
+        flex-direction: column;
+    }
+
+    .main_nav_links a {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 599px) {
+    .container {
+        width: 98%;
+    }
+
+    header {
+        padding: 10px 10px;
+    }
+
+    header .logo .full_text {
+        display: none;
+    }
+
+    header .logo .short_text {
+        display: inline-block;
+    }
+
+    header .nav_button {
+        width: 40px;
+    }
+
+    .block_video_reviews {
+        padding: 35px 25px;
+        flex-wrap: wrap;
+        margin: 50px 0px 100px;
+        width: auto;
+        border-radius: 0px;
+    }
+
+    .block_video_reviews h3 {
+        width: 100%;
+        margin-bottom: 50px;
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+
+    .block_video_reviews_slider {
+        width: 100%;
+        height: 200px;
+    }
+
+    .block_video_reviews_li {
+        margin: 0px;
+    }
+
+    .block_video_reviews_arrow.prev {
+        left: -15px;
+    }
+
+    .block_video_reviews_arrow.next {
+        right: -15px;
+    }
+
+    .faq {
+        margin: 100px 0px;
+        padding: 0px 25px;
+    }
+
+    .faq_ul {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    header .account_logo {
+        display: none;
+    }
+
+    .footer_button {
+        width: 100%;
+    }
+
+    .main_nav_button {
+        width: 100%;
+    }
+}
+>>>>>>> dev

@@ -1,5 +1,6 @@
 /* Modal */
 .modal {
+<<<<<<< HEAD
 	background-color: #000;
 	background-color: rgba(0, 0, 0, 0.8);
 	position: fixed;
@@ -53,10 +54,66 @@
 	background-color: #000;
 	color: #fff;
 	cursor: pointer;
+=======
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+    overflow-y: auto;
+
+    display: none;
+    opacity: 0;
+}
+
+.modal.modal_show {
+    display: block;
+    opacity: 1;
+}
+
+.modal_win {
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px;
+    min-height: 50%;
+    margin: 100px auto;
+    display: flex;
+    justify-content: space-between;
+
+    display: none;
+    opacity: 0;
+}
+
+.modal_win.modal_show {
+    display: block;
+    opacity: 1;
+}
+
+.modal_button {
+    background-color: #fff;
+    background-color: transparent;
+    border: 1px solid #000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    text-transform: lowercase;
+    padding: 7px 30px;
+    border-radius: 999px;
+    display: inline-block;
+}
+
+.modal_button:hover {
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+>>>>>>> dev
 }
 
 /* Modal. Team */
 .modal_win.modal_show.modal_team {
+<<<<<<< HEAD
 	display: flex;
 }
 
@@ -126,10 +183,82 @@
 .modal_team .modal_button.close:hover {
 	background-color: #fff;
 	color: #000;
+=======
+    display: flex;
+}
+
+.modal_team .modal_header {
+    padding: 30px;
+}
+
+.modal_team .social {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+}
+
+.modal_team .social li {
+    list-style: none;
+    margin: 0px 15px 10px 0px;
+}
+
+.modal_team .social a {
+    color: #000;
+    font-size: 32px;
+}
+
+.modal_team .modal_header img {
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.modal_team .modal_header .name {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 21px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.modal_team .modal_header img {
+    border-radius: 10px;
+    width: 200px;
+}
+
+.modal_team .modal_content {
+    flex-grow: 1;
+    padding: 30px;
+    font-family: 'Lato', sans-serif;
+    margin: 0px 50px;
+}
+
+.modal_team .modal_content p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 2em;
+    margin-bottom: 30px;
+}
+
+.modal_team .modal_footer {
+    padding: 30px;
+    text-align: center;
+}
+
+.modal_team .modal_button.close {
+    background-color: #000;
+    color: #fff;
+}
+
+.modal_team .modal_button.close:hover {
+    background-color: #fff;
+    color: #000;
+>>>>>>> dev
 }
 
 /* Modal. ADM. Edit Team */
 .modal_win.modal_show.modal_team_adm {
+<<<<<<< HEAD
 	display: flex;
 }
 
@@ -329,10 +458,220 @@
 	border-color: transparent;
 	padding: 7px 20px;
 	font-size: 1.1em;
+=======
+    display: flex;
+}
+
+.modal_team_adm .modal_header {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal_team_adm .modal_header .name {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 21px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.modal_team_adm .modal_header .team_img {
+    width: 100%;
+    height: 100px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    flex-grow: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.modal_team_adm .modal_header .team_img .icon_add {
+    opacity: 0.1;
+    color: #aaa;
+    font-size: 50px;
+}
+
+.modal_team_adm .modal_header .team_img:hover .icon_add {
+    opacity: 0.5;
+}
+
+.modal_team_adm .modal_header .team_img:hover {
+    cursor: pointer;
+}
+
+.modal_team_adm .modal_content {
+    flex-grow: 1;
+    padding: 30px 10px;
+    font-family: 'Lato', sans-serif;
+    margin: 0px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal_team_adm .modal_content .textarea {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 2em;
+    margin-bottom: 30px;
+    width: 100%;
+    border: 2px dotted #aaa;
+    opacity: 0.8;
+    padding: 5px 15px;
+    flex-grow: 1;
+}
+
+.modal_team_adm .social_field {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.modal_team_adm .social_field .title {
+    padding-right: 10px;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    width: 100px;
+}
+
+.modal_team_adm input.text {
+    border: 1px solid #000;
+    border-radius: 10px;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    opacity: 0.9;
+    flex-grow: 1;
+    padding: 10px 15px;
+}
+
+.modal_team_adm .social_field input.text {
+    font-style: italic;
+}
+
+.modal_team_adm .name input.text {
+    color: #F84C34;
+    text-transform: uppercase;
+}
+
+.modal_team_adm .modal_footer {
+    padding: 30px;
+    text-align: center;
+    width: 200px;
+}
+
+.modal_team_adm .modal_button {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.modal_team_adm .modal_button.close {
+    background-color: #000;
+    color: #fff;
+}
+
+.modal_team_adm .modal_button.close:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Modal. View video */
+.modal_view_youtube,
+.modal_view_video {
+    max-height: 80vh;
+    margin: 5% auto;
+    overflow: hidden;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+}
+
+.modal_view_youtube .modal_header,
+.modal_view_video .modal_header {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    background-color: #000;
+    opacity: 0.5;
+    top: 0px;
+    z-index: 1;
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0.1;
+}
+
+.modal_view_youtube .modal_header:hover,
+.modal_view_video .modal_header:hover {
+    opacity: 0.9;
+}
+
+.modal_view_youtube .modal_content,
+.modal_view_video .modal_content {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal_view_video video {
+    max-height: 80vh;
+    height: 100%;
+    max-width: 100%;
+    margin: 0px auto;
+    display: block;
+    border-radius: 10px;
+}
+
+.modal_view_youtube .modal_footer,
+.modal_view_video .modal_footer {
+    position: absolute;
+    width: 100%;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.5);
+    bottom: 0px;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0.1;
+
+    display: none;
+}
+
+.modal_view_youtube .modal_footer:hover,
+.modal_view_video .modal_footer:hover {
+    opacity: 0.9;
+}
+
+.modal_view_youtube .buttons,
+.modal_view_video .buttons {
+    padding: 10px;
+}
+
+.modal_view_youtube .modal_button,
+.modal_view_video .modal_button {
+    color: #F84C34;
+    border-color: #000;
+    border-color: transparent;
+    padding: 7px 20px;
+    font-size: 1.1em;
+>>>>>>> dev
 }
 
 .modal_view_video .modal_button.video_play,
 .modal_view_video .modal_button.video_pause {
+<<<<<<< HEAD
 	width: 70px;
 }
 
@@ -355,10 +694,71 @@
 .modal_view_video .modal_footer .line {
 	flex-grow: 1;
 	padding: 10px 0px;
+=======
+    width: 70px;
+}
+
+.modal_view_video .modal_button.video_pause {
+    padding-right: 15px;
+    display: none;
+}
+
+.modal_view_youtube .modal_button:hover,
+.modal_view_video .modal_button:hover {
+    border-color: #F84C34;
+    background-color: transparent;
+}
+
+.modal_view_youtube .modal_button.close,
+.modal_view_video .modal_button.close {
+    color: #fff;
+    border-color: #fff;
+    font-size: 1em;
+}
+
+.modal_view_video .modal_footer .line {
+    flex-grow: 1;
+    padding: 10px 0px;
+}
+
+.modal_view_youtube .modal_content {
+    height: 80vh;
+    width: 100%;
+    text-align: center;
+}
+
+.modal_view_youtube iframe {
+    height: 100%;
+    min-width: 100%;
+    width: auto;
+    border-radius: 10px;
+}
+
+/* Modal. View full image */
+.modal_view_fullimg {
+    background-color: #000;
+    background-color: transparent;
+    color: #fff;
+    min-height: 80%;
+    display: flex;
+
+    display: none;
+}
+
+.modal_view_fullimg.modal_show {
+    display: flex;
+}
+
+.modal_view_fullimg .modal_content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+>>>>>>> dev
 }
 
 /* Modal. ADM. Booking to offline course */
 .modal_book_offline {
+<<<<<<< HEAD
 	display: none;
 	justify-content: space-between;
 	align-items: stretch;
@@ -481,10 +881,135 @@
 .modal_book_offline.success_step .icon_close {
 	display: none;
 	opacity: 0;
+=======
+    display: none;
+    justify-content: space-between;
+    align-items: stretch;
+    background-color: #282d36;
+    border-radius: 7px;
+    padding: 35px 25px;
+    width: 60%;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    flex-wrap: nowrap;
+    min-height: 400px;
+}
+
+.modal_book_offline.without_media {
+    width: 500px;
+}
+
+.modal_book_offline.modal_show {
+    display: flex;
+}
+
+.modal_book_offline .icon_close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+    display: inline-block;
+    padding: 2px;
+    opacity: 0.9;
+}
+
+.modal_book_offline .icon_close:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.modal_book_offline .media_info {
+    width: 60%;
+    border-radius: 10px;
+    margin-right: 30px;
+    text-align: center;
+}
+
+.modal_book_offline.without_media .media_info {
+    display: none;
+}
+
+.modal_book_offline video {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.modal_book_offline .personal_data {
+    width: 40%;
+    flex-grow: 1;
+    text-align: center;
+    overflow: hidden;
+}
+
+.modal_book_offline .text_info {
+    text-align: center;
+    font-size: 14px;
+    width: 60%;
+    margin: 0px auto 30px;
+    letter-spacing: 1px;
+}
+
+.modal_book_offline .text_info.course_info {
+    text-transform: uppercase;
+}
+
+.modal_book_offline input.text {
+    border: 1px solid #fff;
+    color: #fff;
+    background-color: #282d36;
+    width: 100%;
+    padding: 15px 15px;
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+.modal_book_offline .button {
+    border: 1px solid #FFF9C6;
+    background-color: #FFF9C6;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 40px;
+    text-align: center;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.modal_book_offline .button:hover {
+    background-color: #282d36;
+    color: #FFF9C6;
+    cursor: pointer;
+}
+
+.modal_book_offline .success_info {
+    text-align: center;
+    flex-grow: 0;
+    opacity: 0;
+    width: 0px;
+}
+
+.modal_book_offline .success_info .text_info {
+    width: 80%;
+    line-height: 1.7em;
+    margin-bottom: 15px;
+}
+
+.modal_book_offline.success_step {
+    width: 500px;
+    min-height: 0;
+    transition: .5s;
+}
+
+.modal_book_offline.success_step .icon_close {
+    display: none;
+    opacity: 0;
+>>>>>>> dev
 }
 
 .modal_book_offline.success_step .media_info,
 .modal_book_offline.success_step .personal_data {
+<<<<<<< HEAD
 	flex-grow: 0;
 	width: 0px;
 	height: 0px;
@@ -499,10 +1024,27 @@
 	opacity: 1;
 	width: 100%;
 	height: 100%;
+=======
+    flex-grow: 0;
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+
+    transition-property: height, width;
+    transition-delay: 2s 1s;
+}
+
+.modal_book_offline.success_step .success_info {
+    flex-grow: 1;
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+>>>>>>> dev
 }
 
 /* Modal. Profile. Get sertificate */
 .modal_get_sertificate {
+<<<<<<< HEAD
 	background-color: #fff;
 	padding: 50px 60px;
 	text-align: center;
@@ -536,10 +1078,46 @@
 .modal_get_sertificate .button:hover {
 	background-color: #fff;
 	cursor: pointer;
+=======
+    background-color: #fff;
+    padding: 50px 60px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 500px;
+    min-height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_get_sertificate.modal_show {
+    display: flex;
+}
+
+.modal_get_sertificate .message {
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.modal_get_sertificate .button {
+    text-transform: uppercase;
+    border: 1px solid #FFF9C6;
+    background-color: #FFF9C6;
+    padding: 7px 7px;
+    font-size: 18px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.modal_get_sertificate .button:hover {
+    background-color: #fff;
+    cursor: pointer;
+>>>>>>> dev
 }
 
 /* Modal. Show result after subscribe */
 .modal_subscribe_result {
+<<<<<<< HEAD
 	background-color: #fff;
 	padding: 50px 60px;
 	text-align: center;
@@ -573,10 +1151,46 @@
 .modal_subscribe_result .button:hover {
 	background-color: #fff;
 	cursor: pointer;
+=======
+    background-color: #fff;
+    padding: 50px 60px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 500px;
+    min-height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_subscribe_result.modal_show {
+    display: flex;
+}
+
+.modal_subscribe_result .message {
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.modal_subscribe_result .button {
+    text-transform: uppercase;
+    border: 1px solid #FFF9C6;
+    background-color: #FFF9C6;
+    padding: 7px 7px;
+    font-size: 18px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.modal_subscribe_result .button:hover {
+    background-color: #fff;
+    cursor: pointer;
+>>>>>>> dev
 }
 
 /* Modal. Show info with button OK */
 .modal_simple_info {
+<<<<<<< HEAD
 	background-color: #fff;
 	padding: 50px 60px;
 	text-align: center;
@@ -610,10 +1224,46 @@
 .modal_simple_info .button:hover {
 	background-color: #fff;
 	cursor: pointer;
+=======
+    background-color: #fff;
+    padding: 50px 60px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 500px;
+    min-height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_simple_info.modal_show {
+    display: flex;
+}
+
+.modal_simple_info .message {
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.modal_simple_info .button {
+    text-transform: uppercase;
+    border: 1px solid #FFF9C6;
+    background-color: #FFF9C6;
+    padding: 7px 7px;
+    font-size: 18px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.modal_simple_info .button:hover {
+    background-color: #fff;
+    cursor: pointer;
+>>>>>>> dev
 }
 
 /* Modal. ADM. Edit lecture */
 .modal_lecture {
+<<<<<<< HEAD
 	margin: 0px;
 	padding: 80px 150px 80px 70px;
 	background-color: #000;
@@ -768,10 +1418,169 @@
 .modal_lecture .button:hover {
 	cursor: pointer;
 	opacity: 0.8;
+=======
+    margin: 0px;
+    padding: 80px 150px 80px 70px;
+    background-color: #000;
+    border-radius: 0px;
+    height: 100vh;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.modal_lecture.modal_show {
+    display: flex;
+}
+
+.modal_lecture .icon_close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin: 50px 50px;
+    padding: 10px;
+    font-size: 1.3em;
+    opacity: 0.8;
+}
+
+.modal_lecture .icon_close:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.modal_lecture .lecture_data {
+    margin-right: 120px;
+    flex-grow: 1;
+}
+
+.modal_lecture .lecture_data .field_block {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.modal_lecture .lecture_data .title {
+    font-weight: 700;
+    font-size: 14px;
+    max-width: 200px;
+    margin-right: 20px;
+    display: inline-block;
+}
+
+.modal_lecture .lecture_data .field_block .text {
+    border-radius: 10px;
+    border: 1px solid #fff;
+    padding: 10px 15px;
+    background-color: #000;
+    background-color: transparent;
+    color: #fff;
+    flex-grow: 1;
+}
+
+.modal_lecture .lecture_data .field_block textarea.text {
+    min-height: 150px;
+    max-height: 400px;
+}
+
+.modal_lecture .lecture_data .icon_file {
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: 7px 10px;
+    font-size: 1.2em;
+    display: inline-block;
+    margin-right: 15px;
+    opacity: 0.8;
+    vertical-align: text-bottom;
+    align-self: flex-start;
+}
+
+.modal_lecture .lecture_data a.icon_file {
+    margin-top: 5px;
+    padding: 8px 13px;
+    max-width: 300px;
+    overflow: hidden;
+}
+
+.modal_lecture .lecture_data a.icon_file span {
+    font-style: italic;
+    font-size: 0.9em;
+    padding: 0px 5px 0px 10px;
+    font-family: 'Lato', sans-serif;
+}
+
+.modal_lecture .lecture_data .icon_file:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.modal_lecture .lecture_data input.file:hover~label .icon_file {
+    opacity: 1;
+}
+
+.modal_lecture .homework_block {
+    background-color: #191C21;
+    border-radius: 10px;
+    padding: 20px 40px;
+    font-family: 'Montserrat', sans-serif;
+    align-self: stretch;
+    width: 400px;
+    max-height: 500px;
+}
+
+.modal_lecture .homework_block .title {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    align-self: flex-start;
+    width: 100%;
+    display: block;
+}
+
+.modal_lecture .homework_block .text {
+    background-color: #191C21;
+    background-color: transparent;
+    border: none;
+    border: 1px solid #555;
+    min-height: 100px;
+    max-height: 400px;
+    width: 100%;
+    color: #fff;
+    opacity: 0.8;
+    margin-bottom: 20px;
+    height: 85%;
+}
+
+.modal_lecture .buttons {
+    width: 100%;
+    padding: 50px 0px 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.modal_lecture .button {
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    padding: 10px 30px;
+    opacity: 1;
+    font-weight: 700;
+    font-size: 14px;
+    align-self: flex-start;
+}
+
+.modal_lecture .button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+>>>>>>> dev
 }
 
 /* Message about Cookie */
 .cookie_message {
+<<<<<<< HEAD
 	border-radius: 10px;
 	background-color: #fff;
 	opacity: 0.9;
@@ -849,10 +1658,90 @@
 
 .cookie_message .mess_link:hover {
 	cursor: pointer;
+=======
+    border-radius: 10px;
+    background-color: #fff;
+    opacity: 0.9;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    max-width: 1300px;
+    width: 80%;
+    margin: 0px 30px 20px;
+    padding: 25px 35px;
+    display: flex;
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    z-index: 2;
+
+    display: none;
+}
+
+.cookie_message.mess_show {
+    display: flex;
+}
+
+.cookie_message:hover {
+    opacity: 1;
+}
+
+.cookie_message .message_info {
+    flex-grow: 1;
+    margin-right: 40px;
+}
+
+.cookie_message .title {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.cookie_message .text_info {
+    font-size: 10px;
+}
+
+.cookie_message .message_buttons {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.cookie_message .button {
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: #000;
+    color: #fff;
+    font-size: 12px;
+    padding: 15px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-bottom: 20px;
+}
+
+.cookie_message .button:hover {
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+}
+
+.cookie_message .mess_link {
+    display: block;
+    font-size: 12px;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
+    padding: 5px 15px;
+}
+
+.cookie_message .mess_link:hover {
+    cursor: pointer;
+>>>>>>> dev
 }
 
 /* Modal. Profile. for send review */
 .modal_send_review {
+<<<<<<< HEAD
 	max-width: 500px;
 	background-color: #fff;
 	padding: 50px 40px 40px;
@@ -1014,10 +1903,174 @@
 	opacity: 1;
 	flex-grow: 1;
 	transition-delay: .1s;
+=======
+    max-width: 500px;
+    background-color: #fff;
+    padding: 50px 40px 40px;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    display: none;
+}
+
+.modal_send_review.modal_show {
+    display: flex;
+}
+
+.modal_send_review .form {
+    flex-grow: 1;
+    overflow: hidden;
+    max-height: 500px;
+}
+
+.modal_send_review .icon_close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+    display: inline-block;
+    padding: 2px;
+    opacity: 0.9;
+}
+
+.modal_send_review .icon_close:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.modal_send_review .message {
+    font-size: 14px;
+    letter-spacing: 1px;
+    width: 80%;
+    text-align: center;
+    margin: 0px auto 30px;
+}
+
+.modal_send_review .video_field {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.modal_send_review .field_text {
+    font-weight: bold;
+}
+
+.modal_send_review .video_field:hover {
+    cursor: pointer;
+}
+
+.modal_send_review .field_text>* {
+    margin: 0px 5px;
+}
+
+.modal_send_review .field_text .icon {
+    font-size: 1.2em;
+}
+
+.modal_send_review .review_text {
+    display: block;
+    width: 100%;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 7px 10px;
+    margin-bottom: 40px;
+    min-height: 80px;
+}
+
+.modal_send_review .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal_send_review .cancel {
+    text-transform: uppercase;
+    font-weight: 300;
+    flex-grow: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 15px 25px;
+}
+
+.modal_send_review .cancel:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.modal_send_review .send_review {
+    text-transform: uppercase;
+    font-weight: bold;
+    flex-grow: 1;
+    border: 1px solid #FFF9C6;
+    background-color: #FFF9C6;
+    border-radius: 10px;
+    padding: 10px 25px;
+}
+
+.modal_send_review .send_review:hover {
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.modal_send_review .success_message {
+    text-align: center;
+    overflow: hidden;
+    opacity: 1;
+    flex-grow: 0;
+    max-height: 0px;
+}
+
+.modal_send_review .button {
+    text-transform: uppercase;
+    border: 1px solid #FFF9C6;
+    background-color: #FFF9C6;
+    padding: 7px 7px;
+    font-size: 18px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.modal_send_review .button:hover {
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.modal_send_review.step_success {
+    margin-top: 200px;
+}
+
+.modal_send_review.step_success .icon_close {
+    opacity: 0;
+}
+
+.modal_send_review.step_success .form {
+    opacity: 0;
+    flex-grow: 0;
+    max-height: 0px;
+}
+
+.modal_send_review.step_success .success_message {
+    max-height: 300px;
+    opacity: 1;
+    flex-grow: 1;
+    transition-delay: .1s;
+>>>>>>> dev
 }
 
 /* Modal. SignIn - SignUp */
 .modal_sign_account {
+<<<<<<< HEAD
 	display: flex;
 	flex-direction: column;
 	background-color: #eee;
@@ -1048,10 +2101,43 @@
 	flex-direction: column;
 	opacity: 1;
 	max-height: 500px;
+=======
+    display: flex;
+    flex-direction: column;
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 20px 50px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    max-width: 500px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    max-height: 550px;
+    overflow: hidden;
+
+    display: none;
+}
+
+.modal_sign_account.modal_show {
+    display: flex;
+}
+
+.modal_sign_account .step_block {
+    overflow: hidden;
+    opacity: 1;
+    width: 99%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 1;
+    max-height: 500px;
+>>>>>>> dev
 }
 
 .modal_sign_account.signin_step .step_block.signup_block,
 .modal_sign_account.signup_step .step_block.signin_block {
+<<<<<<< HEAD
 	max-height: 0px;
 	opacity: 0;
 }
@@ -1158,6 +2244,114 @@
 .modal_sign_account .policy {
 	opacity: 0.9;
 	letter-spacing: 1;
+=======
+    max-height: 0px;
+    opacity: 0;
+}
+
+.modal_sign_account.signin_step {
+    margin-top: 200px;
+}
+
+.modal_sign_account h3 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.modal_sign_account p {
+    text-align: center;
+    font-size: 12px;
+    width: 85%;
+    margin-bottom: 20px;
+}
+
+.modal_sign_account p a {
+    text-decoration: underline;
+    color: #000;
+}
+
+.modal_sign_account .login_button {
+    border: none;
+    background-color: #F84C34;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 40px;
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.modal_sign_account .login_button:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.modal_sign_account .login_button .icon {
+    font-size: 30px;
+    display: inline-block;
+    text-align: center;
+    padding: 3px;
+}
+
+.modal_sign_account .login_button .title {
+    flex-grow: 1;
+    text-align: left;
+    padding: 0px 40px;
+}
+
+.modal_sign_account .login_button.google {
+    background-color: #4285F4;
+}
+
+.modal_sign_account .login_button.facebook {
+    background-color: #3C5A9A;
+}
+
+.modal_sign_account .login_button.submit {
+    width: auto;
+}
+
+.modal_sign_account .keep_me {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin: 25px 0px 30px;
+    text-align: left;
+}
+
+.modal_sign_account .keep_me .icon {
+    font-size: 1.5em;
+    opacity: 0.6;
+    margin-right: 15px;
+}
+
+.modal_sign_account .already {
+    font-size: 14px;
+    margin: 25px 30px;
+}
+
+.modal_sign_account .already .step_toggle {
+    font-weight: bold;
+}
+
+.modal_sign_account .already .step_toggle:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.modal_sign_account .policy {
+    opacity: 0.9;
+    letter-spacing: 1;
+>>>>>>> dev
 }
 
 @media screen and (min-width: 1440px) {}
@@ -1165,6 +2359,7 @@
 @media screen and (max-width: 1440px) {}
 
 @media screen and (max-width: 1279px) {
+<<<<<<< HEAD
 	.modal_book_offline {
 		width: 80%;
 	}
@@ -1335,10 +2530,183 @@
 		max-width: 100vw;
 		margin: 100px 0px;
 	}
+=======
+    .modal_book_offline {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .modal_win {
+        flex-wrap: wrap;
+    }
+
+    .modal_team .modal_header {
+        width: 40%;
+    }
+
+    .modal_team .modal_content {
+        width: 55%;
+        margin: 0px;
+    }
+
+    .modal_team .modal_footer {
+        width: 100%;
+        padding-top: 0px;
+    }
+
+    .modal_view_video {
+        width: 95%;
+        max-height: 100vh;
+        height: 95%;
+    }
+
+    .modal_book_offline {
+        flex-direction: column;
+        margin: 50px auto;
+        width: 60%;
+    }
+
+    .modal_book_offline .media_info {
+        width: 80%;
+        margin: 0px auto 20px;
+    }
+
+    .modal_book_offline .personal_data {
+        width: 80%;
+        margin: 0px auto;
+    }
+
+    .modal_book_offline .success_info {
+        width: 100%;
+        height: 0px;
+    }
+
+    .cookie_message {
+        flex-direction: column;
+        margin: 10px 2vw 20px;
+        width: 96vw;
+    }
+
+    .cookie_message .message_info {
+        margin-right: 0px;
+    }
+
+    .cookie_message .button {
+        margin-bottom: 0px;
+        padding: 10px 15px;
+    }
+
+    .cookie_message .message_buttons {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .modal_view_video .modal_header {
+        opacity: 0.5;
+    }
+
+    .modal_view_video .modal_footer {
+        opacity: 0.5;
+    }
+
+    .modal_book_offline {
+        width: 80%;
+    }
+
+    .cookie_message {
+        padding: 20px 25px;
+        margin-bottom: 10px;
+    }
+
+    .cookie_message .title {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 599px) {
+    .modal_win {
+        margin: 0px;
+        width: 100%;
+        border-radius: 0px;
+    }
+
+    .modal_team .modal_header {
+        width: 100%;
+        display: flex;
+    }
+
+    .modal_team .modal_header img {
+        max-width: 50%;
+    }
+
+    .modal_team .team_info {
+        width: 50%;
+        padding-left: 30px;
+    }
+
+    .modal_team .modal_content {
+        width: 100%;
+        padding-top: 0px;
+    }
+
+    .modal_view_video {
+        height: 100%;
+    }
+
+    .modal_view_video video {
+        max-height: 100vh;
+    }
+
+    .modal_book_offline {
+        margin: 0px;
+        width: 100%;
+        height: 100vh;
+        border-radius: 0px;
+        padding-top: 60px;
+    }
+
+    .cookie_message {
+        margin: 0px;
+        width: 100vw;
+        border-radius: 0px;
+    }
+
+    .cookie_message .button {
+        margin-bottom: 10px;
+    }
+
+    .cookie_message .message_buttons {
+        flex-direction: column;
+    }
+
+    .modal_get_sertificate {
+        max-width: 100vw;
+        height: 100vh;
+    }
+
+    .modal_send_review {
+        max-width: 100vw;
+        height: 100vh;
+    }
+
+    .modal_send_review.step_success {
+        margin-top: 0px;
+    }
+
+    .modal_sign_account {
+        border-radius: 0px;
+        max-width: 100vw;
+        margin: 100px 0px;
+    }
+>>>>>>> dev
 }
 
 @media screen and (max-width: 479px) {
 
+<<<<<<< HEAD
 	.modal_team .modal_header {
 		flex-wrap: wrap;
 	}
@@ -1354,3 +2722,20 @@
 		margin-top: 20px;
 	}
 }
+=======
+    .modal_team .modal_header {
+        flex-wrap: wrap;
+    }
+
+    .modal_team .modal_header img {
+        max-width: 100%;
+        margin: 0px auto;
+    }
+
+    .modal_team .team_info {
+        text-align: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+>>>>>>> dev

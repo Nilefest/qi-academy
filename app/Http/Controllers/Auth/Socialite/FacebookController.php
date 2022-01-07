@@ -2,12 +2,22 @@
 
 namespace App\Http\Controllers\Auth\Socialite;
 
+<<<<<<< HEAD
 use App\User;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Socialite;
 use Exception;
 use Auth;
+=======
+use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
+use Socialite;
+use Auth;
+use Exception;
+use App\User;
+use Illuminate\Http\Request;
+>>>>>>> dev
 
 class FacebookController extends Controller
 {
@@ -16,8 +26,16 @@ class FacebookController extends Controller
      *
      * @return void
      */
+<<<<<<< HEAD
     public function redirectToFacebook()
     {
+=======
+    public function redirectToFacebook(\Illuminate\Http\Request $request)
+    {
+        if($request->input('target_url') !== null) session()->flash('url.intended.custom', $request->input('target_url'));
+        else session()->flash('url.intended.custom', redirect()->intended(RouteServiceProvider::HOME)->getTargetUrl());
+        
+>>>>>>> dev
         return Socialite::driver('facebook')->redirect();
     }
     /**
@@ -36,6 +54,7 @@ class FacebookController extends Controller
                     $user->facebook_id = $facebook_user->getId();
                     $user->save();
                 }
+<<<<<<< HEAD
                 Auth::login($user);
                 return redirect(RouteServiceProvider::HOME);
      
@@ -49,6 +68,21 @@ class FacebookController extends Controller
                 Auth::login($newUser);
                 return redirect(RouteServiceProvider::HOME);
             }
+=======
+     
+            }else{
+                $user = User::create([
+                    'name' => $facebook_user->getName(),
+                    'lastname' => $facebook_user->getLastName(),
+                    'email' => $facebook_user->getEmail(),
+                    'facebook_id'=> $facebook_user->getId(),
+                    'password' => time() . rand(100, 999)
+                ]);
+            }
+            
+            Auth::login($user);
+            return redirect(session('url.intended.custom'));
+>>>>>>> dev
         } catch (Exception $e) {
             dd($e->getMessage());
         }

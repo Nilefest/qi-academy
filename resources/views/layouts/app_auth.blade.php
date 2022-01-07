@@ -8,7 +8,15 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+<<<<<<< HEAD
     <title>{{ config('app.name', 'Laravel') }}</title>
+=======
+    @if(isset($title))
+    <title>{{ $title }} | AUTH   {{ config('app.name') }}</title>
+    @else
+    <title>AUTH | {{ config('app.name') }}</title>
+    @endif
+>>>>>>> dev
 
     <!-- Fonts. Google: Montserrat, Lato -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,9 +37,15 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-reboot.min.css') }}">
 
     <!-- CSS. Common -->
+<<<<<<< HEAD
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/modals.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
+=======
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ env('APP_VERSION') }}">
+    <link rel="stylesheet" href="{{ asset('css/modals.css') }}?v={{ env('APP_VERSION') }}">
+    <link rel="stylesheet" href="{{ asset('css/animations.css') }}?v={{ env('APP_VERSION') }}">
+>>>>>>> dev
 
     <!-- CSS. Custom -->
     @yield('header.css')
@@ -62,7 +76,11 @@
         @yield('templats')
 
         <!-- JS. Common -->
+<<<<<<< HEAD
         <script src="{{ asset('js/script.js') }}"></script>
+=======
+        <script src="{{ asset('js/script.js') }}?v={{ env('APP_VERSION') }}"></script>
+>>>>>>> dev
 
         @yield('footer.js')
     </div>
