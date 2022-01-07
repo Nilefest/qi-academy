@@ -1104,6 +1104,8 @@
 
 .modal_sign_account.signin_step {
     margin-top: 200px;
+    justify-content: flex-start;
+    min-height: 100px;
 }
 
 .modal_sign_account h3 {
@@ -1379,7 +1381,12 @@
     .modal_sign_account {
         border-radius: 0px;
         max-width: 100vw;
-        margin: 100px 0px;
+        margin: 10vh 0px;
+        max-height: 80vh;
+    }
+
+    .modal_sign_account .step_block {
+        max-height: inherit;
     }
 }
 
