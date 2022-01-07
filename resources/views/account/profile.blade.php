@@ -43,7 +43,7 @@
             </label>
 
             <button class="profile_button profile_save desktop">Zapisz zmiany</button>
-            @if (Auth::user()->checkRole('admin'))
+            @if (Auth::user()->checkRole('admin') && Auth::user()->id !== $user->id)
                 <button class="profile_button white profile_delete desktop white"><i class="fas fa-trash-alt icon"></i>
                     Удалить пользователя</button>
             @endif
@@ -76,11 +76,10 @@
                 <input id="profile_email" @if ($user->hasVerifiedEmail()) disabled @endif autocomplete="off" type="email"
                     class="profile_input profile_email" placeholder="Your Email" value="{{ $user->email }}">
             </label>
-
             <button class="profile_button save mobile">Zapisz zmiany</button>
         </div>
 
-        @if (Auth::user()->checkRole('admin'))
+        @if (Auth::user()->checkRole('admin') && !$user->checkRole('admin'))
             <div class="profile_courses">
                 <table class="profile_courses_table">
                     <thead>

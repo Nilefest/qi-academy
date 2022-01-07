@@ -30,7 +30,7 @@
 
     // Delete profile data
     // #event
-    document.querySelector('.profile_delete').addEventListener('click', deleteProfileData);
+    document.querySelectorAll('.profile_delete').forEach(element => element.addEventListener('click', deleteProfileData));
 
     // Send Email for confirm email address
     // #code #function #event #server
@@ -110,5 +110,5 @@
 
     // Add course
     // #event
-    document.querySelector('#profile_course_add').addEventListener('click', add_profile_course);
+    document.querySelectorAll('#profile_course_add').forEach(element => element.addEventListener('click', add_profile_course));
 })();

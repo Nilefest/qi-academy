@@ -90,16 +90,31 @@ class User extends Authenticatable implements MustVerifyEmail
         return $list->toArray();
     }
     
-    public static function checkRole($role_type = 'client'){
+    public function checkRole($role_type = 'client', $print = false){
+        $access_result = false;
         if(Auth::check() && isset(self::$list_roles[$role_type])){
-            $user_access = Auth::user()->access;
+            $user_access = $this->access;
             $role_access = self::$list_roles[$role_type];
             
-            if($user_access === $role_access) return true;
-            if($user_access < 0 && $role_access === 0) return true; // For root
-            if($user_access === 2 && $role_access === 1) return true; // For subscribe as client
+            
+
+            if($user_access === $role_access) $access_result = true;
+            elseif($user_access < 0 && $role_access === 0) $access_result = true; // For root
+            elseif($user_access === 2 && $role_access === 1) $access_result = true; // For subscribe as client
         }
-        return false;
+        if($print){ // TODO: delete this
+            echo '<hr>';
+            echo "access_result = $access_result <br>";
+            echo $user_access . '<br>';
+            echo $role_access . '<br>';
+            echo "$user_access === $role_access = " . ($user_access === $role_access ? 'y' : 'n') . '<br>';
+            echo "$user_access < 0 && $role_access === 0 = " .  ($user_access < 0 && $role_access === 0 ? 'y' : 'n') . '<br>';
+            echo "$user_access === 2 && $role_access === 1 = " . ($user_access === 2 && $role_access === 1 ? 'y' : 'n') . '<br>';
+            // print_r($this->name);
+            exit();
+        }
+
+        return $access_result;
     }
     
     public static function getTotalWithCourses() {

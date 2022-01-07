@@ -34,6 +34,9 @@ class AccountController extends Controller
         if($user_id) $user = User::findOrFail($user_id);
         else $user = Auth::user();
         
+        if($user->id !== Auth::user()->id && !Auth::user()->checkRole('admin'))
+            return redirect()->route('account.profile');
+        
         if($request->isMethod('post')) {
             // Save new data about user
             if($request->input('type') === 'save_profile'){
