@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
 use App\Library\Services\CommonService;
 use Auth;
+use App\Payment;
 use App\UserCourse;
 use App\UserLecture;
 
@@ -108,11 +109,19 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function courses()
     {
-        return $this->belongsToMany('App\Course', 'user_courses');
+        return $this->belongsToMany('App\Course', 'user_courses')->withPivot('id')->withPivot('date_of_begin')->withPivot('date_of_end')->withPivot('date_of_completed');
     }
 
     public function lectures()
     {
         return $this->belongsToMany('App\CourseLecture', 'user_lectures')->withPivot('date_of_completed');
+    }
+
+    public static function deleteUser($user){
+        print_r($user);
+        UserLecture::where('user_id', $user->id)->delete();
+        UserCourse::where('user_id', $user->id)->delete();
+        Payment::where('user_id', $user->id)->delete();
+        $user->delete();
     }
 }

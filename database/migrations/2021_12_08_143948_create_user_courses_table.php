@@ -18,6 +18,7 @@ class CreateUserCoursesTable extends Migration
             $table->integer('user_id');
             $table->integer('course_id');
             $table->dateTime('date_of_begin')->nullable();
+            $table->dateTime('date_of_end')->nullable();
             $table->dateTime('date_of_completed')->nullable();
             $table->timestamps();
         });

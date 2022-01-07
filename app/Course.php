@@ -33,8 +33,39 @@ class Course extends Model
 
     public static function getListByAccount($user)
     {
-        $list = $user->courses;
+        $list = $user->courses->toArray();
+        // print_r($list); exit();
+        foreach($list as $key => $row){
+            $days_data = self::getLastDays($row, $row['pivot']);
+            $list[$key]['pivot'] = array_merge($row['pivot'], $days_data);
+        }
         return $list;
+    }
+
+    public static function getLastDays($course, $user_course, $add_days = false){
+        $date_of_start = $user_course['date_of_begin'];
+        $date_of_end = $user_course['date_of_end'];
+        if($add_days){
+            if($date_of_end === null) $date_of_start = date('Y-m-d');
+            else $date_of_start = $date_of_end;
+        }
+
+        if($add_days || $date_of_end === null) {
+            $datetime_of_end = strtotime($date_of_start . ' + ' . $course['total_days'] . ' days');
+            $date_of_end = date('Y-m-d', $datetime_of_end);
+        } else{
+            $datetime_of_end = strtotime($date_of_end);
+        }
+        
+        $days_last = round(($datetime_of_end - time()) / (24*60*60));
+
+        $days_data = [
+            'date_of_begin' => $user_course['date_of_begin'],
+            'date_of_start' => $date_of_start,
+            'date_of_end' => $date_of_end,
+            'days_last' => $days_last <= 0 ? 0 : $days_last
+        ];
+        return $days_data;
     }
 
     public static function saveOrCreateCourse($course, Request $request)
@@ -65,21 +96,20 @@ class Course extends Model
         return $course;
     }
     
-    public static function deleteById($team_id)
-    {
+    public static function deleteById($team_id) {
         $team = self::find($team_id);
         $team->delete();
 
         return $team->id;
     }
 
-    public static function getMainCourse(){
+    public static function getMainCourse() {
         $course = self::where('main_course', 1)->first();
         if($course === null) return false;
         return $course;
     }
 
-    public static function getPaidCourse($limit = -1){
+    public static function getPaidCourse($limit = -1) {
         $courses = self::where('only_paid', 1)->limit($limit)->get()->toArray();
         $lectures_total = CourseLecture::select('course_id', DB::raw('count(*) as total'))->groupBy('course_id')->get()->keyBy('course_id');
         foreach($courses as $key => $course){

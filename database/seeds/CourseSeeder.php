@@ -35,7 +35,7 @@ class CourseSeeder extends Seeder
                     'only_paid' => ($course_type === 'paid') * 1,
                     'name' => $faker->sentence(rand(3, 5)),
                     'banner_img' => '',
-                    'total_days' => ($course_type === 'paid' ? 25 + rand(-5, 5) : 0),
+                    'total_days' => 25 + rand(-5, 10),
                     'total_hours' => 120 + rand(-50, 50),
                     'cost' => ($course_type === 'paid' ? rand(10, 99) : 0),
                     'video_preview' => '',

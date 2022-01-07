@@ -163,7 +163,7 @@
         </footer>
 
         <!-- Templates -->
-        @yield('templats')
+        @yield('templates')
 
         <!-- JS. Common -->
         <script src="{{ asset('js/script.js') }}?v={{ env('APP_VERSION') }}"></script>
