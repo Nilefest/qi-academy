@@ -95,7 +95,7 @@
                             {{ count($lectures) }}</span></h3>
                     <p class="nofinished_info">Ukończ wszystkie wykłady i otrzymaj certyfikat</p>
                     @if (!isset($lectures_completed[$lecture_this['id']]))
-                        <button class="button finish_lesson"><span>Słuchałem</span> <i
+                        <button class="button finish_lesson"><span>Oglądane</span> <i
                                 class="far fa-check-circle icon"></i></button>
                         <button class="button get_sertificate">Uzyskać certyfikat</button>
                         <button class="send_review"><span>Wystawić opinię</span> <i
@@ -127,7 +127,7 @@
                     </div>
                     @if ($lecture_this->homework)
                         <div class="homework">
-                            <h4 class="title">Zadanie domowe</h4>
+                            <h4 class="title">Praca domowa</h4>
                             <p class="homework_description">{{ $lecture_this->homework }}</p>
                             <p class="homework_description info">Wyślij swoją pracę domową na ten mail, a na pewno
                                 odpowiemy.
@@ -147,7 +147,7 @@
                         {{ count($lectures) }}</span></h3>
                 <p class="nofinished_info">Ukończ wszystkie wykłady i otrzymaj certyfikat</p>
                 @if (!isset($lectures_completed[$lecture_this['id']]))
-                    <button class="button finish_lesson"><span>Słuchałem</span> <i
+                    <button class="button finish_lesson"><span>Oglądane</span> <i
                             class="far fa-check-circle icon"></i></button>
                     <button class="button get_sertificate">Uzyskać certyfikat</button>
                     <button class="send_review"><span>Wystawić opinię</span> <i

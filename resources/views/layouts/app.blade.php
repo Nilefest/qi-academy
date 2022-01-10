@@ -77,7 +77,7 @@
                     @endguest
                     @auth
                         <a class="main_nav_button" href="{{ route('home') }}">MOJE KONTO</a>
-                        <a class="main_nav_logout" href="{{ url('/logout') }}">Logout</a>
+                        <a class="main_nav_logout" href="{{ url('/logout') }}">Wyloguj się</a>
                     @endauth
                 </div>
                 <ul class="main_nav_links">

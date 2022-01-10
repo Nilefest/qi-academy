@@ -27,9 +27,7 @@
                                 <div style="background-image: url({{ $course['banner_img'] }});" class="image">
                                 </div>
                                 <span class="name">{{ $course['name'] }}</span>
-                                <span class="time_info"> Czas do końca dostępu <br>do kursu:
-                                    <b>{{ $course['total_days'] }}
-                                        dni</b></span>
+                                <span class="time_info">Zostało <b>{{ $course['total_days'] }} dni</b> dostępu do kursu</span>
                             </a>
                         </li>
                     @endforeach
@@ -49,9 +47,7 @@
                                 <div style="background-image: url({{ $course['banner_img'] }});" class="image">
                                 </div>
                                 <span class="name">{{ $course['name'] }}</span>
-                                <span class="time_info">Czas do końca dostępu <br>do kursu:
-                                    <b>{{ $course['total_days'] }}
-                                        dni</b></span>
+                                <span class="time_info">Zostało <b>{{ $course['total_days'] }} dni</b> dostępu do kursu</span>
                             </a>
                         </li>
                     @endforeach
@@ -71,9 +67,7 @@
                                 <div style="background-image: url({{ $course['banner_img'] }});" class="image">
                                 </div>
                                 <span class="name">{{ $course['name'] }}</span>
-                                <span class="time_info">Czas do końca dostępu <br>do kursu:
-                                    <b>{{ $course['total_days'] }}
-                                        dni</b></span>
+                                <span class="time_info">Zostało <b>{{ $course['total_days'] }} dni</b> dostępu do kursu</span>
                             </a>
                         </li>
                     @endforeach

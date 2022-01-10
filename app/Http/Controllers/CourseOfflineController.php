@@ -40,7 +40,7 @@ class CourseOfflineController extends Controller
                 $course_offline->name = $request->input('name') . '';
                 $course_offline->place = $request->input('place') . '';
                 $course_offline->date_of = date('Y-m-d H:i:s');
-                if($request->input('date_if') !== null) $course_offline->date_of = date('Y-m-d H:i:s', strtodate($request->input('date_of'))) . '';
+                if($request->input('date_of') !== null) $course_offline->date_of = $request->input('date_of') . '';
                 $course_offline->period = $request->input('period') . '';
                 $course_offline->video = $request->input('video') . '';
 

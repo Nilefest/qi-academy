@@ -102,11 +102,11 @@
 
         <div class="course_program container">
             <div class="program_list">
-                <h3>Program</h3>
+                <h3>Program kursu</h3>
                 <ul class="program_list_ul">
                     @foreach ($lecture_list as $key => $lecture_one)
                         <li class="program_list_li">
-                            <span class="lessons">{{ $key + 1 }} lekcje</span>
+                            <span class="lessons">{{ $key + 1 }} lekcja</span>
                             <span class="title">{{ $lecture_one->name }}</span>
                             <span class="info">{!! $lecture_one['info_short'] !!}</span>
                         </li>

@@ -50,17 +50,17 @@
         </div>
         <div class="form" data-formAction="{{ route('account.profile.post', $user_id) }}">
             <label class="profile_label">
-                <span class="title">Name</span>
-                <input autocomplete="off" type="text" class="profile_input profile_name" placeholder="Name"
+                <span class="title">Imię</span>
+                <input autocomplete="off" type="text" class="profile_input profile_name" placeholder=""
                     value="{{ $user->name }}">
             </label>
             <label class="profile_label">
-                <span class="title">Lastname</span>
-                <input autocomplete="off" type="text" class="profile_input profile_lastname" placeholder="Lastname"
+                <span class="title">Nazwisko</span>
+                <input autocomplete="off" type="text" class="profile_input profile_lastname" placeholder=""
                     value="{{ $user->lastname }}">
             </label>
             <label class="profile_label">
-                <span class="title">Phone</span>
+                <span class="title">Numer telefonu</span>
                 <input autocomplete="off" type="tel" class="profile_input profile_phone" placeholder="Phone number"
                     value="{{ $user->phone }}">
             </label>

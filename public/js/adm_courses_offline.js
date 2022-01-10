@@ -67,7 +67,7 @@
             course_data['type'] = 'save_course_offline';
             let func_success = (data) => {
                 if (!data['data']['id']) return view_modal_simple_info(data['message']);
-
+                console.log(data);
                 // view_modal_simple_info('Success!');
             };
             requestWithFetch('post', url, course_data, func_success, func_default_fail);
