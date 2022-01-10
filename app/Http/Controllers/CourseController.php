@@ -189,4 +189,14 @@ class CourseController extends Controller
         $this->data['title'] = 'Edit Course by ID for Admin';
         return view('course.edit', $this->data);
     }
+    
+    public function get_sertificate($course_id, $user_id = false) {
+        
+        $user = Auth::user();
+        if($user_id && $user->checkRole('admin')) $user = User::findOrFail($user_id); 
+        
+        $course = Course::findOrFail($course_id);
+
+        return CommonService::generateSertificate($user, $course);
+    }
 }

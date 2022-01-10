@@ -15,6 +15,9 @@ use App\User;
 class TestController extends Controller
 {
     public function get(){
+
+        // CommonService::generateSertificate(Auth::user());
+
         // $message = [
         //     ['type' => 'line', 'value' => 'It is for you'],
         //     ['type' => 'line', 'value' => 'It is too'],
@@ -24,7 +27,9 @@ class TestController extends Controller
         // ];
         // MailService::sendSubscribeArticle(User::all()[0], 'Subs mail', $message);
 
-        MailService::sendVideoReview(User::all()[0], '');
+        // MailService::sendVideoReview(User::all()[0], '');
+
+        exit();
     }
     
     public function post(){

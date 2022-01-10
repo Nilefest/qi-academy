@@ -11,6 +11,30 @@ use App\User;
 
 class CommonService {
 
+    public static function generateSertificate($user){
+        
+        $img_back = public_path('uploads/certificates/cert_0.default.png');
+
+        $name = $user->name;
+        $lastname = $user->lastname;
+
+        $img = imagecreatefrompng($img_back);
+
+        // Text setting
+        $font = __DIR__ . "/fonts/Montserrat/Montserrat-Black.ttf";
+        $font_size = 30;
+        $color = imageColorAllocate($img, 0, 0, 0);
+
+        imagettftext($img, $font_size, 0, 100, 965, $color, $font, $name);
+        imagettftext($img, $font_size, 0, 155, 1017, $color, $font, $lastname);
+
+        header("Content-type: image/png");
+        imagepng($img);
+        imagedestroy($img);
+        
+        exit();
+    }
+
     /**
      * Get ststic data from JSON files
      * 
