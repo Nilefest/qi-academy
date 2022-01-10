@@ -50,6 +50,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'subscribe' => 2,
     ];
 
+    public function getUnsubscribeLink() {
+        return route('subscribe.delete', $this->email);
+    }
+
     public static function saveUser($user, Request $request){
         if($request->input('name') !== null) $user->name = $request->input('name');
         if($request->input('lastname') !== null) $user->lastname = $request->input('lastname');
