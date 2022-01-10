@@ -26,9 +26,11 @@ class Team extends Model
         return $team_one;
     }
 
-    public static function getList($replace_nl_to_br = false, $limit = -1)
+    public static function getList($replace_nl_to_br = false, $limit = -1, $for_main = false)
     {
-        $list = self::orderBy('name')->limit($limit)->get();
+        if($for_main) $list = self::where('for_main_page', 1)->orderBy('name')->limit($limit)->get();
+        else $list = self::orderBy('name')->limit($limit)->get();
+        
         if($replace_nl_to_br){
             foreach($list as $key => $row) $list[$key]->info = CommonService::replaceNlToBr($row->info);
         }
@@ -47,8 +49,11 @@ class Team extends Model
         $team->info = CommonService::replaceNlToBr($team->info);
         $team->instagram = $request->input('instagram') . '';
         $team->facebook = $request->input('facebook') . '';
-        if(isset($_FILES['img_file'])){
+        if(isset($_FILES['img_file'])) {
             $team->img = CommonService::uploadFile('team', $_FILES['img_file'], $team->img);
+        }
+        if($request->input('for_main_page') !== null) {
+            $team->for_main_page = $request->input('for_main_page') * 1;
         }
         $team->save();
 

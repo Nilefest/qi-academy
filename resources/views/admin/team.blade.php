@@ -16,10 +16,15 @@
                 <i class="fas fa-plus icon_add"></i>
                 <input type="file" class="d-none team_img_file" name="team_img_file" accept="image/png, image/gif, image/jpeg">
             </label>
+            
             <div class="team_info">
                 <div class="name">
                     <input type="text" class="text team_name" name="name" placeholder="имя">
                 </div>
+                <label class="for_main_page">
+                    <input type="checkbox" id="for_main_page">
+                    <span class="title">View to main</span>
+                </label>
             </div>
         </div>
         <div class="modal_content">
@@ -67,7 +72,7 @@
             <li class="team_list_li team_add"><i class="fas fa-plus icon_add"></i></li>
             @foreach ($team_list as $team_one)
                 <li class="team_list_li team_one" data-teamId="{{ $team_one->id }}"
-                    data-teamInfo="{{ $team_one->info }}">
+                    data-teamInfo="{{ $team_one->info }}" data-ForMainPage="{{ $team_one->for_main_page }}">
                     <div class="team_list_media team_img" style="background-image: url(/{{ $team_one->img }});">
                         <span class="team_adm_modal view">Редактировать</span>
                     </div>

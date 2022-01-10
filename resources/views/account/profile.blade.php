@@ -37,7 +37,7 @@
             <label class="avatar">
                 <span class="title">My profile: </span>
                 <div class="avatar_photo"
-                    style="background-image: url('{{ $user->avatar ? $user->avatar : asset('uploads/profile/default/9.jpeg') }}');">
+                    style="background-image: url('{{ $user->avatar ? $user->avatar : asset('uploads/profile/default/' . rand(1, 18) . '.jpg') }}');">
                 </div>
                 <input type="file" class="profile_avatar d-none" accept="image/png, image/gif, image/jpeg">
             </label>

@@ -97,7 +97,7 @@
 
                 @auth
                     <div class="account"><a href="{{ route('home') }}" class="account_button"
-                            style="background-image: url('{{ Auth::user()->avatar ? Auth::user()->avatar : asset('uploads/profile/default/9.jpeg') }}');"></a>
+                            style="background-image: url('{{ Auth::user()->avatar ? Auth::user()->avatar : asset('uploads/profile/default/' . rand(1, 18) . '.jpg') }}');"></a>
                     </div>
                 @endauth
 

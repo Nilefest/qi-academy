@@ -12,15 +12,17 @@
             name: team_one.querySelector('.name').innerHTML,
             info: team_one.getAttribute('data-teamInfo'),
             instagram: team_one.querySelector('.soc_instagram').getAttribute('href'),
-            facebook: team_one.querySelector('.soc_facebook').getAttribute('href')
+            facebook: team_one.querySelector('.soc_facebook').getAttribute('href'),
+            for_main_page: team_one.getAttribute('data-forMainPage') * 1
         };
-
+console.log(team_data);
         // Set current data
         let modal = document.querySelector('.modal_team_adm');
         modal.setAttribute('data-teamId', team_data['id']);
         modal.querySelector('.team_img').setAttribute('style', team_data['img']);
         modal.querySelector('.team_img_file').value = '';
         modal.querySelector('.team_name').value = team_data['name'];
+        modal.querySelector('.for_main_page input').checked = team_data['for_main_page'] === 1;
         modal.querySelector('textarea.team_info').value = team_data['info'];
         modal.querySelector('.soc_instagram').value = team_data['instagram']
         modal.querySelector('.soc_facebook').value = team_data['facebook'];
@@ -64,7 +66,8 @@
             name: modal.querySelector('.team_name').value,
             info: modal.querySelector('textarea.team_info').value,
             instagram: modal.querySelector('.soc_instagram').value,
-            facebook: modal.querySelector('.soc_facebook').value
+            facebook: modal.querySelector('.soc_facebook').value,
+            for_main_page: modal.querySelector('.for_main_page input').checked * 1,
         };
         if (modal.querySelector('.team_img_file').files[0] !== null) {
             team_data['img_file'] = modal.querySelector('.team_img_file').files[0];
@@ -83,6 +86,7 @@
             team_one.querySelector('.team_img').setAttribute('style', team_data['img']);
             team_one.querySelector('.name').innerHTML = team_data['name'];
             team_one.childNodes[1].setAttribute('data-teamInfo', team_data['info']);
+            team_one.childNodes[1].setAttribute('data-forMainPage', team_data['for_main_page']);
             team_one.querySelector('.soc_instagram').setAttribute('href', team_data['instagram']);
             team_one.querySelector('.soc_instagram').parentElement.classList.add('d-none');
             if (team_data['instagram'] !== '') team_one.querySelector('.soc_instagram').parentElement.classList.remove('d-none');

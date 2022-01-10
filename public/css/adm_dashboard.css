@@ -205,6 +205,11 @@ h2 {
 }
 
 /* For Team */
+.team_info .title {
+    margin: 0px 15px;
+    font-weight: bold;
+}
+
 .team_list_ul {
     padding: 0px 10px;
 }
