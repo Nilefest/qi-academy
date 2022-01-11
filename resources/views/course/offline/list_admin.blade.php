@@ -43,7 +43,7 @@
                             <td class="tools"><i class="fas fa-trash-alt icon_tool remove_course"></i></td>
                             <td><input type="text" class="text course_place" placeholder="Warszawa"
                                     value="{{ $course_one->place }}"></td>
-                            <td><input type="date" class="text course_date_of" placeholder=""
+                            <td><input type="text" class="text course_date_of" placeholder=""
                                     value="{{ $course_one->date_of }}"></td>
                             <td class="days"><input min="1" type="text" class="text course_period"
                                     placeholder="1 dzień" value="{{ $course_one->period }}"></td>
