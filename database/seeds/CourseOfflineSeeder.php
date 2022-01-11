@@ -25,7 +25,7 @@ class CourseOfflineSeeder extends Seeder
                 'name' => $faker->sentence(rand(3, 7)),
                 'place' => $faker->city,
                 'date_of' => date('Y-m-d H:i:s', time() + rand(10000, 9999999)),
-                'period' => rand(2, 7) . ' days',
+                'period' => rand(2, 7),
                 'video' => '',
                 'updated_at' => date('Y-m-d H:i:s'),
                 'created_at' => date('Y-m-d H:i:s'),

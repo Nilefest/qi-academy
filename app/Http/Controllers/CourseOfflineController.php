@@ -41,7 +41,8 @@ class CourseOfflineController extends Controller
                 $course_offline->place = $request->input('place') . '';
                 $course_offline->date_of = date('Y-m-d H:i:s');
                 if($request->input('date_of') !== null) $course_offline->date_of = $request->input('date_of') . '';
-                $course_offline->period = $request->input('period') . '';
+                $course_offline->period = $request->input('period') * 1;
+                if(!$course_offline->period) $course_offline->period = 1;
                 $course_offline->video = $request->input('video') . '';
 
                 $course_offline->save();

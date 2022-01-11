@@ -148,17 +148,17 @@
             </div>
         @endif
 
-        @if ($courses_offline_list->count())
+        @if (count($courses_offline_list))
             <div class="block_events">
                 <h3>HARMONOGRAM SZKOLEŃ OFFLINE</h3>
                 <div class="table container">
                     @foreach ($courses_offline_list as $course_one)
-                        <div class="row course_item" data-courseId="{{ $course_one->id }}"
-                            data-courseVideo="{{ $course_one->video }}">
-                            <span class="place">{{ $course_one->place }}</span>
-                            <span class="date">{{ $course_one->date_of }}</span>
-                            <span class="time">{{ $course_one->period }}</span>
-                            <span class="name">Lekcja: {{ $course_one->name }}</span>
+                        <div class="row course_item" data-courseId="{{ $course_one['id'] }}"
+                            data-courseVideo="{{ $course_one['video'] }}">
+                            <span class="place">{{ $course_one['place'] }}</span>
+                            <span class="date">{{ $course_one['date_of'] }}</span>
+                            <span class="time">{{ $course_one['period'] }}</span>
+                            <span class="name">Lekcja: {{ $course_one['name'] }}</span>
                         </div>
                     @endforeach
                 </div>
