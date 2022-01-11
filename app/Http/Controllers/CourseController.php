@@ -38,6 +38,8 @@ class CourseController extends Controller
     public function view($course_id)
     {
         $course = Course::findOrFail($course_id);
+        $this->data['description'] = $course['description'];
+
         $course['description'] = CommonService::replaceNlToBr($course['description']);
         $course['description_for_1'] = CommonService::replaceNlToBr($course['description_for_1']);
         $course['description_for_2'] = CommonService::replaceNlToBr($course['description_for_2']);
@@ -53,8 +55,8 @@ class CourseController extends Controller
 
         $this->data['course'] = $course;
         $this->data['lecture_list'] = $lecture_list;
-
-        $this->data['title'] = $course->name;
+        
+        $this->data['title'] = $course['name'];
         return view('course.view', $this->data);
     }
 
@@ -188,15 +190,5 @@ class CourseController extends Controller
         $this->data['course'] = $course;
         $this->data['title'] = 'Edit Course by ID for Admin';
         return view('course.edit', $this->data);
-    }
-    
-    public function get_sertificate($course_id, $user_id = false) {
-        
-        $user = Auth::user();
-        if($user_id && $user->checkRole('admin')) $user = User::findOrFail($user_id); 
-        
-        $course = Course::findOrFail($course_id);
-
-        return CommonService::generateSertificate($user, $course);
     }
 }
