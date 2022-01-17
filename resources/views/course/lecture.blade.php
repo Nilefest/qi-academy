@@ -12,8 +12,7 @@
 
 @section('modals')
     <div class="modal_win modal_get_sertificate">
-        <p class="message">Twoja prośba została zaakceptowana. Certyfikat zostanie wysłany na Twój e-mail w ciągu
-            kilku minut.</p>
+        <p class="message">Gratulujemy ukończenia kursu! Elektroniczną kopię certyfikatu możesz pobrać dowolną ilość razy.</p>
         <button class="button close">Ok</button>
     </div>
 
@@ -94,10 +93,10 @@
                                 class="current">{{ $lectures_completed->count() }}</span> /
                             {{ count($lectures) }}</span></h3>
                     <p class="nofinished_info">Ukończ wszystkie wykłady i otrzymaj certyfikat</p>
-                    @if (!isset($lectures_completed[$lecture_this['id']]))
+                    @if ($course_user['date_of_completed'])
                         <button class="button finish_lesson"><span>Oglądane</span> <i
                                 class="far fa-check-circle icon"></i></button>
-                        <button class="button get_sertificate">Uzyskać certyfikat</button>
+                        <a download href="{{ route('courses.sertificate', [$course_id, $user_id]) }}" class="button get_sertificate">Uzyskać certyfikat</a>
                         <button class="send_review"><span>Wystawić opinię</span> <i
                                 class="fas fa-hand-point-up icon"></i></button>
                     @endif
@@ -143,13 +142,13 @@
 
             <div class="finished_lesson_block unfinished mobile">
                 <h3 class="title">Obejrzałem wideo <span class="range"><span
-                            class="current">{{ $lectures_completed->count() }}</span> /
+                            class="current">{{ count($lectures_completed) }}</span> /
                         {{ count($lectures) }}</span></h3>
                 <p class="nofinished_info">Ukończ wszystkie wykłady i otrzymaj certyfikat</p>
-                @if (!isset($lectures_completed[$lecture_this['id']]))
+                @if ($course_user['date_of_completed'])
                     <button class="button finish_lesson"><span>Oglądane</span> <i
                             class="far fa-check-circle icon"></i></button>
-                    <button class="button get_sertificate">Uzyskać certyfikat</button>
+                    <a download href="{{ route('courses.sertificate', [$course_id, $user_id]) }}" class="button get_sertificate">Uzyskać certyfikat</a>
                     <button class="send_review"><span>Wystawić opinię</span> <i
                             class="fas fa-hand-point-up icon"></i></button>
                 @endif

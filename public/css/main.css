@@ -280,6 +280,7 @@
     margin-bottom: 50px;
     border-radius: 10px;
     text-align: center;
+    color: #FFF9C6;
 }
 
 .block_team h3 b {
@@ -350,7 +351,7 @@
 
 .block_team_li .view:hover {
     text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.4);
+    /* background-color: rgba(255, 255, 255, 0.4); */
     opacity: 1;
     cursor: pointer;
 }

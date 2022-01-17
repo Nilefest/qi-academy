@@ -13,7 +13,20 @@ h1 {
     margin-left: 35px;
 }
 
+h2.title {
+    color: #FFF9C6;
+    font-family: 'Lato', sans-serif;
+    padding: 5px 10px;
+    text-transform: uppercase;
+}
+
+h2.title .total {
+    color: #F84C34;
+}
+
+
 /* Header */
+
 header {
     /* position: absolute; */
     padding-left: 20px;
@@ -80,12 +93,16 @@ header .logout:hover {
     text-decoration: underline;
 }
 
+
 /* Content */
+
 .content {
     margin-top: 40px;
 }
 
+
 /* Dashboard */
+
 .dashboard_nav {
     display: flex;
     flex-direction: row;
@@ -122,6 +139,22 @@ header .logout:hover {
     color: #F84C34;
 }
 
+.dashboard_item.items_sort {
+    background-color: #000;
+    background-color: transparent;
+    border: 1px solid #FFF9C6;
+}
+
+.dashboard_item.items_sort .title {
+    color: #FFF9C6;
+    box-shadow: none;
+    background: none;
+}
+
+.dashboard_item.items_sort.active {
+    border-width: 4px;
+}
+
 .dashboard_item.disabled {
     opacity: 0.5;
 }
@@ -152,7 +185,9 @@ header .logout:hover {
     box-shadow: 0 0 10px #fff;
 }
 
+
 /* Setting block */
+
 .setting_form {
     margin: 10px 10px 20px;
     border-top: 2px solid rgb(190, 190, 190);
@@ -180,7 +215,6 @@ h2 {
     background-color: transparent;
     color: #fff;
     padding: 5px 15px;
-
     padding: 5px 15px;
     align-self: flex-start;
 }
@@ -204,7 +238,9 @@ h2 {
     opacity: 0.9;
 }
 
+
 /* For Team */
+
 .team_info .title {
     margin: 0px 15px;
     font-weight: bold;
@@ -229,7 +265,9 @@ h2 {
     text-transform: lowercase;
 }
 
+
 /* Courses offline */
+
 .courses_offline {
     width: 100%;
     font-family: 'Lato', sans-serif;
@@ -336,7 +374,6 @@ h2 {
     font-weight: normal;
     border: 1px solid #fff;
     margin-bottom: 0px;
-
 }
 
 .courses_offline .button.add_course {
@@ -380,6 +417,7 @@ h2 {
     color: #fff;
     cursor: pointer;
 }
+
 
 /* Contacts form */
 
@@ -433,6 +471,7 @@ h2 {
 
 
 /* Courses offline */
+
 .reviews_form {
     width: 80%;
     font-family: 'Lato', sans-serif;
@@ -560,6 +599,7 @@ h2 {
 
 
 /* Courses offline */
+
 .clients_form {
     width: 100%;
     font-family: 'Lato', sans-serif;
@@ -611,8 +651,6 @@ h2 {
     color: #000;
     font-weight: bold;
 }
-
-
 
 .clients_form .tools {
     width: 30px;

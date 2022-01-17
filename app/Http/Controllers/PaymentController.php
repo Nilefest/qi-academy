@@ -29,7 +29,8 @@ class PaymentController extends Controller
         $this->data['user'] = $user;
 
         $course_user = UserCourse::where('user_id', $user->id)->where('course_id', $course_id)->first();
-        if($course_user) {
+        $days_data = Course::getLastDays($course, $course_user);
+        if($course_user && $days_data['days_last'] > 0) {
             return redirect()->route('courses.lecture', $course_id);
         }
 
@@ -68,11 +69,16 @@ class PaymentController extends Controller
         if($user_id) $user = User::find($user_id);
         elseif(Auth::check()) $user = Auth::user();
 
+
+        // Verif
+
         $course = Course::findOrFail($course_id);
 
         if($user && $course){
             $course_user = UserCourse::where('user_id', $user->id)->where('course_id', $course_id)->first();
-            if(!$course_user) {
+            $days_data = Course::getLastDays($course, $course_user);
+
+            if(!$course_user || $days_data['days_last'] === 0) {
                 $course_user = new UserCourse;
                 $course_user->user_id = $user->id;
                 $course_user->course_id = $course_id;

@@ -125,7 +125,7 @@
             </div>
         @endif
 
-        @if (count($paid_courses))
+        @if (!empty($paid_courses))
             <div class="slider_courses container">
                 <h3>POZNAJ PROGRAMY SZKOLENIOWE</h3>
                 <ul class="slider_courses_ul">
@@ -148,7 +148,7 @@
             </div>
         @endif
 
-        @if (count($courses_offline_list))
+        @if (!empty($courses_offline_list))
             <div class="block_events">
                 <h3>HARMONOGRAM SZKOLEŃ OFFLINE</h3>
                 <div class="table container">

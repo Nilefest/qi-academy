@@ -70,12 +70,15 @@ class CourseLecture extends Model
     
     public static function completed($lecture_id, $user_id)
     {
-        $user_lecture = new UserLecture;
-        $user_lecture->course_lecture_id = $lecture_id;
-        $user_lecture->user_id = $user_id;
+        $user_lecture = UserLecture::where('user_id', $user_id)->where('course_lecture_id', $lecture_id)->orderBy('created_at', 'desc')->first();
+        if(!$user_lecture){
+            $user_lecture = new UserLecture;
+            $user_lecture->course_lecture_id = $lecture_id;
+            $user_lecture->user_id = $user_id;
+        }
         $user_lecture->date_of_completed = date('Y-m-d H:i:s');
         $user_lecture->save();
-
+        
         return $user_lecture->id;
     }
 }

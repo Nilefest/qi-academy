@@ -73,9 +73,11 @@ class CourseController extends Controller
 
         $this->data['courses_all'] = Course::getList();
         $this->data['courses_bonuse'] = Course::getBonuseCourses();
-        $this->data['courses_account'] = Course::getListByAccount($user);
+        $this->data['courses_free'] = Course::getFreeCourses();
+        $this->data['courses_paid'] = Course::getPaidCourse();
+        $this->data['courses_account'] = Course::getListByAccount($user, true);
         
-        $this->data['courses_completed'] = $user->courses()->get()->keyBy('id');
+        $this->data['courses_completed'] = $user->courses()->where('date_of_completed', '<=', date('Y-m-d H:i:s'))->get()->keyBy('id')->toArray();
 
         $this->data['user_id'] = $user_id;
         $this->data['title'] = 'Your Courses';
@@ -96,8 +98,10 @@ class CourseController extends Controller
         $course = Course::findOrFail($course_id);
         $this->data['lectures'] = CourseLecture::getListByCourseUser($course, $user);
         
-        $course_user = UserCourse::where('user_id', $user->id)->where('course_id', $course_id)->first();
-        if(!$course_user) {
+        $course_user = UserCourse::where('user_id', $user->id)->where('course_id', $course_id)->orderBy('date_of_begin', 'desc')->first();
+        $days_data = Course::getLastDays($course, $course_user);
+        
+        if(!$course_user || $days_data['days_last'] === 0) {
             if($course->free || $course->free_for_client) {
                 $course_user = new UserCourse;
                 $course_user->user_id = $user->id;
@@ -123,6 +127,12 @@ class CourseController extends Controller
                 $completed = $user->lectures()->where('course_id', $course->id)->get()->count();
                 $last = CourseLecture::where('course_id', $course_id)->count() - $completed;
                 
+                if($last === 0){
+                    $course_user = UserCourse::where('user_id', $user->id)->where('course_id', $course_id)->orderBy('date_of_begin', 'desc')->first();
+                    $course_user->date_of_completed = date('Y-m-d H:i:s');
+                    $course_user->save();
+                }
+                
                 return ['data' => ['current_completed' => $completed, 'last' => $last], 'mess' => $request->all()];
             }
             return;
@@ -133,6 +143,7 @@ class CourseController extends Controller
         $this->data['lectures_completed'] = $user->lectures()->where('course_id', $course->id)->get()->keyBy('id');
 
         $this->data['user'] = $user;
+        $this->data['course_user'] = $course_user;
         $this->data['course_id'] = $course_id;
         $this->data['user_id'] = $user_id;
         $this->data['title'] = ($this->data['lecture_this'] ? $this->data['lecture_this']->name . '' : 'No lecture');
@@ -144,11 +155,25 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function list_admin()
+    public function list_admin($sort_type = 'default')
     {
-        $courses_list = Course::getList();
+        $this->data['courses_all'] = Course::getList();
+        $this->data['courses_bonuse'] = [];
+        $this->data['courses_free'] = [];
+        $this->data['courses_paid'] = [];
 
-        $this->data['courses_list'] = $courses_list;
+        $this->data['courses_all'] = Course::getList();
+
+        if($sort_type === 'all' || $sort_type === 'bonuse')
+            $this->data['courses_bonuse'] = Course::getBonuseCourses();
+        if($sort_type === 'all' || $sort_type === 'free')
+            $this->data['courses_free'] = Course::getFreeCourses();
+        if($sort_type === 'all' || $sort_type === 'paid')
+            $this->data['courses_paid'] = Course::getPaidCourse();
+
+        $this->data['sort_type'] = $sort_type;
+        // $this->data['sort_type'] = 'hide';
+
         $this->data['title'] = 'Courses for Admin';
         return view('course.list_admin', $this->data);
     }
@@ -190,5 +215,22 @@ class CourseController extends Controller
         $this->data['course'] = $course;
         $this->data['title'] = 'Edit Course by ID for Admin';
         return view('course.edit', $this->data);
+    }
+
+    /**
+     * Get sertificate
+     * 
+     * @param int
+     * @param int|False
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function get_sertificate($course_id, $user_id = false)
+    {
+        if(!$user_id) $user = Auth::user();
+        else $user = User::findOrFail($user_id);
+
+        $course = Course::findOrFail($course_id);
+        
+        CommonService::generateSertificate($user);
     }
 }

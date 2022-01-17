@@ -1,2 +1,23 @@
 User-agent: *
-Disallow:
+
+Disallow: /payment/*
+Disallow: /subscribe/*
+Disallow: /unsubscribe/*
+Disallow: /home/*
+Disallow: /account/*
+Disallow: /admin/*
+Disallow: /test/*
+Disallow: /temp/*
+Disallow: /uploads/*
+#Disallow: /fonts/*
+#Disallow: /*.css
+#Disallow: /*.js
+
+Allow: /
+Allow: /about
+Allow: /team
+Allow: /course/*
+
+Host: https://qilabel.com
+
+Sitemap: https://qilabel.com/sitemap.xml

@@ -21,20 +21,21 @@ class Course extends Model
 
     public static function getFreeCourses($limit = -1)
     {
-        $list = self::where('free', 1)->orderBy('name')->limit($limit)->get();
+        $list = self::where('free', 1)->orderBy('name')->limit($limit)->get()->keyBy('id');
         return $list;
     }
 
     public static function getBonuseCourses($limit = -1)
     {
-        $list = self::where('free_for_client', 1)->orderBy('name')->limit($limit)->get();
+        $list = self::where('free_for_client', 1)->orderBy('name')->limit($limit)->get()->keyBy('id');
         return $list;
     }
 
-    public static function getListByAccount($user)
+    public static function getListByAccount($user, $only_last = false)
     {
-        $list = $user->courses->toArray();
-        // print_r($list); exit();
+        if($only_last) $list = $user->courses->keyBy('id')->toArray();
+        else $list = $user->courses->toArray();
+        
         foreach($list as $key => $row){
             $days_data = self::getLastDays($row, $row['pivot']);
             $list[$key]['pivot'] = array_merge($row['pivot'], $days_data);

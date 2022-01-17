@@ -17,17 +17,19 @@
 
 @section('content')
     <div class="content container course_container">
-        @if (count($courses_account))
+        @if (!empty($courses_account))
             <div class="course_list">
                 <h3>Moje kursy</h3>
                 <ul class="course_list_ul">
                     @foreach ($courses_account as $course)
-                        <li class="course_list_li @if (isset($courses_completed[$course['id']])) check @endif">
+                        <li class="course_list_li @if ($course['pivot']['date_of_completed']) check @endif">
                             <a href="{{ route('courses.lecture', $course['id'], false, $user_id) }}">
                                 <div style="background-image: url({{ $course['banner_img'] }});" class="image">
                                 </div>
                                 <span class="name">{{ $course['name'] }}</span>
-                                <span class="time_info">Zostało <b>{{ $course['total_days'] }} dni</b> dostępu do kursu</span>
+                                <span class="time_info"
+                                    title="Ważne do {{ $course['pivot']['date_of_end'] }}">Zostało
+                                    <b>{{ $course['pivot']['days_last'] }} dni</b> dostępu do kursu</span>
                             </a>
                         </li>
                     @endforeach
@@ -37,19 +39,21 @@
             </div>
         @endif
 
-        @if ($courses_bonuse->count())
+        @if (!empty($courses_bonuse) && !empty($courses_account))
             <div class="course_list">
                 <h3>Moje premie</h3>
                 <ul class="course_list_ul">
                     @foreach ($courses_bonuse as $course)
-                        <li class="course_list_li @if (isset($courses_completed[$course['id']])) check @endif">
-                            <a href="{{ route('courses.lecture', $course['id'], false, $user_id) }}">
-                                <div style="background-image: url({{ $course['banner_img'] }});" class="image">
-                                </div>
-                                <span class="name">{{ $course['name'] }}</span>
-                                <span class="time_info">Zostało <b>{{ $course['total_days'] }} dni</b> dostępu do kursu</span>
-                            </a>
-                        </li>
+                        @if (!isset($courses_account[$course['id']]))
+                            <li class="course_list_li @if (isset($courses_completed[$course['id']])) check @endif">
+                                <a href="{{ route('courses.lecture', $course['id'], false, $user_id) }}">
+                                    <div style="background-image: url({{ $course['banner_img'] }});"
+                                        class="image">
+                                    </div>
+                                    <span class="name">{{ $course['name'] }}</span>
+                                </a>
+                            </li>
+                        @endif
                     @endforeach
                 </ul>
                 <button class="course_list_arrow prev">&#8592;</button>
@@ -57,19 +61,21 @@
             </div>
         @endif
 
-        @if ($courses_all->count())
+        @if (!empty($courses_paid))
             <div class="course_list">
                 <h3>Wszystkie kursy</h3>
                 <ul class="course_list_ul">
-                    @foreach ($courses_all as $course)
-                        <li class="course_list_li @if (isset($courses_completed[$course['id']])) check @endif">
-                            <a target="_blank" href="{{ route('course.view', $course['id']) }}">
-                                <div style="background-image: url({{ $course['banner_img'] }});" class="image">
-                                </div>
-                                <span class="name">{{ $course['name'] }}</span>
-                                <span class="time_info">Zostało <b>{{ $course['total_days'] }} dni</b> dostępu do kursu</span>
-                            </a>
-                        </li>
+                    @foreach ($courses_paid as $course)
+                        @if (!isset($courses_account[$course['id']]))
+                            <li class="course_list_li @if (isset($courses_completed[$course['id']])) check @endif">
+                                <a target="_blank" href="{{ route('course.view', $course['id']) }}">
+                                    <div style="background-image: url({{ $course['banner_img'] }});"
+                                        class="image">
+                                    </div>
+                                    <span class="name">{{ $course['name'] }}</span>
+                                </a>
+                            </li>
+                        @endif
                     @endforeach
                 </ul>
                 <button class="course_list_arrow prev">&#8592;</button>

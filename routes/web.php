@@ -85,7 +85,7 @@ Route::group(['middleware' => 'auth.admin'], function () {
     Route::get('/admin/courses_offline', 'CourseOfflineController@list_admin')->middleware('verified')->name('admin.courses_offline');
     Route::post('/admin/courses_offline', 'CourseOfflineController@list_admin')->middleware('verified')->name('admin.courses_offline.post');
 
-    Route::get('/admin/courses', 'CourseController@list_admin')->middleware('verified')->name('admin.courses');
+    Route::get('/admin/courses/{sort_type?}', 'CourseController@list_admin')->middleware('verified')->name('admin.courses');
     Route::get('/admin/course/{course_id?}', 'CourseController@edit')->middleware('verified')->name('admin.course.edit');
     Route::post('/admin/course/{course_id?}', 'CourseController@edit')->middleware('verified')->name('admin.course.edit.post');
 });
