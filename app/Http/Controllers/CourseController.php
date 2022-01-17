@@ -172,7 +172,7 @@ class CourseController extends Controller
             $this->data['courses_paid'] = Course::getPaidCourse();
 
         $this->data['sort_type'] = $sort_type;
-        // $this->data['sort_type'] = 'hide';
+        $this->data['sort_type'] = 'hide';
 
         $this->data['title'] = 'Courses for Admin';
         return view('course.list_admin', $this->data);
