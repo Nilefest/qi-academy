@@ -17,7 +17,7 @@
 
 @section('content')
     <div class="content container course_container">
-        @if ($courses_account->count())
+        @if (count($courses_account))
             <div class="course_list">
                 <h3>Moje kursy</h3>
                 <ul class="course_list_ul">

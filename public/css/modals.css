@@ -1,4 +1,5 @@
 /* Modal */
+
 .modal {
     background-color: #000;
     background-color: rgba(0, 0, 0, 0.8);
@@ -9,7 +10,6 @@
     height: 100vh;
     z-index: 3;
     overflow-y: auto;
-
     display: none;
     opacity: 0;
 }
@@ -27,7 +27,6 @@
     margin: 100px auto;
     display: flex;
     justify-content: space-between;
-
     display: none;
     opacity: 0;
 }
@@ -55,7 +54,9 @@
     cursor: pointer;
 }
 
+
 /* Modal. Team */
+
 .modal_win.modal_show.modal_team {
     display: flex;
 }
@@ -128,7 +129,9 @@
     color: #000;
 }
 
+
 /* Modal. ADM. Edit Team */
+
 .modal_win.modal_show.modal_team_adm {
     display: flex;
 }
@@ -256,7 +259,9 @@
     color: #000;
 }
 
+
 /* Modal. View video */
+
 .modal_view_youtube,
 .modal_view_video {
     max-height: 80vh;
@@ -316,7 +321,6 @@
     display: flex;
     justify-content: space-between;
     opacity: 0.1;
-
     display: none;
 }
 
@@ -370,24 +374,26 @@
 .modal_view_youtube .modal_content {
     height: 80vh;
     width: 100%;
+    margin-top: 10vh;
     text-align: center;
 }
 
 .modal_view_youtube iframe {
-    height: 100%;
+    height: 87%;
     min-width: 100%;
     width: auto;
     border-radius: 10px;
 }
 
+
 /* Modal. View full image */
+
 .modal_view_fullimg {
     background-color: #000;
     background-color: transparent;
     color: #fff;
     min-height: 80%;
     display: flex;
-
     display: none;
 }
 
@@ -401,7 +407,9 @@
     width: 100%;
 }
 
+
 /* Modal. ADM. Booking to offline course */
+
 .modal_book_offline {
     display: none;
     justify-content: space-between;
@@ -533,7 +541,6 @@
     width: 0px;
     height: 0px;
     opacity: 0;
-
     transition-property: height, width;
     transition-delay: 2s 1s;
 }
@@ -545,7 +552,9 @@
     height: 100%;
 }
 
+
 /* Modal. Profile. Get sertificate */
+
 .modal_get_sertificate {
     background-color: #fff;
     padding: 50px 60px;
@@ -582,7 +591,9 @@
     cursor: pointer;
 }
 
+
 /* Modal. Show result after subscribe */
+
 .modal_subscribe_result {
     background-color: #fff;
     padding: 50px 60px;
@@ -619,7 +630,9 @@
     cursor: pointer;
 }
 
+
 /* Modal. Show info with button OK */
+
 .modal_simple_info {
     background-color: #fff;
     padding: 50px 60px;
@@ -656,7 +669,9 @@
     cursor: pointer;
 }
 
+
 /* Modal. ADM. Edit lecture */
+
 .modal_lecture {
     margin: 0px;
     padding: 80px 150px 80px 70px;
@@ -816,7 +831,9 @@
     opacity: 0.8;
 }
 
+
 /* Message about Cookie */
+
 .cookie_message {
     border-radius: 10px;
     background-color: #fff;
@@ -832,7 +849,6 @@
     color: #000;
     font-family: 'Montserrat', sans-serif;
     z-index: 2;
-
     display: none;
 }
 
@@ -897,7 +913,9 @@
     cursor: pointer;
 }
 
+
 /* Modal. Profile. for send review */
+
 .modal_send_review {
     max-width: 500px;
     background-color: #fff;
@@ -907,7 +925,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     display: none;
 }
 
@@ -1062,7 +1079,9 @@
     transition-delay: .1s;
 }
 
+
 /* Modal. SignIn - SignUp */
+
 .modal_sign_account {
     display: flex;
     flex-direction: column;
@@ -1076,7 +1095,6 @@
     letter-spacing: 1px;
     max-height: 550px;
     overflow: hidden;
-
     display: none;
 }
 
@@ -1222,63 +1240,51 @@
     .modal_win {
         flex-wrap: wrap;
     }
-
     .modal_team .modal_header {
         width: 40%;
     }
-
     .modal_team .modal_content {
         width: 55%;
         margin: 0px;
     }
-
     .modal_team .modal_footer {
         width: 100%;
         padding-top: 0px;
     }
-
     .modal_view_video {
         width: 95%;
         max-height: 100vh;
         height: 95%;
     }
-
     .modal_book_offline {
         flex-direction: column;
         margin: 50px auto;
         width: 60%;
     }
-
     .modal_book_offline .media_info {
         width: 80%;
         margin: 0px auto 20px;
     }
-
     .modal_book_offline .personal_data {
         width: 80%;
         margin: 0px auto;
     }
-
     .modal_book_offline .success_info {
         width: 100%;
         height: 0px;
     }
-
     .cookie_message {
         flex-direction: column;
         margin: 10px 2vw 20px;
         width: 96vw;
     }
-
     .cookie_message .message_info {
         margin-right: 0px;
     }
-
     .cookie_message .button {
         margin-bottom: 0px;
         padding: 10px 15px;
     }
-
     .cookie_message .message_buttons {
         flex-direction: row;
         align-items: center;
@@ -1289,20 +1295,16 @@
     .modal_view_video .modal_header {
         opacity: 0.5;
     }
-
     .modal_view_video .modal_footer {
         opacity: 0.5;
     }
-
     .modal_book_offline {
         width: 80%;
     }
-
     .cookie_message {
         padding: 20px 25px;
         margin-bottom: 10px;
     }
-
     .cookie_message .title {
         font-size: 14px;
     }
@@ -1314,34 +1316,27 @@
         width: 100%;
         border-radius: 0px;
     }
-
     .modal_team .modal_header {
         width: 100%;
         display: flex;
     }
-
     .modal_team .modal_header img {
         max-width: 50%;
     }
-
     .modal_team .team_info {
         width: 50%;
         padding-left: 30px;
     }
-
     .modal_team .modal_content {
         width: 100%;
         padding-top: 0px;
     }
-
     .modal_view_video {
         height: 100%;
     }
-
     .modal_view_video video {
         max-height: 100vh;
     }
-
     .modal_book_offline {
         margin: 0px;
         width: 100%;
@@ -1349,58 +1344,55 @@
         border-radius: 0px;
         padding-top: 60px;
     }
-
     .cookie_message {
         margin: 0px;
         width: 100vw;
         border-radius: 0px;
     }
-
     .cookie_message .button {
         margin-bottom: 10px;
     }
-
     .cookie_message .message_buttons {
         flex-direction: column;
     }
-
     .modal_get_sertificate {
         max-width: 100vw;
         height: 100vh;
     }
-
     .modal_send_review {
         max-width: 100vw;
         height: 100vh;
     }
-
     .modal_send_review.step_success {
         margin-top: 0px;
     }
-
     .modal_sign_account {
         border-radius: 0px;
         max-width: 100vw;
-        margin: 10vh 0px;
-        max-height: 80vh;
+        margin: 0px 0px;
+        max-height: 100vh;
+        height: 100vh;
     }
-
     .modal_sign_account .step_block {
-        max-height: inherit;
+        height: inherit;
+        max-height: 99%;
+    }
+    .modal_sign_account.signin_step {
+        margin-top: 0px;
+    }
+    .modal_sign_account.signin_step {
+        margin-top: 0px;
     }
 }
 
 @media screen and (max-width: 479px) {
-
     .modal_team .modal_header {
         flex-wrap: wrap;
     }
-
     .modal_team .modal_header img {
         max-width: 100%;
         margin: 0px auto;
     }
-
     .modal_team .team_info {
         text-align: center;
         width: 100%;

@@ -81,7 +81,9 @@ template {
     display: none !important;
 }
 
+
 /* Header */
+
 header {
     position: fixed;
     top: 0px;
@@ -111,12 +113,13 @@ header .container {
     justify-content: space-between;
 }
 
+
 /* Header. Logo */
+
 header .logo {
     flex-grow: 1;
     font-weight: 700;
     padding: 5px 0px;
-
     transition: all .5s;
 }
 
@@ -152,7 +155,9 @@ header .logo .short_text {
     display: none;
 }
 
+
 /* Header. Account */
+
 .account {
     height: inherit;
 }
@@ -178,7 +183,9 @@ header .logo .short_text {
     text-decoration: none;
 }
 
+
 /* Header. Nav-button */
+
 .nav_button {
     display: inline-block;
     width: 50px;
@@ -244,14 +251,18 @@ header .nav_button::after {
     transform: rotate(-45deg);
 }
 
+
 /* Content */
+
 .content {
     padding-top: 50px;
     width: 100vw;
     min-height: 70vh;
 }
 
+
 /* Footer */
+
 footer {
     width: 100vw;
     font-family: 'Montserrat', sans-serif;
@@ -261,7 +272,9 @@ footer .container {
     padding: 0px 70px;
 }
 
+
 /* Footer. Contact */
+
 footer ul.contact {
     margin: 0px;
     display: flex;
@@ -294,7 +307,9 @@ footer ul.contact span {
     padding-left: 20px;
 }
 
+
 /* Footer. Info */
+
 .footer_info {
     display: flex;
     justify-content: space-between;
@@ -319,7 +334,9 @@ footer ul.contact span {
     letter-spacing: 1px;
 }
 
+
 /* Footer. Social */
+
 .footer_info ul.social {
     padding: 0px;
     margin: 0px;
@@ -341,7 +358,9 @@ footer ul.contact span {
     color: #ddd;
 }
 
+
 /* Footer. Social */
+
 .footer_info .footer_buttons {
     text-align: center;
 }
@@ -374,7 +393,9 @@ footer ul.contact span {
     cursor: pointer;
 }
 
+
 /* Button Back */
+
 .button.back {
     color: #fff;
     display: inline-block;
@@ -411,7 +432,9 @@ footer ul.contact span {
     opacity: 0.9;
 }
 
+
 /* Main navigation */
+
 .main_nav {
     background-color: #000;
     position: fixed;
@@ -422,7 +445,6 @@ footer ul.contact span {
     z-index: 2;
     font-family: 'Montserrat', sans-serif;
     padding: 120px 5px 80px;
-
     transition: all .5s;
     opacity: 0;
     margin-top: -100vh;
@@ -456,7 +478,9 @@ footer ul.contact span {
     text-decoration: none;
 }
 
+
 /* Main navigation. Menu */
+
 ul.main_nav_ul {
     width: 50%;
     padding-left: 20%;
@@ -473,7 +497,9 @@ ul.main_nav_ul {
     text-decoration: underline;
 }
 
+
 /* Main navigation. Contact, buttons */
+
 .main_nav_info {
     width: 50%;
     padding-right: 15%;
@@ -536,7 +562,9 @@ a.main_nav_button {
     cursor: pointer;
 }
 
+
 /* Main navigation. Links */
+
 .main_nav_links {
     display: flex;
     justify-content: center;
@@ -556,7 +584,9 @@ a.main_nav_button {
     opacity: 0.9;
 }
 
+
 /* Block Video-reviews */
+
 .block_video_reviews {
     background-color: #191C21;
     border-radius: 10px;
@@ -570,6 +600,7 @@ a.main_nav_button {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    min-height: 150px;
 }
 
 .block_video_reviews h3 {
@@ -660,7 +691,9 @@ a.main_nav_button {
     right: -50px;
 }
 
+
 /* FAQ */
+
 .faq {
     font-family: 'Montserrat', sans-serif;
     margin: 150px auto;
@@ -733,7 +766,9 @@ a.main_nav_button {
     padding: 0px 40px 20px;
 }
 
+
 /* Icon with info in hover-title */
+
 .icon_info {
     font-size: 1.3em;
     opacity: 0.7;
@@ -746,7 +781,9 @@ a.main_nav_button {
     opacity: 1;
 }
 
+
 /* MEDIA */
+
 @media screen and (min-width: 1919px) {
     .container {
         width: 1920px;
@@ -775,42 +812,33 @@ a.main_nav_button {
     .container {
         width: 738px;
     }
-
     footer ul.contact {
         padding: 40px 0px;
     }
-
     footer ul.contact span {
         padding-left: 10px;
     }
-
     ul.main_nav_ul {
         padding-left: 10%;
     }
-
     .main_nav_info {
         padding-right: 0px;
     }
-
     .block_video_reviews {
         padding: 35px 50px;
     }
-
     .block_video_reviews_info {
         margin-right: 50px;
     }
-
     .block_video_reviews h3 {
         color: #F84C34;
         font-size: 28px;
         line-height: 1.3em;
         width: 25%;
     }
-
     .faq {
         margin: 100px auto;
     }
-
     .faq_ul {
         width: 80%;
     }
@@ -820,56 +848,44 @@ a.main_nav_button {
     .container {
         width: 580px;
     }
-
     footer .container {
         padding: 0px 20px;
     }
-
     footer ul.contact {
         flex-direction: column;
         padding: 25px 6% 0px;
     }
-
     footer ul.contact li {
         margin-bottom: 25px;
     }
-
     .footer_info {
         flex-direction: column-reverse;
     }
-
     .footer_info ul.social {
         padding: 35px 0px 70px;
         justify-content: center;
     }
-
     ul.main_nav_ul {
         padding-left: 0px;
     }
-
     .main_nav_ul a {
         font-size: 24px;
     }
-
     .main_nav_contact a {
         font-size: 14px;
     }
-
     .main_nav_button {
         font-size: 18px;
         padding: 15px 25px;
     }
-
     .main_nav_logout {
         font-size: 18px;
         margin-top: 50px;
         margin-bottom: 20px;
     }
-
     .main_nav_links {
         flex-direction: column;
     }
-
     .main_nav_links a {
         font-size: 12px;
     }
@@ -879,23 +895,18 @@ a.main_nav_button {
     .container {
         width: 98%;
     }
-
     header {
         padding: 10px 10px;
     }
-
     header .logo .full_text {
         display: none;
     }
-
     header .logo .short_text {
         display: inline-block;
     }
-
     header .nav_button {
         width: 40px;
     }
-
     .block_video_reviews {
         padding: 35px 25px;
         flex-wrap: wrap;
@@ -903,36 +914,41 @@ a.main_nav_button {
         width: auto;
         border-radius: 0px;
     }
-
     .block_video_reviews h3 {
         width: 100%;
         margin-bottom: 50px;
         font-size: 20px;
         letter-spacing: 2px;
+        font-size: 45px;
+        text-align: center;
     }
-
+    .block_video_reviews h3 span {
+        display: none;
+    }
+    .block_video_reviews_info {
+        width: 80%;
+        min-height: 50px;
+    }
     .block_video_reviews_slider {
         width: 100%;
         height: 200px;
     }
-
     .block_video_reviews_li {
         margin: 0px;
     }
-
+    .block_team_arrow {
+        opacity: 0;
+    }
     .block_video_reviews_arrow.prev {
         left: -15px;
     }
-
     .block_video_reviews_arrow.next {
         right: -15px;
     }
-
     .faq {
         margin: 100px 0px;
         padding: 0px 25px;
     }
-
     .faq_ul {
         width: 100%;
     }
@@ -942,23 +958,27 @@ a.main_nav_button {
     header .account_logo {
         display: none;
     }
-
     .footer_button {
         width: 100%;
     }
-
     .main_nav_info,
     ul.main_nav_ul {
         width: 80%;
         margin: 0px auto;
     }
-
     .main_nav_button {
         width: 100%;
     }
-
     .main_nav_info a,
     .main_nav_ul a {
         text-align: center;
+    }
+    .subscribe_field .subscribe_email {
+        padding: 10px 10px 10px 20px;
+        width: 80%;
+    }
+    .subscribe_field .subscribe_button {
+        padding: 10px 20px 10px 10px;
+        width: 20%;
     }
 }

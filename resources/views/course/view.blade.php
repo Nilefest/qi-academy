@@ -107,8 +107,10 @@
                     @foreach ($lecture_list as $key => $lecture_one)
                         <li class="program_list_li">
                             <span class="lessons">{{ $key + 1 }} lekcja</span>
-                            <span class="title">{{ $lecture_one->name }}</span>
-                            <span class="info">{!! $lecture_one['info_short'] !!}</span>
+                            <div class="lecture_info">
+                                <span class="title">{{ $lecture_one->name }}</span>
+                                <span class="info">{!! $lecture_one['info_short'] !!}</span>
+                            </div>
                         </li>
                     @endforeach
                 </ul>

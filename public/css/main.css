@@ -1,4 +1,5 @@
 /* Banner-Main */
+
 .main_banner {
     font-family: 'Montserrat', sans-serif;
     display: flex;
@@ -75,7 +76,9 @@
     cursor: pointer;
 }
 
+
 /* Slider. Blog Youtube */
+
 .slider_blog_youtube {
     width: 100vw;
     min-height: 100px;
@@ -88,7 +91,6 @@
     overflow-x: hidden;
     white-space: nowrap;
     text-align: center;
-
     -webkit-animation: linear left-right 40s infinite;
     animation: linear left-right 40s infinite;
 }
@@ -122,7 +124,9 @@
     text-align: center;
 }
 
+
 /* Slider. Courses */
+
 .slider_courses {
     margin: 80px auto;
     font-family: 'Montserrat', sans-serif;
@@ -163,7 +167,7 @@
     padding: 5px 0px;
     height: 100%;
     width: 100%;
-	background-color: #191C21;
+    background-color: #191C21;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -251,7 +255,9 @@
     right: -25px;
 }
 
+
 /* Block Team */
+
 .block_team {
     display: flex;
     text-transform: uppercase;
@@ -381,7 +387,9 @@
     right: -10px;
 }
 
+
 /* Block Educations */
+
 .block_educations {
     font-family: 'Montserrat', sans-serif;
     margin: 150px auto 50px;
@@ -471,7 +479,9 @@
     display: block;
 }
 
+
 /* Block Events */
+
 .block_events {
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
@@ -484,6 +494,7 @@
     text-align: center;
     margin: 10px 10px 50px;
     letter-spacing: 1px;
+    color: #FFF9C6;
 }
 
 .block_events .table {
@@ -492,7 +503,7 @@
 }
 
 .block_events .row {
-    border-top: 1px solid #fff;
+    border-top: 1px solid #FFF9C6;
     display: flex;
     justify-content: space-between;
     padding: 25px 0px;
@@ -500,7 +511,7 @@
 }
 
 .block_events .table .row:last-child {
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #FFF9C6;
 }
 
 .block_events .table .row:hover,
@@ -518,6 +529,7 @@
 .block_events .row span {
     display: inline-block;
     text-align: center;
+    color: #FFF9C6;
 }
 
 .block_events .row .place {
@@ -543,8 +555,8 @@
 }
 
 
-
 /* Banner-Main */
+
 .block_register {
     font-family: 'Montserrat', sans-serif;
     display: flex;
@@ -621,7 +633,9 @@
     cursor: pointer;
 }
 
+
 /* Block Full-video */
+
 .block_full_video {
     width: 100%;
 }
@@ -682,7 +696,9 @@
     color: #fff;
 }
 
+
 /* Block Blog-info */
+
 .block_blog_info {
     margin: 100px 0px 30px;
     text-transform: uppercase;
@@ -708,7 +724,9 @@
     width: auto;
 }
 
+
 /* Block Cursers-list */
+
 .cursers_list_ul {
     display: flex;
     flex-wrap: wrap;
@@ -803,7 +821,9 @@
     background-color: #111;
 }
 
+
 /* Block Link-info */
+
 .block_link_info {
     background-color: #191C21;
     padding: 35px 10px;
@@ -851,7 +871,9 @@
     margin-top: 5px;
 }
 
+
 /* Block Shop */
+
 .block_shop {
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 2px;
@@ -909,7 +931,9 @@
     color: #000;
 }
 
+
 /* Block Facebook posts */
+
 .block_facebook_posts {
     margin: 30px auto;
     display: flex;
@@ -937,7 +961,9 @@
     background-repeat: repeat-x;
 }
 
+
 /* Block Subscribe */
+
 .block_subscribe {
     font-family: 'Montserrat', sans-serif;
 }
@@ -1006,7 +1032,6 @@
     .block_shop .block_shop_info {
         padding: 0px 100px;
     }
-
     .block_team h3 {
         font-size: 32px;
         padding: 25px 25px;
@@ -1018,71 +1043,56 @@
     .slider_blog_youtube a {
         padding: 65px 30px;
     }
-
     .slider_blog_youtube a:after {
         padding: 3px 40px 4px;
         margin-left: 60px;
     }
-
     .cursers_list_ul .cursers_item {
         min-width: 40%;
         width: 48%;
         margin-right: 1%;
     }
-
     .block_team_info {
         width: 30%;
         padding-right: 30px;
     }
-
     .block_team h3 {
         font-size: 24px;
     }
-
     .block_team_info .title {
         font-size: 18px;
     }
-
     .block_team_slider {
         width: 65%;
     }
-
     .block_team_ul {
         height: 300px;
     }
-
     .block_team_li {
         margin-right: 30px;
     }
-
     .block_educations_li {
         width: 45%;
         margin-right: 2%;
     }
-
     .block_full_video_button {
         top: 30%;
     }
-
     .block_blog_info h3 {
         font-family: 'Lato', sans-serif;
         font-size: 32px;
         margin-right: 50px;
     }
-
     .block_shop .block_shop_info {
         padding: 0px 70px;
     }
-
     .subscribe_field label {
         font-size: 20px;
         margin-right: 50px;
     }
-
     .subscribe_field .subscribe_email {
         padding: 15px 10px 20px 30px;
     }
-
     .subscribe_field .subscribe_button {
         padding: 15px 30px 20px 10px;
     }
@@ -1092,150 +1102,120 @@
     .main_banner .title {
         margin-bottom: 25px;
     }
-
     .main_banner h1 {
         font-size: 28px;
     }
-
     .block_register h3 {
         font-size: 28px;
     }
-
     .block_register .info {
         font-size: 14px;
     }
-
     .slider_blog_youtube a {
         font-size: 24px;
         padding: 50px 30px;
     }
-
     .slider_blog_youtube a:after {
         padding: 3px 30px 4px;
         margin-left: 55px;
     }
-
     .cursers_list_ul .cursers_item {
         max-width: 100%;
         width: 100%;
     }
-
     .block_full_video h3 {
         font-size: 30px;
         margin: 50px 40px;
         letter-spacing: 1px;
     }
-
     .block_full_video_button {
         width: 100px;
         height: 100px;
     }
-
     .block_team {
         flex-wrap: wrap;
     }
-
     .block_team_info {
         width: 100%;
         padding-right: 0px;
         display: flex;
     }
-
     .block_team h3 {
         font-size: 18px;
         width: auto;
     }
-
     .block_team_info .title {
         flex-grow: 1;
     }
-
     .block_team_slider {
         width: 100%;
     }
-
     .block_events .table {
         width: 95%;
         margin: 0 auto;
         padding: 0px 15px;
     }
-
     .block_events .row {
         flex-wrap: wrap;
     }
-
     .block_events .row .name {
         width: 100%;
         margin-top: 20px;
     }
-
     .block_blog_info h3 {
         font-size: 28px;
     }
-
     .block_link_info .container {
         flex-wrap: wrap;
     }
-
     .block_link_info h3 {
         width: 100%;
         padding: 0px;
         margin-bottom: 30px;
         text-align: center;
     }
-
     .block_shop {
         flex-wrap: wrap;
         letter-spacing: 1px;
     }
-
     .block_shop .block_shop_img {
         max-width: 100%;
         width: 100%;
         margin: 0px auto 25px;
         padding: 0px 30px;
     }
-
     .block_shop .block_shop_info {
         width: 100%;
         padding: 0px 30px;
     }
-
     .block_shop h3 {
         font-size: 20px;
         margin-bottom: 40px;
     }
-
     .block_shop p {
         margin-bottom: 50px;
     }
-
     .block_shop .block_shop_button {
         display: block;
         margin: 0px auto;
     }
-
     .block_facebook_posts {
         flex-wrap: wrap;
         height: auto;
         margin: 100px auto 50px;
     }
-
     .block_facebook_posts h3 {
         width: 100%;
         margin-bottom: 50px;
     }
-
     .block_facebook_posts .facebook_posts {
         margin-left: 0px;
         width: 100%;
         height: 400px;
     }
-
     .subscribe_field {
         flex-wrap: wrap;
     }
-
     .subscribe_field label {
         margin: 0px;
         display: block;
@@ -1252,7 +1232,6 @@
         height: auto;
         width: 100%;
     }
-
     .main_banner_media {
         position: relative;
         overflow: hidden;
@@ -1262,21 +1241,18 @@
         height: 320px;
         width: 100%;
     }
-
     .main_banner_info {
         width: 100%;
         padding: 0px;
         margin: 50px 10px;
         text-align: center;
     }
-
     .block_register {
         flex-wrap: wrap;
         margin: 0px 25px;
         height: auto;
         width: 100%;
     }
-
     .block_register_media {
         position: relative;
         overflow: hidden;
@@ -1286,107 +1262,85 @@
         height: 320px;
         width: 100%;
     }
-
     .block_register_info {
         width: 100%;
         padding: 0px;
         margin: 0px 10px 50px;
     }
-
     .block_register .block_register_button {
         display: block;
         width: 90%;
         margin: 0px 0px;
     }
-
     .slider_courses ul {
         width: 93%;
         margin: 0px auto;
     }
-
     .slider_courses_arrow.prev {
         left: -5px;
     }
-
     .slider_courses_arrow.next {
         right: -5px;
     }
-
     .block_team {
         width: 100%;
         margin: 50px 0px 70px;
         padding: 0px 25px;
     }
-
     .block_team h3 {
         padding: 15px 25px;
     }
-
     .block_team_info .title {
         font-size: 24px;
     }
-
     .block_team_slider {
         width: 100%;
     }
-
     .block_team_ul {
         height: 450px;
         width: 100%;
     }
-
     .block_team_li {
         margin: 0px;
         width: 100%;
     }
-
     .block_team_li a.view {
         opacity: 1;
     }
-
     .block_educations {
         width: auto;
         margin: 100px 25px 50px;
     }
-
     .block_educations h3 {
         text-align: center;
         margin-bottom: 50px;
         font-size: 24px;
     }
-
     .block_educations_li {
         width: 100%;
         margin-right: 0px;
         margin-bottom: 20px;
     }
-
     .block_educations .title,
     .block_educations .info {
         font-size: 12px;
     }
-
     .block_blog_info {
         margin: 20px 0px 0px;
     }
-
     .block_blog_info .container {
         flex-wrap: wrap;
     }
-
     .block_blog_info h3 {
         width: 100%;
     }
-
     .block_full_video h3 {
         font-size: 20px;
         margin: 30px 40px 30px 150px;
     }
-
     .block_full_video_info {
         text-align: left;
     }
-
     .block_full_video_button {
         position: absolute;
         top: auto;
@@ -1396,28 +1350,34 @@
         height: 75px;
         font-size: 18px;
     }
-
     .block_cursers_list {
         margin: 70px 0px 30px;
         padding: 5px 25px;
     }
-
     .block_link_info {
         padding: 50px 25px;
     }
-
     .block_link_info h3 {
         text-align: left;
     }
-
     .block_link_info .link_button {
         max-width: 100%;
         width: 100%;
         padding: 20px 40px 23px;
     }
-
     .subscribe_field {
         padding: 100px 10px;
+    }
+    .block_events .row {
+        flex-direction: column;
+    }
+    .block_events .row .name,
+    .block_events .row span {
+        text-align: left;
+        margin-top: 15px;
+    }
+    .block_events .row .time {
+        display: none;
     }
 }
 
@@ -1426,22 +1386,8 @@
         font-size: 18px;
         padding: 36px 22px;
     }
-
     .slider_blog_youtube a:after {
         padding: 3px 20px 4px;
         margin-left: 40px;
-    }
-
-    .block_events .row .date {
-        text-align: left;
-    }
-
-    .block_events .row .time {
-        text-align: right;
-    }
-
-    .block_events .row .place {
-        margin-bottom: 15px;
-        width: 100%;
     }
 }

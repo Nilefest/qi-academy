@@ -103,7 +103,7 @@
                 <div class="footer_info">
                     <ul class="links">
                         @foreach ($main_links as $link)
-                            <li><a target="_blank" href="{{ $link['url'] }}">{{ $link['name'] }}</a></li>
+                            <li><a target="_blank" href="{{ $link['url'] }}?v={{ env('APP_VERSION') }}">{{ $link['name'] }}</a></li>
                         @endforeach
                     </ul>
 

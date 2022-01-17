@@ -157,8 +157,8 @@
                             data-courseVideo="{{ $course_one['video'] }}">
                             <span class="place">{{ $course_one['place'] }}</span>
                             <span class="date">{{ $course_one['date_of'] }}</span>
-                            <span class="time">{{ $course_one['period'] }}</span>
-                            <span class="name">Lekcja: {{ $course_one['name'] }}</span>
+                            <span class="time">{{ $course_one['period'] }} {{ ($course_one['period'] * 1 === 1 ? 'dzen' : 'dni') }}</span>
+                            <span class="name">{{ $course_one['name'] }}</span>
                         </div>
                     @endforeach
                 </div>

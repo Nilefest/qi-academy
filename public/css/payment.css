@@ -24,7 +24,9 @@
     margin: 0px 10px;
 }
 
+
 /* Personal data */
+
 .form_pay .personal_data {
     font-size: 14px;
 }
@@ -48,7 +50,9 @@
     margin-bottom: 10px;
 }
 
+
 /* Course data */
+
 .form_pay .course_data {
     margin-top: 60px;
 }
@@ -90,13 +94,14 @@
     line-height: 1em;
 }
 
+
 /* Payment data */
+
 .form_pay .payment_data {
     margin-top: 60px;
     border-radius: 10px;
     border: 1px solid #fff;
     padding: 20px 40px;
-
     display: flex;
     flex-direction: column;
 }
@@ -139,7 +144,9 @@
     color: #F84C34;
 }
 
+
 /* Button Back */
+
 .button.back {
     color: #fff;
     display: inline-block;
@@ -152,7 +159,6 @@
     border-radius: 10px;
     margin: 5px 10px 25px 10px;
     font-family: 'Lato', sans-serif;
-
     position: absolute;
     top: 30px;
     left: 60px;
@@ -185,27 +191,22 @@
         flex-wrap: wrap;
         align-items: stretch;
     }
-
     .form_column {
         min-width: 46%;
     }
-
     .form_pay .payment_data {
         justify-content: space-around;
         flex-direction: row;
         width: 100%;
     }
-
     .form_pay .payment_data .cost_info {
         margin: 0px;
         padding-right: 20px;
     }
-
     .form_pay .payment_data .button {
         width: auto;
         margin: 0px;
     }
-
     .button.back {
         top: 40px;
         left: 20px;
@@ -213,29 +214,26 @@
 }
 
 @media screen and (max-width: 767px) {
-
     .form_pay .course_data .banner_img {
         width: 100px;
         height: 100px;
     }
-
     form.form_pay {
         flex-direction: column;
         width: 95%;
     }
-
-    .form_column {
-        min-width: 100%;
+    .form_pay .form_column {
+        min-width: 95%;
+        width: 95%;
+        margin: 0px 3% 0px 2%;
     }
-
     .form_pay .payment_data {
         flex-direction: column;
+        margin-bottom: 50px;
     }
-
     .form_pay .payment_data .cost_info {
         margin-bottom: 35px;
     }
-
     .form_pay .payment_data .button {
         width: auto;
         margin: 0px;
@@ -245,11 +243,9 @@
 @media screen and (max-width: 599px) {}
 
 @media screen and (max-width: 479px) {
-
     .form_pay .course_main_info {
         flex-direction: column;
     }
-
     .form_pay .course_data .main_info {
         margin-top: 20px;
     }

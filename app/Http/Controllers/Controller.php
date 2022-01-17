@@ -11,9 +11,9 @@ class Controller extends BaseController
 {
     protected $data = [
         'title' => 'Official site',
-        'description' => '',
-        'keywords' => '',
-        'site_name' => 'QiACADEMY.site',
+        'description' => 'Qi academy. Online szkolenia dla fryzjerów. Profesjonalna wiedza przekazywana w profesjonalny sposób.',
+        'keywords' => 'qiacademy, qi, Online szkolenia, fryzjerów',
+        'site_name' => 'Qi-ACADEMY',
     ];
     
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;

@@ -1,5 +1,11 @@
 /* PRIVATE */
 (() => {
+    // Validator random avatar
+    // #code
+    if (document.querySelector('.account_button') !== null) {
+        document.querySelector('.avatar_photo').setAttribute('style', document.querySelector('.account_button').getAttribute('style'));
+    }
+
     // Save profile data
     // #function #server
     let saveProfileData = () => {

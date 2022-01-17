@@ -8,7 +8,28 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- HTML Meta Tags -->
     <title>{{ $title }} | {{ config('app.name') }}</title>
+    <meta name="description" content="{{ $description }}" />
+
+    <!-- Facebook Meta Tags -->
+    {{-- <meta property="og:url" content="https://qilabel.com/course/16/"> --}}
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ $title }} | {{ config('app.name') }}">
+    <meta property="og:description" content="{{ $description }}">
+    {{-- <meta property="og:image" content="{{ asset('img/logo.png') }}"> --}}
+
+    <!-- Twitter Meta Tags -->
+    {{-- <meta name="twitter:card" content="summary_large_image"> --}}
+    <meta property="twitter:domain" content="qilabel.com">
+    {{-- <meta property="twitter:url" content="https://qilabel.com/course/16/"> --}}
+    <meta name="twitter:title" content="{{ $title }} | {{ config('app.name') }}">
+    <meta name="twitter:description" content="{{ $description }}">
+    {{-- <meta name="twitter:image" content="{{ asset('img/logo.png') }}"> --}}
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="{{ asset('img/logo-short.ico') }}" />
+    <link rel="icon" type="image/png" href="{{ asset('img/logo-short.png') }}" />
 
     <!-- Fonts. Google: Montserrat, Lato -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,7 +84,7 @@
                     <li><a href="{{ route('about') }}">O Nas</a></li>
                     <li><a href="{{ route('team') }}">Team</a></li>
                     @auth
-                    <li><a href="{{ route('account.courses') }}">Kursy</a></li>
+                        <li><a href="{{ route('account.courses') }}">Kursy</a></li>
                     @endauth
                 </ul>
                 <div class="main_nav_info">
@@ -82,7 +103,7 @@
                 </div>
                 <ul class="main_nav_links">
                     @foreach ($main_links as $link)
-                        <li><a target="_blank" href="{{ $link['url'] }}">{{ $link['name'] }}</a></li>
+                        <li><a target="_blank" href="{{ $link['url'] }}?v={{ env('APP_VERSION') }}">{{ $link['name'] }}</a></li>
                     @endforeach
                 </ul>
             </nav>
@@ -90,10 +111,12 @@
 
         <header>
             <div class="container">
-                <a href="{{ url('/') }}" class="logo" title="To main page">
-                    <span class="full_text"><img src="{{ asset('img/logo-short.png') }}" alt=""></span>
-                    <span class="short_text"><img src="{{ asset('img/logo-short.png') }}"></span>
-                </a>
+                <span class="logo">
+                    <a href="{{ url('/') }}">
+                        <span class="full_text"><img src="{{ asset('img/logo-short.png') }}" alt=""></span>
+                        <span class="short_text"><img src="{{ asset('img/logo-short.png') }}"></span>
+                    </a>
+                </span>
 
                 @auth
                     <div class="account"><a href="{{ route('home') }}" class="account_button"
@@ -135,18 +158,18 @@
                 <div class="footer_info">
                     <ul class="links">
                         @foreach ($main_links as $link)
-                            <li><a target="_blank" href="{{ $link['url'] }}">{{ $link['name'] }}</a></li>
+                            <li><a target="_blank" href="{{ $link['url'] }}?v={{ env('APP_VERSION') }}">{{ $link['name'] }}</a></li>
                         @endforeach
                     </ul>
 
                     <ul class="social">
                         <li><a target="_blank" href="{{ $social['facebook']['link'] }}"><i
                                     class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                        <li><a target="_blank" href="{{ $social['instagram']['link'] }}"><i
-                                    class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <li><a target="_blank" href="{{ $social['instagram']['link'] }}"><i class="fa fa-instagram"
+                                    aria-hidden="true"></i></a>
                         </li>
-                        <li><a target="_blank" href="{{ $social['youtube']['link'] }}"><i
-                                    class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                        <li><a target="_blank" href="{{ $social['youtube']['link'] }}"><i class="fa fa-youtube-play"
+                                    aria-hidden="true"></i></a>
                         </li>
                     </ul>
 
