@@ -30,7 +30,8 @@
                     <span class="cost">{{ $course->cost }} Zł</span>
                     <div class="head_buttons">
                         @guest
-                            <button class="head_button curs_register open_sign_modal redirect_auth" data-href="{{ route('courses.lecture', $course->id) }}">Zapisać się na kurs</button>
+                            <button class="head_button curs_register open_sign_modal redirect_auth"
+                                data-href="{{ route('courses.lecture', $course->id) }}">Zapisać się na kurs</button>
                         @endguest
                         @auth
                             <a href="{{ route('courses.lecture', $course->id) }}" class="head_button curs_register">Zapisać
@@ -90,8 +91,14 @@
                 <div class="instructor_info">
                     <h3>Instruktor</h3>
                     <ul class="social_ul">
-                        @if ($team_one->facebook) <li><a href="{{ $team_one->facebook }}">facebook</a></li> @endif
-                        @if ($team_one->instagram) <li><a href="{{ $team_one->instagram }}">instagram</a></li> @endif
+                        @if ($team_one->facebook)
+                            <li><a class="icon_link facebook_link" href="{{ $team_one->facebook }}"><i
+                                        class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                        @endif
+                        @if ($team_one->instagram)
+                            <li><a class="icon_link instagram_link" href="{{ $team_one->instagram }}"><i
+                                        class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        @endif
                     </ul>
                     <div class="instructor_text">
                         <p>{!! $team_one->info !!}</p>

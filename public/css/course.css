@@ -15,7 +15,7 @@
     font-style: normal;
 }
 
-#app{
+#app {
     overflow-x: hidden;
 }
 
@@ -364,6 +364,10 @@
     letter-spacing: 1px;
 }
 
+.instructor_info .social_ul a.icon_link {
+    font-size: 35px;
+}
+
 .instructor_text {
     font-family: 'Lato', sans-serif;
 }
@@ -449,7 +453,7 @@
     width: 25%;
 }
 
-.program_list .lecture_info{
+.program_list .lecture_info {
     width: 70%;
 }
 
@@ -492,6 +496,7 @@
     display: flex;
     width: 45%;
     min-height: 500px;
+    max-height: 500px;
 }
 
 .program_images .colums {
