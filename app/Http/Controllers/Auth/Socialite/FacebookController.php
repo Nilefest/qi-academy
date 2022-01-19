@@ -20,7 +20,12 @@ class FacebookController extends Controller
     public function redirectToFacebook(\Illuminate\Http\Request $request)
     {
         if($request->input('target_url') !== null) session()->flash('url.intended.custom', $request->input('target_url'));
-        else session()->flash('url.intended.custom', redirect()->intended('/home')->getTargetUrl());
+        else {
+            try{ 
+                session()->flash('url.intended.custom', redirect()->intended('/home')->getTargetUrl());
+            }
+            catch(Exception $e){}
+        }
         
         return Socialite::driver('facebook')->redirect();
     }
