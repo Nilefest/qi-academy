@@ -12,7 +12,8 @@
 
 @section('modals')
     <div class="modal_win modal_get_sertificate">
-        <p class="message">Gratulujemy ukończenia kursu! Elektroniczną kopię certyfikatu możesz pobrać dowolną ilość razy.</p>
+        <p class="message">Gratulujemy ukończenia kursu! Elektroniczną kopię certyfikatu możesz pobrać dowolną ilość
+            razy.</p>
         <button class="button close">Ok</button>
     </div>
 
@@ -93,13 +94,12 @@
                                 class="current">{{ $lectures_completed->count() }}</span> /
                             {{ count($lectures) }}</span></h3>
                     <p class="nofinished_info">Ukończ wszystkie wykłady i otrzymaj certyfikat</p>
-                    @if ($course_user['date_of_completed'])
-                        <button class="button finish_lesson"><span>Oglądane</span> <i
-                                class="far fa-check-circle icon"></i></button>
-                        <a download href="{{ route('courses.sertificate', [$course_id, $user_id]) }}" class="button get_sertificate">Uzyskać certyfikat</a>
-                        <button class="send_review"><span>Wystawić opinię</span> <i
-                                class="fas fa-hand-point-up icon"></i></button>
-                    @endif
+                    <button class="button finish_lesson"><span>Oglądane</span> <i
+                            class="far fa-check-circle icon"></i></button>
+                    <a download href="{{ route('courses.sertificate', [$course_id, $user_id]) }}"
+                        class="button get_sertificate">Uzyskać certyfikat</a>
+                    <button class="open_send_review"><span>Wystawić opinię</span> <i
+                            class="fas fa-hand-point-up icon"></i></button>
                 </div>
             </div>
             <div class="lesson_block">
@@ -148,8 +148,9 @@
                 @if ($course_user['date_of_completed'])
                     <button class="button finish_lesson"><span>Oglądane</span> <i
                             class="far fa-check-circle icon"></i></button>
-                    <a download href="{{ route('courses.sertificate', [$course_id, $user_id]) }}" class="button get_sertificate">Uzyskać certyfikat</a>
-                    <button class="send_review"><span>Wystawić opinię</span> <i
+                    <a download href="{{ route('courses.sertificate', [$course_id, $user_id]) }}"
+                        class="button get_sertificate">Uzyskać certyfikat</a>
+                    <button class="open_send_review"><span>Wystawić opinię</span> <i
                             class="fas fa-hand-point-up icon"></i></button>
                 @endif
             </div>

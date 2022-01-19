@@ -15,26 +15,30 @@ class SendReviewMail extends Mailable
 
     public $subject;
     private $message;
-    private $user;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user, $filepath)
+    public function __construct($user, $course, $text_review = "", $file = false)
     {
-        $this->user = $user;
         $this->subject = 'Video review by student';
         $this->message = (new MailMessage)->subject($this->subject);
-
-        $this->message->line('Student last finish course and last review');
         
-        $this->attach(public_path('files/Polityka prywatności serwisu internetowego.pdf'), [
-            'as' => 'sample.pdf',
-            'mime' => 'application/pdf',
-        ]);
-
+        $this->message->line('Student ' . $user['name'] . ' ' . $user['lastname'] . '(' . $user['email'] . ')' . ' finish course:');
+        $this->message->action($course['name'], route('course.view', $course['id']));
+        
+        $this->message->line('And last review:');
+        $this->message->line('' . $text_review);
+        $this->message->line('[' . date('Y-m-d H:i:s') . ']');
+        
+        if($file) {
+            $this->attach($file['tmp_name'], [
+                'as' => $file['name'],
+                'mime' => $file['type'],
+            ]);
+        }
     }
 
     /**

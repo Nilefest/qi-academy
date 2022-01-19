@@ -1,6 +1,6 @@
 <div class="modal_win modal_send_review">
     <i class="fal fa-times icon_close close"></i>
-    <div class="form">
+    <div class="form" data-formAction="{{ route('courses.video_review', [$course_id, $user_id]) }}">
         <p class="message">Prześlij swoją recenzję w formacie wideo lub tekstowym.</p>
         <label class="video_field">
             <span class="field_text"><i class="fal fa-upload icon"></i> <span>Prześlij wideo</span></span>

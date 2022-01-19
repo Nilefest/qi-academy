@@ -51,6 +51,7 @@ Route::group(['middleware' => 'auth.basic'], function () {
     Route::get('/account/profile/{user_id?}', 'AccountController@profile')->name('account.profile');
     Route::post('/account/profile/{user_id?}', 'AccountController@profile')->name('account.profile.post');
     
+    Route::post('/account/course/{course_id}/video_review/{user_id?}/', 'CourseController@send_video_review')->middleware('verified')->name('courses.video_review');
     Route::get('/account/course/{course_id}/sertificate/{user_id?}/', 'CourseController@get_sertificate')->middleware('verified')->name('courses.sertificate');
 });
 

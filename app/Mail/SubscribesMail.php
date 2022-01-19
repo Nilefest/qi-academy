@@ -31,7 +31,7 @@ class SubscribesMail extends Mailable
         foreach($articles as $row){
             if($row['type'] === 'subject') $this->message->subject($row['value']);
             elseif($row['type'] === 'line') $this->message->line($row['value']);
-            elseif($row['type'] === 'action') $this->message->subject($row['value']);
+            elseif($row['type'] === 'action') $this->message->action($row['value'], $row['url']);
         }
     }
 

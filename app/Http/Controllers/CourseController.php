@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Library\Services\CommonService;
+use App\Library\Services\MailService;
 use App\User;
 use App\Team;
 use App\Course;
@@ -141,7 +142,7 @@ class CourseController extends Controller
         $this->data['team_one'] = Team::find($course->team_id);
         
         $this->data['lectures_completed'] = $user->lectures()->where('course_id', $course->id)->get()->keyBy('id');
-
+        
         $this->data['user'] = $user;
         $this->data['course_user'] = $course_user;
         $this->data['course_id'] = $course_id;
@@ -232,5 +233,38 @@ class CourseController extends Controller
         $course = Course::findOrFail($course_id);
         
         CommonService::generateSertificate($user);
+    }
+
+    /**
+     * Send video review
+     * 
+     * @param int
+     * @param int|False
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function send_video_review($course_id, $user_id = false, Request $request)
+    {
+        if(!$user_id) $user = Auth::user();
+        else $user = User::findOrFail($user_id);
+
+        $course = Course::findOrFail($course_id);
+
+        // print_r($course);
+        // exit('******ssss*');        
+        // $message = 'Student ' . $user['name'] . ' ' . $user['lastname'] . '(' . $user['email'] . ')' . ' finish course and last review "' . $course['name'] . '" ' . date('Y-m-d H:i:s');
+        // return ['user' => $user, 'course' => $course, 'files' => $_FILES, 'mess' => $message];
+        
+        if($request->input('send_review') !== null) {
+            
+            $file = false;
+            if(isset($_FILES['video_review'])){
+                $file = $_FILES['video_review'];
+            }
+            
+            MailService::sendVideoReview($user, $course, $request->input('review_text'), $file);
+
+            return ['data' => $_FILES, 'mess' => '***'];
+        }
+        exit('-no-');
     }
 }
