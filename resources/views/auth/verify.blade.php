@@ -6,6 +6,7 @@
 
 @section('content')
     <div class="content container">
+        <p><a href="{{ url('/home') }}"><i class="fas fa-arrow-left icon_back"></i> Back</a></p>
         <h1>Qi <i class="fal fa-lock-alt icon"></i></h1>
         <div class="form">
             <div class="empty"></div>
