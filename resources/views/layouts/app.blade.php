@@ -84,7 +84,9 @@
                     <li><a href="{{ route('about') }}">O Nas</a></li>
                     <li><a href="{{ route('team') }}">Team</a></li>
                     @auth
-                        <li><a href="{{ route('account.courses') }}">Kursy</a></li>
+                        @if (Auth::user()->hasVerifiedEmail())
+                            <li><a href="{{ route('account.courses') }}">Kursy</a></li>
+                        @endif
                     @endauth
                 </ul>
                 <div class="main_nav_info">
@@ -103,7 +105,9 @@
                 </div>
                 <ul class="main_nav_links">
                     @foreach ($main_links as $link)
-                        <li><a target="_blank" href="{{ $link['url'] }}?v={{ env('APP_VERSION') }}">{{ $link['name'] }}</a></li>
+                        <li><a target="_blank"
+                                href="{{ $link['url'] }}?v={{ env('APP_VERSION') }}">{{ $link['name'] }}</a>
+                        </li>
                     @endforeach
                 </ul>
             </nav>
@@ -158,7 +162,9 @@
                 <div class="footer_info">
                     <ul class="links">
                         @foreach ($main_links as $link)
-                            <li><a target="_blank" href="{{ $link['url'] }}?v={{ env('APP_VERSION') }}">{{ $link['name'] }}</a></li>
+                            <li><a target="_blank"
+                                    href="{{ $link['url'] }}?v={{ env('APP_VERSION') }}">{{ $link['name'] }}</a>
+                            </li>
                         @endforeach
                     </ul>
 

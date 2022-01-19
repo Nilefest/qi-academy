@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="content container">
-        <h1>Qi ADMIN <i class="fal fa-lock-alt icon"></i></h1>
+        <h1>Qi <i class="fal fa-lock-alt icon"></i></h1>
         <div class="form">
             <div class="empty"></div>
             <form method="POST" action="{{ route('password.email') }}">
