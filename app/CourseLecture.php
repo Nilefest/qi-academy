@@ -57,7 +57,7 @@ class CourseLecture extends Model
             $new_item->info_full = $lecture_item['info_full'] . '';
             $new_item->video = $lecture_item['video'] . '';
             $new_item->homework = $lecture_item['homework'] . '';
-            if(isset($_FILES['course_lecture']['name'][0]['file'])){
+            if(isset($_FILES['course_lecture']['name'][$key]['file'])){
                 $new_item->file = CommonService::uploadFile('lectures', $_FILES['course_lecture'], $new_item->file, $key, 'file');
             }
             $new_item->save();

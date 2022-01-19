@@ -193,6 +193,7 @@ class CourseController extends Controller
         if($request->isMethod('post')){
             // Save new data about team
             if($request->input('type') === 'save_course'){
+                // return ['all' => $request->all(), 'files' => $_FILES, 'data' => [], 'mess' => ''];
                 $course = Course::saveOrCreateCourse($course, $request);
                 if($request->input('course_faq') !== null) $course_faq = Faq::refreshForCourse($course->id, $request->input('course_faq'));
                 if($request->input('course_exp') !== null) $course_exp = CourseExp::refreshForCourse($course->id, $request->input('course_exp'));
