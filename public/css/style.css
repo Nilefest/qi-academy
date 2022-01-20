@@ -623,6 +623,8 @@ a.main_nav_button {
     padding: 0px;
     margin: 0px;
     height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .block_video_reviews_ul .slick-list,
@@ -916,7 +918,7 @@ a.main_nav_button {
     }
     .block_video_reviews h3 {
         width: 100%;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
         font-size: 20px;
         letter-spacing: 2px;
         font-size: 45px;
@@ -926,15 +928,16 @@ a.main_nav_button {
         display: none;
     }
     .block_video_reviews_info {
-        width: 80%;
+        width: 100%;
         min-height: 50px;
+        margin-right: 0px;
     }
     .block_video_reviews_slider {
         width: 100%;
         height: 200px;
     }
     .block_video_reviews_li {
-        margin: 0px;
+        margin: 0px 2vw;
     }
     .block_team_arrow {
         opacity: 0;

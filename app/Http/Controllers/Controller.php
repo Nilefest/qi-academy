@@ -10,7 +10,7 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     protected $data = [
-        'title' => 'Official site',
+        'title' => 'Qi academy',
         'description' => 'Qi academy. Online szkolenia dla fryzjerów. Profesjonalna wiedza przekazywana w profesjonalny sposób.',
         'keywords' => 'qiacademy, qi, Online szkolenia, fryzjerów',
         'site_name' => 'Qi-ACADEMY',
