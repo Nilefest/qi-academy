@@ -24,7 +24,9 @@ class GoogleController extends Controller
             try{
                 session()->flash('url.intended.custom', redirect()->intended('/home')->getTargetUrl());
             }
-            catch(Exception $e){}
+            catch(Exception $e){
+                return redirect()->refresh();
+            }
         }
         
         return Socialite::driver('google')->redirect();
@@ -46,6 +48,10 @@ class GoogleController extends Controller
                     $user->google_id = $google_user->id;
                     $user->save();
                 }
+                if(!$user->email_verified_at){
+                    $user->email_verified_at =  date('Y-m-d H:i:s');
+                    $user->save();
+                }
      
             }else{
                 $user = User::create([
@@ -54,8 +60,9 @@ class GoogleController extends Controller
                     'email' => $google_user->email,
                     'google_id'=> $google_user->id,
                     'avatar'=> $google_user->avatar,
-                    'email_verified_at'=> ($google_user->user['email_verified'] ? date('Y-m-d H:i:s') : null),
-                    'password' => time() . rand(100, 999)
+                    // 'email_verified_at'=> ($google_user->user['email_verified'] ? date('Y-m-d H:i:s') : null),
+                    'password' => time() . rand(100, 999),
+                    'email_verified_at' => date('Y-m-d H:i:s')
                 ]);
             }
 
@@ -63,7 +70,8 @@ class GoogleController extends Controller
             return redirect(session('url.intended.custom'));
 
         } catch (Exception $e) {
-            dd($e->getMessage());
+            // dd($e->getMessage());
+            return redirect('/');
         }
     }
 }
