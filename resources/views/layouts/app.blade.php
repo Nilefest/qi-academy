@@ -9,13 +9,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- HTML Meta Tags -->
-    <title>{{ $title }} | {{ config('app.name') }}</title>
+    <title>{{ ($title ? $title . ' | ' : '') . config('app.name') }}</title>
     <meta name="description" content="{{ $description }}" />
 
     <!-- Facebook Meta Tags -->
     {{-- <meta property="og:url" content="https://qilabel.com/course/16/"> --}}
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ $title }} | {{ config('app.name') }}">
+    <meta property="og:title" content="{{ ($title ? $title . ' | ' : '') . config('app.name') }}">
     <meta property="og:description" content="{{ $description }}">
     {{-- <meta property="og:image" content="{{ asset('img/logo.png') }}"> --}}
 
@@ -23,7 +23,7 @@
     {{-- <meta name="twitter:card" content="summary_large_image"> --}}
     <meta property="twitter:domain" content="qilabel.com">
     {{-- <meta property="twitter:url" content="https://qilabel.com/course/16/"> --}}
-    <meta name="twitter:title" content="{{ $title }} | {{ config('app.name') }}">
+    <meta name="twitter:title" content="{{ ($title ? $title . ' | ' : '') . config('app.name') }}">
     <meta name="twitter:description" content="{{ $description }}">
     {{-- <meta name="twitter:image" content="{{ asset('img/logo.png') }}"> --}}
 
