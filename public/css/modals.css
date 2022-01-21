@@ -1188,6 +1188,10 @@
     background-color: #3C5A9A;
 }
 
+.modal_sign_account .login_button.with_mail {
+    background-color: #000;
+}
+
 .modal_sign_account .login_button.submit {
     width: auto;
 }

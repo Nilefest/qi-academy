@@ -32,7 +32,7 @@
             {{-- <video controls><source src="/temp/video/video_background_1.mp4" type="video/mp4"></video> --}}
         </div>
         <div class="personal_data">
-            <p class="text_info">Wypełnij formularz, aby zarezerwować udział w kursie mistrzowskim</p>
+            <p class="text_info">Wypełnij formularz dla <br> rezerwacji miejsca</p>
             <p class="text_info course_info">WARSZAWA 22/06</p>
             <div class="form">
                 <input type="text" class="text name" placeholder="Nazwa">
