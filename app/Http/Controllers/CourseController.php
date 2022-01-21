@@ -73,7 +73,7 @@ class CourseController extends Controller
         else $user = User::findOrFail($user_id);
 
         $this->data['courses_all'] = Course::getList();
-        $this->data['courses_bonuse'] = Course::getBonuseCourses();
+        $this->data['courses_bonuse'] = Course::getBonuseCourses()->toArray();
         $this->data['courses_free'] = Course::getFreeCourses();
         $this->data['courses_paid'] = Course::getPaidCourse();
         $this->data['courses_account'] = Course::getListByAccount($user, true);
