@@ -23,20 +23,26 @@
             <div class="head_info">
                 <h1>{{ $course->name }}</h1>
                 <ul class="curs_info">
-                    <li>{{ count($lecture_list) }} Lekcje</li>
+                    <li>{{ $lecture_total }} {{ $course->LectureTitle($lecture_total) }}</li>
                     <li>{{ $course->total_hours }} godziny</li>
                 </ul>
                 <div class="head_register">
                     <span class="cost">{{ $course->cost }} Zł</span>
                     <div class="head_buttons">
-                        @guest
-                            <button class="head_button curs_register open_sign_modal redirect_auth"
-                                data-href="{{ route('courses.lecture', $course->id) }}">Zapisać się na kurs</button>
-                        @endguest
-                        @auth
-                            <a href="{{ route('courses.lecture', $course->id) }}" class="head_button curs_register">Zapisać
-                                się na kurs</a>
-                        @endauth
+                        @if ($course->isBy())
+                            <a href="{{ route('courses.lecture', $course->id) }}"
+                                class="head_button curs_register">Przejdź do kursu</a>
+                        @else
+                            @guest
+                                <button class="head_button curs_register open_sign_modal redirect_auth"
+                                    data-href="{{ route('courses.lecture', $course->id) }}">Zapisać się na kurs</button>
+                            @endguest
+                            @auth
+                                <a href="{{ route('courses.lecture', $course->id) }}"
+                                    class="head_button curs_register">Zapisać
+                                    się na kurs</a>
+                            @endauth
+                        @endif
                     </div>
                 </div>
             </div>

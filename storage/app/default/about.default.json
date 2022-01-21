@@ -11,8 +11,29 @@
         "Przygotowując się do każdego szkolenia stawiamy sobie najważniejszy cel – udoskonalenie każdej poszczególnej osoby, zarówno jak i nas samych. Od samego początku zrozumieliśmy, że fryzjerstwo – to jest praca, w której nigdy nie możesz powiedzieć sobie - teraz to wiem wszystko. Zauważyliśmy jedną formule jak w biznesie tak i w życiu – kiedy robisz dobro dla innych – robisz dobro dla siebie – tak żyjemy, pracujemy i propagujemy daną teorie. "
     ],
     "block_3": "Na ten moment regularnie prowadzimy nasze szkolenia po całej Polsce i Europie. Przeprowadziliśmy setki szkoleń, z czego jesteśmy dumni, że to doświadczenie, które przekazujemy, jest aktualne i użyteczne w codziennej pracy fryzjera.<br><br>Szkolenia są logicznym skutkiem naszej codziennej pracy behind-the-chair i ciągłym profesjonalnym i osobistym rozwojem.",
-    "certificates" : [
+    "certificates": [
         "/uploads/certificates/cert_1.png",
         "/uploads/certificates/cert_2.png"
+    ],
+    "partners": [{
+            "link": "",
+            "title": "Qi Shop"
+        },
+        {
+            "link": "",
+            "title": "Qi Academy"
+        },
+        {
+            "link": "",
+            "title": "Qi Salon"
+        },
+        {
+            "link": "",
+            "title": "Qi Cosmetics"
+        },
+        {
+            "link": "",
+            "title": "Qi Team"
+        }
     ]
 }

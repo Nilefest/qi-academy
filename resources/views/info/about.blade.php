@@ -32,26 +32,22 @@
             <div class="logo">Qi</div>
             <p>{!! $about_data['block_3'] !!}</p>
             @foreach ($about_data['certificates'] as $cert)
-                <img class="cert_img view_full_img" src="{{ $cert }}" data-fullImg="{{ $cert }}" alt="Our certificate">
+                <img class="cert_img view_full_img" src="{{ $cert }}" data-fullImg="{{ $cert }}"
+                    alt="Our certificate">
             @endforeach
         </div>
 
         <div class="slider_partners_line">
             <ul>
-                <li>Nasi partnerzy</li>
-                <li>Nasi partnerzy</li>
-                <li>Nasi partnerzy</li>
-                <li>Nasi partnerzy</li>
-                <li>Nasi partnerzy</li>
-                <li>Nasi partnerzy</li>
-                <li>Nasi partnerzy</li>
-                <li>Nasi partnerzy</li>
-                <li>Nasi partnerzy</li>
-                <li>Nasi partnerzy</li>
-                <li>Nasi partnerzy</li>
-                <li>Nasi partnerzy</li>
-                <li>Nasi partnerzy</li>
-                <li>Nasi partnerzy</li>
+                @for ($i = 0; $i < 2; $i++)
+                    @foreach ($about_data['partners'] as $partner)
+                        @if ($partner['link'])
+                            <li><a href="{{ $partner['link'] }}">{{ $partner['title'] }}</a></li>
+                        @else
+                            <li>{{ $partner['title'] }}</li>
+                        @endif
+                    @endforeach
+                @endfor
                 <div class="clear"></div>
             </ul>
         </div>

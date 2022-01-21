@@ -120,4 +120,25 @@ class Course extends Model
         
         return $courses;
     }
+
+    public function LectureTitle($total = 1) {
+        if($total === 1) return 'lekcja';
+        if($total < 5) return 'lekcje';
+        return 'lekcji';
+    }
+
+    public function isBy($user_id = false) {
+        
+        if($user_id) $user = User::findOrFail($user_id)->id;
+        elseif(Auth::check())$user_id = Auth::user()->id;
+        else return false;
+
+        $course_id = $this->id;
+
+        $course_user = UserCourse::where('user_id', $user_id)->where('course_id', $course_id)->first();
+        $days_data = self::getLastDays($this, $course_user);
+
+        if($course_user && $days_data['days_last'] > 0) return true;
+        return false;
+    }
 }

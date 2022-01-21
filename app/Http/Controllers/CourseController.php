@@ -36,8 +36,8 @@ class CourseController extends Controller
      * @param int
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function view($course_id)
-    {
+    public function view($course_id) {
+        
         $course = Course::findOrFail($course_id);
         $this->data['description'] = $course['description'];
 
@@ -56,6 +56,7 @@ class CourseController extends Controller
 
         $this->data['course'] = $course;
         $this->data['lecture_list'] = $lecture_list;
+        $this->data['lecture_total'] = count($lecture_list);
         
         $this->data['title'] = $course['name'];
         return view('course.view', $this->data);
@@ -67,8 +68,7 @@ class CourseController extends Controller
      * @param int
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function list_account($user_id = false)
-    {
+    public function list_account($user_id = false) {
         if(!$user_id) $user = Auth::user();
         else $user = User::findOrFail($user_id);
 
@@ -91,8 +91,7 @@ class CourseController extends Controller
      * @param int
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function lecture($course_id, $lecure_id = false, $user_id = false, Request $request)
-    {
+    public function lecture($course_id, $lecure_id = false, $user_id = false, Request $request) {
         if(!$user_id) $user = Auth::user();
         else $user = User::findOrFail($user_id);
 
