@@ -44,6 +44,15 @@ class Course extends Model
     }
 
     public static function getLastDays($course, $user_course, $add_days = false){
+        $days_data = [
+            'date_of_begin' => '--',
+            'date_of_start' => '--',
+            'date_of_end' => '--',
+            'days_last' => 0
+        ];
+
+        if(!$user_course) return $days_data;
+        
         $date_of_start = $user_course['date_of_begin'];
         $date_of_end = $user_course['date_of_end'];
         if($add_days){
