@@ -136,8 +136,8 @@
                                 <span class="title">{{ $course['name'] }}</span>
                                 <span class="price">{{ $course['cost'] }} Zł</span>
                                 <ul class="curs_info">
-                                    <li>{{ $course['total_lectures'] }} lekcji</li>
-                                    <li>{{ $course['total_hours'] }} godzin</li>
+                                    <li>{{ $course['total_lectures'] }}  {{ $course['lecture_title'] }}</li>
+                                    <li>{{ $course['total_hours'] }} godziny</li>
                                 </ul>
                             </a>
                         </li>
