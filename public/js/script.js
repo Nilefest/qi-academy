@@ -17,7 +17,7 @@ let modalClose = () => {
     document.body.classList.remove('stop_scrolling');
 
     // Stop all videos
-    document.querySelectorAll('video').forEach(element => element.pause());
+    document.querySelectorAll('.modal_win video').forEach(element => element.pause());
     document.querySelectorAll('iframe.youtube_video').forEach(element => {
         element.setAttribute('src', '#youtube');
     });
@@ -174,8 +174,10 @@ let view_modal_simple_info = (message) => {
 
 // Default function for ansver after AJAX for Success, Fail
 // #function
-let func_default_success = (data) => { view_modal_simple_info('Success!');
-    console.log(data); };
+let func_default_success = (data) => {
+    view_modal_simple_info('Success!');
+    console.log(data);
+};
 let func_default_fail = () => view_modal_simple_info('Something went wrong...<br>Try again later or contact your administrator ');
 
 /* PRIVATE */
