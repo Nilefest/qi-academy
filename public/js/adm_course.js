@@ -67,13 +67,24 @@
 
         if (event.target.files[0] !== null) {
             console.log(event.target.files[0]);
-            modal.querySelector('.lecture_file_block a').setAttribute('href', '#uploaded_file');
+            modal.querySelector('.lecture_file_block a').setAttribute('href', URL.createObjectURL(event.target.files[0]));
             modal.querySelector('.lecture_file_block a span').innerHTML = event.target.files[0].name;
             modal.querySelector('.lecture_file_block a').classList.remove('d-none');
+            modal.querySelector('.lecture_file_block .icon_delete').classList.remove('d-none');
         } else {
             modal.querySelector('.lecture_file_block a').setAttribute('href', '#');
             modal.querySelector('.lecture_file_block a').classList.add('d-none');
+            modal.querySelector('.lecture_file_block .icon_delete').classList.add('d-none');
         }
+    });
+
+    // Delete file for leture
+    // #event #function
+    document.querySelector('.modal_lecture .lecture_file_block .icon_delete').addEventListener('click', () => {
+        let modal = document.querySelector('.modal_lecture');
+        modal.querySelector('.lecture_file_block a').setAttribute('href', '#deleted');
+        modal.querySelector('.lecture_file_block a').classList.add('d-none');
+        modal.querySelector('.lecture_file_block .icon_delete').classList.add('d-none');
     });
 
     // Open modal for edit Lecture
@@ -89,12 +100,14 @@
         modal.querySelector('.info_full').value = lecture_item.getAttribute('data-lectureInfoFull');
         modal.querySelector('.homework').value = lecture_item.getAttribute('data-lectureHomework');
         let file = lecture_item.getAttribute('data-lectureFile');
-        if (file) {
+        if (file && file !== '#deleted') {
             modal.querySelector('.lecture_file_block a').setAttribute('href', file);
             modal.querySelector('.lecture_file_block a span').innerHTML = 'Download';
             modal.querySelector('.lecture_file_block a').classList.remove('d-none');
+            modal.querySelector('.lecture_file_block .icon_delete').classList.remove('d-none');
         } else {
             modal.querySelector('.lecture_file_block a').classList.add('d-none');
+            modal.querySelector('.lecture_file_block .icon_delete').classList.add('d-none');
         }
 
         modalOpen('.modal_lecture');
@@ -110,15 +123,19 @@
         let modal = document.querySelector('.modal_lecture');
         let lecture_item = document.querySelectorAll('.lecture_item')[modal.getAttribute('data-lectureIndexNodes')];
 
+        if (modal.querySelector('.lecture_file_block a').getAttribute('href') === '#deleted') {
+            lecture_item.setAttribute('data-lectureFile', '#deleted');
+            lecture_item.querySelector('.lecture_file').value = '';
+        }
+
         let lecture_file = modal.querySelector('.file').cloneNode(true);
-        if (lecture_file.files[0] !== null) {
+        if (lecture_file.files[0] !== null && lecture_file.files.length) {
             lecture_file.setAttribute('id', '');
             lecture_file.setAttribute('class', 'd-none lecture_file');
 
-            lecture_item.setAttribute('data-lectureFile', '');
+            lecture_item.setAttribute('data-lectureFile', URL.createObjectURL(lecture_file.files[0]));
             lecture_item.querySelector('.lecture_file').parentNode.replaceChild(lecture_file, lecture_item.querySelector('.lecture_file'));
         }
-
 
         lecture_item.setAttribute('data-lectureInfoFull', modal.querySelector('.info_full').value);
         lecture_item.setAttribute('data-lectureHomework', modal.querySelector('.homework').value);
@@ -162,6 +179,7 @@
             course_data['course_lecture[' + index + '][video]'] = element.getAttribute('data-lectureVideo');
             course_data['course_lecture[' + index + '][file]'] = '';
             course_data['course_lecture[' + index + '][homework]'] = element.getAttribute('data-lectureHomework');
+            course_data['course_lecture[' + index + '][file_status]'] = element.getAttribute('data-lectureFile');
             if (element.querySelector('.lecture_file').files[0] !== null) {
                 course_data['course_lecture[' + index + '][file]'] = element.querySelector('.lecture_file').files[0];
             }

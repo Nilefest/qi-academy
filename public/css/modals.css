@@ -748,10 +748,10 @@
     opacity: 0.8;
     vertical-align: text-bottom;
     align-self: flex-start;
+    margin-top: 5px;
 }
 
 .modal_lecture .lecture_data a.icon_file {
-    margin-top: 5px;
     padding: 8px 13px;
     max-width: 300px;
     overflow: hidden;
@@ -1111,7 +1111,7 @@
     align-items: center;
     flex-direction: column;
     opacity: 1;
-    max-height: 500px;
+    max-height: 520px;
 }
 
 .modal_sign_account.signin_step .step_block.signup_block,

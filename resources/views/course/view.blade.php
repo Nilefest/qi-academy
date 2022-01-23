@@ -24,7 +24,7 @@
                 <h1>{{ $course->name }}</h1>
                 <ul class="curs_info">
                     <li>{{ $lecture_total }} {{ $course->LectureTitle($lecture_total) }}</li>
-                    <li>{{ $course->total_hours }} godziny</li>
+                    <li>{{ $course->total_hours }} {{ $course->TimeTitle($course->total_hours) }}</li>
                 </ul>
                 <div class="head_register">
                     <span class="cost">{{ $course->cost }} Zł</span>

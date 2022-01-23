@@ -28,6 +28,27 @@
 }
 
 
+/* Last days info block */
+
+.last_days_info {
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    text-align: right;
+    font-size: 14px;
+    color: #FFF9C6;
+    font-family: 'Lato', sans-serif;
+    text-transform: none;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+}
+
+.last_days_info b {
+    font-weight: 900;
+}
+
+
 /* Lessons list. mobile_toggle_list */
 
 .lesson_list .icon_open {
@@ -549,6 +570,11 @@
     .lesson_info .homework {
         padding: 25px 30px 35px;
     }
+    .last_days_info {
+        position: relative;
+        top: -15px;
+        text-align: center;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -598,6 +624,14 @@
     .finished_lesson_block.mobile {
         display: flex;
     }
+    .last_days_info {
+        top: 0px;
+        text-align: left;
+        margin-top: 10px;
+    }
+    .last_days_info br {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 599px) {
@@ -636,5 +670,8 @@
 @media screen and (max-width: 479px) {
     .lesson_tools .instructor {
         width: 50%;
+    }
+    .last_days_info {
+        margin-top: 20px;
     }
 }

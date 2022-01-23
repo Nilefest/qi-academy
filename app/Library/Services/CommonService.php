@@ -77,6 +77,10 @@ class CommonService {
         return '/uploads/' . $path . '/' . $filename;
     }
 
+    public static function deleteFile($old_filepath){
+        if(!mb_strpos($old_filepath, '.default.')) if(file_exists(public_path($old_filepath))) File::delete(public_path($old_filepath));
+    }
+
     public static function replaceBrToLn($input){
         return preg_replace('/<br\s?\/?>/ius', "\n", str_replace("\n","",str_replace("\r","", htmlspecialchars_decode($input))));
     }

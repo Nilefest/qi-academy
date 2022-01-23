@@ -48,7 +48,8 @@ class Course extends Model
             'date_of_begin' => '--',
             'date_of_start' => '--',
             'date_of_end' => '--',
-            'days_last' => 0
+            'days_last' => 0,
+            'days_last_title' => 'dni'
         ];
 
         if(!$user_course) return $days_data;
@@ -73,7 +74,8 @@ class Course extends Model
             'date_of_begin' => $user_course['date_of_begin'],
             'date_of_start' => $date_of_start,
             'date_of_end' => $date_of_end,
-            'days_last' => $days_last <= 0 ? 0 : $days_last
+            'days_last' => $days_last <= 0 ? 0 : $days_last,
+            'days_last_title' => 'dni'
         ];
         return $days_data;
     }
@@ -129,6 +131,7 @@ class Course extends Model
             else $courses[$key]['total_lectures'] = 0;
 
             $courses[$key]['lecture_title'] = $courses_obj[$key]->LectureTitle($courses[$key]['total_lectures']);
+            $courses[$key]['time_title'] = $courses_obj[$key]->TimeTitle($courses[$key]['total_hours']);
         }
         
         return $courses;
@@ -138,6 +141,12 @@ class Course extends Model
         if($total === 1) return 'lekcja';
         if($total < 5) return 'lekcje';
         return 'lekcji';
+    }
+
+    public function TimeTitle($total = 1) {
+        if($total === 1) return 'godzina';
+        if($total < 5) return 'godziny';
+        return 'godzin';
     }
 
     public function isBy($user_id = false) {

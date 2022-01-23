@@ -687,6 +687,7 @@ a.main_nav_button {
 
 .block_video_reviews_arrow.prev {
     left: -50px;
+    display: none !important;
 }
 
 .block_video_reviews_arrow.next {
@@ -947,6 +948,7 @@ a.main_nav_button {
     }
     .block_video_reviews_arrow.next {
         right: -15px;
+        display: none !important;
     }
     .faq {
         margin: 100px 0px;

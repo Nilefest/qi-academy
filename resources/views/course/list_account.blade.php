@@ -21,13 +21,16 @@
             <div class="course_list">
                 <h3>Moje kursy</h3>
                 <ul class="course_list_ul">
-                    @foreach ($courses_account as $course)
+                    @foreach ($courses_account as $key => $course)
+                        <?php unset($courses_bonuse[$key]); ?>
+                        <?php unset($courses_paid[$key]); ?>
                         <li class="course_list_li @if (isset($courses_completed[$course['id']])) check @endif">
-                            <a target="_blank" href="{{ route('course.view', $course['id']) }}">
+                            <a target="_blank" href="{{ route('courses.lecture', $course['id']) }}">
                                 <div style="background-image: url({{ $course['banner_img'] }});"
                                     class="image">
                                 </div>
                                 <span class="name">{{ $course['name'] }}</span>
+                                <span class="time_info">Zostało <b>{{ $course['pivot']['days_last'] }} {{ $course['pivot']['days_last_title'] }}</b> dostępu do kursu</span>
                             </a>
                         </li>
                     @endforeach

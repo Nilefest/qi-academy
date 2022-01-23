@@ -126,7 +126,7 @@
         @endif
 
         @if (!empty($paid_courses))
-            <div class="slider_courses container">
+            <div class="slider_courses white container">
                 <h3>POZNAJ PROGRAMY SZKOLENIOWE</h3>
                 <ul class="slider_courses_ul">
                     @foreach ($paid_courses as $course)
@@ -136,8 +136,8 @@
                                 <span class="title">{{ $course['name'] }}</span>
                                 <span class="price">{{ $course['cost'] }} Zł</span>
                                 <ul class="curs_info">
-                                    <li>{{ $course['total_lectures'] }}  {{ $course['lecture_title'] }}</li>
-                                    <li>{{ $course['total_hours'] }} godziny</li>
+                                    <li>{{ $course['total_lectures'] }} {{ $course['lecture_title'] }}</li>
+                                    <li>{{ $course['total_hours'] }} {{ $course['time_title'] }}</li>
                                 </ul>
                             </a>
                         </li>

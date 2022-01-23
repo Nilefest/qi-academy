@@ -69,8 +69,10 @@
                         @endforeach
                     </ul>
                 </div>
-
+                
                 <h3><span>Lekcje</span> <i class="far fa-chevron-down icon_open"></i></h3>
+                <div class="last_days_info">Zostało <b>{{ $last_days_info['days_last'] }}</b>
+                    {{ $last_days_info['days_last_title'] }} <br> dostępu do kursu</div>
 
                 <ul class="lesson_list_ul">
                     @foreach ($lectures as $key => $lecture)
@@ -122,12 +124,12 @@
                 </div>
                 <div class="lesson_info">
                     <div class="lesson_description">
-                        <p>{{ $lecture_this->info_full }} </p>
+                        <p>{!! $lecture_this->info_full !!} </p>
                     </div>
                     @if ($lecture_this->homework)
                         <div class="homework">
                             <h4 class="title">Praca domowa</h4>
-                            <p class="homework_description">{{ $lecture_this->homework }}</p>
+                            <p class="homework_description">{!! $lecture_this->homework !!}</p>
                             <p class="homework_description info">Wyślij swoją pracę domową na ten mail, a na pewno
                                 odpowiemy.
                             </p>

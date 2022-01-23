@@ -77,7 +77,7 @@ class CourseController extends Controller
         $this->data['courses_free'] = Course::getFreeCourses();
         $this->data['courses_paid'] = Course::getPaidCourse();
         $this->data['courses_account'] = Course::getListByAccount($user, true);
-        
+
         $this->data['courses_completed'] = $user->courses()->where('date_of_completed', '<=', date('Y-m-d H:i:s'))->get()->keyBy('id')->toArray();
 
         $this->data['user_id'] = $user_id;
@@ -113,7 +113,10 @@ class CourseController extends Controller
             }
         }
 
-        $this->data['lecture_this'] = CourseLecture::getByCourseUserOrId($course, $user, $lecure_id);
+        $lecture_this = CourseLecture::getByCourseUserOrId($course, $user, $lecure_id);
+        $lecture_this['info_full'] = CommonService::replaceNlToBr($lecture_this['info_full']);
+        $lecture_this['homework'] = CommonService::replaceNlToBr($lecture_this['homework']);
+        $this->data['lecture_this'] = $lecture_this;
 
         if($request->isMethod('post')){
             // Save new data about team
@@ -137,16 +140,17 @@ class CourseController extends Controller
             }
             return;
         }
-
+        
         $this->data['team_one'] = Team::find($course->team_id);
         
         $this->data['lectures_completed'] = $user->lectures()->where('course_id', $course->id)->get()->keyBy('id');
         
         $this->data['user'] = $user;
+        $this->data['last_days_info'] = Course::getLastDays($course, $course_user);
         $this->data['course_user'] = $course_user;
         $this->data['course_id'] = $course_id;
         $this->data['user_id'] = $user_id;
-        $this->data['title'] = ($this->data['lecture_this'] ? $this->data['lecture_this']->name . '' : 'No lecture');
+        $this->data['title'] = ($lecture_this ? $lecture_this->name . '' : 'No lecture');
         return view('course.lecture', $this->data);
     }
 
@@ -155,8 +159,7 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function list_admin($sort_type = 'default')
-    {
+    public function list_admin($sort_type = 'default') {
         $this->data['courses_all'] = Course::getList();
         $this->data['courses_bonuse'] = [];
         $this->data['courses_free'] = [];
@@ -184,8 +187,7 @@ class CourseController extends Controller
      * @param int
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function edit($course_id = false, Request $request)
-    {
+    public function edit($course_id = false, Request $request) {
         if(!$course_id) $course = new Course;
         else $course = Course::findOrFail($course_id);
 

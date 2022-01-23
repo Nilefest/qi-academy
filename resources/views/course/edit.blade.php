@@ -27,6 +27,7 @@
                     <i class="fas fa-plus icon_file"></i>
                 </label>
                 <a href="#file" download class="far fa-file-pdf icon_file"><span>Скачать</span></a>
+                <span class="fal fa-trash-alt icon_file icon_delete"></span>
             </div>
             <label class="field_block">
                 <span class="title">Полное описание лекции</span>

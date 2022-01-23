@@ -149,6 +149,10 @@
     padding: 0px;
 }
 
+.slider_courses.white ul {
+    color: #fff;
+}
+
 .slider_courses .slick-list,
 .slider_courses .slick-track {
     height: 100%;
@@ -190,6 +194,10 @@
     margin: 25px 35px;
 }
 
+.slider_courses.white .title {
+    color: #fff;
+}
+
 .slider_courses .price {
     font-family: 'Lato', sans-serif;
     font-weight: 900;
@@ -206,11 +214,24 @@
     margin: 10px 35px 35px;
 }
 
+.slider_courses.white .price {
+    color: #fff;
+    border: 2px solid #fff;
+    color: #fff;
+    background-color: #000;
+    background-color: transparent;
+}
+
 .slider_courses a.price:hover {
     background-color: #000;
     color: #fff;
     cursor: pointer;
     text-decoration: none;
+}
+
+.slider_courses.white a.price:hover {
+    background-color: #fff;
+    color: #000;
 }
 
 .slider_courses .curs_info {
