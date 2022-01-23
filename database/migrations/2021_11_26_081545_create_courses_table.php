@@ -20,6 +20,7 @@ class CreateCoursesTable extends Migration
             $table->boolean('free_for_client')->default(0);
             $table->boolean('only_paid')->default(0);
             $table->string('name')->default('');
+            $table->string('banner_text_color')->default('white');
             $table->string('banner_img')->default('');
             $table->integer('total_days')->default(1);
             $table->integer('total_hours')->default(1);

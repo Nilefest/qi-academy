@@ -149,10 +149,6 @@
     padding: 0px;
 }
 
-.slider_courses.white ul {
-    color: #fff;
-}
-
 .slider_courses .slick-list,
 .slider_courses .slick-track {
     height: 100%;
@@ -164,6 +160,10 @@
     width: 100%;
     border-radius: 10px;
     overflow: hidden;
+}
+
+.slider_courses .slider_courses_li.white ul {
+    color: #fff;
 }
 
 .slider_courses .courses_link {
@@ -194,7 +194,7 @@
     margin: 25px 35px;
 }
 
-.slider_courses.white .title {
+.slider_courses .slider_courses_li.white .title {
     color: #fff;
 }
 
@@ -214,7 +214,7 @@
     margin: 10px 35px 35px;
 }
 
-.slider_courses.white .price {
+.slider_courses .slider_courses_li.white .price {
     color: #fff;
     border: 2px solid #fff;
     color: #fff;
@@ -229,7 +229,7 @@
     text-decoration: none;
 }
 
-.slider_courses.white a.price:hover {
+.slider_courses .slider_courses_li.white a.price:hover {
     background-color: #fff;
     color: #000;
 }
@@ -710,6 +710,7 @@
     border: none;
     top: 40%;
     text-align: center;
+    padding-left: 8px;
 }
 
 .block_full_video_button:hover {
@@ -1260,8 +1261,14 @@
         border-radius: 0px;
         margin: 0px;
         padding: 0px;
-        height: 320px;
+        height: auto;
         width: 100%;
+    }
+    .main_banner_media img,
+    .main_banner_media video {
+        height: auto;
+        width: 100%;
+        border-radius: 0px;
     }
     .main_banner_info {
         width: 100%;

@@ -95,7 +95,7 @@
                     <h3 class="title">Obejrzałem wideo <span class="range"><span
                                 class="current">{{ $lectures_completed->count() }}</span> /
                             {{ count($lectures) }}</span></h3>
-                    <p class="nofinished_info">Ukończ wszystkie wykłady i otrzymaj certyfikat</p>
+                    <p class="nofinished_info">Obejrzyj wszystkie lekcje i otrzymaj certyfikat</p>
                     <button class="button finish_lesson"><span>Oglądane</span> <i
                             class="far fa-check-circle icon"></i></button>
                     <a download href="{{ route('courses.sertificate', [$course_id, $user_id]) }}"
@@ -146,7 +146,7 @@
                 <h3 class="title">Obejrzałem wideo <span class="range"><span
                             class="current">{{ count($lectures_completed) }}</span> /
                         {{ count($lectures) }}</span></h3>
-                <p class="nofinished_info">Ukończ wszystkie wykłady i otrzymaj certyfikat</p>
+                <p class="nofinished_info">Obejrzyj wszystkie lekcje i otrzymaj certyfikat</p>
                 @if ($course_user['date_of_completed'])
                     <button class="button finish_lesson"><span>Oglądane</span> <i
                             class="far fa-check-circle icon"></i></button>

@@ -13,32 +13,34 @@
 @section('modals')
     <div class="modal_win modal_lecture" data-lectureId="" data-lectureIndexNodes="">
         <i class="fas fa-times close icon_close"></i>
-        <div class="lecture_data">
-            <label class="field_block">
-                <span class="title">Вставьте код для интеграции видео лекции</span>
-                <input type="text"
-                    placeholder='<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/...'
-                    class="text video">
-            </label>
-            <div class="field_block lecture_file_block">
-                <input id="bonus_file" type="file" class="file d-none">
-                <label for="bonus_file">
-                    <span class="title">Загрузить файл PDF для дополнительного обучения</span>
-                    <i class="fas fa-plus icon_file"></i>
+        <div class="modal_lecture_content">
+            <div class="lecture_data">
+                <label class="field_block">
+                    <span class="title">Вставьте код для интеграции видео лекции</span>
+                    <input type="text"
+                        placeholder='<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/...'
+                        class="text video">
                 </label>
-                <a href="#file" download class="far fa-file-pdf icon_file"><span>Скачать</span></a>
-                <span class="fal fa-trash-alt icon_file icon_delete"></span>
+                <div class="field_block lecture_file_block">
+                    <input id="bonus_file" type="file" class="file d-none">
+                    <label for="bonus_file">
+                        <span class="title">Загрузить файл PDF для дополнительного обучения</span>
+                        <i class="fas fa-plus icon_file"></i>
+                    </label>
+                    <a href="#file" download class="far fa-file-pdf icon_file"><span>Скачать</span></a>
+                    <span class="fal fa-trash-alt icon_file icon_delete"></span>
+                </div>
+                <label class="field_block">
+                    <span class="title">Полное описание лекции</span>
+                    <textarea class="text info_full"></textarea>
+                </label>
             </div>
-            <label class="field_block">
-                <span class="title">Полное описание лекции</span>
-                <textarea class="text info_full"></textarea>
+            <label class="homework_block">
+                <span class="title">Домашнее задание</span>
+                <textarea class="text homework"
+                    placeholder="Brazilian Technique - metoda rozjaśnienia przez tapirowanie wlosów. Będziemy pokazywać jak pracować z tapirem w koloryzacjach włosów. Pokażemy nie tylko jak prawidłowo tapirować włosy, a tak że jak rozczesywać tapir, żeby dla klienta to nie było przykrym doświadczeniem"></textarea>
             </label>
         </div>
-        <label class="homework_block">
-            <span class="title">Домашнее задание</span>
-            <textarea class="text homework"
-                placeholder="Brazilian Technique - metoda rozjaśnienia przez tapirowanie wlosów. Będziemy pokazywać jak pracować z tapirem w koloryzacjach włosów. Pokażemy nie tylko jak prawidłowo tapirować włosy, a tak że jak rozczesywać tapir, żeby dla klienta to nie było przykrym doświadczeniem"></textarea>
-        </label>
         <div class="buttons">
             <input type="button" class="button close lecture_save" value="Сохранить  данные">
         </div>
@@ -64,7 +66,8 @@
     </template>
 
     <template id="tpl_lecture_item">
-        <li class="lecture_item" data-lectureId="" data-lectureInfoFull="" data-lectureVideo="" data-lectureFile="" data-lectureHomework="">
+        <li class="lecture_item" data-lectureId="" data-lectureInfoFull="" data-lectureVideo="" data-lectureFile=""
+            data-lectureHomework="">
             <div class="tools">
                 <span class="title"><span class="num">1</span> lekcje</span>
                 <i class="fas fa-trash-alt icon_tool icon_remove"></i>
@@ -92,7 +95,8 @@
             <div class="block_access">
                 <div class="title">Доступ к курсу</div>
                 <div class="field_check">
-                    <input @if ($course->only_paid) checked @endif id="is_paid" class="is_paid d-none course_only_paid" type="radio" name="course_paid_type">
+                    <input @if ($course->only_paid) checked @endif id="is_paid" class="is_paid d-none course_only_paid" type="radio"
+                        name="course_paid_type">
                     <label for="is_paid">Платно</label>
                 </div>
                 <div class="field_check">
@@ -102,7 +106,8 @@
                     </label>
                 </div>
                 <div class="field_check">
-                    <input @if ($course->free) checked @endif id="is_free" class="is_free d-none course_free" type="radio" name="course_paid_type">
+                    <input @if ($course->free) checked @endif id="is_free" class="is_free d-none course_free" type="radio"
+                        name="course_paid_type">
                     <label for="is_free">Беслатно</label>
                 </div>
                 <div class="field_check">
@@ -111,16 +116,27 @@
                     <label for="is_main_course">Специальный кур на главной странице</label>
                 </div>
             </div>
-
-            <label class="block_banner">
+            
+            <label class="block_banner" for="course_banner_img">
                 <div class="title">
                     <p>Загрузите главный банер курса. Обязательный размер: 1320 x 590 px. </p>
                     <p> Чтобы на всех устройствах банер отображался корректно, главную компаозицию поместите в центр,
                         согласно направляющим линиям.</p>
+                    <div class="selector_text_color">
+                        <p>Цвет текста на банере</p>
+                        <label class="banner_text_button">
+                            <input @if($course->banner_text_color === 'white') checked @endif type="radio" name="banner_text_color" value="white" class="d-none banner_text_color">
+                            <span class="title">белый</span>
+                        </label>
+                        <label class="banner_text_button">
+                            <input @if($course->banner_text_color === 'black') checked @endif type="radio" name="banner_text_color" value="black" class="d-none banner_text_color">
+                            <span class="title">чёрный</span>
+                        </label>
+                    </div>
                 </div>
                 <div class="banner_image" style='background-image: url("{{ $course->banner_img }}");'>
                     <i class="fas fa-plus icon_add"></i>
-                    <input type="file" class="d-none course_banner_img" accept="image/png, image/gif, image/jpeg">
+                    <input type="file" class="d-none course_banner_img" id="course_banner_img" accept="image/png, image/gif, image/jpeg">
                 </div>
             </label>
 
@@ -193,7 +209,8 @@
                     <h3 class="title">Program</h3>
                     <ul class="lectures_list">
                         @foreach ($lecture_list as $key => $lecture_item)
-                            <li class="lecture_item" data-lectureId="{{ $lecture_item['id'] }}" data-lectureInfoFull="{{ $lecture_item['info_full'] }}"
+                            <li class="lecture_item" data-lectureId="{{ $lecture_item['id'] }}"
+                                data-lectureInfoFull="{{ $lecture_item['info_full'] }}"
                                 data-lectureVideo="{{ $lecture_item['video'] }}"
                                 data-lectureFile="{{ $lecture_item['file'] }}"
                                 data-lectureHomework="{{ $lecture_item['homework'] }}">

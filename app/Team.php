@@ -29,7 +29,7 @@ class Team extends Model
     public static function getList($replace_nl_to_br = false, $limit = -1, $for_main = false)
     {
         if($for_main) $list = self::where('for_main_page', 1)->orderBy('name')->limit($limit)->get();
-        else $list = self::orderBy('name')->limit($limit)->get();
+        else $list = self::orderBy('for_main_page', 'desc')->orderBy('name')->limit($limit)->get();
         
         if($replace_nl_to_br){
             foreach($list as $key => $row) $list[$key]->info = CommonService::replaceNlToBr($row->info);

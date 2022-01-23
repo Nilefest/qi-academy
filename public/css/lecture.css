@@ -25,6 +25,7 @@
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 40px;
+    color: #FFF9C6;
 }
 
 
@@ -464,6 +465,7 @@
     text-transform: uppercase;
     margin-bottom: 15px;
     font-size: inherit;
+    color: #000;
 }
 
 .finished_lesson_block .range {

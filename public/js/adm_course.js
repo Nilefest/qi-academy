@@ -4,7 +4,7 @@
     // View preview Banner
     // #event #function #filereader-event-function
     let preview_banner_img = event => document.querySelector('.block_banner .banner_image').style.backgroundImage = "url(" + event.target.result + ")";
-    document.querySelector('.block_banner input').addEventListener('change', event => preview_input_img(event.target.files[0], preview_banner_img));
+    document.querySelector('.block_banner .course_banner_img').addEventListener('change', event => preview_input_img(event.target.files[0], preview_banner_img));
 
     // View preview Gallery. Photo 1
     // #event #function #filereader-event-function
@@ -68,7 +68,8 @@
         if (event.target.files[0] !== null) {
             console.log(event.target.files[0]);
             modal.querySelector('.lecture_file_block a').setAttribute('href', URL.createObjectURL(event.target.files[0]));
-            modal.querySelector('.lecture_file_block a span').innerHTML = event.target.files[0].name;
+            // modal.querySelector('.lecture_file_block a span').innerHTML = event.target.files[0].name;
+            modal.querySelector('.lecture_file_block a span').innerHTML = 'file.pdf';
             modal.querySelector('.lecture_file_block a').classList.remove('d-none');
             modal.querySelector('.lecture_file_block .icon_delete').classList.remove('d-none');
         } else {
@@ -154,6 +155,7 @@
             only_paid: course_one.querySelector('.course_only_paid').checked * 1,
             name: course_one.querySelector('.course_name .text').value,
             banner_img: course_one.querySelector('.course_banner_img').files[0] || null,
+            banner_text_color: document.querySelector('.banner_text_color:checked').value,
             total_days: course_one.querySelector('.course_total_days').value * 1,
             total_hours: course_one.querySelector('.course_total_hours').value * 1,
             cost: course_one.querySelector('.course_cost .text').value * 1,

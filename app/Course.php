@@ -94,6 +94,7 @@ class Course extends Model
         $course->description_for_1 = $request->input('description_for_1') . '';
         $course->description_for_2 = $request->input('description_for_2') . '';
         $course->team_id = $request->input('team_id') . '';
+        $course->banner_text_color = $request->input('banner_text_color') . '';
         if(isset($_FILES['banner_img'])) $course->banner_img = CommonService::uploadFile('courses', $_FILES['banner_img'], $course->img);
         if(isset($_FILES['gallery_img_1'])) $course->gallery_img_1 = CommonService::uploadFile('courses', $_FILES['gallery_img_1'], $course->img);
         if(isset($_FILES['gallery_img_2'])) $course->gallery_img_2 = CommonService::uploadFile('courses', $_FILES['gallery_img_2'], $course->img);

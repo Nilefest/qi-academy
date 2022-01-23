@@ -674,7 +674,7 @@
 
 .modal_lecture {
     margin: 0px;
-    padding: 80px 150px 80px 70px;
+    padding: 80px 70px 80px 70px;
     background-color: #000;
     border-radius: 0px;
     height: 100vh;
@@ -688,6 +688,14 @@
 
 .modal_lecture.modal_show {
     display: flex;
+}
+
+.modal_lecture_content {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    width: 100%;
 }
 
 .modal_lecture .icon_close {
@@ -751,9 +759,13 @@
     margin-top: 5px;
 }
 
+.modal_lecture .lecture_data .icon_delete {
+    margin-right: 0px;
+}
+
 .modal_lecture .lecture_data a.icon_file {
     padding: 8px 13px;
-    max-width: 300px;
+    max-width: 150px;
     overflow: hidden;
 }
 
@@ -1096,10 +1108,25 @@
     max-height: 550px;
     overflow: hidden;
     display: none;
+    margin: 5vh auto;
 }
 
 .modal_sign_account.modal_show {
     display: flex;
+}
+
+.modal_sign_account .icon_close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 25px;
+    color: #000;
+    opacity: 0.8;
+}
+
+.modal_sign_account .icon_close:hover {
+    cursor: pointer;
+    opacity: 1;
 }
 
 .modal_sign_account .step_block {
@@ -1121,7 +1148,7 @@
 }
 
 .modal_sign_account.signin_step {
-    margin-top: 200px;
+    margin-top: 10vh;
     justify-content: flex-start;
     min-height: 100px;
 }
@@ -1343,7 +1370,7 @@
     }
     .modal_book_offline {
         margin: 0px;
-        width: 100%;
+        width: 100% !important;
         height: 100vh;
         border-radius: 0px;
         padding-top: 60px;

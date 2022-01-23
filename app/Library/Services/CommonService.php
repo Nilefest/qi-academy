@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use File;
-
 use App\User;
 
 class CommonService {
 
-    public static function generateSertificate($user){
+    /** Generator sertificate for user after finish course
+     * 
+     * @param User 
+     * @return image/png output
+     */
+    public static function generateSertificate($user) {
         
         $img_back = public_path('uploads/certificates/cert_0.default.png');
 
@@ -35,56 +39,82 @@ class CommonService {
         exit();
     }
 
-    /**
-     * Get ststic data from JSON files
+    /** Get ststic data from JSON files
      * 
-     * @param array    - type of data
+     * @param array type of data
      * @return array 
      */
-    public static function getDataFromFile($file_name = 'common.default.json'){
+    public static function getDataFromFile($file_name = 'common.default.json') {
         $data = Storage::disk('local')->get('default/' . $file_name);
         $data = json_decode($data, true);
 
         return $data;
     }
 
-    /**
-     * Get array with row`s key from array`s column
+    /** Get array with row`s key from array`s column
      * 
-     * @param array     - start array
-     * @param string    - column`s name for get data
-     * @return array    - finish array
+     * @param array array for convert
+     * @param string column`s name for get data
+     * @return array finish array
      */
-    public static function colToKey($collection = [], $key){
+    public static function colToKey($collection = [], $key) {
         $new_arr = [];
         foreach($collection as $row) $new_arr[$row[$key]] = $row;
         return $new_arr;
     }
 
-    public static function uploadFile($path, $file, $old_filepath = '', $file_index = -1, $file_type = ''){
+    /** Upload file to public dir
+     * 
+     * @param string pathdir in dir for uploads
+     * @param object file from request (post/get)
+     * @param string old filepath for delete last file
+     * @param int index of file if send some files
+     * @param string type of file
+     * @return string path to uploaded file
+     */
+    public static function uploadFile($path, $file, $old_filepath = '', $file_index = -1, $file_type = '') {
         $filepath = public_path('uploads/' . $path);
 
         if($old_filepath) if(!mb_strpos($old_filepath, '.default.')) if(file_exists(public_path($old_filepath))) File::delete(public_path($old_filepath));
         
         if($file_index > -1){
-            $filename = CommonService::translit_file(time() . '_' . $file['name'][$file_index][$file_type]);
+            $filename = preg_replace("/\.[^.]+$/", "", $file['name'][$file_index][$file_type]);
+            $filetype = preg_replace("/.+\./", "", $file['name'][$file_index][$file_type]);
+            $filename = CommonService::translit_file($filename . '-' . time() . '.' . $filetype);
             move_uploaded_file($file['tmp_name'][$file_index][$file_type], $filepath . '/' . $filename);
         } else {
-            $filename = CommonService::translit_file(time() . '_' . $file['name']);
+            $filename = preg_replace("/\.[^.]+$/", "", $file['name']);
+            $filetype = preg_replace("/.+\./", "", $file['name']);
+            $filename = CommonService::translit_file($filename . '-' . time() . '.' . $filetype);
             move_uploaded_file($file['tmp_name'], $filepath . '/' . $filename);
         }
         
         return '/uploads/' . $path . '/' . $filename;
     }
 
-    public static function deleteFile($old_filepath){
-        if(!mb_strpos($old_filepath, '.default.')) if(file_exists(public_path($old_filepath))) File::delete(public_path($old_filepath));
+    /** Delete file from public dir
+     * 
+     * @param string path to file for delete
+     * @return void
+     */
+    public static function deleteFile($filepath) {
+        if(!mb_strpos($filepath, '.default.')) if(file_exists(public_path($filepath))) File::delete(public_path($filepath));
     }
 
-    public static function replaceBrToLn($input){
+    /** Convert text: replace all <br> to "\n"
+     * 
+     * @param string input text
+     * @return string converted text
+     */
+    public static function replaceBrToLn($input) {
         return preg_replace('/<br\s?\/?>/ius', "\n", str_replace("\n","",str_replace("\r","", htmlspecialchars_decode($input))));
     }
 
+    /** Convert text: replace all "\n" to <br>
+     * 
+     * @param string input text
+     * @return string converted text
+     */
     public static function replaceNlToBr($str) {
         
 		// Replace h1-h6 to paragraph-header-paragraph
@@ -97,6 +127,12 @@ class CommonService {
         
         return $str;
     }
+    
+    /** Convert filename: translit all chars to latin chars
+     * 
+     * @param string input filename
+     * @return string converted filename
+     */
     public static function translit_file($filename) {
         $converter = array(
             'а' => 'a',    'б' => 'b',    'в' => 'v',    'г' => 'g',    'д' => 'd',

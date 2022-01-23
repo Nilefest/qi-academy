@@ -126,11 +126,11 @@
         @endif
 
         @if (!empty($paid_courses))
-            <div class="slider_courses white container">
+            <div class="slider_courses container">
                 <h3>POZNAJ PROGRAMY SZKOLENIOWE</h3>
                 <ul class="slider_courses_ul">
                     @foreach ($paid_courses as $course)
-                        <li class="slider_courses_li">
+                        <li class="slider_courses_li {{ $course['banner_text_color'] }} ">
                             <a class="courses_link" style="background-image: url('{{ $course['banner_img'] }}')"
                                 href="{{ route('course.view', $course['id']) }}">
                                 <span class="title">{{ $course['name'] }}</span>
@@ -198,7 +198,7 @@
             </div>
             <div class="block_full_video_info">
                 <h3>JAK ODBYWAJĄ SIĘ NASZE <br>SZKOLENIA OFFLINE</h3>
-                <button class="block_full_video_button">&#9654;</button>
+                <button class="block_full_video_button"><i class="fas fa-play"></i></button>
             </div>
         </div>
 

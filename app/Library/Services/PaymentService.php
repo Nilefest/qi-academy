@@ -10,6 +10,12 @@ use App\Setting;
 
 class PaymentService {
 
+    /** Correct and formated field for payment-form
+     * 
+     * @param User user who pay
+     * @param Course for pay
+     * @return string with all fields of payment-form
+     */
     public static function getFields($user, $course) {
         $setting = Setting::getByType('imoje');
         if($setting['test_mode']['value'] === '1') $test_mode = '_TEST';
@@ -81,24 +87,42 @@ class PaymentService {
         return $fields;
     }
 
+    /** Get hash-signature for payment-service
+     * 
+     * @param array order data
+     * @param string service key
+     * @param string method for hash
+     * @return string signature
+     */
     private static function createSignature($orderData, $serviceKey, $hashMethod) {
         $data = self::prepareData($orderData);
 
         return hash($hashMethod, $data . $serviceKey);
     }
     
+    /** Get string-data for convert to hash-signature
+     * 
+     * @param array data
+     * @param string data-prefix
+     * @return string with data
+     */
     private static function prepareData($data, $prefix = '') {
         ksort($data);
         $hashData = [];
         foreach($data as $key => $value) {
-        if($prefix) $key = $prefix . '[' . $key . ']';
+            if($prefix) $key = $prefix . '[' . $key . ']';
 
-        if(is_array($value))$hashData[] = self::prepareData($value, $key);
-        else $hashData[] = $key . '=' . $value;
+            if(is_array($value))$hashData[] = self::prepareData($value, $key);
+            else $hashData[] = $key . '=' . $value;
         }
         return implode('&', $hashData);
     }
 
+    /** Translit text for correct-format text-data
+     * 
+     * @param string input text
+     * @return string converted text
+     */
     private static function translit_text($text) {
         $converter = array(
             'а' => 'a',    'б' => 'b',    'в' => 'v',    'г' => 'g',    'д' => 'd',

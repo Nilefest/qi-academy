@@ -1,12 +1,15 @@
 <!-- Modal. For Sign IN and Sign UP -->
 <div class="modal_win container modal_sign_account signup_step">
+    <i class="fal fa-times icon_close close"></i>
+
     <div class="step_block signup_block">
         <h3>Create Account</h3>
         <a href="{{ url('auth/google') }}" data-href="{{ url('auth/google') }}" class="login_button social google">
             <i class="fab fa-google icon"></i>
             <span class="title">Sign up with Google</span>
         </a>
-        <a href="{{ url('auth/facebook') }}" data-href="{{ url('auth/facebook') }}" class="login_button social facebook">
+        <a href="{{ url('auth/facebook') }}" data-href="{{ url('auth/facebook') }}"
+            class="login_button social facebook">
             <i class="fab fa-facebook icon"></i>
             <span class="title">Sign up with Facebook</span>
         </a>
@@ -29,7 +32,8 @@
             <i class="fab fa-google icon"></i>
             <span class="title">Sign in with Google</span>
         </a>
-        <a href="{{ url('auth/facebook') }}" data-href="{{ url('auth/facebook') }}" class="login_button social facebook">
+        <a href="{{ url('auth/facebook') }}" data-href="{{ url('auth/facebook') }}"
+            class="login_button social facebook">
             <i class="fab fa-facebook icon"></i>
             <span class="title">Sign in with Facebook</span>
         </a>

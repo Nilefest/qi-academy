@@ -62,6 +62,7 @@ class CourseLecture extends Model
                 CommonService::deleteFile( $new_item->file);
                 $new_item->file = '';
             }
+            
             if(isset($_FILES['course_lecture']['name'][$key]['file'])){
                 $new_item->file = CommonService::uploadFile('lectures', $_FILES['course_lecture'], $new_item->file, $key, 'file');
             }

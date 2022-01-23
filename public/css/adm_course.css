@@ -20,7 +20,9 @@
     background-color: #000;
 }
 
+
 /* Block Access */
+
 .block_access {
     display: flex;
     align-items: stretch;
@@ -72,7 +74,9 @@
     content: "\f00c";
 }
 
+
 /* Block Banner */
+
 .block_banner {
     display: flex;
     justify-content: space-between;
@@ -142,7 +146,48 @@
     opacity: 0.6;
 }
 
+
+/* Selector for banner text */
+
+.selector_text_color {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between
+}
+
+.selector_text_color p {
+    width: 100%;
+}
+
+.banner_text_button {
+    display: inline-block;
+    width: 46%;
+}
+
+.banner_text_button .title {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    color: #000;
+    background-color: #fff;
+    padding: 3px 15px;
+    text-align: center
+}
+
+.banner_text_button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.banner_text_button input:checked~.title {
+    background-color: #F84C34;
+    color: #fff;
+}
+
+
 /* Blocks Info */
+
 .info_block {
     display: flex;
     justify-content: space-between;
@@ -150,7 +195,9 @@
     margin-bottom: 100px;
 }
 
+
 /* Block Main Info */
+
 .main_info {
     width: 50%;
     display: flex;
@@ -222,7 +269,9 @@
     border-radius: 0px;
 }
 
+
 /* Block Main Info */
+
 .info_block .video_link {
     padding-left: 100px;
     width: 50%;
@@ -239,7 +288,9 @@
     font-style: italic;
 }
 
+
 /* Block Description */
+
 .info_block .public_description {
     width: 400px;
     flex-shrink: 0;
@@ -264,7 +315,9 @@
     min-height: 200px;
 }
 
+
 /* Block Description-Fors */
+
 .info_block .description_for {
     display: flex;
     align-self: flex-end;
@@ -291,7 +344,9 @@
     min-height: 50px;
 }
 
+
 /* Block Instructor */
+
 .instructor_block {
     margin-bottom: 50px;
     display: flex;
@@ -307,7 +362,9 @@
     align-self: flex-start;
 }
 
+
 /* Block Experience */
+
 .experience_block {
     margin-bottom: 50px;
 }
@@ -391,13 +448,16 @@
 
 
 /* Block for Lectires`s list and Gallery */
+
 .lectures_gallery_block {
     margin: 50px 0px 100px;
     display: flex;
     justify-content: space-between;
 }
 
+
 /* Block Lectires */
+
 .lectures_block {
     margin-right: 50px;
     padding-right: 20px;
@@ -466,7 +526,6 @@
     display: block;
     opacity: 0.8;
     font-size: 1.1em;
-
     opacity: 0;
 }
 
@@ -487,10 +546,8 @@
 
 .lectures_block .lecture_item .text {
     margin-bottom: 20px;
-
     opacity: 0;
 }
-
 
 .lectures_block .lecture_item .text:first-child,
 .lectures_block .lecture_item.open .text {
@@ -552,7 +609,9 @@
     opacity: 0.8;
 }
 
+
 /* Block Photos */
+
 .gallery_block {
     flex-shrink: 0;
 }
@@ -596,7 +655,6 @@
 .gallery_block .photos label:hover {
     opacity: 1;
     cursor: pointer;
-
 }
 
 .gallery_block .photos .size {
@@ -610,7 +668,9 @@
     font-size: 70px;
 }
 
+
 /* Block Buttons */
+
 .buttons_block {
     display: flex;
     justify-content: center;
