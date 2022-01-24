@@ -139,14 +139,14 @@
                 <ul class="contact">
                     <li>
                         <a target="_blank"
-                            href="https://api.whatsapp.com/send/?phone={{ preg_replace('/[+ ]/m', '', $contacts['whatsapp']) }}&text=Hi!">
+                            href="https://api.whatsapp.com/send/?phone={{ preg_replace('/[+ ]/m', '', $contacts['whatsapp']['link']) }}&text=Hi!">
                             <img src="/img/icons/icons8-whatsapp.png" alt="Icon WhatsApp">
                             <span>WhatsApp</span>
                         </a>
                     </li>
                     <li>
                         <a target="_blank"
-                            href="https://msng.link/o/?{{ preg_replace('/[+ ]/m', '', $contacts['facebook_messenger']) }}=fm">
+                            href="https://msng.link/o/?{{ preg_replace('/[+ ]/m', '', $contacts['facebook_messenger']['link']) }}=fm">
                             <img src="/img/icons/icons8-facebook-messenger.png" alt="Icon Facebook Messenger">
                             <span>Facebook Messenger</span>
                         </a>

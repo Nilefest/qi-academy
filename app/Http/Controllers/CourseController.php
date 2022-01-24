@@ -18,22 +18,19 @@ use App\Contact;
 
 class CourseController extends Controller
 {
-    /**
-     * Create a new controller instance.
+    /** Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->data = array_merge($this->data, CommonService::getDataFromFile());
         $this->data['contacts'] = Contact::getByType('contacts');
         $this->data['social'] = Contact::getByType('social');
     }
     
-    /**
-     * Public page for view course
+    /** Public page for view course
      *
-     * @param int
+     * @param int Course ID
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function view($course_id) {
@@ -62,10 +59,9 @@ class CourseController extends Controller
         return view('course.view', $this->data);
     }
 
-    /**
-     * Show lecture list for student
+    /** Show lecture list for student
      *
-     * @param int
+     * @param int|false User ID or Auth-user
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function list_account($user_id = false) {
@@ -85,10 +81,12 @@ class CourseController extends Controller
         return view('course.list_account', $this->data);
     }
 
-    /**
-     * Page with one lecture for study student
+    /** Page with one lecture for study student
      *
-     * @param int
+     * @param int Course ID
+     * @param int|false Lecture ID or current
+     * @param int|false User ID or Ath-user
+     * @param Request request-data
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function lecture($course_id, $lecure_id = false, $user_id = false, Request $request) {
@@ -117,7 +115,7 @@ class CourseController extends Controller
         $lecture_this['info_full'] = CommonService::replaceNlToBr($lecture_this['info_full']);
         $lecture_this['homework'] = CommonService::replaceNlToBr($lecture_this['homework']);
         $this->data['lecture_this'] = $lecture_this;
-
+// print_r($lecture_this); exit();
         if($request->isMethod('post')){
             // Save new data about team
             if($request->input('type') === 'lecture_finish'){
@@ -154,9 +152,9 @@ class CourseController extends Controller
         return view('course.lecture', $this->data);
     }
 
-    /**
-     * Show course list for Admin Panel
+    /** Show course list for Admin Panel
      *
+     * @param string type for sort (all | bonuse | free | paid)
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function list_admin($sort_type = 'default') {
@@ -181,10 +179,10 @@ class CourseController extends Controller
         return view('course.list_admin', $this->data);
     }
 
-    /**
-     * Page for Edit Courses. Only for Admin
+    /** Page for Edit Courses. Only for Admin
      * 
-     * @param int
+     * @param int|false Course ID for edit or emty for create new course
+     * @param Request request-data
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function edit($course_id = false, Request $request) {
@@ -220,15 +218,13 @@ class CourseController extends Controller
         return view('course.edit', $this->data);
     }
 
-    /**
-     * Get sertificate
+    /** Get sertificate
      * 
      * @param int
      * @param int|False
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function get_sertificate($course_id, $user_id = false)
-    {
+    public function get_sertificate($course_id, $user_id = false) {
         if(!$user_id) $user = Auth::user();
         else $user = User::findOrFail($user_id);
 
@@ -237,24 +233,18 @@ class CourseController extends Controller
         CommonService::generateSertificate($user);
     }
 
-    /**
-     * Send video review
+    /** Send video review
      * 
-     * @param int
-     * @param int|False
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @param int Course ID
+     * @param int|false User ID or Auth-user
+     * @param Request request-data
+     * @return json|string|void result
      */
-    public function send_video_review($course_id, $user_id = false, Request $request)
-    {
+    public function send_video_review($course_id, $user_id = false, Request $request) {
         if(!$user_id) $user = Auth::user();
         else $user = User::findOrFail($user_id);
 
         $course = Course::findOrFail($course_id);
-
-        // print_r($course);
-        // exit('******ssss*');        
-        // $message = 'Student ' . $user['name'] . ' ' . $user['lastname'] . '(' . $user['email'] . ')' . ' finish course and last review "' . $course['name'] . '" ' . date('Y-m-d H:i:s');
-        // return ['user' => $user, 'course' => $course, 'files' => $_FILES, 'mess' => $message];
         
         if($request->input('send_review') !== null) {
             

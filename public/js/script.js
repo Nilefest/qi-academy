@@ -182,6 +182,18 @@ let func_default_fail = () => view_modal_simple_info('Something went wrong...<br
 
 /* PRIVATE */
 (() => {
+
+    let userAgent = navigator.userAgent.toLowerCase();
+    if (userAgent.indexOf('safari') !== -1) {
+        if (userAgent.indexOf('chrome') > -1) {
+            document.body.classList.add('chrome');
+        } else if ((userAgent.indexOf('opera') > -1) || (userAgent.indexOf('opr') > -1)) {
+            document.body.classList.add('opera');
+        } else {
+            document.body.classList.add('safari');
+        }
+    }
+
     // Disable select text/..., context menu
     // #function #EVIL
     function noselect() {

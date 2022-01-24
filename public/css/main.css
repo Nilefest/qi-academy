@@ -1408,6 +1408,10 @@
     .block_events .row .time {
         display: none;
     }
+    .slider_blog_youtube a:after {
+        padding: 3px 20px 4px;
+        margin-left: 55px;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -1416,7 +1420,6 @@
         padding: 36px 22px;
     }
     .slider_blog_youtube a:after {
-        padding: 3px 20px 4px;
         margin-left: 40px;
     }
 }

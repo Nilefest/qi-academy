@@ -639,7 +639,7 @@ a.main_nav_button {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    margin-right: 20px;
+    margin: 0px 10px;
 }
 
 .block_video_reviews_li:hover {
@@ -681,13 +681,17 @@ a.main_nav_button {
     padding-bottom: 8px;
 }
 
+.safari .block_video_reviews_arrow {
+    padding-top: 5px;
+}
+
 .block_video_reviews_arrow:hover {
     cursor: pointer;
 }
 
 .block_video_reviews_arrow.prev {
     left: -50px;
-    display: none !important;
+    /* display: none !important; */
 }
 
 .block_video_reviews_arrow.next {
@@ -895,6 +899,9 @@ a.main_nav_button {
 }
 
 @media screen and (max-width: 599px) {
+    .content {
+        padding-top: 70px;
+    }
     .container {
         width: 98%;
     }
@@ -948,7 +955,10 @@ a.main_nav_button {
     }
     .block_video_reviews_arrow.next {
         right: -15px;
-        display: none !important;
+    }
+    .block_video_reviews_arrow {
+        /* display: none !important; */
+        opacity: 0;
     }
     .faq {
         margin: 100px 0px;

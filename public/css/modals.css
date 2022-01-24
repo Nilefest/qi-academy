@@ -1097,7 +1097,7 @@
 .modal_sign_account {
     display: flex;
     flex-direction: column;
-    background-color: #eee;
+    background-color: #fff;
     border-radius: 5px;
     padding: 20px 50px;
     flex-wrap: nowrap;
@@ -1398,11 +1398,12 @@
         margin-top: 0px;
     }
     .modal_sign_account {
-        border-radius: 0px;
-        max-width: 100vw;
-        margin: 0px 0px;
-        max-height: 100vh;
+        border-radius: 5px;
+        max-width: 96vw;
+        margin: 2vh 2vw;
+        max-height: 96vh;
         height: 100vh;
+        padding: 20px 20px;
     }
     .modal_sign_account .step_block {
         height: inherit;
@@ -1412,11 +1413,29 @@
         margin-top: 0px;
     }
     .modal_sign_account.signin_step {
-        margin-top: 0px;
+        margin-top: 2vh;
+    }
+    .modal_sign_account .login_button {
+        padding: 15px 20px;
+    }
+    .modal_sign_account .login_button .title {
+        padding: 0px 10px;
+    }
+    .modal_sign_account .login_button.facebook .icon {
+        font-size: 32px;
     }
 }
 
 @media screen and (max-width: 479px) {
+    .modal_sign_account {
+        padding: 20px 10px;
+    }
+    .modal_sign_account .login_button {
+        padding: 15px 10px;
+    }
+    .modal_sign_account .login_button .title {
+        padding: 0px 5px;
+    }
     .modal_team .modal_header {
         flex-wrap: wrap;
     }

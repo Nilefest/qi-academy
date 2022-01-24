@@ -14,7 +14,7 @@
             <img src="{{ $about_data['header_img'][0] }}" alt="KOSTIANTYN HERBIN, co-founder, educator, hairstylist">
             <img src="{{ $about_data['header_img'][1] }}" alt="HERMAN AHAFONTSEV, co-founder, educator, hairstylist">
             <img src="{{ $about_data['header_img'][2] }}" alt="ANNA LEVYTSKA, co-founder, educator, hairstylist ">
-            <h1>ONas</h1>
+            <h1>O Nas</h1>
         </div>
 
         <div class="media_content container">

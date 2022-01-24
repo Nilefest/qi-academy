@@ -69,7 +69,7 @@
                         @endforeach
                     </ul>
                 </div>
-                
+
                 <h3><span>Lekcje</span> <i class="far fa-chevron-down icon_open"></i></h3>
                 <div class="last_days_info">Zostało <b>{{ $last_days_info['days_last'] }}</b>
                     {{ $last_days_info['days_last_title'] }} <br> dostępu do kursu</div>
@@ -88,10 +88,42 @@
                                 @endif
                             </a>
                         </li>
+                        @if ($lecture['id'] === $lecture_this->id) @break @endif
+                    @endforeach
+
+                    <div class="finished_lesson_block @if ($lectures_completed->count() === count($lectures)) finished @else unfinished @endif">
+                        <h3 class="title">Obejrzałem wideo <span class="range"><span
+                                    class="current">{{ $lectures_completed->count() }}</span> /
+                                {{ count($lectures) }}</span></h3>
+                        <p class="nofinished_info">Obejrzyj wszystkie lekcje i otrzymaj certyfikat</p>
+                        @if ($lecture['date_of_completed'] === '')
+                            <button class="button finish_lesson"><span>Oglądane</span> <i
+                                    class="far fa-check-circle icon"></i></button>
+                        @endif
+                        <a download href="{{ route('courses.sertificate', [$course_id, $user_id]) }}"
+                            class="button get_sertificate">Uzyskać certyfikat</a>
+                        <button class="open_send_review"><span>Wystawić opinię</span> <i
+                                class="fas fa-hand-point-up icon"></i></button>
+                    </div>
+
+                    @foreach ($lectures as $key => $lecture)
+                        @if ($lecture['id'] <= $lecture_this->id) @continue @endif
+                        <li class="lesson_list_li @if ($lecture['id'] === $lecture_this->id) active @endif">
+                            <a href="{{ route('courses.lecture', [$lecture['course_id'], $lecture['id'], $user_id]) }}"
+                                class="lesson_name">
+                                <span class="num">{{ $key + 1 }}.</span>
+                                <span class="title">{{ $lecture['name'] }}</span>
+                                @if ($lecture['date_of_completed'] !== '')
+                                    <i class="far fa-check-circle icon"></i>
+                                @else
+                                    <i class="far fa-circle icon"></i>
+                                @endif
+                            </a>
+                        </li>
                     @endforeach
                 </ul>
 
-                <div class="finished_lesson_block @if ($lectures_completed->count() === count($lectures)) finished @else unfinished @endif">
+                {{-- <div class="finished_lesson_block @if ($lectures_completed->count() === count($lectures)) finished @else unfinished @endif">
                     <h3 class="title">Obejrzałem wideo <span class="range"><span
                                 class="current">{{ $lectures_completed->count() }}</span> /
                             {{ count($lectures) }}</span></h3>
@@ -102,7 +134,7 @@
                         class="button get_sertificate">Uzyskać certyfikat</a>
                     <button class="open_send_review"><span>Wystawić opinię</span> <i
                             class="fas fa-hand-point-up icon"></i></button>
-                </div>
+                </div> --}}
             </div>
             <div class="lesson_block">
                 <div class="lesson_media">
