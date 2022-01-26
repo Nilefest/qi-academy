@@ -166,6 +166,10 @@
     text-transform: uppercase;
 }
 
+.slider_partners_line a:hover {
+    text-decoration: none;
+}
+
 @media screen and (min-width: 1440px) {}
 
 @media screen and (max-width: 1440px) {}

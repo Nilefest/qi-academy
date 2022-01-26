@@ -281,7 +281,7 @@ let func_default_fail = () => view_modal_simple_info('Something went wrong...<br
             }
             element.setAttribute('href', href);
         });
-        document.querySelector('.modal_sign_account').classList.replace('signin_step', 'signup_step');
+        document.querySelector('.modal_sign_account').classList.replace('signup_step', 'signin_step');
         modalOpen('.modal_sign_account');
     }));
 

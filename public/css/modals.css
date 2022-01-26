@@ -1122,6 +1122,7 @@
     font-size: 25px;
     color: #000;
     opacity: 0.8;
+    z-index: 1;
 }
 
 .modal_sign_account .icon_close:hover {
@@ -1139,6 +1140,7 @@
     flex-direction: column;
     opacity: 1;
     max-height: 520px;
+    z-index: 0;
 }
 
 .modal_sign_account.signin_step .step_block.signup_block,

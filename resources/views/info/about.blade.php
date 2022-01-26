@@ -42,7 +42,7 @@
                 @for ($i = 0; $i < 2; $i++)
                     @foreach ($about_data['partners'] as $partner)
                         @if ($partner['link'])
-                            <li><a href="{{ $partner['link'] }}">{{ $partner['title'] }}</a></li>
+                            <li><a href="{{ $partner['link'] }}" target="_blank">{{ $partner['title'] }}</a></li>
                         @else
                             <li>{{ $partner['title'] }}</li>
                         @endif

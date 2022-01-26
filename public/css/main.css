@@ -115,11 +115,16 @@
 }
 
 .slider_blog_youtube a:after {
-    content: '\25BA';
-    font-size: 0.9em;
+    display: inline-block;
+    font-family: "Font Awesome 5 Pro";
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: '\f04b';
+    font-size: 0.6em;
     border: 2px solid #F84C34;
     border-radius: 30px;
-    padding: 3px 40px 4px;
+    padding: 5px 40px 4px;
     margin-left: 80px;
     text-align: center;
 }

@@ -64,7 +64,7 @@
                     <span class="short_text">Qi</span>
                 </a>
 
-                <a href="{{ url('/') }}" class="to_site">QILABEL.COM <i
+                <a target="_blank" href="{{ url('/') }}" class="to_site">QILABEL.COM <i
                         class="fas fa-link icon_link"></i></a>
 
                 <a href="{{ route('account.profile') }}" class="to_setting">Настройки пользователя <i

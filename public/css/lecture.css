@@ -590,7 +590,7 @@
     .last_days_info {
         position: relative;
         top: -15px;
-        text-align: center;
+        text-align: left;
     }
 }
 
