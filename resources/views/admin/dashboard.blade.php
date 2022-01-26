@@ -31,6 +31,8 @@
                 </select>
             </div>
             <input type="button" class="button submit" id="setting_save" value="Сохранить">
+            
+            <br><br><a href="{{ route('clear_cash') }}" class="button submit">Сбросить кеш</a>
         </div>
     </div>
 @endsection

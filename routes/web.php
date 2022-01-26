@@ -69,8 +69,8 @@ Route::group(['middleware' => 'auth.admin'], function () {
     Route::get('/admin', 'AdminController@dashboard')->middleware('verified')->name('admin.dashboard');
     Route::post('/admin/setting', 'AdminController@setting')->middleware('verified')->name('admin.setting');
     
-    Route::get('/clear-cash', 'AdminController@clear_cash')->middleware('verified')->name('admin.clear_cash');
-    Route::post('/clear-cash', 'AdminController@clear_cash')->middleware('verified')->name('admin.clear_cash.post');
+    Route::get('/clear-cash', 'AdminController@clear_cash')->middleware('verified')->name('clear_cash');
+    Route::post('/clear-cash', 'AdminController@clear_cash')->middleware('verified')->name('clear_cash.post');
 
     Route::get('/admin/team', 'AdminController@team')->middleware('verified')->name('admin.team');
     Route::post('/admin/team', 'AdminController@team')->middleware('verified')->name('admin.team.post');
