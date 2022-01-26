@@ -16,13 +16,11 @@ use App\UserCourse;
 
 class AdminController extends Controller
 {
-    /**
-     * Create a new controller instance.
+    /** Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth.admin');
 
         $this->data = array_merge($this->data, CommonService::getDataFromFile());
@@ -30,26 +28,23 @@ class AdminController extends Controller
         $this->data['social'] = Contact::getByType('social');
     }
     
-    /**
-     * Dashboard for Admin
+    /** Dashboard for Admin
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function dashboard()
-    {
+    public function dashboard() {
         $this->data['setting_fields'] = Setting::getFields();
 
         $this->data['title'] = 'Dashboar for Admin';
         return view('admin.dashboard', $this->data);
     }
 
-    /**
-     * Dashboard for Admin
+    /** Dashboard for Admin
      *
+     * @param Request 
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function team(Request $request)
-    {
+    public function team(Request $request) {
         if($request->isMethod('post')){
             // Save new data about team
             if($request->input('type') === 'save_team'){
@@ -74,13 +69,12 @@ class AdminController extends Controller
         return view('admin.team', $this->data);
     }
 
-    /**
-     * Show offline course list for Admin Panel
+    /** Show offline course list for Admin Panel
      *
+     * @param Request 
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function clients(Request $request)
-    {
+    public function clients(Request $request) {
         // Sort data
         $sort_by_column = 'name';
         if($request->input('sort_by') !== null){
@@ -105,13 +99,12 @@ class AdminController extends Controller
         return view('admin.clients', $this->data);
     }
 
-    /**
-     * Show offline course list for Admin Panel
+    /** Show offline course list for Admin Panel
      *
+     * @param Request 
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function clients_download(Request $request)
-    {
+    public function clients_download(Request $request) {
         // Sort data
         $sort_by_column = 'name';
         if($request->input('sort_by') !== null){
@@ -139,13 +132,12 @@ class AdminController extends Controller
         return response()->view('admin.clients_txt', $this->data, 200)->withHeaders($headers);
     }
 
-    /**
-     * Show offline course list for Admin Panel
+    /** Show offline course list for Admin Panel
      *
+     * @param Request 
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function contacts(Request $request)
-    {
+    public function contacts(Request $request) {
         if($request->isMethod('post')){
             if($request->input('save_contacts') !== null){
                 $contacts = $request->input('contacts');
@@ -164,13 +156,12 @@ class AdminController extends Controller
         return view('admin.contacts', $this->data);
     }
 
-    /**
-     * Setting data
+    /** Setting data
      *
+     * @param Request 
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function setting(Request $request)
-    {
+    public function setting(Request $request) {
         if($request->isMethod('post')){
             if($request->input('save_setting') !== null){
                 $fields = $request->input('fields');
@@ -184,13 +175,12 @@ class AdminController extends Controller
         return;
     }
 
-    /**
-     * Show offline course list for Admin Panel
+    /** Show offline course list for Admin Panel
      *
+     * @param Request 
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function reviews(Request $request)
-    {
+    public function reviews(Request $request) {
         if($request->isMethod('post')){
             // Save new / update review
             if($request->input('type') === 'save_video_reviews'){
@@ -224,5 +214,20 @@ class AdminController extends Controller
 
         $this->data['title'] = 'Edit reviews';
         return view('admin.reviews', $this->data);
+    }
+
+    /** Clear cash and other temp data
+     * 
+     * @param Request type data or all
+     * @return string with results
+     */
+    public function clear_cash(Request $request) {
+        if($request->input('type') !== null) $type = $request->input('type');
+        else $type = false;
+
+        $result = CommonService::clear_cash($type);
+        $link_to_back = "\n\n<br><a href='" . redirect()->back()->getTargetUrl() . "'>Back</a>";
+        
+        return $result . $link_to_back;
     }
 }

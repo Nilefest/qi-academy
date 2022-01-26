@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use File;
 use App\User;
+use Artisan;
 
 class CommonService {
 
@@ -172,5 +173,31 @@ class CommonService {
         }
 
         return $new;
+    }
+
+    /** Clear cash and/or other temp data
+     * 
+     * @param string|false type data or all
+     * @return string with results
+     */
+    public static function clear_cash($type = false){
+        $comands = [];
+        
+        if(!$type || $type === 'optimize') $comands[] = 'optimize';
+        if(!$type || $type === 'cache') $comands[] = 'cache:clear';
+        if(!$type || $type === 'route') $comands[] = 'route:clear';
+        if(!$type || $type === 'view') $comands[] = 'view:clear';
+        if(!$type || $type === 'config') $comands[] = 'config:clear';
+        
+        $str_result = "";
+        foreach($comands as $cmd) {
+            $str_result .= "Laravel $cmd: "; 
+            try{ 
+                $str_result .= Artisan::call($cmd); 
+            } catch (\Exception $e) { $str_result .= "Fail"; }
+            $str_result .= "\n<br>";
+        }
+
+        return $str_result;
     }
 }
