@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\FeedbackMail;
 use App\Mail\SubscribesMail;
 use App\Mail\SendReviewMail;
+use App\Contact;
 
 class MailService {
 
@@ -39,6 +40,8 @@ class MailService {
      * @return void
      */
     public static function sendVideoReview($user, $course, $review_text = '', $file = false){
-        Mail::to('nikitaleo777333@gmail.com')->send(new SendReviewMail($user, $course, $review_text, $file));
+        $emails = Contact::getByType('emails');
+
+        Mail::to($emails['video_review']['link'])->send(new SendReviewMail($user, $course, $review_text, $file));
     }
 }

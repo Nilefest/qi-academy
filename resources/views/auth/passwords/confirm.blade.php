@@ -27,7 +27,7 @@
                     <p><a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a></p>
                     @endif
                     <p>If you have problems: </p>
-                    <span href="#mail" class="admin_mail button_copy" data-textCopy="lexa.amb@gmail.com">lexa.amb@gmail.com
+                    <span href="#mail" class="admin_mail button_copy" data-textCopy="{{ $emails['support']['link'] }}">{{ $emails['support']['link'] }}
                         <i class="far fa-copy icon"></i></span>
                 </div>
             </div>

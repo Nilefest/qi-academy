@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Contact;
 
 class LoginController extends Controller
 {
@@ -49,9 +50,10 @@ class LoginController extends Controller
         // if(!session()->has('from')){
         //     session()->put('from', url()->previous());
         // }
+        $this->data['emails'] = Contact::getByType('emails');
 
-        $this->date['title'] = 'Sign in';
-        return view('auth.login', $this->date);
+        $this->data['title'] = 'Sign in';
+        return view('auth.login', $this->data);
     }
 
     public function authenticated($request, $user)

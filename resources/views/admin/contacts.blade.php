@@ -31,6 +31,18 @@
                     <span class="title">You Tube</span>
                     <input name="social[youtube]" type="text" class="text" value="{{ $social['youtube']['link'] }}">
                 </label>
+                <label>
+                    <span class="title">Email for support</span>
+                    <input name="emails[support]" type="text" class="text" value="{{ $emails['support']['link'] }}">
+                </label>
+                <label>
+                    <span class="title">Email for homework</span>
+                    <input name="emails[homework]" type="text" class="text" value="{{ $emails['homework']['link'] }}">
+                </label>
+                <label>
+                    <span class="title">Email for video review</span>
+                    <input name="emails[video_review]" type="text" class="text" value="{{ $emails['video_review']['link'] }}">
+                </label>
                 <input name="save_contacts" type="submit" class="button save_contacts" value="Сохранить данные">
             </div>
         </form>

@@ -26,6 +26,7 @@ class AdminController extends Controller
         $this->data = array_merge($this->data, CommonService::getDataFromFile());
         $this->data['contacts'] = Contact::getByType('contacts');
         $this->data['social'] = Contact::getByType('social');
+        $this->data['emails'] = Contact::getByType('emails');
     }
     
     /** Dashboard for Admin
@@ -142,8 +143,12 @@ class AdminController extends Controller
             if($request->input('save_contacts') !== null){
                 $contacts = $request->input('contacts');
                 Contact::saveByType('contacts', $contacts);
+                
                 $social = $request->input('social');
                 Contact::saveByType('social', $social);
+
+                $emails = $request->input('emails');
+                Contact::saveByType('emails', $emails);
                 
                 $data['form_result'] = ['status' => 'success', 'mess' => 'Success!'];
             }
@@ -151,6 +156,7 @@ class AdminController extends Controller
 
         $this->data['contacts'] = Contact::getByType('contacts');
         $this->data['social'] = Contact::getByType('social');        
+        $this->data['emails'] = Contact::getByType('emails');        
 
         $this->data['title'] = 'Edit contacts';
         return view('admin.contacts', $this->data);
@@ -227,7 +233,7 @@ class AdminController extends Controller
 
         $result = CommonService::clear_cash($type);
         $link_to_back = "\n\n<br><a href='" . redirect()->back()->getTargetUrl() . "'>Back</a>";
-        
+
         return $result . $link_to_back;
     }
 }

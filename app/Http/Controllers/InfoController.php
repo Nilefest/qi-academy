@@ -21,6 +21,7 @@ class InfoController extends Controller
         $this->data = array_merge($this->data, CommonService::getDataFromFile());
         $this->data['contacts'] = Contact::getByType('contacts');
         $this->data['social'] = Contact::getByType('social');
+        $this->data['emails'] = Contact::getByType('emails');
     }
 
     /**

@@ -30,7 +30,7 @@
                         <p class="error_message"><i>{{ $message }}</i></p>
                     @enderror
                     <p>If you have problems: </p>
-                    <span href="#mail" class="admin_mail button_copy" data-textCopy="lexa.amb@gmail.com">lexa.amb@gmail.com
+                    <span href="#mail" class="admin_mail button_copy" data-textCopy="{{ $emails['support']['link'] }}">{{ $emails['support']['link'] }}
                         <i class="far fa-copy icon"></i></span>
                 </div>
             </div>

@@ -23,16 +23,6 @@ Route::get('auth/facebook/callback', 'Auth\Socialite\FacebookController@handleFa
 // Route::get('/auth/check', function () { return Auth::check() * 1; })->name('auth.check');
 // Route::post('/auth/check', function () { return Auth::check() * 1; })->name('auth.check.post');
 
-// Route::get('/cache-clear', function() {
-//     // print_r("\n<br>Laravel optimize: "); try{ print_r(Artisan::call('optimize')); } catch (\Exception $e) { print_r("Fail"); }
-//     // print_r("\n<br>Laravel cache:clear: "); try{ print_r(Artisan::call('cache:clear')); } catch (\Exception $e) { print_r("Fail"); }
-//     // print_r("\n<br>Laravel route:clear: "); try{ print_r(Artisan::call('route:clear')); } catch (\Exception $e) { print_r("Fain"); }
-//     // print_r("\n<br>Laravel view:clear: "); try{ print_r(Artisan::call('view:clear')); } catch (\Exception $e) { print_r("Fail"); }
-//     // print_r("\n<br>Laravel config:clear: "); try{ print_r(Artisan::call('config:clear')); } catch (\Exception $e) { print_r("Fail"); }
-    
-//     // echo "\n\n<br><a href='" . redirect()->back()->getTargetUrl() . "'>Back</a>";
-// });
-
 // Public
 Route::get('/', 'MainController@index')->name('main');
 Route::get('/about', 'InfoController@about')->name('about');
@@ -78,8 +68,9 @@ Route::group(['middleware' => 'auth.admin'], function () {
     
     Route::get('/admin', 'AdminController@dashboard')->middleware('verified')->name('admin.dashboard');
     Route::post('/admin/setting', 'AdminController@setting')->middleware('verified')->name('admin.setting');
-    Route::get('/admin/clear-cash', 'AdminController@clear_cash')->middleware('verified')->name('admin.clear_cash');
-    Route::post('/admin/clear-cash', 'AdminController@clear_cash')->middleware('verified')->name('admin.clear_cash.post');
+    
+    Route::get('/clear-cash', 'AdminController@clear_cash')->middleware('verified')->name('admin.clear_cash');
+    Route::post('/clear-cash', 'AdminController@clear_cash')->middleware('verified')->name('admin.clear_cash.post');
 
     Route::get('/admin/team', 'AdminController@team')->middleware('verified')->name('admin.team');
     Route::post('/admin/team', 'AdminController@team')->middleware('verified')->name('admin.team.post');

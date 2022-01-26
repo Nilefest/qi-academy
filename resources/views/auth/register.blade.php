@@ -40,7 +40,7 @@
                                 href="{{ url('auth/google') }}">With Google</a> | <a
                                 href="{{ url('auth/facebook') }}">With Facebook</a></b></p>
                     <p>If you have problems: </p>
-                    <span href="#mail" class="admin_mail button_copy" data-textCopy="lexa.amb@gmail.com">lexa.amb@gmail.com
+                    <span href="#mail" class="admin_mail button_copy" data-textCopy="{{ $emails['support']['link'] }}">{{ $emails['support']['link'] }}
                         <i class="far fa-copy icon"></i></span>
                 </div>
             </div>

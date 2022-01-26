@@ -26,6 +26,7 @@ class CourseController extends Controller
         $this->data = array_merge($this->data, CommonService::getDataFromFile());
         $this->data['contacts'] = Contact::getByType('contacts');
         $this->data['social'] = Contact::getByType('social');
+        $this->data['emails'] = Contact::getByType('emails');
     }
     
     /** Public page for view course
@@ -115,7 +116,7 @@ class CourseController extends Controller
         $lecture_this['info_full'] = CommonService::replaceNlToBr($lecture_this['info_full']);
         $lecture_this['homework'] = CommonService::replaceNlToBr($lecture_this['homework']);
         $this->data['lecture_this'] = $lecture_this;
-// print_r($lecture_this); exit();
+        
         if($request->isMethod('post')){
             // Save new data about team
             if($request->input('type') === 'lecture_finish'){

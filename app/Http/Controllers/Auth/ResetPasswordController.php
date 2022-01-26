@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use App\Contact;
 
 class ResetPasswordController extends Controller
 {
@@ -41,6 +42,7 @@ class ResetPasswordController extends Controller
     public function showResetForm(Request $request, $token = null)
     {
         $this->data['title'] = 'Password recovery';
+        $this->data['emails'] = Contact::getByType('emails');
         return view('auth.passwords.reset', $this->data)->with(
             ['token' => $token, 'email' => $request->email]
         );

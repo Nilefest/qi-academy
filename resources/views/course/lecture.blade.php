@@ -167,7 +167,7 @@
                             </p>
 
                             <button class="homework_button send_homework button_copy"
-                                data-textCopy="hair@qi.com"><span>hair@qi.com</span> <i
+                                data-textCopy="{{ $emails['homework']['link'] }}"><span>{{ $emails['homework']['link'] }}</span> <i
                                     class="fas fa-copy icon"></i></button>
                         </div>
                     @endif

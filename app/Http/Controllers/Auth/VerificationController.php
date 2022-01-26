@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use App\Contact;
 
 class VerificationController extends Controller
 {
@@ -39,6 +40,7 @@ class VerificationController extends Controller
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
+        $this->data['emails'] = Contact::getByType('emails');
     }
 
     /**
