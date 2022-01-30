@@ -18,12 +18,32 @@ class UserSeeder extends Seeder
         $faker = Container::getInstance()->make(Generator::class);
 
         DB::table('users')->insert([
-          'name' => 'Admin',
-          'lastname' => 'Super',
+          'name' => 'Super',
+          'lastname' => 'Admin',
           'password' => bcrypt('admin'),
           'email' => 'admin@mail.com',
           'email_verified_at' => date('Y-m-d H:i:s'),
           'access' => '-1',
+          'updated_at' => date('Y-m-d H:i:s'),
+          'created_at' => date('Y-m-d H:i:s'),
+        ]);
+        DB::table('users')->insert([
+          'name' => 'Qi-Label',
+          'lastname' => 'Admin',
+          'password' => bcrypt('qiLABEL@'),
+          'email' => 'qilabel.workshop@gmail.com',
+          'email_verified_at' => date('Y-m-d H:i:s'),
+          'access' => '0',
+          'updated_at' => date('Y-m-d H:i:s'),
+          'created_at' => date('Y-m-d H:i:s'),
+        ]);
+        DB::table('users')->insert([
+          'name' => 'Nikita',
+          'lastname' => 'Levin',
+          'password' => bcrypt('nikita123'),
+          'email' => 'nikitaleo777333@gmail.com',
+          'email_verified_at' => date('Y-m-d H:i:s'),
+          'access' => '1',
           'updated_at' => date('Y-m-d H:i:s'),
           'created_at' => date('Y-m-d H:i:s'),
         ]);
