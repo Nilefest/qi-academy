@@ -91,7 +91,7 @@ class PaymentController extends Controller
                 $course_user->date_of_begin = date('Y-m-d H:i:s');
                 //$course_user->save();
             }
-            //return redirect()->route('courses.lecture', $course_id);
+            return redirect()->route('courses.lecture', $course_id);
         }
 
 

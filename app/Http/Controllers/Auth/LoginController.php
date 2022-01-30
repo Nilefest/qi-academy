@@ -37,6 +37,7 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        $this->data['emails'] = Contact::getByType('emails');
     }
 
     /**
@@ -50,8 +51,6 @@ class LoginController extends Controller
         // if(!session()->has('from')){
         //     session()->put('from', url()->previous());
         // }
-        $this->data['emails'] = Contact::getByType('emails');
-
         $this->data['title'] = 'Sign in';
         return view('auth.login', $this->data);
     }

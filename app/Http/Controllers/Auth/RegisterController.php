@@ -83,7 +83,7 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        $this->date['title'] = 'Sign up';
-        return view('auth.register', $this->date);
+        $this->data['title'] = 'Sign up';
+        return view('auth.register', $this->data);
     }
 }
