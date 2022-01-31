@@ -76,7 +76,7 @@
                 <input id="profile_email" @if ($user->hasVerifiedEmail()) disabled @endif autocomplete="off" type="email"
                     class="profile_input profile_email" placeholder="Your Email" value="{{ $user->email }}">
             </label>
-            <button class="profile_button save mobile">Zapisz zmiany</button>
+            <button class="profile_button profile_save mobile">Zapisz zmiany</button>
         </div>
 
         @if (Auth::user()->checkRole('admin') && !$user->checkRole('admin'))

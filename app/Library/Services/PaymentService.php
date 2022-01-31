@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\User;
 use App\Setting;
+use App\Payment;
 
 class PaymentService {
 
@@ -83,6 +84,8 @@ class PaymentService {
 
         $fields['url_form'] = $market_data['url_form'];
         $fields['signature_str'] = $signature_str;
+
+        Payment::createOrUpdate($user['id'], $course['id'], $signature, $fields);
 
         return $fields;
     }

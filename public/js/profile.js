@@ -24,7 +24,7 @@
 
     // Save profile data
     // #event
-    document.querySelector('.profile_save').addEventListener('click', saveProfileData);
+    document.querySelectorAll('.profile_save').forEach(element => element.addEventListener('click', saveProfileData));
 
     // Delete profile data
     // #function #server

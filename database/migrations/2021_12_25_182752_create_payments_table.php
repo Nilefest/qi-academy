@@ -15,9 +15,17 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('course_id');
-            $table->dateTime('date');
+            $table->integer('user_id')->nullabel();
+            $table->integer('course_id')->nullabel();
+            $table->string('customer_name');
+            $table->string('customer_lastname');
+            $table->string('customer_email')->default('');
+            $table->string('customer_phone')->default('');
+            $table->string('order_id');
+            $table->integer('amount')->default(0);
+            $table->text('order_description')->nullabel();
+            $table->string('signature');
+            $table->text('response')->nullabel();
             $table->timestamps();
         });
     }

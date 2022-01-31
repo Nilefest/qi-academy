@@ -682,7 +682,7 @@ a.main_nav_button {
 }
 
 .safari .block_video_reviews_arrow {
-    padding-top: 5px;
+    padding-top: -5px;
 }
 
 .block_video_reviews_arrow:hover {
@@ -932,6 +932,9 @@ a.main_nav_button {
         font-size: 45px;
         text-align: center;
     }
+    .block_video_reviews .slick-list {
+        overflow-x: auto;
+    }
     .block_video_reviews h3 span {
         display: none;
     }
@@ -948,7 +951,8 @@ a.main_nav_button {
         margin: 0px 2vw;
     }
     .block_team_arrow {
-        opacity: 0;
+        display: none !important;
+        /* opacity: 0; */
     }
     .block_video_reviews_arrow.prev {
         left: -15px;
@@ -957,8 +961,8 @@ a.main_nav_button {
         right: -15px;
     }
     .block_video_reviews_arrow {
-        /* display: none !important; */
-        opacity: 0;
+        display: none !important;
+        /* opacity: 0; */
     }
     .faq {
         margin: 100px 0px;

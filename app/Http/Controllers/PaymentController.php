@@ -6,14 +6,26 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Library\Services\CommonService;
 use App\Library\Services\PaymentService;
+use App\Contact;
 use App\User;
 use App\Course;
 use App\UserCourse;
 use App\UserLecture;
+use App\Payment;
 use File;
 
 class PaymentController extends Controller
 {
+    /** Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct() {
+        $this->data = array_merge($this->data, CommonService::getDataFromFile());
+        $this->data['contacts'] = Contact::getByType('contacts');
+        $this->data['social'] = Contact::getByType('social');
+        $this->data['emails'] = Contact::getByType('emails');
+    }
     
     /** Page for pay
      *
@@ -75,8 +87,9 @@ class PaymentController extends Controller
         if($user_id) $user = User::find($user_id);
         elseif(Auth::check()) $user = Auth::user();
 
-
         // Verif
+        // $signature = $request->input('');
+        // Payment::setResponse($signature, $request->all());
 
         $course = Course::findOrFail($course_id);
 
@@ -89,7 +102,7 @@ class PaymentController extends Controller
                 $course_user->user_id = $user->id;
                 $course_user->course_id = $course_id;
                 $course_user->date_of_begin = date('Y-m-d H:i:s');
-                //$course_user->save();
+                $course_user->save();
             }
             return redirect()->route('courses.lecture', $course_id);
         }
@@ -129,7 +142,6 @@ class PaymentController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function fail(Request $request) {
-        
         $str_result = date('Y-m-d H:i:s') . " - FAIL - \n";
 
         if($request->input('transaction') !== null){
@@ -152,7 +164,7 @@ class PaymentController extends Controller
 
         $str_result .= "\n";
 
-        File::append('/payment.txt', $str_result);
+        File::append(public_path('/payment.txt'), $str_result);
 
         echo 'FAIL: ';
         print_r($request->all());
@@ -164,8 +176,32 @@ class PaymentController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function return(Request $request) {
-        echo 'SUCCESS: ';
-        print_r($request->all());
-        exit();
+        
+        $str_result = date('Y-m-d H:i:s') . " - RETURN - \n";
+
+        if($request->input('transaction') !== null){
+            $transaction = $request->input('transaction');
+            $str_result .= "\t Transaction:\n";
+            foreach($transaction as $key => $value) $str_result .= "\t > $key : $value\n";
+        }
+        
+        if($request->input('payment') !== null){
+            $transaction = $request->input('payment');
+            $str_result .= "\t Payment:\n";
+            foreach($payment as $key => $value) $str_result .= "\t > $key : $value\n";
+        }
+
+        if($request->input('action') !== null){
+            $action = $request->input('action');
+            $str_result .= "\t Action:\n";
+            foreach($action as $key => $value) $str_result .= "\t > $key : $value\n";
+        }
+
+        $str_result .= "\n";
+
+        File::append(public_path('/payment.txt'), $str_result);
+
+        $response_data = ['status' => 'ok'];
+        return json_encode($response_data);
     }
 }

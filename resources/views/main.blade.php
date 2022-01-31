@@ -35,8 +35,8 @@
             <p class="text_info">Wypełnij formularz dla <br> rezerwacji miejsca</p>
             <p class="text_info course_info">WARSZAWA 22/06</p>
             <div class="form">
-                <input type="text" class="text name" placeholder="Nazwa">
-                <input type="text" class="text phone" placeholder="+48 ___ ___ ___">
+                <input type="text" class="text name" placeholder="Imię i nazwisko">
+                <input type="text" class="text phone" placeholder="Numer telefonu">
                 <input type="button" class="button book_success" value="Wysłać">
             </div>
         </div>
@@ -101,7 +101,7 @@
     <div class="content">
         <div class="main_banner container">
             <div class="main_banner_media">
-                <video loop autoplay muted>
+                <video loop autoplay muted playsinline>
                     <source src="{{ url($media['main_header_banner']) }}" type="video/mp4">
                 </video>
             </div>

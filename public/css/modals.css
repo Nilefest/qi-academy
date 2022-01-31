@@ -1426,6 +1426,9 @@
     .modal_sign_account .login_button.facebook .icon {
         font-size: 32px;
     }
+    .modal_simple_info {
+        margin-top: 25vh !important;
+    }
 }
 
 @media screen and (max-width: 479px) {

@@ -10,26 +10,14 @@ use App\Library\Services\CommonService;
 use App\Library\Services\MailService;
 use Illuminate\Notifications\Messages\MailMessage;
 
-use App\User;
+use App\Payment;
 
 class TestController extends Controller
 {
     public function get(){
 
-        // CommonService::generateSertificate(Auth::user());
 
-        // $message = [
-        //     ['type' => 'line', 'value' => 'It is for you'],
-        //     ['type' => 'line', 'value' => 'It is too'],
-        //     ['type' => 'subject', 'value' => 'second subject'],
-        //     ['type' => 'action', 'value' => 'Test button', 'attribute' => 'https://www.google.com/'],
-        //     ['type' => 'line', 'value' => 'Last line'],
-        // ];
-        // MailService::sendSubscribeArticle(User::all()[0], 'Subs mail', $message);
-
-        // MailService::sendVideoReview(User::all()[0], '');
-
-        exit();
+        exit('dsaf');
     }
     
     public function post(){

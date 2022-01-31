@@ -75,7 +75,9 @@
                 <input require readonly type="hidden" class="text signature_str" name="signature"
                     value="{{ $fields['signature_str'] }}">
                 <input require readonly type="submit" class="button" value="zapłacić za kurs">
+
                 <a href="{{ route('payment.success', [$course->id, $user->id]) }}">Set as paid</a>
+                <a href="{{ route('payment.fail') }}">Set as fail</a>
             </div>
         </form>
     </div>

@@ -1268,6 +1268,7 @@
         padding: 0px;
         height: auto;
         width: 100%;
+        pointer-events: none;
     }
     .main_banner_media img,
     .main_banner_media video {
@@ -1335,8 +1336,12 @@
         width: 100%;
     }
     .block_team_li {
-        margin: 0px;
-        width: 100%;
+        /* margin: 0px; */
+        /* width: 96%; */
+        margin: 0px 2vw;
+    }
+    .block_team_li.slick-current {
+        width: 75vw !important;
     }
     .block_team_li a.view {
         opacity: 1;
@@ -1416,6 +1421,12 @@
     .slider_blog_youtube a:after {
         padding: 3px 20px 4px;
         margin-left: 55px;
+    }
+    .block_team_li .view {
+        width: 150px;
+        height: 150px;
+        padding-top: 4em;
+        margin: 35% 30%;
     }
 }
 
