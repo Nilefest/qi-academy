@@ -20,7 +20,7 @@
         <form action="{{ $fields['url_form'] }}" method="POST" class="form_pay">
             <div class="personal_data form_column">
                 <h2 class="title">Dane kupującego</h2>
-                <input require readonly type="hidden" class="text" name="simp" value="{{ $fields['simp'] }}">
+                {{-- <input require readonly type="hidden" class="text" name="simp" value="{{ $fields['simp'] }}"> --}}
                 <input require type="text" class="text field_editable" name="customerFirstName"
                     value="{{ $fields['customerFirstName'] }}" placeholder="First name*">
                 <input require type="text" class="text field_editable" name="customerLastName"
@@ -75,10 +75,18 @@
                 <input require readonly type="hidden" class="text signature_str" name="signature"
                     value="{{ $fields['signature_str'] }}">
                 <input require readonly type="submit" class="button" value="zapłacić za kurs">
-
-                <a href="{{ route('payment.success', [$course->id, $user->id]) }}">Set as paid</a>
-                <a href="{{ route('payment.fail') }}">Set as fail</a>
             </div>
         </form>
+        {{-- <div id="form_widget"></div>
+        <script src="https://paywall.imoje.pl/js/widget.min.js" id="imoje-widget__script" data-element-id="form_widget"
+                    data-merchant-id="{{ $fields['merchantId'] }}" data-service-id="{{ $fields['serviceId'] }}"
+                    data-amount="{{ $fields['amount'] }}" data-currency="{{ $fields['currency'] }}" 
+                    data-order-id="{{ $fields['orderId'] }}" data-order-description="{{ $fields['orderDescription'] }}" 
+                    data-url-success="{{ $fields['urlSuccess'] }}" data-url-success="{{ $fields['urlFailure'] }}" data-url-success="{{ $fields['urlReturn'] }}" data-url-cancel="{{ url('/') }}" 
+                    data-customer-id="{{ $fields['simp'] }}" 
+                    data-customer-first-name="{{ $fields['customerFirstName'] }}" data-customer-last-name="{{ $fields['customerLastName'] }}" 
+                    data-customer-email="{{ $fields['customerEmail'] }}"
+                    data-signature="{{ $fields['signature_str'] }}">
+        </script> --}}
     </div>
 @endsection

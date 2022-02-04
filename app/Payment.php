@@ -16,9 +16,9 @@ class Payment extends Model {
      * @return Payment object from DB
      */
     public static function createOrUpdate($user_id, $course_id, $signature, $fields = [], $response = []){
-        $payment = self::where('order_id', $fields['orderId'])->first();
-        if(!$payment) $payment = new Payment;
-            
+        $payment = self::getPaymentByOrderId($fields['orderId']);
+        
+        if(!$payment || $payment->user_course_id) $payment = new Payment;
         $payment->signature = $signature;
 
         $payment->customer_name = $fields['customerFirstName'] . '';
@@ -39,15 +39,53 @@ class Payment extends Model {
         return $payment;
     }
 
-    /** Set response by signature
+    /** Get Payment by Order ID
      * 
-     * @param string Signature for payment
+     * @param string Order Id
+     * @return Payment|null
+     */
+    public static function getPaymentByOrderId($order_id) {
+        $payment = self::where('order_id', $order_id)->orderBy('created_at', 'desc')->first();
+        return $payment;
+    }
+
+    /** Set response by Order Id
+     * 
+     * @param string Order ID for payment
      * @param array response data if has
      * @return Payment object from DB
      */
-    public static function setResponse($signature, $response = []) {
-        $payment = self::where('signature', $signature)->first();
+    public static function setResponseByOrderId($order_id, $response = []) {
+        $payment = self::getPaymentByOrderId($order_id);
         $payment->response = json_encode($response);
+        $payment->save();
+
+        return $payment;
+    }
+
+    /** Set new pay status for payment by Order Id
+     * 
+     * @param string Order ID for payment
+     * @param int Pay status
+     * @return Payment object from DB
+     */
+    public static function setPayStatusByOrderId($order_id, $pay_status = '') {
+        $payment = self::getPaymentByOrderId($order_id);
+        $payment->pay_status = $pay_status;
+        $payment->save();
+
+        return $payment;
+    }
+
+    /** Set Paid User-Course Id by Order Id
+     * 
+     * @param string Order ID for payment
+     * @param int User-Course ID
+     * @return Payment object from DB
+     */
+    public static function setUserCourseIdByOrderId($order_id, $user_course_id) {
+        $payment = self::getPaymentByOrderId($order_id);
+        $payment->user_course_id = $user_course_id;
         $payment->save();
 
         return $payment;

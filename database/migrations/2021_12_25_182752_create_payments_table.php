@@ -26,6 +26,8 @@ class CreatePaymentsTable extends Migration
             $table->text('order_description')->nullabel();
             $table->string('signature');
             $table->text('response')->nullabel();
+            $table->string('pay_status')->nullabel();
+            $table->integer('user_course_id')->nullabel();
             $table->timestamps();
         });
     }

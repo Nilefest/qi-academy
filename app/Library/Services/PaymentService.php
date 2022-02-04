@@ -11,6 +11,9 @@ use App\Payment;
 
 class PaymentService {
 
+    /** @var */
+    private static $hashMethod = 'sha256';
+
     /** Correct and formated field for payment-form
      * 
      * @param User user who pay
@@ -22,8 +25,14 @@ class PaymentService {
         if($setting['test_mode']['value'] === '1') $test_mode = '_TEST';
         else $test_mode = '';
 
+        $payment_data = [
+            "amount" => $course->cost * 100,
+            "orderDescription" => htmlentities('Course ' . $course->name . '. For ' . $user['name'] . '. ' . date('Y-m-y')),
+            "orderId" => $user['id'] . $course->id . strtotime(date('Y-m-d')),
+        ];
+
         $market_data = [
-            'hashMethod' => 'sha256',
+            'hashMethod' => self::$hashMethod,
 
             'merchantId' => env('IMOJE_MERCHANT_ID' . $test_mode),
             'serviceId' => env('IMOJE_SERVICE_ID' . $test_mode),
@@ -34,19 +43,13 @@ class PaymentService {
             'visibleMethod' => 'card,pbl',
             'currency' => 'PLN',
             
-            'urlSuccess' => route('payment.success'),
-            'urlFailure' => route('payment.fail'),
+            'urlSuccess' => route('payment.success', $payment_data['orderId']),
+            'urlFailure' => route('payment.fail', $payment_data['orderId']),
             'urlReturn' => route('payment.return'),
         ];
 
-        $payment_data = [
-            "amount" => $course->cost * 100,
-            "orderDescription" => htmlentities('Course ' . $course->name . '. For ' . $user['name'] . '. ' . date('Y-m-y')),
-            "orderId" => $user['id'] . $course->id . strtotime(date('Y-m-d')),
-        ];
-
         $client_data = [
-            "simp" => $user['id'],
+            // "simp" => $user['id'],
             "customerFirstName" => htmlentities($user['name']),
             "customerLastName" => htmlentities($user['lastname']),
             "customerEmail" => $user['email'] . '',
@@ -71,7 +74,7 @@ class PaymentService {
 
             'validTo' => strtotime(date('Y-m-d') . ' + 1 days'),
 
-            'simp' => $client_data['simp'],
+            // 'simp' => $client_data['simp'],
             'customerFirstName' => self::translit_text($client_data['customerFirstName']),// *
             'customerLastName' => self::translit_text($client_data['customerLastName']),  // *
             'customerEmail' => self::translit_text($client_data['customerEmail']),        // *
@@ -101,6 +104,19 @@ class PaymentService {
         $data = self::prepareData($orderData);
 
         return hash($hashMethod, $data . $serviceKey);
+    }
+
+    public static function createSignatureVerif(){
+        $setting = Setting::getByType('imoje');
+        if($setting['test_mode']['value'] === '1') $test_mode = '_TEST';
+        else $test_mode = '';
+
+        $merchantId = env('IMOJE_MERCHANT_ID' . $test_mode);
+        $serviceId = env('IMOJE_SERVICE_ID' . $test_mode);
+        $hashMethod = self::$hashMethod;
+        $signature = '';
+        
+        $signature_str = "merchantid=$merchantId;serviceid=$serviceId;signature=$signature;alg=$hashMethod";
     }
     
     /** Get string-data for convert to hash-signature

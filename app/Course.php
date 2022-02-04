@@ -67,7 +67,6 @@ class Course extends Model
         } else{
             $datetime_of_end = strtotime($date_of_end);
         }
-        
         $days_last = round(($datetime_of_end - time()) / (24*60*60));
 
         $days_data = [

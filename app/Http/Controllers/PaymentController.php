@@ -41,9 +41,9 @@ class PaymentController extends Controller
         $course = Course::findOrFail($course_id);
         $this->data['user'] = $user;
 
-        $course_user = UserCourse::where('user_id', $user->id)->where('course_id', $course_id)->first();
-        $days_data = Course::getLastDays($course, $course_user);
-        if($course_user && $days_data['days_last'] > 0) {
+        $user_course = UserCourse::where('user_id', $user->id)->where('course_id', $course_id)->first();
+        $days_data = Course::getLastDays($course, $user_course);
+        if($user_course && $days_data['days_last'] > 0) {
             return redirect()->route('courses.lecture', $course_id);
         }
 
@@ -78,70 +78,98 @@ class PaymentController extends Controller
 
     /** Result after payment as SUCCESS
      * 
-     * @param int Course ID
-     * @param int User ID
+     * @param int|false Order ID for Payment
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function success($course_id, $user_id = false, Request $request) {
-        $user = false;
-        if($user_id) $user = User::find($user_id);
-        elseif(Auth::check()) $user = Auth::user();
+    public function success($order_id = false, Request $request) {
+    
+        $payment = Payment::getPaymentByOrderId($order_id);
+        if(!$payment) return redirect()->route('main');
+        
+        $user = User::find($payment['user_id']);
+        $course = Course::find($payment['course_id']);
+        
+        // Verif
+        // ...
+        if($payment['pay_status'] === 'settled' && !$payment['user_course_id']){
+
+            if($user && $course){
+                $user_course = UserCourse::where('user_id', $user->id)->where('course_id', $course->id)->first();
+                $days_data = Course::getLastDays($course, $user_course);
+    
+                if(!$user_course || $days_data['days_last'] === 0) {
+                    $user_course = new UserCourse;
+                    $user_course->user_id = $user->id;
+                    $user_course->course_id = $course->id;
+                    $user_course->date_of_begin = date('Y-m-d H:i:s');
+                    $user_course->save();
+                    
+                    Payment::setUserCourseIdByOrderId($order_id, $user_course->id);
+                }
+                return redirect()->route('courses.lecture', $course->id);
+            }
+        }
+        return redirect()->route('courses.lecture', $course->id);
+
+        // $user = false;
+        // if($user_id) $user = User::find($user_id);
+        // elseif(Auth::check()) $user = Auth::user();
 
         // Verif
         // $signature = $request->input('');
         // Payment::setResponse($signature, $request->all());
 
-        $course = Course::findOrFail($course_id);
+        // $course = Course::findOrFail($course_id);
 
-        if($user && $course){
-            $course_user = UserCourse::where('user_id', $user->id)->where('course_id', $course_id)->first();
-            $days_data = Course::getLastDays($course, $course_user);
+        // if($user && $course){
+        //     $user_course = UserCourse::where('user_id', $user->id)->where('course_id', $course_id)->first();
+        //     $days_data = Course::getLastDays($course, $user_course);
 
-            if(!$course_user || $days_data['days_last'] === 0) {
-                $course_user = new UserCourse;
-                $course_user->user_id = $user->id;
-                $course_user->course_id = $course_id;
-                $course_user->date_of_begin = date('Y-m-d H:i:s');
-                $course_user->save();
-            }
-            return redirect()->route('courses.lecture', $course_id);
-        }
+        //     if(!$user_course || $days_data['days_last'] === 0) {
+        //         $user_course = new UserCourse;
+        //         $user_course->user_id = $user->id;
+        //         $user_course->course_id = $course_id;
+        //         $user_course->date_of_begin = date('Y-m-d H:i:s');
+        //         // $user_course->save();
+        //     }
+        //     // return redirect()->route('courses.lecture', $course_id);
+        // }
 
 
-        $str_result = date('Y-m-d H:i:s') . " - SUCCESS - \n";
+        // $str_result = date('Y-m-d H:i:s') . " - SUCCESS - \n";
 
-        if($request->input('transaction') !== null){
-            $transaction = $request->input('transaction');
-            $str_result .= "\t Transaction:\n";
-            foreach($transaction as $key => $value) $str_result .= "\t > $key : $value\n";
-        }
+        // if($request->input('transaction') !== null){
+        //     $transaction = $request->input('transaction');
+        //     $str_result .= "\t Transaction:\n";
+        //     foreach($transaction as $key => $value) $str_result .= "\t > $key : $value\n";
+        // }
         
-        if($request->input('payment') !== null){
-            $transaction = $request->input('payment');
-            $str_result .= "\t Payment:\n";
-            foreach($payment as $key => $value) $str_result .= "\t > $key : $value\n";
-        }
+        // if($request->input('payment') !== null){
+        //     $transaction = $request->input('payment');
+        //     $str_result .= "\t Payment:\n";
+        //     foreach($payment as $key => $value) $str_result .= "\t > $key : $value\n";
+        // }
 
-        if($request->input('action') !== null){
-            $action = $request->input('action');
-            $str_result .= "\t Action:\n";
-            foreach($action as $key => $value) $str_result .= "\t > $key : $value\n";
-        }
+        // if($request->input('action') !== null){
+        //     $action = $request->input('action');
+        //     $str_result .= "\t Action:\n";
+        //     foreach($action as $key => $value) $str_result .= "\t > $key : $value\n";
+        // }
 
-        $str_result .= "\n";
+        // $str_result .= "\n";
 
-        File::append(public_path('/payment.txt'), $str_result);
+        // File::append(public_path('/payment.txt'), $str_result);
 
-        echo 'SUCCESS: ';
-        print_r($request->all());
-        exit();
+        // echo 'SUCCESS: ';
+        // print_r($request->all());
+        exit('*');
     }
 
     /** Result after payment as FAIL
      * 
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function fail(Request $request) {
+    public function fail($order_id = false, Request $request) {
         $str_result = date('Y-m-d H:i:s') . " - FAIL - \n";
 
         if($request->input('transaction') !== null){
@@ -150,17 +178,17 @@ class PaymentController extends Controller
             foreach($transaction as $key => $value) $str_result .= "\t > $key : $value\n";
         }
         
-        if($request->input('payment') !== null){
-            $transaction = $request->input('payment');
-            $str_result .= "\t Payment:\n";
-            foreach($payment as $key => $value) $str_result .= "\t > $key : $value\n";
-        }
+        // if($request->input('payment') !== null){
+        //     $transaction = $request->input('payment');
+        //     $str_result .= "\t Payment:\n";
+        //     foreach($payment as $key => $value) $str_result .= "\t > $key : $value\n";
+        // }
 
-        if($request->input('action') !== null){
-            $action = $request->input('action');
-            $str_result .= "\t Action:\n";
-            foreach($action as $key => $value) $str_result .= "\t > $key : $value\n";
-        }
+        // if($request->input('action') !== null){
+        //     $action = $request->input('action');
+        //     $str_result .= "\t Action:\n";
+        //     foreach($action as $key => $value) $str_result .= "\t > $key : $value\n";
+        // }
 
         $str_result .= "\n";
 
@@ -177,6 +205,21 @@ class PaymentController extends Controller
      */
     public function return(Request $request) {
         
+        File::put(public_path('/payment.json'), json_encode($request->all()));
+
+        $header_signature = $request->headers->get('X-IMoje-Signature');
+
+        $request_data = $request->all();
+        if(isset($request_data['transaction'])){
+            $transaction = $request_data['transaction'];
+            
+            Payment::setResponseByOrderId($transaction['orderId'], $transaction);
+            Payment::setPayStatusByOrderId($transaction['orderId'], $transaction['status']);
+
+        }
+
+
+
         $str_result = date('Y-m-d H:i:s') . " - RETURN - \n";
 
         if($request->input('transaction') !== null){
@@ -186,22 +229,24 @@ class PaymentController extends Controller
         }
         
         if($request->input('payment') !== null){
-            $transaction = $request->input('payment');
+            $payment = $request->input('payment');
             $str_result .= "\t Payment:\n";
             foreach($payment as $key => $value) $str_result .= "\t > $key : $value\n";
         }
 
-        if($request->input('action') !== null){
-            $action = $request->input('action');
-            $str_result .= "\t Action:\n";
-            foreach($action as $key => $value) $str_result .= "\t > $key : $value\n";
-        }
+        // if($request->input('action') !== null){
+        //     $action = $request->input('action');
+        //     $str_result .= "\t Action:\n";
+        //     foreach($action as $key => $value) $str_result .= "\t > $key : $value\n";
+        // }
 
-        $str_result .= "\n";
+        // $str_result .= "\n";
 
-        File::append(public_path('/payment.txt'), $str_result);
+        // File::append(public_path('/payment.txt'), $str_result);
+        // File::append(public_path('/payment.txt'), "\n" . $header_signature);
 
         $response_data = ['status' => 'ok'];
-        return json_encode($response_data);
+
+        return response()->json($response_data);
     }
 }
